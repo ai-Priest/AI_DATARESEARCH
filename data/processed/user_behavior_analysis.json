@@ -1,0 +1,40 @@
+{
+  "user_segments": {
+    "total_sessions": 5,
+    "segment_distribution": {
+      "power_user": 3,
+      "quick_browser": 1,
+      "casual_user": 1
+    },
+    "avg_events_per_session": 20.0,
+    "avg_session_duration": 2.0206333333333335,
+    "peak_activity_hour": 11
+  },
+  "interaction_patterns": {
+    "event_type_distribution": {
+      "click": 30,
+      "change": 24,
+      "identify": 12,
+      "navigate": 8,
+      "cumulative_layout_shift": 5,
+      "consent": 5,
+      "load": 5,
+      "custom": 4,
+      "page_properties": 4,
+      "first_input_delay": 3
+    },
+    "hourly_activity": {
+      "11": 54,
+      "15": 32,
+      "17": 14
+    },
+    "daily_activity": {
+      "4": 54,
+      "5": 32,
+      "6": 14
+    },
+    "search_patterns": {},
+    "most_active_hour": 11,
+    "total_unique_sessions": 5
+  }
+}

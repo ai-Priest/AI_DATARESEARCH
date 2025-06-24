@@ -1,0 +1,1499 @@
+{
+  "scenario_001_housing": {
+    "primary": "housing prices singapore",
+    "complementary": [
+      "Newspapers-Singapore Standard-1950 to 1953",
+      "Historical Wind Speed across Singapore (2023)",
+      "Singapore Statistics - GDP",
+      "Singapore Statistics - POPULATION",
+      "Singapore Statistics - EMPLOYMENT"
+    ],
+    "explanation": "User searching for housing data: housing prices singapore",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.1666666666666665,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Import Use Table At Basic Prices (Supply, Use and Input-Output Tables 2021)",
+      "score": 4,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.1666666666666665
+  },
+  "scenario_002_housing": {
+    "primary": "housing prices sg",
+    "complementary": [
+      "SDG Indicator 11.1.1",
+      "Home Ownership Plus Education Scheme Approvals, Annual",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "GDP (current US$)"
+    ],
+    "explanation": "User searching for housing data: housing prices sg",
+    "confidence": 0.8600000000000001,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.6,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Import Use Table At Basic Prices (Supply, Use and Input-Output Tables 2021)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 4,
+    "avg_relevance_score": 1.6
+  },
+  "scenario_003_housing": {
+    "primary": "housing costs singapore",
+    "complementary": [
+      "Historical Wind Speed across Singapore (2023)",
+      "Singapore Statistics - GDP",
+      "Singapore Statistics - POPULATION",
+      "Singapore Statistics - EMPLOYMENT",
+      "Singapore Statistics - INFLATION"
+    ],
+    "explanation": "User searching for housing data: housing costs singapore",
+    "confidence": 0.8600000000000001,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Newspapers-Singapore Standard-1950 to 1953",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_004_housing": {
+    "primary": "property transactions resale",
+    "complementary": [
+      "GDP (current US$)",
+      "SDG Indicator 11.1.1"
+    ],
+    "explanation": "User searching for housing data: property transactions resale",
+    "confidence": 0.92,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.0,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Home Ownership Plus Education Scheme Approvals, Annual",
+      "score": 1,
+      "quality": 1.0
+    },
+    "num_complementary": 2,
+    "avg_relevance_score": 1.0
+  },
+  "scenario_005_housing": {
+    "primary": "hdb flat prices",
+    "complementary": [
+      "Singapore Statistics - INFLATION",
+      "Home Ownership Plus Education Scheme Approvals, Annual",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "GDP (current US$)",
+      "SDG Indicator 11.1.1"
+    ],
+    "explanation": "User searching for housing data: hdb flat prices",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.6666666666666667,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Import Use Table At Basic Prices (Supply, Use and Input-Output Tables 2021)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 1.6666666666666667
+  },
+  "scenario_006_housing": {
+    "primary": "hdb flat costs",
+    "complementary": [
+      "Home Ownership Plus Education Scheme Approvals, Annual",
+      "SDG Indicator 11.1.1"
+    ],
+    "explanation": "User searching for housing data: hdb flat costs",
+    "confidence": 0.8600000000000001,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.6666666666666667,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Singapore Statistics - INFLATION",
+      "score": 3,
+      "quality": 0.6
+    },
+    "num_complementary": 2,
+    "avg_relevance_score": 1.6666666666666667
+  },
+  "scenario_007_housing": {
+    "primary": "private property market",
+    "complementary": [
+      "Domestic Exports Of Machinery And Equipment By Market, Monthly",
+      "Issuance of Title Documents for Completed Private Properties",
+      "Employment and Labour Market Statistics",
+      "Average Weekly Paid Hours Worked Per Employee by Industry and Type of Employment (Level 2), Annual",
+      "Home Ownership Plus Education Scheme Approvals, Annual"
+    ],
+    "explanation": "User searching for housing data: private property market",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.5,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Number of Hawker Stalls Under Government Market and Hawker Centres, Annual",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.5
+  },
+  "scenario_008_housing": {
+    "primary": "rental prices singapore",
+    "complementary": [
+      "Newspapers-Singapore Standard-1950 to 1953",
+      "Historical Wind Speed across Singapore (2023)",
+      "Singapore Statistics - GDP",
+      "Singapore Statistics - POPULATION",
+      "Singapore Statistics - EMPLOYMENT"
+    ],
+    "explanation": "User searching for housing data: rental prices singapore",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.1666666666666665,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Import Use Table At Basic Prices (Supply, Use and Input-Output Tables 2021)",
+      "score": 4,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.1666666666666665
+  },
+  "scenario_009_housing": {
+    "primary": "rental prices sg",
+    "complementary": [
+      "Average Monthly Household Expenditure Among Resident Households by Household Living Arrangement and Income Group (Household Expenditure Survey 2012/13)",
+      "Home Ownership Plus Education Scheme Approvals, Annual",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "GDP (current US$)",
+      "SDG Indicator 11.1.1"
+    ],
+    "explanation": "User searching for housing data: rental prices sg",
+    "confidence": 0.8600000000000001,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.3333333333333333,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Import Use Table At Basic Prices (Supply, Use and Input-Output Tables 2021)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 1.3333333333333333
+  },
+  "scenario_010_housing": {
+    "primary": "rental costs singapore",
+    "complementary": [
+      "Historical Wind Speed across Singapore (2023)",
+      "Singapore Statistics - GDP",
+      "Singapore Statistics - POPULATION",
+      "Singapore Statistics - EMPLOYMENT",
+      "Singapore Statistics - INFLATION"
+    ],
+    "explanation": "User searching for housing data: rental costs singapore",
+    "confidence": 0.8600000000000001,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "housing",
+    "primary_dataset": {
+      "title": "Newspapers-Singapore Standard-1950 to 1953",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_011_transport": {
+    "primary": "mrt train delays",
+    "complementary": [
+      "SDCP MRT Station Point Name (KML)",
+      "SDCP MRT Station Point Name (SHP)",
+      "LTA Traffic Incidents",
+      "LTA Bus Arrival",
+      "LTA Erp Rates"
+    ],
+    "explanation": "User searching for transport data: mrt train delays",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.166666666666667,
+    "validated": true,
+    "category": "transport",
+    "primary_dataset": {
+      "title": "LTA Train Service Alerts",
+      "score": 7,
+      "quality": 0.45
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 4.166666666666667
+  },
+  "scenario_012_transport": {
+    "primary": "bus arrival times",
+    "complementary": [
+      "LTA Bus Services",
+      "LTA Bus Routes",
+      "LTA Traffic Incidents",
+      "Tanker Arrivals Total, Annual Data",
+      "LTA Erp Rates"
+    ],
+    "explanation": "User searching for transport data: bus arrival times",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 5.166666666666667,
+    "validated": true,
+    "category": "transport",
+    "primary_dataset": {
+      "title": "LTA Bus Arrival",
+      "score": 9,
+      "quality": 0.5
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 5.166666666666667
+  },
+  "scenario_013_transport": {
+    "primary": "traffic conditions peak hours",
+    "complementary": [
+      "Traffic Lights",
+      "Average Weekly Paid Hours Worked Per Employee by Industry and Type of Employment (Level 2), Annual",
+      "LTA Bus Arrival",
+      "LTA Erp Rates",
+      "LTA Train Service Alerts"
+    ],
+    "explanation": "User searching for transport data: traffic conditions peak hours",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.166666666666667,
+    "validated": true,
+    "category": "transport",
+    "primary_dataset": {
+      "title": "LTA Traffic Incidents",
+      "score": 8,
+      "quality": 0.45
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 4.166666666666667
+  },
+  "scenario_014_transport": {
+    "primary": "road incidents accidents",
+    "complementary": [
+      "LTA Road Works",
+      "LTA Erp Rates",
+      "LTA Bus Arrival",
+      "LTA Train Service Alerts",
+      "LTA Bus Services"
+    ],
+    "explanation": "User searching for transport data: road incidents accidents",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.5,
+    "validated": true,
+    "category": "transport",
+    "primary_dataset": {
+      "title": "LTA Traffic Incidents",
+      "score": 8,
+      "quality": 0.45
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 4.5
+  },
+  "scenario_015_transport": {
+    "primary": "transport usage statistics",
+    "complementary": [
+      "Traffic Lights",
+      "Government Finance Statistics Yearbook (GFSY 2014), Financial Assets and Liabilities by Counterpart Sector",
+      "Government Finance Statistics Yearbook (GFSY 2016), Integrated Balance Sheet (Stock Positions and Flows in Assets and Liabilities)",
+      "Employment and Labour Market Statistics",
+      "Direction of Trade Statistics (DOTS), 2020 Q1"
+    ],
+    "explanation": "User searching for transport data: transport usage statistics",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.1666666666666665,
+    "validated": true,
+    "category": "transport",
+    "primary_dataset": {
+      "title": "LTA Traffic Incidents",
+      "score": 4,
+      "quality": 0.45
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.1666666666666665
+  },
+  "scenario_016_economic": {
+    "primary": "gdp growth rates",
+    "complementary": [
+      "Tax Rates for Corporate Income Tax",
+      "Main Economic Indicators",
+      "Singapore Statistics - GDP",
+      "Waste Disposed Of And Recycled, Annual",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+    ],
+    "explanation": "User searching for economic data: gdp growth rates",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.166666666666667,
+    "validated": true,
+    "category": "economic",
+    "primary_dataset": {
+      "title": "GDP (current US$)",
+      "score": 7,
+      "quality": 0.7250000000000001
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 4.166666666666667
+  },
+  "scenario_017_economic": {
+    "primary": "gdp growth trends",
+    "complementary": [
+      "Main Economic Indicators",
+      "Singapore Statistics - GDP",
+      "Poverty Headcount ($1.90 a day)",
+      "Poverty Headcount ($2.50 a day)",
+      "Middle Class ($10-50 a day) Headcount"
+    ],
+    "explanation": "User searching for economic data: gdp growth trends",
+    "confidence": 0.92,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.8333333333333335,
+    "validated": true,
+    "category": "economic",
+    "primary_dataset": {
+      "title": "GDP (current US$)",
+      "score": 6,
+      "quality": 0.7250000000000001
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.8333333333333335
+  },
+  "scenario_018_economic": {
+    "primary": "inflation consumer prices",
+    "complementary": [
+      "GDP (current US$)",
+      "Percent Change In Consumer Price Index (CPI) Over Corresponding Period Of Previous Year, 2019 As Base Year, Half-Yearly",
+      "Import Use Table At Basic Prices (Supply, Use and Input-Output Tables 2021)",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "Poverty Headcount ($1.90 a day)"
+    ],
+    "explanation": "User searching for economic data: inflation consumer prices",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.3333333333333335,
+    "validated": true,
+    "category": "economic",
+    "primary_dataset": {
+      "title": "Main Economic Indicators",
+      "score": 4,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.3333333333333335
+  },
+  "scenario_019_economic": {
+    "primary": "inflation consumer costs",
+    "complementary": [
+      "Percent Change In Consumer Price Index (CPI) Over Corresponding Period Of Previous Year, 2019 As Base Year, Half-Yearly",
+      "Poverty Headcount ($1.90 a day)",
+      "Poverty Headcount ($2.50 a day)",
+      "Middle Class ($10-50 a day) Headcount",
+      "Official Moderate Poverty Rate-National"
+    ],
+    "explanation": "User searching for economic data: inflation consumer costs",
+    "confidence": 0.88,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.1666666666666665,
+    "validated": true,
+    "category": "economic",
+    "primary_dataset": {
+      "title": "Main Economic Indicators",
+      "score": 4,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.1666666666666665
+  },
+  "scenario_020_economic": {
+    "primary": "employment unemployment data",
+    "complementary": [
+      "Main Economic Indicators",
+      "Average Weekly Paid Hours Worked Per Employee by Industry and Type of Employment (Level 2), Annual",
+      "100000:GROSS DOMESTIC PRODUCT",
+      "1000000:GROSS DOMESTIC PRODUCT",
+      "110000:INDIVIDUAL CONSUMPTION EXPENDITURE BY HOUSEHOLDS"
+    ],
+    "explanation": "User searching for economic data: employment unemployment data",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.666666666666667,
+    "validated": true,
+    "category": "economic",
+    "primary_dataset": {
+      "title": "Employment and Labour Market Statistics",
+      "score": 7,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 4.666666666666667
+  },
+  "scenario_021_economic": {
+    "primary": "employment unemployment statistics",
+    "complementary": [
+      "Government Finance Statistics Yearbook (GFSY 2014), Financial Assets and Liabilities by Counterpart Sector",
+      "Singapore Statistics - EMPLOYMENT",
+      "Government Finance Statistics Yearbook (GFSY 2016), Integrated Balance Sheet (Stock Positions and Flows in Assets and Liabilities)",
+      "Main Economic Indicators",
+      "Direction of Trade Statistics (DOTS), 2020 Q1"
+    ],
+    "explanation": "User searching for economic data: employment unemployment statistics",
+    "confidence": 0.95,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 6.0,
+    "validated": true,
+    "category": "economic",
+    "primary_dataset": {
+      "title": "Employment and Labour Market Statistics",
+      "score": 9,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 6.0
+  },
+  "scenario_022_economic": {
+    "primary": "business economic indicators",
+    "complementary": [
+      "Waste Disposed Of And Recycled, Annual",
+      "100000:GROSS DOMESTIC PRODUCT",
+      "1000000:GROSS DOMESTIC PRODUCT",
+      "110000:INDIVIDUAL CONSUMPTION EXPENDITURE BY HOUSEHOLDS",
+      "Quarterly National Accounts"
+    ],
+    "explanation": "User searching for economic data: business economic indicators",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 5.0,
+    "validated": true,
+    "category": "economic",
+    "primary_dataset": {
+      "title": "Main Economic Indicators",
+      "score": 10,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 5.0
+  },
+  "scenario_023_economic": {
+    "primary": "foreign investment statistics",
+    "complementary": [
+      "Employment and Labour Market Statistics",
+      "Government Finance Statistics Yearbook (GFSY 2016), Integrated Balance Sheet (Stock Positions and Flows in Assets and Liabilities)",
+      "Main Economic Indicators",
+      "Direction of Trade Statistics (DOTS), 2020 Q1",
+      "Government Finance Statistics Yearbook (GFSY 2016), Main Aggregates and Balances"
+    ],
+    "explanation": "User searching for economic data: foreign investment statistics",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 5.333333333333333,
+    "validated": true,
+    "category": "economic",
+    "primary_dataset": {
+      "title": "Government Finance Statistics Yearbook (GFSY 2014), Financial Assets and Liabilities by Counterpart Sector",
+      "score": 6,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 5.333333333333333
+  },
+  "scenario_024_health": {
+    "primary": "covid cases singapore",
+    "complementary": [
+      "Newspapers-Singapore Standard-1950 to 1953",
+      "Historical Wind Speed across Singapore (2023)",
+      "Singapore Statistics - GDP",
+      "Singapore Statistics - POPULATION",
+      "Singapore Statistics - EMPLOYMENT"
+    ],
+    "explanation": "User searching for health data: covid cases singapore",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.1666666666666665,
+    "validated": true,
+    "category": "health",
+    "primary_dataset": {
+      "title": "Dengue (Cases) - South West (GEOJSON)",
+      "score": 4,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.1666666666666665
+  },
+  "scenario_025_health": {
+    "primary": "covid cases sg",
+    "complementary": [
+      "Waste Disposed Of And Recycled, Annual",
+      "Assessable Income of Individuals",
+      "Services available on the Health Appointment System",
+      "Retail pharmacy locations (KML)",
+      "SportsFields@SG (SHP)"
+    ],
+    "explanation": "User searching for health data: covid cases sg",
+    "confidence": 0.8600000000000001,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.5,
+    "validated": true,
+    "category": "health",
+    "primary_dataset": {
+      "title": "Dengue (Cases) - South West (GEOJSON)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 1.5
+  },
+  "scenario_026_health": {
+    "primary": "hospital bed capacity",
+    "complementary": [
+      "Retail pharmacy locations (KML)",
+      "SportsFields@SG (SHP)",
+      "Principal Causes of Death",
+      "Waste Disposed Of And Recycled, Annual",
+      "SportsFields@SG"
+    ],
+    "explanation": "User searching for health data: hospital bed capacity",
+    "confidence": 0.92,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.0,
+    "validated": true,
+    "category": "health",
+    "primary_dataset": {
+      "title": "Services available on the Health Appointment System",
+      "score": 1,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 1.0
+  },
+  "scenario_027_health": {
+    "primary": "healthcare statistics mortality",
+    "complementary": [
+      "Mortality rate, under-5 (per 1,000 live births)",
+      "Government Finance Statistics Yearbook (GFSY 2014), Financial Assets and Liabilities by Counterpart Sector",
+      "Government Finance Statistics Yearbook (GFSY 2016), Integrated Balance Sheet (Stock Positions and Flows in Assets and Liabilities)",
+      "Employment and Labour Market Statistics",
+      "Direction of Trade Statistics (DOTS), 2020 Q1"
+    ],
+    "explanation": "User searching for health data: healthcare statistics mortality",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.1666666666666665,
+    "validated": true,
+    "category": "health",
+    "primary_dataset": {
+      "title": "Health Statistics",
+      "score": 4,
+      "quality": 0.425
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.1666666666666665
+  },
+  "scenario_028_health": {
+    "primary": "disease outbreak data",
+    "complementary": [
+      "Services available on the Health Appointment System",
+      "Retail pharmacy locations (KML)",
+      "SportsFields@SG (SHP)",
+      "Principal Causes of Death",
+      "Waste Disposed Of And Recycled, Annual"
+    ],
+    "explanation": "User searching for health data: disease outbreak data",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.1666666666666665,
+    "validated": true,
+    "category": "health",
+    "primary_dataset": {
+      "title": "Tanker Arrivals Total, Annual Data",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.1666666666666665
+  },
+  "scenario_029_health": {
+    "primary": "disease outbreak statistics",
+    "complementary": [
+      "Government Finance Statistics Yearbook (GFSY 2014), Financial Assets and Liabilities by Counterpart Sector",
+      "Government Finance Statistics Yearbook (GFSY 2016), Integrated Balance Sheet (Stock Positions and Flows in Assets and Liabilities)",
+      "Employment and Labour Market Statistics",
+      "Direction of Trade Statistics (DOTS), 2020 Q1",
+      "Government Finance Statistics Yearbook (GFSY 2016), Main Aggregates and Balances"
+    ],
+    "explanation": "User searching for health data: disease outbreak statistics",
+    "confidence": 0.88,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.1666666666666665,
+    "validated": true,
+    "category": "health",
+    "primary_dataset": {
+      "title": "Health Statistics",
+      "score": 4,
+      "quality": 0.425
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.1666666666666665
+  },
+  "scenario_030_health": {
+    "primary": "health screening programs",
+    "complementary": [
+      "Health Statistics",
+      "Retail pharmacy locations (KML)",
+      "SportsFields@SG (SHP)",
+      "SportsFields@SG",
+      "Principal Causes of Death"
+    ],
+    "explanation": "User searching for health data: health screening programs",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.5,
+    "validated": true,
+    "category": "health",
+    "primary_dataset": {
+      "title": "Services available on the Health Appointment System",
+      "score": 4,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.5
+  },
+  "scenario_031_environment": {
+    "primary": "air quality pollution",
+    "complementary": [
+      "Number of Hawker Stalls Under Government Market and Hawker Centres, Annual",
+      "Dengue (Cases) - South West (GEOJSON)",
+      "Waste Disposed Of And Recycled, Annual",
+      "Poverty Severity ($1.90 a day)",
+      "Poverty Severity ($2.50 a day)"
+    ],
+    "explanation": "User searching for environment data: air quality pollution",
+    "confidence": 0.9400000000000001,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.1666666666666667,
+    "validated": true,
+    "category": "environment",
+    "primary_dataset": {
+      "title": "Historical Wind Speed across Singapore (2023)",
+      "score": 2,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 1.1666666666666667
+  },
+  "scenario_032_environment": {
+    "primary": "weather temperature rainfall",
+    "complementary": [
+      "Historical Wind Speed across Singapore (2023)",
+      "Dengue (Cases) - South West (GEOJSON)",
+      "Waste Disposed Of And Recycled, Annual",
+      "Total final energy consumption (TFEC)"
+    ],
+    "explanation": "User searching for environment data: weather temperature rainfall",
+    "confidence": 0.92,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.0,
+    "validated": true,
+    "category": "environment",
+    "primary_dataset": {
+      "title": "Number of Hawker Stalls Under Government Market and Hawker Centres, Annual",
+      "score": 1,
+      "quality": 1.0
+    },
+    "num_complementary": 4,
+    "avg_relevance_score": 1.0
+  },
+  "scenario_033_environment": {
+    "primary": "energy consumption electricity",
+    "complementary": [
+      "110000:INDIVIDUAL CONSUMPTION EXPENDITURE BY HOUSEHOLDS",
+      "Access to electricity (% of total population)",
+      "Access to electricity (% of rural population)",
+      "Access to electricity (% of urban population)",
+      "Number of Hawker Stalls Under Government Market and Hawker Centres, Annual"
+    ],
+    "explanation": "User searching for environment data: energy consumption electricity",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.3333333333333335,
+    "validated": true,
+    "category": "environment",
+    "primary_dataset": {
+      "title": "Total final energy consumption (TFEC)",
+      "score": 7,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.3333333333333335
+  },
+  "scenario_034_environment": {
+    "primary": "waste recycling statistics",
+    "complementary": [
+      "Government Finance Statistics Yearbook (GFSY 2014), Financial Assets and Liabilities by Counterpart Sector",
+      "Government Finance Statistics Yearbook (GFSY 2016), Integrated Balance Sheet (Stock Positions and Flows in Assets and Liabilities)",
+      "Employment and Labour Market Statistics",
+      "Direction of Trade Statistics (DOTS), 2020 Q1",
+      "Government Finance Statistics Yearbook (GFSY 2016), Main Aggregates and Balances"
+    ],
+    "explanation": "User searching for environment data: waste recycling statistics",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.3333333333333335,
+    "validated": true,
+    "category": "environment",
+    "primary_dataset": {
+      "title": "Waste Disposed Of And Recycled, Annual",
+      "score": 5,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.3333333333333335
+  },
+  "scenario_035_environment": {
+    "primary": "environmental monitoring",
+    "complementary": [
+      "Historical Wind Speed across Singapore (2023)",
+      "Dengue (Cases) - South West (GEOJSON)",
+      "Waste Disposed Of And Recycled, Annual",
+      "Total final energy consumption (TFEC)"
+    ],
+    "explanation": "User searching for environment data: environmental monitoring",
+    "confidence": 0.92,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.0,
+    "validated": true,
+    "category": "environment",
+    "primary_dataset": {
+      "title": "Number of Hawker Stalls Under Government Market and Hawker Centres, Annual",
+      "score": 1,
+      "quality": 1.0
+    },
+    "num_complementary": 4,
+    "avg_relevance_score": 1.0
+  },
+  "scenario_036_education": {
+    "primary": "school enrollment statistics",
+    "complementary": [
+      "Government Finance Statistics Yearbook (GFSY 2016), Integrated Balance Sheet (Stock Positions and Flows in Assets and Liabilities)",
+      "Employment and Labour Market Statistics",
+      "Direction of Trade Statistics (DOTS), 2020 Q1",
+      "Government Finance Statistics Yearbook (GFSY 2016), Main Aggregates and Balances",
+      "Government Finance Statistics Yearbook (GFSY 2016), Expense"
+    ],
+    "explanation": "User searching for education data: school enrollment statistics",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "education",
+    "primary_dataset": {
+      "title": "Government Finance Statistics Yearbook (GFSY 2014), Financial Assets and Liabilities by Counterpart Sector",
+      "score": 3,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_037_education": {
+    "primary": "education performance results",
+    "complementary": [
+      "Convicted Penal Admission by Education Level"
+    ],
+    "explanation": "User searching for education data: education performance results",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.0,
+    "validated": true,
+    "category": "education",
+    "primary_dataset": {
+      "title": "Home Ownership Plus Education Scheme Approvals, Annual",
+      "score": 4,
+      "quality": 1.0
+    },
+    "num_complementary": 1,
+    "avg_relevance_score": 4.0
+  },
+  "scenario_038_education": {
+    "primary": "university admission data",
+    "complementary": [
+      "Tanker Arrivals Total, Annual Data",
+      "Home Ownership Plus Education Scheme Approvals, Annual",
+      "MP14 SDCP PW PLAN - Park Connector Line (SHP)",
+      "IO Multipliers (Supply, Use and Input-Output Tables 2021)",
+      "Newspapers-Straits Echo-1903 to 1904"
+    ],
+    "explanation": "User searching for education data: university admission data",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.0,
+    "validated": true,
+    "category": "education",
+    "primary_dataset": {
+      "title": "Convicted Penal Admission by Education Level",
+      "score": 4,
+      "quality": 0.85
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.0
+  },
+  "scenario_039_education": {
+    "primary": "university admission statistics",
+    "complementary": [
+      "Government Finance Statistics Yearbook (GFSY 2014), Financial Assets and Liabilities by Counterpart Sector",
+      "Government Finance Statistics Yearbook (GFSY 2016), Integrated Balance Sheet (Stock Positions and Flows in Assets and Liabilities)",
+      "Employment and Labour Market Statistics",
+      "Direction of Trade Statistics (DOTS), 2020 Q1",
+      "Government Finance Statistics Yearbook (GFSY 2016), Main Aggregates and Balances"
+    ],
+    "explanation": "User searching for education data: university admission statistics",
+    "confidence": 0.88,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.1666666666666665,
+    "validated": true,
+    "category": "education",
+    "primary_dataset": {
+      "title": "Convicted Penal Admission by Education Level",
+      "score": 4,
+      "quality": 0.85
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.1666666666666665
+  },
+  "scenario_040_education": {
+    "primary": "student achievement metrics",
+    "complementary": [
+      "Convicted Penal Admission by Education Level"
+    ],
+    "explanation": "User searching for education data: student achievement metrics",
+    "confidence": 0.92,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.0,
+    "validated": true,
+    "category": "education",
+    "primary_dataset": {
+      "title": "Home Ownership Plus Education Scheme Approvals, Annual",
+      "score": 1,
+      "quality": 1.0
+    },
+    "num_complementary": 1,
+    "avg_relevance_score": 1.0
+  },
+  "scenario_041_education": {
+    "primary": "education budget spending",
+    "complementary": [
+      "Convicted Penal Admission by Education Level"
+    ],
+    "explanation": "User searching for education data: education budget spending",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.0,
+    "validated": true,
+    "category": "education",
+    "primary_dataset": {
+      "title": "Home Ownership Plus Education Scheme Approvals, Annual",
+      "score": 4,
+      "quality": 1.0
+    },
+    "num_complementary": 1,
+    "avg_relevance_score": 4.0
+  },
+  "scenario_042_demographics": {
+    "primary": "population age distribution",
+    "complementary": [
+      "Literacy rate, youth total (% of people ages 15-24) ",
+      "Age-standardised incidence rate of stroke by gender",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "Access to electricity (% of total population)",
+      "Access to electricity (% of rural population)"
+    ],
+    "explanation": "User searching for demographics data: population age distribution",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 5.333333333333333,
+    "validated": true,
+    "category": "demographics",
+    "primary_dataset": {
+      "title": "Resident Labour Force Participation Rate Aged 15 Years And Over By Age And Sex, End June, Annual",
+      "score": 6,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 5.333333333333333
+  },
+  "scenario_043_demographics": {
+    "primary": "marriage divorce statistics",
+    "complementary": [
+      "Resident Labour Force Participation Rate Aged 15 Years And Over By Age And Sex, End June, Annual",
+      "Literacy rate, youth total (% of people ages 15-24) ",
+      "Government Finance Statistics Yearbook (GFSY 2014), Financial Assets and Liabilities by Counterpart Sector",
+      "Government Finance Statistics Yearbook (GFSY 2016), Integrated Balance Sheet (Stock Positions and Flows in Assets and Liabilities)",
+      "Employment and Labour Market Statistics"
+    ],
+    "explanation": "User searching for demographics data: marriage divorce statistics",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.1666666666666665,
+    "validated": true,
+    "category": "demographics",
+    "primary_dataset": {
+      "title": "Singapore Statistics - POPULATION",
+      "score": 4,
+      "quality": 0.6
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.1666666666666665
+  },
+  "scenario_044_demographics": {
+    "primary": "birth death rates",
+    "complementary": [
+      "Principal Causes of Death",
+      "Tax Rates for Corporate Income Tax",
+      "Resident Labour Force Participation Rate Aged 15 Years And Over By Age And Sex, End June, Annual",
+      "LTA Erp Rates",
+      "Age-standardised incidence rate of stroke by gender"
+    ],
+    "explanation": "User searching for demographics data: birth death rates",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "demographics",
+    "primary_dataset": {
+      "title": "Mortality rate, under-5 (per 1,000 live births)",
+      "score": 4,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_045_demographics": {
+    "primary": "birth death trends",
+    "complementary": [
+      "Mortality rate, under-5 (per 1,000 live births)",
+      "Resident Labour Force Participation Rate Aged 15 Years And Over By Age And Sex, End June, Annual",
+      "Literacy rate, youth total (% of people ages 15-24) ",
+      "Average Monthly Household Expenditure Among Resident Households by Household Living Arrangement and Income Group (Household Expenditure Survey 2012/13)",
+      "Average Monthly Household Income Among Resident Households by Highest Qualification Attained of Main Income Earner and Type of Dwelling (Household Expenditure Survey 2012/13)"
+    ],
+    "explanation": "User searching for demographics data: birth death trends",
+    "confidence": 0.8600000000000001,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.0,
+    "validated": true,
+    "category": "demographics",
+    "primary_dataset": {
+      "title": "Principal Causes of Death",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.0
+  },
+  "scenario_046_demographics": {
+    "primary": "immigration population data",
+    "complementary": [
+      "Resident Labour Force Participation Rate Aged 15 Years And Over By Age And Sex, End June, Annual",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "Population, total",
+      "Access to electricity (% of total population)",
+      "Access to electricity (% of rural population)"
+    ],
+    "explanation": "User searching for demographics data: immigration population data",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.166666666666667,
+    "validated": true,
+    "category": "demographics",
+    "primary_dataset": {
+      "title": "OneMap Population Query (Authenticated)",
+      "score": 5,
+      "quality": 0.45
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 4.166666666666667
+  },
+  "scenario_047_demographics": {
+    "primary": "immigration population statistics",
+    "complementary": [
+      "Resident Labour Force Participation Rate Aged 15 Years And Over By Age And Sex, End June, Annual",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "Literacy rate, youth total (% of people ages 15-24) ",
+      "Population, total",
+      "Access to electricity (% of total population)"
+    ],
+    "explanation": "User searching for demographics data: immigration population statistics",
+    "confidence": 0.9400000000000001,
+    "source": "query_variation",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.5,
+    "validated": true,
+    "category": "demographics",
+    "primary_dataset": {
+      "title": "Singapore Statistics - POPULATION",
+      "score": 7,
+      "quality": 0.6
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 4.5
+  },
+  "scenario_048_demographics": {
+    "primary": "household income levels",
+    "complementary": [
+      "Average Monthly Household Income Among Resident Households by Highest Qualification Attained of Main Income Earner and Type of Dwelling (Household Expenditure Survey 2012/13)",
+      "110000:INDIVIDUAL CONSUMPTION EXPENDITURE BY HOUSEHOLDS",
+      "Assessable Income of Individuals",
+      "Tax Rates for Corporate Income Tax",
+      "Resident Labour Force Participation Rate Aged 15 Years And Over By Age And Sex, End June, Annual"
+    ],
+    "explanation": "User searching for demographics data: household income levels",
+    "confidence": 0.95,
+    "source": "realistic_user_patterns",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 4.5,
+    "validated": true,
+    "category": "demographics",
+    "primary_dataset": {
+      "title": "Average Monthly Household Expenditure Among Resident Households by Household Living Arrangement and Income Group (Household Expenditure Survey 2012/13)",
+      "score": 7,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 4.5
+  },
+  "scenario_049_transport_economic": {
+    "primary": "mrt gdp correlation",
+    "complementary": [
+      "SDCP MRT Station Point Name (SHP)",
+      "GDP (current US$)",
+      "Singapore Statistics - GDP",
+      "LTA Train Service Alerts",
+      "LTA Bus Arrival"
+    ],
+    "explanation": "User searching for transport_economic data: mrt gdp correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.8333333333333335,
+    "validated": true,
+    "category": "transport_economic",
+    "primary_dataset": {
+      "title": "SDCP MRT Station Point Name (KML)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.8333333333333335
+  },
+  "scenario_050_transport_environment": {
+    "primary": "mrt air correlation",
+    "complementary": [
+      "SDCP MRT Station Point Name (SHP)",
+      "LTA Train Service Alerts",
+      "LTA Bus Arrival",
+      "LTA Erp Rates",
+      "LTA Traffic Incidents"
+    ],
+    "explanation": "User searching for transport_environment data: mrt air correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.5,
+    "validated": true,
+    "category": "transport_environment",
+    "primary_dataset": {
+      "title": "SDCP MRT Station Point Name (KML)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.5
+  },
+  "scenario_051_transport_demographics": {
+    "primary": "mrt population correlation",
+    "complementary": [
+      "SDCP MRT Station Point Name (SHP)",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "Population, total",
+      "Access to electricity (% of total population)",
+      "Access to electricity (% of rural population)"
+    ],
+    "explanation": "User searching for transport_demographics data: mrt population correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "transport_demographics",
+    "primary_dataset": {
+      "title": "SDCP MRT Station Point Name (KML)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_052_transport_housing": {
+    "primary": "mrt housing correlation",
+    "complementary": [
+      "SDCP MRT Station Point Name (SHP)",
+      "LTA Train Service Alerts",
+      "LTA Bus Arrival",
+      "LTA Erp Rates",
+      "LTA Traffic Incidents"
+    ],
+    "explanation": "User searching for transport_housing data: mrt housing correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.5,
+    "validated": true,
+    "category": "transport_housing",
+    "primary_dataset": {
+      "title": "SDCP MRT Station Point Name (KML)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.5
+  },
+  "scenario_053_transport_education": {
+    "primary": "mrt school correlation",
+    "complementary": [
+      "SDCP MRT Station Point Name (SHP)",
+      "LTA Train Service Alerts",
+      "LTA Bus Arrival",
+      "LTA Erp Rates",
+      "LTA Traffic Incidents"
+    ],
+    "explanation": "User searching for transport_education data: mrt school correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.5,
+    "validated": true,
+    "category": "transport_education",
+    "primary_dataset": {
+      "title": "SDCP MRT Station Point Name (KML)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.5
+  },
+  "scenario_054_transport_health": {
+    "primary": "mrt covid correlation",
+    "complementary": [
+      "SDCP MRT Station Point Name (SHP)",
+      "LTA Train Service Alerts",
+      "LTA Bus Arrival",
+      "LTA Erp Rates",
+      "LTA Traffic Incidents"
+    ],
+    "explanation": "User searching for transport_health data: mrt covid correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.5,
+    "validated": true,
+    "category": "transport_health",
+    "primary_dataset": {
+      "title": "SDCP MRT Station Point Name (KML)",
+      "score": 3,
+      "quality": 1.0
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 2.5
+  },
+  "scenario_055_economic_environment": {
+    "primary": "gdp air correlation",
+    "complementary": [
+      "Singapore Statistics - GDP"
+    ],
+    "explanation": "User searching for economic_environment data: gdp air correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "economic_environment",
+    "primary_dataset": {
+      "title": "GDP (current US$)",
+      "score": 3,
+      "quality": 0.7250000000000001
+    },
+    "num_complementary": 1,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_056_economic_demographics": {
+    "primary": "gdp population correlation",
+    "complementary": [
+      "Population, total",
+      "GDP (current US$)",
+      "Access to electricity (% of total population)",
+      "Access to electricity (% of rural population)",
+      "Access to electricity (% of urban population)"
+    ],
+    "explanation": "User searching for economic_demographics data: gdp population correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "economic_demographics",
+    "primary_dataset": {
+      "title": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "score": 3,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_057_economic_housing": {
+    "primary": "gdp housing correlation",
+    "complementary": [
+      "Singapore Statistics - GDP",
+      "SDG Indicator 11.1.1"
+    ],
+    "explanation": "User searching for economic_housing data: gdp housing correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.3333333333333335,
+    "validated": true,
+    "category": "economic_housing",
+    "primary_dataset": {
+      "title": "GDP (current US$)",
+      "score": 3,
+      "quality": 0.7250000000000001
+    },
+    "num_complementary": 2,
+    "avg_relevance_score": 2.3333333333333335
+  },
+  "scenario_058_economic_education": {
+    "primary": "gdp school correlation",
+    "complementary": [
+      "Singapore Statistics - GDP"
+    ],
+    "explanation": "User searching for economic_education data: gdp school correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "economic_education",
+    "primary_dataset": {
+      "title": "GDP (current US$)",
+      "score": 3,
+      "quality": 0.7250000000000001
+    },
+    "num_complementary": 1,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_059_economic_health": {
+    "primary": "gdp covid correlation",
+    "complementary": [
+      "Singapore Statistics - GDP",
+      "Waste Disposed Of And Recycled, Annual"
+    ],
+    "explanation": "User searching for economic_health data: gdp covid correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 2.3333333333333335,
+    "validated": true,
+    "category": "economic_health",
+    "primary_dataset": {
+      "title": "GDP (current US$)",
+      "score": 3,
+      "quality": 0.7250000000000001
+    },
+    "num_complementary": 2,
+    "avg_relevance_score": 2.3333333333333335
+  },
+  "scenario_060_environment_demographics": {
+    "primary": "air population correlation",
+    "complementary": [
+      "Population, total",
+      "Access to electricity (% of total population)",
+      "Access to electricity (% of rural population)",
+      "Access to electricity (% of urban population)",
+      "Singapore Statistics - POPULATION"
+    ],
+    "explanation": "User searching for environment_demographics data: air population correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "environment_demographics",
+    "primary_dataset": {
+      "title": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "score": 3,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_064_demographics_housing": {
+    "primary": "population housing correlation",
+    "complementary": [
+      "Population, total",
+      "Access to electricity (% of total population)",
+      "Access to electricity (% of rural population)",
+      "Access to electricity (% of urban population)",
+      "Singapore Statistics - POPULATION"
+    ],
+    "explanation": "User searching for demographics_housing data: population housing correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "demographics_housing",
+    "primary_dataset": {
+      "title": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "score": 3,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_065_demographics_education": {
+    "primary": "population school correlation",
+    "complementary": [
+      "Population, total",
+      "Access to electricity (% of total population)",
+      "Access to electricity (% of rural population)",
+      "Access to electricity (% of urban population)",
+      "Singapore Statistics - POPULATION"
+    ],
+    "explanation": "User searching for demographics_education data: population school correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "demographics_education",
+    "primary_dataset": {
+      "title": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "score": 3,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_066_demographics_health": {
+    "primary": "population covid correlation",
+    "complementary": [
+      "Population, total",
+      "Access to electricity (% of total population)",
+      "Access to electricity (% of rural population)",
+      "Access to electricity (% of urban population)",
+      "Singapore Statistics - POPULATION"
+    ],
+    "explanation": "User searching for demographics_health data: population covid correlation",
+    "confidence": 0.76,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 3.0,
+    "validated": true,
+    "category": "demographics_health",
+    "primary_dataset": {
+      "title": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "score": 3,
+      "quality": 0.825
+    },
+    "num_complementary": 5,
+    "avg_relevance_score": 3.0
+  },
+  "scenario_068_housing_health": {
+    "primary": "housing covid correlation",
+    "complementary": [
+      "SDG Indicator 11.1.1"
+    ],
+    "explanation": "User searching for housing_health data: housing covid correlation",
+    "confidence": 0.72,
+    "source": "cross_category",
+    "generation_method": "enhanced_semantic_matching",
+    "validation_score": 1.0,
+    "validated": true,
+    "category": "housing_health",
+    "primary_dataset": {
+      "title": "Waste Disposed Of And Recycled, Annual",
+      "score": 1,
+      "quality": 1.0
+    },
+    "num_complementary": 1,
+    "avg_relevance_score": 1.0
+  }
+}

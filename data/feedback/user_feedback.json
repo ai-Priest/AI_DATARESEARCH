@@ -1,0 +1,169 @@
+[
+  {
+    "id": "researcher_001_session_123_1750515824.543479",
+    "user_id": "researcher_001",
+    "session_id": "session_123",
+    "timestamp": "2025-06-21T22:23:44.543479",
+    "query": "housing data singapore",
+    "interaction_type": "click",
+    "dataset_id": "hdb_001",
+    "rating": 5,
+    "results_shown": 3,
+    "result_titles": [
+      "HDB Resale Prices",
+      "Property Market Trends",
+      "Housing Supply Data"
+    ],
+    "result_scores": [
+      0.95,
+      0.87,
+      0.82
+    ]
+  },
+  {
+    "id": "researcher_001_session_123_1750515824.543496",
+    "user_id": "researcher_001",
+    "session_id": "session_123",
+    "timestamp": "2025-06-21T22:23:44.543496",
+    "query": "housing data singapore",
+    "interaction_type": "download",
+    "dataset_id": "hdb_001",
+    "rating": null,
+    "results_shown": 0,
+    "result_titles": [],
+    "result_scores": []
+  },
+  {
+    "id": "student_002_session_456_1750515824.543501",
+    "user_id": "student_002",
+    "session_id": "session_456",
+    "timestamp": "2025-06-21T22:23:44.543501",
+    "query": "transport statistics",
+    "interaction_type": "click",
+    "dataset_id": "lta_001",
+    "rating": 4,
+    "results_shown": 3,
+    "result_titles": [
+      "LTA Traffic Data",
+      "MRT Ridership",
+      "Bus Route Information"
+    ],
+    "result_scores": [
+      0.91,
+      0.85,
+      0.78
+    ]
+  },
+  {
+    "id": "expansion_researcher_001_session_123_1750515824.543506",
+    "user_id": "researcher_001",
+    "session_id": "session_123",
+    "timestamp": "2025-06-21T22:23:44.543507",
+    "feedback_type": "query_expansion",
+    "original_query": "housing data",
+    "expanded_query": "housing data hdb resale flat property market",
+    "expansion_helpful": true,
+    "preferred_terms": [
+      "hdb",
+      "resale flat"
+    ],
+    "rejected_terms": [
+      "market",
+      "property",
+      "flat",
+      "resale"
+    ]
+  },
+  {
+    "id": "quality_student_002_session_456_1750515824.543514",
+    "user_id": "student_002",
+    "session_id": "session_456",
+    "timestamp": "2025-06-21T22:23:44.543515",
+    "feedback_type": "recommendation_quality",
+    "query": "transport statistics",
+    "overall_satisfaction": 4,
+    "num_recommendations": 3,
+    "relevance_ratings": [
+      5,
+      4,
+      3
+    ],
+    "recommendation_titles": [
+      "LTA Traffic Data",
+      "MRT Ridership",
+      "Bus Route Information"
+    ]
+  },
+  {
+    "timestamp": "2025-06-22T21:48:15.209210",
+    "session_id": "test_session",
+    "query": "test query",
+    "satisfaction_score": 0.85,
+    "helpful_datasets": [
+      "dataset1",
+      "dataset2"
+    ],
+    "feedback_text": "Very helpful recommendations",
+    "meets_threshold": true
+  },
+  {
+    "timestamp": "2025-06-22T21:51:06.216082",
+    "session_id": "test_session",
+    "query": "test query",
+    "satisfaction_score": 0.85,
+    "helpful_datasets": [
+      "dataset1",
+      "dataset2"
+    ],
+    "feedback_text": "Very helpful recommendations",
+    "meets_threshold": true
+  },
+  {
+    "timestamp": "2025-06-22T21:58:39.592285",
+    "session_id": "test_session",
+    "query": "test query",
+    "satisfaction_score": 0.85,
+    "helpful_datasets": [
+      "dataset1",
+      "dataset2"
+    ],
+    "feedback_text": "Very helpful recommendations",
+    "meets_threshold": true
+  },
+  {
+    "timestamp": "2025-06-22T22:12:57.872250",
+    "session_id": "test_session",
+    "query": "test query",
+    "satisfaction_score": 0.85,
+    "helpful_datasets": [
+      "dataset1",
+      "dataset2"
+    ],
+    "feedback_text": "Very helpful recommendations",
+    "meets_threshold": true
+  },
+  {
+    "timestamp": "2025-06-22T22:14:54.169580",
+    "session_id": "test_session",
+    "query": "test query",
+    "satisfaction_score": 0.85,
+    "helpful_datasets": [
+      "dataset1",
+      "dataset2"
+    ],
+    "feedback_text": "Very helpful recommendations",
+    "meets_threshold": true
+  },
+  {
+    "timestamp": "2025-06-22T22:16:12.180557",
+    "session_id": "test_session",
+    "query": "test query",
+    "satisfaction_score": 0.85,
+    "helpful_datasets": [
+      "dataset1",
+      "dataset2"
+    ],
+    "feedback_text": "Very helpful recommendations",
+    "meets_threshold": true
+  }
+]

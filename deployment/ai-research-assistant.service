@@ -1,0 +1,55 @@
+[Unit]
+Description=AI Research Assistant API Server
+Documentation=https://github.com/your-org/ai-research-assistant
+After=network.target
+Wants=network-online.target
+
+[Service]
+# Service configuration
+Type=forking
+PIDFile=/var/run/ai-research-assistant.pid
+WorkingDirectory=/opt/ai-research-assistant
+Environment="PATH=/opt/ai-research-assistant/venv/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="PYTHONPATH=/opt/ai-research-assistant"
+Environment="UV_SYSTEM_PYTHON=1"
+
+# User and permissions
+User=ai-assistant
+Group=ai-assistant
+UMask=0022
+
+# Process management
+ExecStart=/opt/ai-research-assistant/deployment/deploy_production.sh start
+ExecStop=/opt/ai-research-assistant/deployment/deploy_production.sh stop
+ExecReload=/opt/ai-research-assistant/deployment/deploy_production.sh reload
+
+# Restart configuration
+Restart=always
+RestartSec=10
+StartLimitInterval=300
+StartLimitBurst=5
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+MemoryLimit=8G
+CPUQuota=400%
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/ai-research-assistant/logs /opt/ai-research-assistant/data /var/log/ai-research-assistant
+
+# Logging
+StandardOutput=append:/var/log/ai-research-assistant/service.log
+StandardError=append:/var/log/ai-research-assistant/service-error.log
+SyslogIdentifier=ai-research-assistant
+
+# Timeout configuration
+TimeoutStartSec=300
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

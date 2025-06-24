@@ -1,0 +1,152 @@
+{
+  "morning_traffic_analysis": {
+    "primary": "traffic data morning rush hour",
+    "complementary": [
+      "LTA Bus Arrival",
+      "LTA Traffic Incidents", 
+      "Traffic Lights",
+      "LTA Road Works"
+    ],
+    "explanation": "Morning traffic analysis for commute planning",
+    "confidence": 0.9,
+    "source": "realistic_user_query",
+    "generation_method": "user_behavior_based",
+    "validation_score": 1.0,
+    "validated": true
+  },
+  "housing_market_research": {
+    "primary": "housing prices singapore",
+    "complementary": [
+      "URA Private Residential Property Transactions",
+      "Singapore Statistics - POPULATION",
+      "OneMap Planning Area (Authenticated)",
+      "Singapore Statistics - GDP"  
+    ],
+    "explanation": "Housing market analysis for investment decisions",
+    "confidence": 0.95,
+    "source": "realistic_user_query",
+    "generation_method": "user_behavior_based",
+    "validation_score": 1.0,
+    "validated": true
+  },
+  "covid_health_tracking": {
+    "primary": "covid cases by region",
+    "complementary": [
+      "OneMap Population Query (Authenticated)",
+      "Singapore Statistics - POPULATION", 
+      "Services available on the Health Appointment System",
+      "Listing of Registered Medical Devices - Apr 2025"
+    ],
+    "explanation": "COVID-19 health monitoring by location",
+    "confidence": 0.85,
+    "source": "realistic_user_query", 
+    "generation_method": "user_behavior_based",
+    "validation_score": 1.0,
+    "validated": true
+  },
+  "business_economic_outlook": {
+    "primary": "singapore economy growth rate",
+    "complementary": [
+      "Singapore Statistics - GDP",
+      "Singapore Statistics - EMPLOYMENT",
+      "Singapore Statistics - TRADE",
+      "GDP (current US$)"
+    ],
+    "explanation": "Economic outlook for business planning",
+    "confidence": 0.9,
+    "source": "realistic_user_query",
+    "generation_method": "user_behavior_based", 
+    "validation_score": 1.0,
+    "validated": true
+  },
+  "public_transport_planning": {
+    "primary": "bus routes singapore",
+    "complementary": [
+      "LTA Bus Arrival",
+      "LTA Taxi Availability",
+      "OneMap Planning Area (Authenticated)",
+      "Traffic Lights"
+    ],
+    "explanation": "Public transport route planning",
+    "confidence": 0.85,
+    "source": "realistic_user_query",
+    "generation_method": "user_behavior_based",
+    "validation_score": 1.0,
+    "validated": true
+  },
+  "poverty_research_study": {
+    "primary": "poverty data global comparison",
+    "complementary": [
+      "Poverty Headcount ($1.90 a day)",
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
+      "GDP (current US$)",
+      "Population, total"
+    ],
+    "explanation": "Global poverty research and comparison",
+    "confidence": 0.8,
+    "source": "realistic_user_query",
+    "generation_method": "user_behavior_based",
+    "validation_score": 1.0,
+    "validated": true
+  },
+  "urban_development_project": {
+    "primary": "singapore urban planning data",
+    "complementary": [
+      "OneMap Planning Area (Authenticated)",
+      "Singapore Statistics - POPULATION",
+      "URA Private Residential Property Transactions", 
+      "Traffic Lights"
+    ],
+    "explanation": "Urban development and planning analysis",
+    "confidence": 0.8,
+    "source": "realistic_user_query",
+    "generation_method": "user_behavior_based",
+    "validation_score": 1.0,
+    "validated": true
+  },
+  "healthcare_service_access": {
+    "primary": "healthcare services singapore",
+    "complementary": [
+      "Services available on the Health Appointment System",
+      "Listing of Registered Medical Devices - Apr 2025",
+      "OneMap Population Query (Authenticated)",
+      "Singapore Statistics - POPULATION"
+    ],
+    "explanation": "Healthcare service accessibility analysis",
+    "confidence": 0.85,
+    "source": "realistic_user_query",
+    "generation_method": "user_behavior_based",
+    "validation_score": 1.0,
+    "validated": true  
+  },
+  "financial_market_analysis": {
+    "primary": "singapore financial indicators",
+    "complementary": [
+      "Balance of Payments (BOP), 2020 M03",
+      "Balance of Payments (BOP), 2017 M11", 
+      "Singapore Statistics - TRADE",
+      "GDP (current US$)"
+    ],
+    "explanation": "Financial market and economic indicators",
+    "confidence": 0.85,
+    "source": "realistic_user_query",
+    "generation_method": "user_behavior_based",
+    "validation_score": 1.0,
+    "validated": true
+  },
+  "education_literacy_study": {
+    "primary": "education levels singapore",
+    "complementary": [
+      "Literacy rate, adult total (% of people ages 15 and above)",
+      "Singapore Statistics - POPULATION",
+      "Population, total",
+      "Singapore Statistics - EMPLOYMENT"
+    ],
+    "explanation": "Education and literacy level analysis",
+    "confidence": 0.8,
+    "source": "realistic_user_query", 
+    "generation_method": "user_behavior_based",
+    "validation_score": 1.0,
+    "validated": true
+  }
+}

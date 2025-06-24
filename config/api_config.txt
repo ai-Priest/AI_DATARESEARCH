@@ -1,0 +1,588 @@
+# Production API Configuration for Dataset Research Assistant
+# All endpoints tested and verified as of 2025-06-20
+
+# ========================================
+# SINGAPORE DATA SOURCES (5 sources)
+# ========================================
+
+singapore_sources:
+  
+  # 1. Data.gov.sg - Primary Singapore Government Portal
+  data_gov_sg:
+    enabled: true
+    base_url: "https://api-production.data.gov.sg/v2/public/api"
+    datasets_endpoint: "/datasets"
+    metadata_endpoint: "/datasets/{dataset_id}/metadata" 
+    download_endpoint: "/datasets/{dataset_id}/poll-download"
+    rate_limit: 12  # Max 5 requests per minute = 12 second intervals
+    timeout: 30
+    max_datasets: 50  # Conservative limit for extraction
+    api_key_env: null  # Public access
+    auth_header: null
+    
+    # Response structure mapping
+    response_structure:
+      datasets_path: "data.datasets"  # response.json()['data']['datasets']
+      pagination:
+        page_field: "page"
+        total_pages_field: "pages"
+        per_page_field: "per_page"
+        total_field: "total"
+    
+    # Field mapping from API response to standardized schema
+    field_mapping:
+      id: "datasetId"
+      title: "name"
+      description: "description"  # From metadata endpoint
+      category: "category"
+      source: "managedByAgencyName"
+      last_updated: "lastUpdatedAt"
+      created_date: "createdAt"
+      status: "status"
+      format: "format"
+      coverage_start: "coverageStart"
+      coverage_end: "coverageEnd"
+    
+    # Quality scoring weights
+    quality_weights:
+      title_quality: 0.20
+      description_quality: 0.30
+      metadata_completeness: 0.25
+      source_credibility: 0.25
+    
+    # Error handling
+    retry_attempts: 3
+    retry_delay: 5
+    acceptable_errors: [429, 503, 502]  # Rate limit, service unavailable
+
+  # 2. LTA DataMall - Land Transport Authority
+  lta_datamall:
+    enabled: true
+    base_url: "https://datamall2.mytransport.sg/ltaodataservice"
+    rate_limit: 5  # LTA specified 5 second rate limit
+    timeout: 30
+    max_datasets: 20
+    api_key_env: "LTA_API_KEY"
+    auth_header: "AccountKey"  # Header format: "AccountKey: {api_key}"
+    
+    # Multiple endpoints for different data types
+    endpoints:
+      bus_arrival: "/v3/BusArrival"
+      traffic_incidents: "/TrafficIncidents" 
+      road_works: "/RoadWorks"
+      taxi_availability: "/Taxi-Availability"
+      carpark_availability: "/CarParkAvailabilityv2"
+      train_service_alerts: "/TrainServiceAlerts"
+      bus_services: "/BusServices"
+      bus_routes: "/BusRoutes"
+      erp_rates: "/ERPRates"
+    
+    # Response structure - direct JSON array typically
+    response_structure:
+      datasets_path: "value"  # Most LTA APIs return data in 'value' field
+      direct_array: true      # Some endpoints return direct arrays
+    
+    field_mapping:
+      id: "endpoint_name"     # Generated from endpoint
+      title: "endpoint_name"  # Human readable endpoint name
+      description: "data_description"  # Generated based on endpoint purpose
+      category: "transport"   # All LTA data is transport-related
+      source: "Land Transport Authority"
+      last_updated: "generated_timestamp"
+      data_type: "real_time"
+      geographic_coverage: "Singapore"
+    
+    # Endpoint descriptions for metadata generation
+    endpoint_descriptions:
+      bus_arrival: "Real-time bus arrival information for all bus stops"
+      traffic_incidents: "Current traffic incidents and road conditions"
+      road_works: "Ongoing road works and construction activities"
+      taxi_availability: "Real-time taxi availability by location"
+      carpark_availability: "Real-time car park availability and rates"
+      train_service_alerts: "MRT and LRT service alerts and disruptions"
+      bus_services: "Comprehensive bus service information and routes"
+      bus_routes: "Detailed bus route information and stop sequences"
+      erp_rates: "Electronic Road Pricing rates and gantry information"
+    
+    retry_attempts: 3
+    retry_delay: 8
+    acceptable_errors: [429, 401]
+
+  # 3. OneMap Singapore - Geospatial Data
+  onemap_sg:
+    enabled: true
+    base_url: "https://www.onemap.gov.sg/api"
+    rate_limit: 2  # Conservative for token-based endpoints
+    timeout: 30
+    max_datasets: 15
+    
+    # Authentication for advanced features
+    api_key_env: "ONEMAP_EMAIL"      # Email for token generation
+    password_env: "ONEMAP_PASSWORD"   # Password for token generation  
+    auth_endpoint: "/auth/post/getToken"
+    token_renewal_days: 3  # Token expires every 3 days
+    
+    # Public endpoints (no authentication required)
+    public_endpoints:
+      search: "/common/elastic/search"
+      static_map: "/staticmap/getStaticImage"
+      basemaps: "/common/elastic/maps"
+    
+    # Token-required endpoints (250 calls/min limit)
+    private_endpoints:
+      coordinate_converter: "/common/convert"
+      reverse_geocode: "/common/elastic/reverse"
+      routing: "/common/elastic/routing"
+      planning_area: "/common/elastic/planning"
+      population_query: "/common/elastic/population"
+    
+    response_structure:
+      datasets_path: "results"
+      status_field: "found"
+      pagination:
+        page_field: "pageNum"
+        total_pages_field: "totalNumPages"
+    
+    field_mapping:
+      id: "endpoint_type"
+      title: "endpoint_description"
+      description: "detailed_description"
+      category: "geospatial"
+      source: "Singapore Land Authority"
+      geographic_coverage: "Singapore"
+      data_type: "geospatial"
+    
+    retry_attempts: 2
+    retry_delay: 3
+
+  # 4. SingStat - Department of Statistics Singapore  
+  singstat:
+    enabled: true
+    base_url: "https://tablebuilder.singstat.gov.sg/api/table"
+    rate_limit: 3  # Conservative rate limiting
+    timeout: 45    # Longer timeout for complex queries
+    max_datasets: 30
+    api_key_env: null  # Public API
+    
+    endpoints:
+      search: "/resourceid"           # Search for resource IDs
+      metadata: "/metadata/{resourceId}"  # Get dataset metadata
+      data: "/tabledata/{resourceId}"     # Get actual data
+    
+    # Multi-step process: search -> metadata -> data
+    query_strategy: "metadata_first"  # Always get metadata before data
+    
+    response_structure:
+      search_path: "results"
+      metadata_path: "data"
+      data_path: "records"
+    
+    field_mapping:
+      id: "resourceId"
+      title: "title"
+      description: "description"
+      category: "statistics"
+      source: "Department of Statistics Singapore"
+      last_updated: "last_updated"
+      variables: "variables"
+      time_coverage: "time_coverage"
+    
+    # Query parameters for data extraction
+    default_params:
+      limit: 1000        # Reasonable limit for initial extraction
+      seriesNoORrowNo: "1-50"  # First 50 series/rows
+      timeFilter: "latest_5_years"  # Focus on recent data
+    
+    retry_attempts: 3
+    retry_delay: 4
+
+  # Note: URA (Urban Redevelopment Authority) - Skipped
+  # Reason: Access pending approval and may be chargeable
+
+# ========================================
+# GLOBAL DATA SOURCES (6 sources)
+# ========================================
+
+global_sources:
+
+  # 6. World Bank Open Data
+  world_bank:
+    enabled: true
+    base_url: "https://api.worldbank.org/v2"
+    rate_limit: 1  # No rate limit but be respectful
+    timeout: 30
+    max_datasets: 50
+    api_key_env: null  # Public API
+    
+    endpoints:
+      indicators: "/indicator"
+      countries: "/country"
+      data: "/country/{country}/indicator/{indicator}"
+      sources: "/source"
+    
+    # Default parameters
+    default_params:
+      format: "json"
+      per_page: 100
+      page: 1
+    
+    response_structure:
+      datasets_path: "[1]"  # World Bank returns [metadata, data] array
+      pagination:
+        page_field: "page"
+        pages_field: "pages"
+        per_page_field: "per_page"
+        total_field: "total"
+    
+    field_mapping:
+      id: "id"
+      title: "name"
+      description: "sourceNote"
+      category: "economic_development"
+      source: "World Bank"
+      source_organization: "sourceOrganization"
+      topics: "topics"
+      unit: "unit"
+    
+    # Focus on key development indicators
+    priority_indicators:
+      - "SP.POP.TOTL"      # Population, total
+      - "NY.GDP.MKTP.CD"   # GDP (current US$)
+      - "SI.POV.DDAY"      # Poverty headcount ratio
+      - "SE.ADT.LITR.ZS"   # Literacy rate
+      - "SH.DYN.MORT"      # Mortality rate
+      - "EN.ATM.CO2E.PC"   # CO2 emissions per capita
+    
+    retry_attempts: 3
+    retry_delay: 2
+
+  # 7. International Monetary Fund (IMF)
+  imf:
+    enabled: true
+    
+    # Primary DataMapper API (simpler, no auth)
+    datamapper:
+      base_url: "https://www.imf.org/external/datamapper/api/v1"
+      rate_limit: 2
+      timeout: 30
+      max_datasets: 30
+      
+      endpoints:
+        indicators: "/indicators"
+        countries: "/countries"
+        regions: "/regions"
+        groups: "/groups"
+        data: "/{indicator}/{countries}"
+      
+      response_structure:
+        indicators_path: "indicators"
+        countries_path: "countries"
+        data_path: "values"
+      
+      field_mapping:
+        id: "id"
+        title: "label"
+        description: "description"
+        category: "economic_finance"
+        source: "International Monetary Fund"
+        data_type: "time_series"
+    
+    # Alternative SDMX API (more comprehensive)
+    sdmx:
+      base_url: "https://dataservices.imf.org/REST/SDMX_JSON.svc"
+      rate_limit: 3
+      timeout: 45
+      
+      endpoints:
+        dataflows: "/Dataflow"
+        indicators: "/CodeList/CL_INDICATOR_CPI"
+        data: "/CompactData/{dataflow}/{key}"
+    
+    retry_attempts: 3
+    retry_delay: 4
+
+  # 8. OECD Statistics
+  oecd:
+    enabled: true
+    base_url: "https://sdmx.oecd.org/public/rest"
+    rate_limit: 2
+    timeout: 30 
+    max_datasets: 40
+    api_key_env: null  # Public API
+    
+    endpoints:
+      dataflows: "/dataflow/all"
+      data: "/data/{dataset_id}"
+      structure: "/datastructure/{agency}/{dataset_id}"
+    
+    # Default parameters for OECD SDMX
+    default_params:
+      format: "csvfilewithlabels"  # More readable than SDMX-JSON
+      dimensionAtObservation: "AllDimensions"
+    
+    response_structure:
+      dataflows_path: "structure.dataflows.dataflow"
+      csv_response: true  # CSV format for data
+    
+    field_mapping:
+      id: "id"
+      title: "name"
+      description: "description"
+      category: "economic_statistics"
+      source: "Organisation for Economic Co-operation and Development"
+      agency: "agencyID"
+    
+    # Priority datasets for extraction
+    priority_datasets:
+      - "QNA"        # Quarterly National Accounts
+      - "MEI"        # Main Economic Indicators  
+      - "ELS"        # Employment and Labour Market
+      - "SNA_TABLE1" # GDP and main aggregates
+      - "HEALTH"     # Health statistics
+    
+    retry_attempts: 3
+    retry_delay: 3
+
+  # 9. UNdata API - Official UN Statistics Portal
+  undata_api:
+    enabled: true
+    base_url: "http://api.undata-api.org"
+    rate_limit: 3  # Conservative for registered API
+    timeout: 30
+    max_datasets: 30
+    api_key_env: "UNDATA_APP_ID"      # Required for authentication
+    app_key_env: "UNDATA_APP_KEY"     # Required for authentication  
+    auth_method: "query_params"       # app_id and app_key in URL params
+    
+    endpoints:
+      organizations: "/{organization}/databases"
+      datasets: "/{organization}/datasets" 
+      database_datasets: "/{organization}/{database}/database_datasets"
+      countries: "/{organization}/{dataset}/countries"
+      records: "/{organization}/{dataset}/{country}/records"
+    
+    # Default parameters
+    default_params:
+      format: "json"  # xml also available
+    
+    response_structure:
+      datasets_path: "data"
+      format: "json"
+    
+    field_mapping:
+      id: "dataset_id"
+      title: "dataset_name"
+      description: "description"
+      category: "global_statistics"
+      source: "United Nations Data"
+      organization: "organization"
+      last_updated: "last_updated"
+    
+    # Priority organizations to focus on
+    priority_organizations:
+      - "WHO"     # World Health Organization (108 datasets available)
+      - "FAO"     # Food and Agriculture Organization
+      - "UNESCO"  # Educational, Scientific and Cultural Organization
+      - "UNIDO"   # Industrial Development Organization
+    
+    retry_attempts: 3
+    retry_delay: 4
+
+  # 10. UN SDG API - Sustainable Development Goals
+  un_sdg_api:
+    enabled: true
+    base_url: "https://unstats.un.org/sdgapi"
+    rate_limit: 2  # Conservative for test API
+    timeout: 30
+    max_datasets: 20
+    api_key_env: null  # Public API (test version)
+    
+    endpoints:
+      goals: "/v1/sdg/Goal/List"
+      targets: "/v1/sdg/Target/List" 
+      indicators: "/v1/sdg/Indicator/List"
+      data: "/v1/sdg/Series/Data"
+      countries: "/v1/sdg/GeoArea/List"
+    
+    # Alternative SDG6 specific API (more reliable)
+    sdg6_backup:
+      base_url: "https://sdg6data.org/api"
+      indicators_endpoint: "/indicator/{indicator_code}"
+      all_indicators: "/indicator/all"
+    
+    response_structure:
+      data_path: "data"
+      pagination:
+        page_field: "page"
+        pages_field: "pages" 
+        per_page_field: "per_page"
+        total_field: "total"
+    
+    field_mapping:
+      id: "indicator_id"
+      title: "indicator_description"
+      description: "series_description"
+      category: "sustainable_development"
+      source: "UN Statistics Division"
+      goal: "goal"
+      target: "target"
+      geo_area: "geo_area_name"
+      time_period: "time_period"
+      value: "value"
+    
+    # Priority SDG indicators
+    priority_indicators:
+      - "1.1.1"  # Poverty below international poverty line
+      - "3.1.1"  # Maternal mortality ratio
+      - "4.1.1"  # Reading and mathematics proficiency
+      - "6.1.1"  # Access to safely managed drinking water
+      - "7.1.1"  # Access to electricity
+      - "11.1.1" # Adequate housing
+    
+    retry_attempts: 3
+    retry_delay: 3
+    
+    notes:
+      - "SDG API is marked as 'TEST API' - data for testing purposes"
+      - "Production use should monitor API stability"
+      - "SDG6 backup API available for water-related indicators"
+
+# ========================================
+# GLOBAL CONFIGURATION SETTINGS
+# ========================================
+
+global_settings:
+  
+  # Default timeout and retry settings
+  defaults:
+    timeout: 30
+    retry_attempts: 3
+    retry_delay: 5
+    max_datasets_per_source: 30
+    rate_limit: 5  # Conservative default
+  
+  # User agent for API requests
+  user_agent: "DatasetResearchAssistant/1.0 (Educational; contact@university.edu)"
+  
+  # Output format preferences
+  output_formats:
+    preferred: "json"
+    fallback: "xml"
+    csv_support: true
+  
+  # Quality assessment thresholds
+  quality_thresholds:
+    minimum_quality_score: 0.3
+    high_quality_threshold: 0.8
+    metadata_completeness_threshold: 0.7
+  
+  # Extraction limits
+  extraction_limits:
+    total_datasets: 200        # Maximum across all sources
+    per_source_limit: 50       # Maximum per individual source
+    request_timeout: 60        # Maximum request timeout
+    concurrent_requests: 3     # Number of simultaneous requests
+  
+  # Error handling
+  error_handling:
+    log_failed_requests: true
+    continue_on_source_failure: true
+    partial_extraction_threshold: 0.7  # Continue if 70%+ sources succeed
+  
+  # Data validation
+  validation:
+    required_fields: ["id", "title", "source"]
+    validate_urls: true
+    check_data_freshness: true
+    max_age_months: 24  # Flag datasets older than 2 years
+
+# ========================================
+# AUTHENTICATION ENVIRONMENT VARIABLES
+# ========================================
+
+# The following environment variables should be set:
+required_env_vars:
+  singapore:
+    - "LTA_API_KEY"          # From LTA DataMall registration
+    - "ONEMAP_EMAIL"         # OneMap account email  
+    - "ONEMAP_PASSWORD"      # OneMap account password
+  global:
+    - "UNDATA_APP_ID"        # From undata-api.org registration (optional)
+    - "UNDATA_APP_KEY"       # From undata-api.org registration (optional)
+    
+  optional:
+    - "CLAUDE_API_KEY"       # For future AI integration
+
+# ========================================
+# SPECIAL HANDLING CONFIGURATIONS
+# ========================================
+
+special_handling:
+  
+  # Sources requiring multi-step processes
+  multi_step_sources:
+    - "singstat"    # Search -> Metadata -> Data
+    - "onemap_sg"   # Token generation -> API calls
+    
+  # Sources with complex authentication
+  token_based_auth:
+    - "onemap_sg"   # 3-day token renewal required
+    
+  # Sources with rate limiting concerns
+  rate_limited_sources:
+    - "lta_datamall"  # 5 second minimum intervals
+    - "data_gov_sg"   # 5 requests per minute max
+    - "onemap_sg"     # 250 calls/min for private endpoints
+
+# ========================================
+# TESTING AND VALIDATION
+# ========================================
+
+testing:
+  # Endpoints for connectivity testing
+  health_check_endpoints:
+    data_gov_sg: "https://api-production.data.gov.sg/v2/public/api/datasets?page=1&per_page=1"
+    world_bank: "https://api.worldbank.org/v2/indicator?format=json&per_page=1"
+    imf: "https://www.imf.org/external/datamapper/api/v1/indicators"
+    oecd: "https://sdmx.oecd.org/public/rest/dataflow/all"
+    undata_api: "http://api.undata-api.org/WHO/databases?format=json"
+    un_sdg_api: "https://unstats.un.org/sdgapi/v1/sdg/Goal/List"
+    
+  # Test queries for validation
+  test_queries:
+    singapore_housing: "HDB resale prices"
+    global_economy: "GDP current US$"
+    transport: "bus arrival"
+    demographics: "population"
+
+# ========================================
+# METADATA AND DOCUMENTATION
+# ========================================
+
+metadata:
+  version: "1.0"
+  last_updated: "2025-06-20"
+  maintainer: "Capstone Project Team"
+  description: "Production API configuration for AI-powered dataset research assistant"
+  
+  # API documentation links
+  documentation_links:
+    data_gov_sg: "https://guide.data.gov.sg/developer-guide/api-overview"
+    lta_datamall: "https://datamall.lta.gov.sg/content/dam/datamall/datasets/LTA_DataMall_API_User_Guide.pdf"
+    onemap_sg: "https://www.onemap.gov.sg/apidocs/"
+    singstat: "https://tablebuilder.singstat.gov.sg/view-api/for-developers"
+    world_bank: "https://datahelpdesk.worldbank.org/knowledgebase/articles/889392"
+    imf: "https://www.imf.org/external/datamapper/api/help"
+    oecd: "https://data.oecd.org/api/"
+    undata_api: "https://www.undata-api.org/docs/"
+    un_sdg_api: "https://unstats.un.org/sdgapi/swagger/"
+  
+  # Notes on API limitations and considerations
+  notes:
+    singapore_focus: "Singapore sources prioritize local government data with high quality standards"
+    global_coverage: "Global sources provide comparative international indicators and development metrics"
+    rate_limiting: "All sources configured with conservative rate limits to ensure sustainable access"
+    authentication: "Most sources use public APIs; LTA and OneMap require registration; UNdata API optional registration"
+    data_freshness: "Real-time sources updated continuously; statistical sources updated monthly/quarterly"
+    un_apis: "Two UN APIs included: UNdata (general statistics) and SDG API (development goals)"
+    ura_excluded: "URA excluded due to pending access approval and potential charges"

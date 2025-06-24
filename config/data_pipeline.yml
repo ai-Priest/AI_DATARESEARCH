@@ -1,0 +1,260 @@
+# Data Pipeline Configuration - Master Settings File
+# All pipeline settings consolidated in one place for easy management
+
+# =============================================================================
+# API DATA SOURCES CONFIGURATION
+# =============================================================================
+api_sources:
+  # Singapore Government Sources (6 sources)
+  singapore:
+    data_gov_sg:
+      base_url: "{{from api_config.yml}}"  # data.gov.sg API endpoint
+      enabled: true
+      rate_limit: 2  # seconds between requests
+      max_datasets: 50
+    
+    lta_datamall:
+      base_url: "{{from api_config.yml}}"  # LTA DataMall API
+      api_key_env: "LTA_API_KEY"
+      enabled: true
+      rate_limit: 3
+      max_datasets: 25
+    
+    onemap_sla:
+      base_url: "{{from api_config.yml}}"  # OneMap by SLA
+      api_key_env: "ONEMAP_API_KEY" 
+      enabled: true
+      rate_limit: 2
+      max_datasets: 20
+    
+    singstat:
+      base_url: "{{from api_config.yml}}"  # Singapore Statistics
+      enabled: true
+      rate_limit: 2
+      max_datasets: 30
+    
+    
+    mas:
+      base_url: "{{from api_config.yml}}"  # Monetary Authority of Singapore
+      enabled: true
+      rate_limit: 2
+      max_datasets: 20
+
+  # Global Sources (4 sources)  
+  global:
+    world_bank:
+      base_url: "{{from api_config.yml}}"  # World Bank Open Data
+      enabled: true
+      rate_limit: 1
+      max_datasets: 30
+    
+    imf:
+      base_url: "{{from api_config.yml}}"  # International Monetary Fund
+      enabled: true
+      rate_limit: 2
+      max_datasets: 25
+    
+    oecd:
+      base_url: "{{from api_config.yml}}"  # OECD Statistics
+      enabled: true
+      rate_limit: 2
+      max_datasets: 20
+    
+    un_data:
+      base_url: "{{from api_config.yml}}"  # United Nations Data
+      enabled: true
+      rate_limit: 1
+      max_datasets: 25
+
+# =============================================================================
+# PHASE 1: DATA EXTRACTION CONFIGURATION
+# =============================================================================
+phase_1_extraction:
+  # Data paths
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed"
+  
+  # Extraction settings
+  timeout_seconds: 30
+  retry_attempts: 3
+  retry_delay: 5
+  
+  # Data quality gates
+  min_title_length: 5
+  min_description_length: 20
+  required_fields: ["title", "description", "source"]
+  
+  # Output formats
+  save_individual_sources: true
+  save_combined_datasets: true
+  
+  # Dataset filtering
+  exclude_inactive: true
+  min_quality_threshold: 0.3
+
+# =============================================================================
+# PHASE 2: DEEP ANALYSIS CONFIGURATION  
+# =============================================================================
+phase_2_analysis:
+  # User behavior integration
+  user_behavior_file: "data/raw/user_behaviour.csv"
+  behavior_analysis:
+    enable_user_segmentation: true
+    min_events_power_user: 15
+    session_timeout_minutes: 30
+  
+  # Keyword extraction settings
+  keyword_extraction:
+    min_keyword_length: 3
+    max_keywords_per_dataset: 50
+    domain_weights:
+      housing: 1.2
+      transport: 1.2  
+      health: 1.1
+      economics: 1.1
+      demographics: 1.0
+      education: 1.0
+      environment: 0.9
+  
+  # Relationship discovery
+  relationship_scoring:
+    min_relationship_threshold: 0.3
+    confidence_threshold: 0.6
+    max_relationships_per_dataset: 10
+  
+  # Ground truth generation (DEPRECATED)
+  ground_truth_generation:
+    enabled: false  # Disabled - using real user behavior evaluation instead
+    note: "Ground truth generation replaced with user behavior analytics"
+    # Legacy settings (unused)
+    min_confidence_threshold: 0.6
+    max_scenarios: 10
+    require_user_behavior_validation: true
+    cross_domain_scenarios: true
+    
+  # Domain classification
+  domain_keywords:
+    housing: ["housing", "hdb", "property", "resale", "rental", "flat"]
+    transport: ["transport", "traffic", "mrt", "lrt", "bus", "taxi", "road"]
+    health: ["health", "hospital", "clinic", "medical", "disease", "mortality"]
+    economics: ["economic", "gdp", "income", "employment", "inflation", "trade"]
+    demographics: ["population", "demographic", "census", "age", "residents"]
+    education: ["education", "school", "student", "university", "enrollment"]
+    environment: ["environment", "climate", "weather", "pollution", "air quality"]
+
+# =============================================================================
+# PHASE 3: EDA & REPORTING CONFIGURATION
+# =============================================================================
+phase_3_reporting:
+  # Output paths (outside src for easy retrieval)
+  output_base_path: "outputs/EDA"
+  
+  # Visualization settings
+  visualizations:
+    figure_size: [15, 10]
+    dpi: 300
+    style: "default"
+    color_palette: "husl"
+    save_format: "png"
+    
+  # Report generation
+  reports:
+    generate_executive_summary: true
+    generate_detailed_json: true
+    include_recommendations: true
+    
+  # Analysis thresholds
+  quality_thresholds:
+    high_quality: 0.8
+    medium_quality: 0.5
+    low_quality: 0.3
+    
+  # Issue detection
+  issue_detection:
+    flag_missing_descriptions: true
+    flag_low_quality_datasets: true
+    flag_misclassified_datasets: true
+    flag_over_represented_categories: 0.4  # >40% of total
+    flag_under_represented_categories: 2   # <2 datasets
+    
+  # Visualization types to generate
+  chart_types:
+    - "dataset_distribution_overview" 
+    - "quality_analysis"
+    - "relationship_network"
+    - "keyword_patterns"
+    - "ground_truth_validation"
+
+# =============================================================================
+# PIPELINE ORCHESTRATION CONFIGURATION
+# =============================================================================
+pipeline:
+  # Execution settings
+  stop_on_phase_failure: true
+  generate_phase_summaries: true
+  save_intermediate_results: true
+  
+  # ML readiness assessment
+  ml_readiness_thresholds:
+    min_total_datasets: 15
+    min_high_quality_datasets: 10
+    min_ground_truth_scenarios: 3
+    min_high_confidence_scenarios: 2
+    min_relationship_pairs: 5
+  
+  # Logging and monitoring  
+  logging:
+    level: "INFO"
+    save_logs: true
+    log_file: "pipeline_execution.log"
+    
+  # Performance monitoring
+  monitoring:
+    track_execution_time: true
+    track_memory_usage: true
+    track_api_calls: true
+
+# =============================================================================
+# ENVIRONMENT & SECURITY CONFIGURATION
+# =============================================================================
+environment:
+  # Required environment variables for API keys
+  required_env_vars:
+    - "LTA_API_KEY"
+    - "ONEMAP_API_KEY" 
+    - "URA_API_KEY"
+    
+  # Optional environment variables
+  optional_env_vars:
+    - "CLAUDE_API_KEY"  # For future AI integration
+    
+  # Security settings
+  security:
+    mask_api_keys_in_logs: true
+    validate_ssl_certificates: true
+    request_timeout: 30
+
+# =============================================================================
+# DATA VALIDATION & QUALITY SETTINGS
+# =============================================================================
+data_validation:
+  # Required dataset fields
+  mandatory_fields:
+    - "dataset_id"
+    - "title"
+    - "source"
+    - "category"
+  
+  # Quality scoring weights
+  quality_scoring:
+    title_quality_weight: 0.2
+    description_quality_weight: 0.3
+    metadata_completeness_weight: 0.25
+    source_credibility_weight: 0.25
+  
+  # Data cleaning rules
+  cleaning_rules:
+    remove_duplicates: true
+    standardize_categories: true
+    validate_urls: true
+    normalize_text_encoding: true

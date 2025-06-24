@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(rg:*)",
+      "Bash(cut:*)",
+      "Bash(grep:*)",
+      "Bash(uv add:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(mv:*)",
+      "Bash(echo:*)",
+      "Bash(find:*)",
+      "Bash(cp:*)",
+      "Bash(true)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git restore:*)",
+      "Bash(pip install:*)",
+      "Bash(pip uninstall:*)",
+      "Bash(TRANSFORMERS_OFFLINE=1 python -c \"import os; os.environ[''TF_CPP_MIN_LOG_LEVEL''] = ''3''; os.environ[''TRANSFORMERS_NO_TF''] = ''1''\")",
+      "Bash(curl:*)",
+      "Bash(pkill:*)",
+      "Bash(rm:*)",
+      "Bash(timeout:*)"
+    ],
+    "deny": []
+  }
+}

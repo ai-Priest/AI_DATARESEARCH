@@ -1,0 +1,29 @@
+ai:
+  enable_intelligent_caching: true
+  enable_llm_integration: true
+  enable_multimodal_search: true
+  enable_neural_search: true
+  max_search_results: 50
+  neural_model_path: models/dl/
+monitoring:
+  enable_metrics: true
+  enable_performance_tracking: true
+  health_check_interval: 30
+  log_file: logs/production_api.log
+performance:
+  cache_max_size: 1000
+  cache_ttl: 3600
+  enable_caching: true
+  max_concurrent_requests: 100
+  target_response_time: 5.0
+security:
+  allowed_origins:
+  - '*'
+  enable_api_key_auth: false
+  enable_cors: true
+server:
+  access_log: true
+  host: 0.0.0.0
+  log_level: info
+  port: 8000
+  workers: 1

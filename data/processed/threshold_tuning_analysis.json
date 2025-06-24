@@ -1,0 +1,3250 @@
+{
+  "metadata": {
+    "created_date": "2025-06-23T07:38:27.942789",
+    "num_queries": 540,
+    "total_samples": 3500
+  },
+  "threshold_analysis": [
+    {
+      "query": "rental prices tampines 3-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "private property transactions west",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "private property transactions jurong",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "rental prices singapore 3-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "private property transactions east",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "public housing waiting time 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 17
+    },
+    {
+      "query": "rental prices central 3-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "housing affordability middle-income 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 9
+    },
+    {
+      "query": "housing affordability middle-income 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 9
+    },
+    {
+      "query": "housing price index singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 30
+    },
+    {
+      "query": "HDB resale prices south 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "housing supply new launches 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 12
+    },
+    {
+      "query": "housing price index singapore 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 21
+    },
+    {
+      "query": "housing price index singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 26
+    },
+    {
+      "query": "housing price index singapore 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 24
+    },
+    {
+      "query": "HDB resale prices woodlands 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "public housing waiting time 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 23
+    },
+    {
+      "query": "HDB resale prices north 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "housing affordability high-income 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "housing supply new launches 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 28
+    },
+    {
+      "query": "property market trends hdb",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 27
+    },
+    {
+      "query": "housing affordability high-income 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "property market trends landed",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 32
+    },
+    {
+      "query": "private property transactions south",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "housing price index singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "private property transactions central",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 11
+    },
+    {
+      "query": "HDB resale prices west 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "property market trends private",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 16
+    },
+    {
+      "query": "housing supply new launches 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 17
+    },
+    {
+      "query": "private property transactions woodlands",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "housing supply new launches 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 20
+    },
+    {
+      "query": "property market trends condo",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 16
+    },
+    {
+      "query": "public housing waiting time 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 16
+    },
+    {
+      "query": "housing supply new launches 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 16
+    },
+    {
+      "query": "HDB resale prices bishan 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "private property transactions bishan",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "private property transactions tampines",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "housing affordability low-income 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "private property transactions north",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "public housing waiting time 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 19
+    },
+    {
+      "query": "housing affordability low-income 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "housing affordability low-income 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "rental prices west 4-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "HDB resale prices jurong 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "HDB resale prices tampines 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "rental prices woodlands 2-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "public housing waiting time 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "rental prices woodlands 5-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices bishan 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "rental prices bishan 4-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices jurong 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "housing affordability low-income 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "rental prices east 2-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices jurong 1-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "housing affordability high-income 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "housing affordability low-income 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "rental prices north executive",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "housing affordability middle-income 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices central 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "HDB resale prices east 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "rental prices tampines 1-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices tampines 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices tampines 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "HDB resale prices bishan 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices west 1-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "rental prices singapore 4-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices bishan 1-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices east 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "housing affordability high-income 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "rental prices south executive",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "housing affordability middle-income 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "rental prices west executive",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "HDB resale prices woodlands 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "rental prices west 2-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "HDB resale prices singapore 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "HDB resale prices tampines 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "private property transactions singapore",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "rental prices central 5-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices jurong 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices central 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices central 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "rental prices tampines 2-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "housing affordability high-income 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "rental prices south 2-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "rental prices east executive",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "rental prices bishan executive",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices tampines 4-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices north 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices jurong executive",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "rental prices woodlands 3-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "rental prices bishan 5-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "rental prices west 3-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "HDB resale prices south 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices east 3-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices west 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices central 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices woodlands 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "rental prices woodlands executive",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "HDB resale prices jurong 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices singapore executive",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices east 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "HDB resale prices west 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices east 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices singapore 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices central 1-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "rental prices north 2-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices south 5-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices south 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "rental prices singapore 2-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "rental prices bishan 2-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices west 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "housing affordability middle-income 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "HDB resale prices woodlands 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices east 1-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "rental prices singapore 5-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices bishan 3-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices north 3-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices central executive",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "rental prices north 1-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices west 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices central 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices woodlands 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices south 1-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices east 5-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices north 2020",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices north 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices south 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices south 2021",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices woodlands 1-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices central 2-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "HDB resale prices singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices south 4-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "HDB resale prices jurong 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices north 5-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices east 4-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "rental prices jurong 3-room",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "cycling infrastructure singapore",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 77
+    },
+    {
+      "query": "taxi and ride-hailing data 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 34
+    },
+    {
+      "query": "public transport usage trends 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 26
+    },
+    {
+      "query": "taxi and ride-hailing data 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 21
+    },
+    {
+      "query": "MRT ridership data east-west 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "transport statistics private-hire 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "transport statistics mrt 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "traffic congestion singapore weekend",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 15
+    },
+    {
+      "query": "bus routes and schedules singapore",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 66
+    },
+    {
+      "query": "MRT ridership data thomson-east-coast 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "transport statistics private-hire 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "taxi and ride-hailing data 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 33
+    },
+    {
+      "query": "transport statistics walking 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "transport statistics mrt 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "public transport usage trends 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 33
+    },
+    {
+      "query": "traffic congestion singapore peak-hours",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 16
+    },
+    {
+      "query": "transport statistics taxi 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "MRT ridership data thomson-east-coast 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "COE prices motorcycle 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "public transport usage trends 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 22
+    },
+    {
+      "query": "transport statistics walking 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "traffic congestion singapore off-peak",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 24
+    },
+    {
+      "query": "MRT ridership data downtown 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "COE prices commercial 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "MRT ridership data north-south 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "transport statistics taxi 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "COE prices commercial 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "COE prices car 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 9
+    },
+    {
+      "query": "MRT ridership data north-south 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "COE prices car 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "traffic congestion singapore holiday",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "MRT ridership data east-west 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "MRT ridership data east-west 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "transport statistics cycling 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "transport statistics taxi 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "MRT ridership data north-south 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "transport statistics cycling 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "MRT ridership data circle 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "COE prices motorcycle 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "MRT ridership data downtown 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "transport statistics mrt 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "MRT ridership data downtown 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "COE prices commercial 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "transport statistics bus 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "MRT ridership data thomson-east-coast 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "COE prices car 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 11
+    },
+    {
+      "query": "MRT ridership data circle 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "MRT ridership data circle 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "transport statistics walking 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "transport statistics private-hire 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "transport statistics bus 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "COE prices motorcycle 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "transport statistics bus 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "transport statistics cycling 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "health outcomes quality-of-life 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "healthcare utilization data working-age",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 13
+    },
+    {
+      "query": "healthcare utilization data elderly",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "medical services singapore accessibility",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 63
+    },
+    {
+      "query": "polyclinic services singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 22
+    },
+    {
+      "query": "mental health statistics singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "health outcomes life-expectancy 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "disease prevalence infectious singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "health outcomes morbidity 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 9
+    },
+    {
+      "query": "disease prevalence infectious singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "disease prevalence mental-health singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "hospital statistics geriatrics 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "healthcare spending private 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "mental health statistics singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 11
+    },
+    {
+      "query": "healthcare spending subsidized 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "polyclinic services singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 18
+    },
+    {
+      "query": "hospital statistics oncology 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "mental health statistics singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 26
+    },
+    {
+      "query": "health outcomes life-expectancy 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "disease prevalence cancer singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "healthcare utilization data adults",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 15
+    },
+    {
+      "query": "healthcare spending private 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "hospital statistics cardiology 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "hospital statistics pediatrics 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "healthcare spending public 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "disease prevalence diabetes singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "disease prevalence infectious singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "hospital statistics emergency 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "disease prevalence hypertension singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "healthcare spending public 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "healthcare spending total 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "hospital statistics oncology 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 9
+    },
+    {
+      "query": "healthcare utilization data children",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 11
+    },
+    {
+      "query": "hospital statistics emergency 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "healthcare spending subsidized 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "disease prevalence diabetes singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "healthcare spending public 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "disease prevalence cancer singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "disease prevalence hypertension singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "healthcare spending private 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "hospital statistics pediatrics 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "disease prevalence diabetes singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "disease prevalence cancer singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "health outcomes morbidity 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "hospital statistics oncology 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "healthcare spending total 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "health outcomes mortality 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "polyclinic services singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 12
+    },
+    {
+      "query": "healthcare spending subsidized 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "health outcomes life-expectancy 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "hospital statistics cardiology 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "health outcomes mortality 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "disease prevalence mental-health singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "health outcomes quality-of-life 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "hospital statistics geriatrics 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "healthcare spending total 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "hospital statistics pediatrics 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "disease prevalence hypertension singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "hospital statistics geriatrics 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "health outcomes mortality 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "health outcomes morbidity 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "disease prevalence mental-health singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "health outcomes quality-of-life 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "hospital statistics emergency 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "wage levels administrative 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "trade data singapore eu 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "inflation rates public 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 20
+    },
+    {
+      "query": "GDP growth construction 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "trade data singapore eu 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "inflation rates public 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 28
+    },
+    {
+      "query": "foreign investment {country} 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 17
+    },
+    {
+      "query": "wage levels professional 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "foreign investment {country} 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 22
+    },
+    {
+      "query": "economic indicators innovation 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "inflation rates public 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 12
+    },
+    {
+      "query": "business formation construction 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "foreign investment {country} 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "employment statistics healthcare 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "GDP growth manufacturing 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "economic indicators competitiveness 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "business formation services 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "trade data singapore usa 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "employment statistics healthcare 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "business formation finance 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "trade data singapore china 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "employment statistics manufacturing 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "trade data singapore malaysia 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "wage levels technical 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "GDP growth manufacturing 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "trade data singapore china 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "wage levels professional 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "employment statistics manufacturing 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "wage levels service 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "economic indicators productivity 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "trade data singapore malaysia 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 9
+    },
+    {
+      "query": "GDP growth construction 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "economic indicators productivity 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "trade data singapore asean 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "employment statistics healthcare 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "trade data singapore usa 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "economic indicators competitiveness 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "wage levels technical 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "business formation services 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "trade data singapore usa 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "employment statistics retail 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "wage levels administrative 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "trade data singapore eu 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "trade data singapore malaysia 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "economic indicators growth 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "GDP growth services 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "business formation finance 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "GDP growth construction 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "business formation construction 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "wage levels service 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "employment statistics technology 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "GDP growth services 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "GDP growth technology 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "employment statistics manufacturing 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "GDP growth finance 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "economic indicators growth 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "business formation manufacturing 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "employment statistics finance 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "business formation technology 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "trade data singapore china 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "economic indicators productivity 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "GDP growth technology 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "trade data singapore asean 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "business formation services 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "wage levels professional 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "economic indicators innovation 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "GDP growth services 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "economic indicators growth 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "economic indicators competitiveness 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "GDP growth finance 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "employment statistics finance 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "wage levels service 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "economic indicators innovation 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "wage levels technical 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "employment statistics retail 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "wage levels administrative 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "employment statistics finance 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "business formation technology 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "GDP growth manufacturing 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "employment statistics retail 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "employment statistics technology 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "business formation manufacturing 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "GDP growth finance 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "GDP growth technology 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "business formation technology 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "business formation construction 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "business formation finance 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "trade data singapore asean 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "international student data 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "education outcomes graduation-rate 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "education spending public 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 20
+    },
+    {
+      "query": "education spending public 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 11
+    },
+    {
+      "query": "skills training programs manufacturing 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "university enrollment business 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "education outcomes literacy 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "education outcomes performance 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "university enrollment arts 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "school performance junior-college 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "teacher statistics polytechnic 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "school performance junior-college 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "international student data 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 12
+    },
+    {
+      "query": "university enrollment engineering 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "education outcomes performance 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "university enrollment engineering 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "student demographics special-needs 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "school performance polytechnic 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "teacher statistics secondary 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "education spending public 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "teacher statistics primary 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "school performance junior-college 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "teacher statistics primary 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "education outcomes numeracy 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "school performance secondary 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "student demographics socioeconomic 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "school performance university 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "student demographics socioeconomic 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "international student data 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 9
+    },
+    {
+      "query": "student demographics special-needs 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "education outcomes graduation-rate 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "skills training programs manufacturing 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "teacher statistics junior-college 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "teacher statistics junior-college 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "university enrollment business 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "university enrollment business 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "student demographics nationality 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "education outcomes numeracy 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "university enrollment arts 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "skills training programs manufacturing 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 15
+    },
+    {
+      "query": "education outcomes performance 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "teacher statistics primary 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "teacher statistics secondary 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "university enrollment science 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "student demographics nationality 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "university enrollment medicine 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "school performance primary 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "school performance primary 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "education outcomes numeracy 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "university enrollment engineering 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "teacher statistics university 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "education outcomes literacy 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "education outcomes graduation-rate 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "teacher statistics junior-college 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "university enrollment arts 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "school performance primary 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "school performance university 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "university enrollment medicine 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "university enrollment medicine 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "teacher statistics polytechnic 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "education outcomes literacy 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "school performance polytechnic 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "teacher statistics university 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "teacher statistics university 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "student demographics special-needs 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "student demographics nationality 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "school performance university 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "teacher statistics secondary 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "school performance secondary 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "school performance polytechnic 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "student demographics socioeconomic 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "teacher statistics polytechnic 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "household composition singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 26
+    },
+    {
+      "query": "ethnic distribution singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 15
+    },
+    {
+      "query": "population statistics youth 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "birth rates singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 16
+    },
+    {
+      "query": "birth rates singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 17
+    },
+    {
+      "query": "aging population trends 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 16
+    },
+    {
+      "query": "marriage and divorce data 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 23
+    },
+    {
+      "query": "household composition singapore 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 17
+    },
+    {
+      "query": "life expectancy overall 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "migration patterns internal-migration 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "migration patterns immigration 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "population statistics seniors 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "ethnic distribution singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "aging population trends 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 16
+    },
+    {
+      "query": "aging population trends 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 18
+    },
+    {
+      "query": "migration patterns internal-migration 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "ethnic distribution singapore 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 18
+    },
+    {
+      "query": "population statistics seniors 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "population statistics working-age 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "marriage and divorce data 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 20
+    },
+    {
+      "query": "migration patterns emigration 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "household composition singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 29
+    },
+    {
+      "query": "life expectancy male 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "life expectancy female 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "life expectancy male 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "migration patterns emigration 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "migration patterns immigration 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 12
+    },
+    {
+      "query": "population statistics youth 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "marriage and divorce data 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 19
+    },
+    {
+      "query": "migration patterns emigration 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "birth rates singapore 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 16
+    },
+    {
+      "query": "population statistics elderly 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "migration patterns internal-migration 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "population statistics elderly 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "life expectancy overall 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 9
+    },
+    {
+      "query": "population statistics elderly 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "population statistics working-age 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "life expectancy female 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "life expectancy female 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "population statistics seniors 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "population statistics children 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "life expectancy male 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "population statistics youth 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "migration patterns immigration 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "life expectancy overall 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "population statistics children 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "population statistics children 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "population statistics working-age 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "Singapore GDP growth rate",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 13
+    },
+    {
+      "query": "HDB resale price index 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 10
+    },
+    {
+      "query": "MRT ridership statistics 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 2
+    },
+    {
+      "query": "MRT ridership statistics",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 16
+    },
+    {
+      "query": "Singapore population demographics 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 5
+    },
+    {
+      "query": "Singapore population demographics 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 4
+    },
+    {
+      "query": "Healthcare expenditure data",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 19
+    },
+    {
+      "query": "Singapore GDP growth rate 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 5
+    },
+    {
+      "query": "Singapore population demographics 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 5
+    },
+    {
+      "query": "Healthcare expenditure data 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 3
+    },
+    {
+      "query": "Singapore GDP growth rate 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 3
+    },
+    {
+      "query": "Healthcare expenditure data 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 4
+    },
+    {
+      "query": "Singapore population demographics",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 12
+    },
+    {
+      "query": "HDB resale price index 2024 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 4
+    },
+    {
+      "query": "MRT ridership statistics 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 5
+    },
+    {
+      "query": "MRT ridership statistics 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 2
+    },
+    {
+      "query": "Healthcare expenditure data 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 5
+    },
+    {
+      "query": "HDB resale price index 2024 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 1
+    },
+    {
+      "query": "Singapore GDP growth rate 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 3
+    },
+    {
+      "query": "HDB resale price index 2024 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 4
+    },
+    {
+      "query": "health statistics singapore",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 16
+    },
+    {
+      "query": "public transport usage",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 16
+    },
+    {
+      "query": "education enrollment data",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 17
+    },
+    {
+      "query": "housing market trends",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 20
+    },
+    {
+      "query": "housing market trends 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 11
+    },
+    {
+      "query": "economic indicators 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 4
+    },
+    {
+      "query": "education enrollment data 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 5
+    },
+    {
+      "query": "health statistics singapore 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 3
+    },
+    {
+      "query": "economic indicators",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 17
+    },
+    {
+      "query": "public transport usage 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 7
+    },
+    {
+      "query": "health statistics singapore 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 5
+    },
+    {
+      "query": "public transport usage 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 7
+    },
+    {
+      "query": "economic indicators 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 7
+    },
+    {
+      "query": "education enrollment data 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 8
+    },
+    {
+      "query": "education enrollment data 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 4
+    },
+    {
+      "query": "housing market trends 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 3
+    },
+    {
+      "query": "economic indicators 2024",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 7
+    },
+    {
+      "query": "health statistics singapore 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 12
+    },
+    {
+      "query": "housing market trends 2023",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 5
+    },
+    {
+      "query": "public transport usage 2022",
+      "optimal_threshold": 0.3,
+      "best_f1": 1.0,
+      "num_samples": 1
+    },
+    {
+      "query": "medical records",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 17
+    },
+    {
+      "query": "transportation data",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 15
+    },
+    {
+      "query": "school information",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 9
+    },
+    {
+      "query": "medical records 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "medical records 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 6
+    },
+    {
+      "query": "transportation data 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "real estate information 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "financial statistics 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "school information 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 8
+    },
+    {
+      "query": "transportation data 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "financial statistics",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "real estate information",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 15
+    },
+    {
+      "query": "real estate information 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "transportation data 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "school information 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "medical records 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "school information 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "real estate information 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "financial statistics 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "financial statistics 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "restaurant reviews",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "sports scores 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 5
+    },
+    {
+      "query": "weather forecast",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 10
+    },
+    {
+      "query": "movie ratings",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 14
+    },
+    {
+      "query": "fashion trends",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 11
+    },
+    {
+      "query": "sports scores 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    },
+    {
+      "query": "restaurant reviews 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "sports scores 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "movie ratings 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 4
+    },
+    {
+      "query": "sports scores",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 7
+    },
+    {
+      "query": "fashion trends 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "movie ratings 2023",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "fashion trends 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "fashion trends 2024",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 1
+    },
+    {
+      "query": "restaurant reviews 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 3
+    },
+    {
+      "query": "weather forecast 2022",
+      "optimal_threshold": 0.5,
+      "best_f1": 0,
+      "num_samples": 2
+    }
+  ],
+  "global_optimal_threshold": 0.48518518518518516
+}

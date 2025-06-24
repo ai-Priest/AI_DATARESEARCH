@@ -1,0 +1,43 @@
+*.env
+.venv/
+venv/
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS generated files  
+.DS_Store
+.DS_Store?
+._*
+
+# IDE files
+.vscode/settings.json
+.idea/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+models/
+*.pt
+
+# Cache directories and temporary files
+cache/
+*.db
+*.pkl
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Log files (specific patterns)
+*.log
+logs/cache/

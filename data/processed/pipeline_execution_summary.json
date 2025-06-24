@@ -1,0 +1,36 @@
+{
+  "pipeline_execution": {
+    "config_file": "config/data_pipeline.yml",
+    "execution_timestamp": "2025-06-21 20:26:48",
+    "total_execution_time_seconds": 132.85182523727417,
+    "phases_completed": [
+      "phase_1_extraction",
+      "phase_2_analysis",
+      "phase_3_reporting"
+    ],
+    "phases_failed": [],
+    "total_datasets_processed": 143
+  },
+  "ml_readiness_assessment": {
+    "ready_for_ml_training": true,
+    "total_scenarios": 8,
+    "high_confidence_scenarios": 8,
+    "adequate_scenarios": 0,
+    "total_usable_scenarios": 8,
+    "total_datasets": 143,
+    "thresholds": {
+      "min_scenarios_required": 3,
+      "min_high_confidence_required": 2,
+      "min_datasets_required": 15
+    },
+    "expected_performance": {
+      "f1_score": "0.75-0.85",
+      "confidence": "very_high"
+    }
+  },
+  "next_steps": {
+    "ml_ready": true,
+    "recommended_next_phase": "ML Pipeline",
+    "estimated_timeline": "1-2 weeks"
+  }
+}

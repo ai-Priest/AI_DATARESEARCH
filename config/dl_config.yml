@@ -1,0 +1,509 @@
+# Deep Learning Pipeline Configuration - Advanced Neural Network Settings
+# All DL training, evaluation, and inference settings for neural enhancements
+
+# =============================================================================
+# NEURAL NETWORK MODELS CONFIGURATION
+# =============================================================================
+models:
+  # Custom Neural Matching Network
+  neural_matching:
+    enabled: true
+    architecture: "siamese_transformer"
+    
+    # Model architecture parameters - ENHANCED regularization
+    architecture_params:
+      embedding_dim: 512
+      hidden_layers: [768, 512, 256]
+      dropout_rate: 0.5  # Increased dropout
+      activation: "gelu"
+      attention_heads: 8
+      transformer_layers: 3
+      weight_decay: 0.02  # Model-level weight decay
+      batch_norm: true  # Enable batch normalization
+      residual_connections: true  # Enable residual connections
+      
+    # Training parameters - ENHANCED for better convergence
+    training:
+      batch_size: 16  # Reduced for memory efficiency
+      learning_rate: 0.0005  # Reduced from 0.001
+      epochs: 30  # Full training for production
+      early_stopping_patience: 8  # More patience for convergence
+      validation_split: 0.25  # Larger validation set
+      
+    # Loss and optimization - IMPROVED regularization
+    loss_function: "triplet_loss"
+    margin: 0.5
+    optimizer: "adamw"
+    weight_decay: 0.02  # Increased weight decay
+    scheduler: "cosine_annealing_warmup"  # Better scheduler
+    
+  # Graph Neural Network for Dataset Relationships
+  graph_neural:
+    enabled: true
+    architecture: "gat"  # Graph Attention Network
+    
+    # Graph architecture
+    architecture_params:
+      node_features: 256
+      edge_features: 64
+      gat_layers: 3
+      attention_heads: 4
+      hidden_dim: 128
+      output_dim: 256
+      
+    # Graph construction
+    graph_construction:
+      similarity_threshold: 0.3
+      max_neighbors: 10
+      edge_features: ["similarity", "category_match", "source_match"]
+      
+  # Advanced Query Encoder
+  query_encoder:
+    enabled: true
+    architecture: "hierarchical_transformer"
+    
+    # Query processing
+    architecture_params:
+      vocab_size: 10000
+      embedding_dim: 256
+      transformer_layers: 4
+      attention_heads: 8
+      max_sequence_length: 128
+      
+    # Query understanding features
+    features:
+      intent_classification: true
+      entity_extraction: true
+      query_expansion_neural: true
+      
+  # Deep Recommendation Network
+  recommendation_network:
+    enabled: true
+    architecture: "multi_modal_transformer"
+    
+    # Multi-modal fusion
+    modalities:
+      text: true
+      metadata: true
+      graph: true
+      temporal: true
+      
+    # Architecture
+    architecture_params:
+      text_encoder_dim: 512
+      metadata_encoder_dim: 128
+      graph_encoder_dim: 256
+      fusion_dim: 512
+      output_dim: 256
+
+# =============================================================================
+# DATA PROCESSING FOR NEURAL NETWORKS
+# =============================================================================
+data_processing:
+  # Input data paths
+  input_paths:
+    enhanced_datasets: "models/datasets_with_ml_quality.csv"
+    user_behavior: "data/raw/user_behaviour.csv"
+    ml_embeddings: "models/semantic_embeddings.npz"
+    query_expansion_data: "models/query_expansion_data.json"
+    feedback_data: "data/feedback/user_feedback.json"
+    
+  # Neural preprocessing
+  neural_preprocessing:
+    # Text preprocessing for neural networks
+    text_processing:
+      tokenization: "bert-base-uncased"
+      max_length: 512
+      padding: "max_length"
+      truncation: true
+      return_attention_mask: true
+      
+    # Advanced feature engineering
+    feature_engineering:
+      # Temporal features
+      temporal_features: true
+      interaction_history: true
+      seasonal_patterns: true
+      
+      # Graph features
+      graph_features: true
+      centrality_measures: true
+      community_detection: true
+      
+      # Multi-modal features
+      metadata_embedding: true
+      category_encoding: true
+      quality_features: true
+      
+    # Data augmentation
+    augmentation:
+      enabled: true
+      techniques:
+        - "paraphrase_generation"
+        - "synonym_replacement"
+        - "query_reformulation"
+        - "negative_sampling"
+      augmentation_ratio: 0.3
+
+# =============================================================================
+# TRAINING CONFIGURATION - ENHANCED FOR PERFORMANCE
+# =============================================================================
+training:
+  # General training settings
+  device: "auto"  # auto, cpu, cuda, mps
+  mixed_precision: true  # Enable for better memory usage
+  gradient_checkpointing: true
+  
+  # Learning rate scheduling
+  lr_scheduling:
+    scheduler_type: "cosine_annealing_warm_restarts"
+    warmup_epochs: 3
+    min_lr_ratio: 0.01
+    restart_period: 10
+    restart_mult: 1.2
+    
+  # Validation strategy
+  validation:
+    frequency: 200  # More frequent validation for better monitoring
+    early_stopping:
+      patience: 8  # More patience for convergence
+      min_delta: 0.005  # Larger improvement threshold
+      restore_best: true
+      monitor_mode: "max"  # For NDCG@3
+  
+  # Distributed training
+  distributed:
+    enabled: false
+    backend: "nccl"
+    
+  # Training strategy - ENHANCED for stability
+  strategy:
+    curriculum_learning: true
+    progressive_training: true
+    multi_task_learning: true
+    gradient_accumulation: true  # Better gradients
+    label_smoothing: 0.1  # Prevent overconfidence
+    mixup_alpha: 0.2  # Data augmentation
+    
+  # Loss functions and metrics - REBALANCED for better performance
+  losses:
+    primary: "combined_loss"
+    components:
+      ranking_loss: 0.5  # Increased focus on ranking
+      classification_loss: 0.3
+      reconstruction_loss: 0.1  # Reduced reconstruction weight
+      regularization_loss: 0.1
+    label_smoothing: 0.1  # Add label smoothing
+    focal_loss_gamma: 2.0  # Focal loss for hard examples
+      
+  # Advanced optimization - IMPROVED settings
+  optimization:
+    gradient_clipping: 0.5  # More aggressive clipping
+    warmup_steps: 2000  # Longer warmup
+    accumulation_steps: 4  # Better gradient estimates
+    lr_scheduler_patience: 3  # ReduceLROnPlateau patience
+    lr_scheduler_factor: 0.5  # LR reduction factor
+    min_lr: 0.000001  # Minimum learning rate
+    
+  # Regularization - ENHANCED to prevent overfitting
+  regularization:
+    l2_weight: 0.02  # Increased L2 regularization
+    dropout_schedule: "adaptive"  # Adaptive dropout scheduling
+    dropout_min: 0.1  # Minimum dropout
+    dropout_max: 0.6  # Maximum dropout
+    batch_norm: true
+    layer_norm: true
+    spectral_norm: true  # Spectral normalization
+    noise_injection: 0.01  # Input noise for robustness
+
+# =============================================================================
+# EVALUATION CONFIGURATION
+# =============================================================================
+evaluation:
+  # Neural evaluation metrics
+  neural_metrics:
+    enabled: true
+    metrics:
+      # Ranking metrics
+      - "ndcg_at_k"
+      - "map_score"
+      - "mrr_score"
+      - "hit_rate"
+      
+      # Classification metrics
+      - "accuracy"
+      - "f1_score"
+      - "precision"
+      - "recall"
+      - "auc_roc"
+      
+      # Embedding quality
+      - "embedding_coherence"
+      - "semantic_similarity"
+      - "cluster_quality"
+      
+    # Evaluation settings
+    k_values: [1, 3, 5, 10, 20]
+    cross_validation: 5
+    
+  # User simulation for evaluation
+  user_simulation:
+    enabled: true
+    simulation_types:
+      - "realistic_queries"
+      - "adversarial_queries"
+      - "multi_intent_queries"
+    num_simulated_users: 100
+    
+  # Ablation studies
+  ablation_studies:
+    enabled: true
+    components_to_ablate:
+      - "attention_mechanism"
+      - "graph_features"
+      - "multi_modal_fusion"
+      - "query_expansion"
+
+# =============================================================================
+# NEURAL ARCHITECTURE SEARCH
+# =============================================================================
+neural_architecture_search:
+  enabled: false  # Computationally expensive
+  
+  # Search space
+  search_space:
+    embedding_dims: [256, 512, 768]
+    hidden_layers: [[256], [512, 256], [768, 512, 256]]
+    attention_heads: [4, 8, 16]
+    learning_rates: [0.0001, 0.0005, 0.001]
+    
+  # Search strategy
+  search_strategy: "bayesian_optimization"
+  max_trials: 50
+  objective: "val_ndcg_at_3"
+
+# =============================================================================
+# ADVANCED FEATURES
+# =============================================================================
+advanced_features:
+  # Meta-learning for few-shot adaptation
+  meta_learning:
+    enabled: true
+    algorithm: "maml"  # Model-Agnostic Meta-Learning
+    inner_steps: 5
+    meta_batch_size: 16
+    
+  # Continual learning
+  continual_learning:
+    enabled: true
+    strategy: "elastic_weight_consolidation"
+    lambda_reg: 1000
+    
+  # Adversarial training
+  adversarial_training:
+    enabled: false
+    epsilon: 0.1
+    attack_method: "pgd"
+    
+  # Knowledge distillation
+  knowledge_distillation:
+    enabled: true
+    teacher_model: "large_transformer"
+    temperature: 4.0
+    alpha: 0.7
+
+# =============================================================================
+# INFERENCE CONFIGURATION
+# =============================================================================
+inference:
+  # Real-time inference
+  real_time:
+    enabled: true
+    batch_inference: true
+    max_batch_size: 64
+    timeout_ms: 100
+    
+  # Model serving
+  serving:
+    model_format: "onnx"
+    quantization: "int8"
+    optimization_level: "all"
+    
+  # Caching strategies
+  caching:
+    embedding_cache: true
+    result_cache: true
+    cache_size_mb: 1024
+    ttl_seconds: 3600
+
+# =============================================================================
+# MONITORING AND LOGGING
+# =============================================================================
+monitoring:
+  # Training monitoring
+  training_monitoring:
+    log_interval: 100
+    save_interval: 1000
+    eval_interval: 500
+    
+  # Metrics tracking
+  metrics_tracking:
+    wandb_enabled: false
+    tensorboard_enabled: true
+    mlflow_enabled: false
+    
+  # Model checkpointing - ENHANCED monitoring
+  checkpointing:
+    save_best: true
+    save_last: true
+    save_top_k: 5  # Keep more checkpoints
+    monitor_metric: "val_ndcg_at_3"
+    mode: "max"
+    patience_metric: "val_loss"  # Also monitor validation loss
+    min_delta: 0.001  # Minimum improvement threshold
+    restore_best_weights: true  # Restore best weights on early stop
+
+# =============================================================================
+# HARDWARE OPTIMIZATION
+# =============================================================================
+hardware:
+  # GPU optimization
+  gpu:
+    memory_fraction: 0.8
+    allow_growth: true
+    
+  # CPU optimization
+  cpu:
+    num_workers: 4
+    prefetch_factor: 2
+    pin_memory: true
+    
+  # Memory optimization
+  memory:
+    gradient_checkpointing: true
+    activation_checkpointing: true
+    mixed_precision: true
+
+# =============================================================================
+# EXPERIMENTATION
+# =============================================================================
+experimentation:
+  # Experiment tracking
+  experiment_name: "dl_phase_v1"
+  experiment_tags: ["neural_networks", "deep_learning", "dataset_recommendation"]
+  
+  # Reproducibility
+  seed: 42
+  deterministic: true
+  
+  # Hyperparameter sweeps
+  hyperparameter_sweeps:
+    enabled: false
+    sweep_config: "config/dl_sweep.yml"
+
+# =============================================================================
+# OUTPUT CONFIGURATION
+# =============================================================================
+outputs:
+  # Output directories
+  models_dir: "models/dl"
+  logs_dir: "logs/dl"
+  reports_dir: "outputs/DL/reports"
+  visualizations_dir: "outputs/DL/visualizations"
+  evaluations_dir: "outputs/DL/evaluations"
+  
+  # Visualization settings
+  visualizations:
+    # Training visualizations
+    training_curves: true
+    loss_landscapes: true
+    gradient_flows: true
+    
+    # Model visualizations
+    attention_maps: true
+    embedding_spaces: true
+    model_architecture: true
+    
+    # Evaluation visualizations
+    confusion_matrices: true
+    roc_curves: true
+    precision_recall_curves: true
+    
+  # Report generation
+  reports:
+    training_report: true
+    evaluation_report: true
+    comparison_report: true
+    deployment_report: true
+
+# =============================================================================
+# ADVANCED ENSEMBLE CONFIGURATION
+# =============================================================================
+ensemble:
+  # Enable advanced ensemble methods
+  enabled: true
+  
+  # Multi-level ensemble strategy
+  strategy: "adaptive_stacking"  # weighted_average, voting, stacking, adaptive_stacking
+  
+  # Model selection and weighting
+  models:
+    primary: ["graph_attention", "query_encoder", "siamese_transformer"]  # Top 3 models
+    fallback: ["recommendation_network", "loss_function"]  # Additional models
+  
+  # Adaptive weighting based on query characteristics
+  adaptive_weights:
+    query_length_short: [0.7, 0.2, 0.1]  # graph > query > siamese for short queries
+    query_length_medium: [0.5, 0.4, 0.1]  # balanced for medium queries  
+    query_length_long: [0.3, 0.5, 0.2]   # query > graph > siamese for long queries
+    query_complexity_simple: [0.6, 0.3, 0.1]  # graph dominates simple queries
+    query_complexity_complex: [0.4, 0.4, 0.2]  # balanced for complex queries
+  
+  # Stacking ensemble configuration
+  stacking:
+    meta_learner: "gradient_boosting"  # linear, random_forest, gradient_boosting
+    cross_validation_folds: 5
+    feature_engineering: true
+    
+  # Voting ensemble configuration
+  voting:
+    method: "soft"  # hard, soft, rank_based
+    threshold_adjustment: true
+    confidence_weighting: true
+    
+  # Performance-based dynamic weighting
+  dynamic_weighting:
+    enabled: true
+    performance_window: 100  # Last 100 queries for weight adjustment
+    adaptation_rate: 0.1    # How quickly weights adapt
+    min_weight: 0.05       # Minimum weight for any model
+    
+  # Query-specific optimization
+  query_optimization:
+    category_specific_weights: true
+    semantic_similarity_boost: true
+    length_normalization: true
+    confidence_calibration: true
+
+# =============================================================================
+# INTEGRATION WITH EXISTING PIPELINE  
+# =============================================================================
+integration:
+  # ML pipeline integration
+  ml_integration:
+    use_ml_features: true
+    ensemble_with_ml: true
+    ml_weight: 0.3
+    dl_weight: 0.7
+    
+  # Enhancement integration
+  enhancement_integration:
+    query_expansion: true
+    user_feedback: true
+    explanations: true
+    progressive_search: true
+    
+  # Backward compatibility
+  backward_compatibility:
+    fallback_to_ml: true
+    graceful_degradation: true

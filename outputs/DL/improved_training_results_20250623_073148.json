@@ -1,0 +1,139 @@
+{
+  "model_architecture": "Lightweight Cross-Attention Ranker",
+  "training_results": {
+    "best_loss": 0.2577522819240888,
+    "training_history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.39249755655016216,
+        "val_loss": 0.2627866549624337,
+        "val_accuracy": 0.9163763066202091,
+        "learning_rate": 0.001
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.33937953128701165,
+        "val_loss": 0.2982189075814353,
+        "val_accuracy": 0.9163763066202091,
+        "learning_rate": 0.001
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.3059819071065812,
+        "val_loss": 0.3076413513885604,
+        "val_accuracy": 0.9094076655052264,
+        "learning_rate": 0.001
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.27857415803841185,
+        "val_loss": 0.2715994268655777,
+        "val_accuracy": 0.9163763066202091,
+        "learning_rate": 0.001
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.2545599891316323,
+        "val_loss": 0.2692362359828419,
+        "val_accuracy": 0.9233449477351916,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.21382955390782582,
+        "val_loss": 0.26291482978396946,
+        "val_accuracy": 0.9303135888501742,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.1758325585119781,
+        "val_loss": 0.2577522819240888,
+        "val_accuracy": 0.9024390243902439,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.1674507013743832,
+        "val_loss": 0.2924985546204779,
+        "val_accuracy": 0.9094076655052264,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.15240580180571192,
+        "val_loss": 0.34157810277409023,
+        "val_accuracy": 0.9024390243902439,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.15605920664079131,
+        "val_loss": 0.36551881374584305,
+        "val_accuracy": 0.9303135888501742,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.1448048030336698,
+        "val_loss": 0.3322957687907749,
+        "val_accuracy": 0.9198606271777003,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.11699888503755487,
+        "val_loss": 0.3861061276661025,
+        "val_accuracy": 0.9059233449477352,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.12469362977537371,
+        "val_loss": 0.3506234660744667,
+        "val_accuracy": 0.9128919860627178,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.10862348574612822,
+        "val_loss": 0.3618407158388032,
+        "val_accuracy": 0.9094076655052264,
+        "learning_rate": 0.00025
+      }
+    ],
+    "final_accuracy": 0.9094076655052264
+  },
+  "evaluation_results": {
+    "accuracy": 0.9409722222222222,
+    "precision": 0.6666666666666666,
+    "recall": 0.7407407407407407,
+    "f1_score": 0.7017543859649122,
+    "ndcg_at_3": 0.6900421539702897,
+    "num_queries_evaluated": 40,
+    "total_test_samples": 288,
+    "positive_samples": 27,
+    "negative_samples": 261
+  },
+  "data_summary": {
+    "total_samples": 1914,
+    "train_samples": 1339,
+    "val_samples": 287,
+    "test_samples": 288,
+    "positive_samples": 216,
+    "negative_samples": 1698,
+    "sample_types": {
+      "positive": 216,
+      "negative": 1080,
+      "cross_category_negative": 550,
+      "hard_negative": 68
+    },
+    "categories_covered": 20
+  },
+  "training_config": {
+    "epochs": 15,
+    "learning_rate": 2e-05,
+    "batch_size": 32,
+    "device": "mps"
+  }
+}

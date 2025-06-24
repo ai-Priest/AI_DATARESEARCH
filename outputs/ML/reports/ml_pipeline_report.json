@@ -1,0 +1,44 @@
+{
+  "pipeline_execution": {
+    "start_time": "2025-06-21T22:38:40.665265",
+    "end_time": "2025-06-21T22:39:11.214879",
+    "total_duration_minutes": 0.5091603333333333,
+    "phases_completed": [
+      "preprocessing",
+      "evaluation"
+    ]
+  },
+  "data_summary": {
+    "total_datasets": 143,
+    "average_quality": 0.7907342657342659,
+    "features_engineered": 98
+  },
+  "model_performance": {
+    "tfidf": {
+      "f1@3": 0.37142857142857144,
+      "precision@3": 0.4333333333333333,
+      "recall@3": 0.325
+    },
+    "semantic": {
+      "f1@3": 0.34285714285714286,
+      "precision@3": 0.4,
+      "recall@3": 0.3
+    },
+    "hybrid": {
+      "f1@3": 0.37142857142857144,
+      "precision@3": 0.4333333333333333,
+      "recall@3": 0.325
+    }
+  },
+  "recommendations": [
+    "\u26a0\ufe0f Performance below expectations. Consider:",
+    "  \u2022 Expanding dataset collection",
+    "  \u2022 Improving data quality",
+    "  \u2022 Adding more ground truth scenarios",
+    "  \u2022 Experimenting with different semantic models"
+  ],
+  "best_method": {
+    "method": "tfidf",
+    "f1@3_score": 0.37142857142857144
+  }
+}

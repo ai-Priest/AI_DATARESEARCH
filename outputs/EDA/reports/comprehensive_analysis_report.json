@@ -1,0 +1,627 @@
+{
+  "analysis_metadata": {
+    "analysis_timestamp": "2025-06-21T20:26:48.007643",
+    "total_datasets_analyzed": 143,
+    "configuration_used": {
+      "output_base_path": "outputs/EDA",
+      "visualizations": {
+        "figure_size": [
+          15,
+          10
+        ],
+        "dpi": 300,
+        "style": "default",
+        "color_palette": "husl",
+        "save_format": "png"
+      },
+      "reports": {
+        "generate_executive_summary": true,
+        "generate_detailed_json": true,
+        "include_recommendations": true
+      },
+      "quality_thresholds": {
+        "high_quality": 0.8,
+        "medium_quality": 0.5,
+        "low_quality": 0.3
+      },
+      "issue_detection": {
+        "flag_missing_descriptions": true,
+        "flag_low_quality_datasets": true,
+        "flag_misclassified_datasets": true,
+        "flag_over_represented_categories": 0.4,
+        "flag_under_represented_categories": 2
+      },
+      "chart_types": [
+        "dataset_distribution_overview",
+        "quality_analysis",
+        "relationship_network",
+        "keyword_patterns",
+        "ground_truth_validation"
+      ]
+    },
+    "analysis_components_completed": [
+      "collection_overview",
+      "keyword_intelligence",
+      "relationship_discovery",
+      "ground_truth_validation",
+      "data_quality_issues"
+    ]
+  },
+  "collection_overview": {
+    "collection_metadata": {
+      "total_datasets": 143,
+      "analysis_timestamp": "2025-06-21T20:26:45.795325",
+      "data_sources": 8,
+      "categories_covered": 8
+    },
+    "source_analysis": {
+      "distribution": {
+        "data.gov.sg": 50,
+        "World Bank": 50,
+        "IMF": 10,
+        "LTA DataMall": 9,
+        "OneMap": 8,
+        "UN SDG": 6,
+        "SingStat": 5,
+        "OECD": 5
+      },
+      "singapore_vs_global": {
+        "singapore_count": 72,
+        "global_count": 71
+      }
+    },
+    "category_analysis": {
+      "distribution": {
+        "general": 50,
+        "economic_development": 50,
+        "economic_finance": 10,
+        "transport": 9,
+        "geospatial": 8,
+        "sustainable_development": 6,
+        "statistics": 5,
+        "economic_statistics": 5
+      },
+      "coverage_assessment": {
+        "well_represented": {
+          "general": 50,
+          "economic_development": 50,
+          "economic_finance": 10,
+          "transport": 9,
+          "geospatial": 8,
+          "sustainable_development": 6,
+          "statistics": 5,
+          "economic_statistics": 5
+        },
+        "under_represented": {},
+        "over_represented": {
+          "general": 50,
+          "economic_development": 50
+        },
+        "balance_score": -0.11384982671167676
+      }
+    },
+    "quality_analysis": {
+      "overall_statistics": {
+        "mean_quality": 0.7907342657342659,
+        "median_quality": 0.825,
+        "std_quality": 0.19263915588729913
+      },
+      "quality_distribution": {
+        "high_quality": 99,
+        "medium_quality": 27,
+        "low_quality": 17,
+        "thresholds_used": {
+          "high_quality_threshold": 0.8,
+          "medium_quality_threshold": 0.5
+        }
+      },
+      "quality_by_source": {
+        "IMF": 0.6900000000000001,
+        "LTA DataMall": 0.4277777777777778,
+        "OECD": 0.6849999999999999,
+        "OneMap": 0.4125,
+        "SingStat": 0.6,
+        "UN SDG": 0.5499999999999999,
+        "World Bank": 0.812,
+        "data.gov.sg": 0.9740000000000001
+      },
+      "quality_by_category": {
+        "economic_development": 0.812,
+        "economic_finance": 0.6900000000000001,
+        "economic_statistics": 0.6849999999999999,
+        "general": 0.9740000000000001,
+        "geospatial": 0.4125,
+        "statistics": 0.6,
+        "sustainable_development": 0.5499999999999999,
+        "transport": 0.4277777777777778
+      }
+    },
+    "temporal_analysis": {
+      "update_frequency_distribution": {
+        "Unknown": 50,
+        "Daily": 8,
+        "Annual": 3,
+        "Quarterly": 2,
+        "Real-time": 1
+      },
+      "status_distribution": {
+        "active": 143
+      },
+      "active_datasets_percentage": 100.0,
+      "recent_updates_2024": 50
+    },
+    "format_analysis": {
+      "JSON": 73,
+      "CSV": 40,
+      "SDMX-JSON": 10,
+      "KML": 8,
+      "SDMX": 5,
+      "SHP": 4,
+      "GEOJSON": 3
+    }
+  },
+  "keyword_intelligence": {
+    "keyword_extraction_summary": {
+      "total_unique_keywords": 42,
+      "avg_keywords_per_dataset": 2.7202797202797204,
+      "most_common_keywords": {
+        "geographic:singapore": 58,
+        "geographic:global": 44,
+        "demographics:population": 41,
+        "data_type:statistics": 33,
+        "economics:income": 32,
+        "data_type:index": 28,
+        "economics:economic": 20,
+        "temporal:daily": 19,
+        "geographic:national": 18,
+        "temporal:annual": 10,
+        "transport:transport": 10,
+        "health:health": 8,
+        "data_type:survey": 7,
+        "data_type:indicator": 7,
+        "environment:environment": 4,
+        "demographics:age": 4,
+        "temporal:monthly": 3,
+        "transport:mrt": 3,
+        "health:mortality": 3,
+        "geographic:international": 3
+      }
+    },
+    "domain_signal_analysis": {
+      "signal_frequency": {
+        "high_quality_data": 99,
+        "actively_maintained": 143,
+        "government_source": 50,
+        "media_content_warning": 11,
+        "health_research_ready": 8,
+        "transport_research_ready": 12,
+        "economics_research_ready": 70,
+        "access_limitation_warning": 2,
+        "international_organization": 71,
+        "housing_research_ready": 1
+      },
+      "research_ready_datasets": 90,
+      "warning_signals": {
+        "media_content_warning": 11,
+        "access_limitation_warning": 2
+      }
+    },
+    "domain_keyword_patterns": {
+      "geographic": {
+        "singapore": 58,
+        "global": 44,
+        "national": 18,
+        "international": 3,
+        "local": 1
+      },
+      "data_type": {
+        "statistics": 33,
+        "index": 28,
+        "survey": 7,
+        "indicator": 7,
+        "report": 1,
+        "census": 1
+      },
+      "temporal": {
+        "daily": 19,
+        "annual": 10,
+        "monthly": 3,
+        "historical": 1,
+        "weekly": 1,
+        "quarterly": 1
+      },
+      "housing": {
+        "rental": 1,
+        "housing": 1
+      },
+      "economics": {
+        "income": 32,
+        "economic": 20,
+        "employment": 3,
+        "trade": 3,
+        "gdp": 2,
+        "inflation": 1
+      },
+      "health": {
+        "health": 8,
+        "mortality": 3,
+        "medical": 1
+      },
+      "environment": {
+        "environment": 4,
+        "climate": 1
+      },
+      "demographics": {
+        "population": 41,
+        "age": 4,
+        "residents": 2,
+        "census": 1
+      },
+      "education": {
+        "education": 2
+      },
+      "transport": {
+        "transport": 10,
+        "mrt": 3,
+        "bus": 3,
+        "road": 3,
+        "traffic": 2,
+        "taxi": 1,
+        "lrt": 1
+      }
+    },
+    "relevance_distribution": {
+      "mean_relevance": 0.9444055944055942,
+      "median_relevance": 0.975,
+      "high_relevance_count": 136,
+      "medium_relevance_count": 7,
+      "low_relevance_count": 0
+    },
+    "category_keyword_diversity": {
+      "general": 32,
+      "transport": 7,
+      "geospatial": 2,
+      "statistics": 7,
+      "economic_development": 13,
+      "economic_finance": 3,
+      "economic_statistics": 7,
+      "sustainable_development": 6
+    }
+  },
+  "relationship_discovery": {
+    "relationship_summary": {
+      "total_relationships": 4962,
+      "relationship_type_distribution": {
+        "same_domain": 2594,
+        "unrelated": 261,
+        "complementary": 2107
+      },
+      "high_quality_relationships": 540
+    },
+    "quality_metrics": {
+      "score_statistics": {
+        "mean_relationship_score": 0.5175760980420896,
+        "median_relationship_score": 0.555,
+        "mean_confidence": 0.6882028614439436,
+        "median_confidence": 0.7075
+      },
+      "score_distribution": {
+        "excellent_relationships": 191,
+        "good_relationships": 1586,
+        "fair_relationships": 1671,
+        "weak_relationships": 1514
+      }
+    },
+    "top_relationships": [
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Poverty Headcount ($2.50 a day)",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      },
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Middle Class ($10-50 a day) Headcount",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      },
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Poverty Headcount ($4 a day)",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      },
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Vulnerable ($4-10 a day) Headcount",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      },
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Poverty Headcount ($1.90 a day)-Rural",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      },
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Poverty Headcount ($2.50 a day)-Rural",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      },
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Middle Class ($10-50 a day) Headcount-Rural",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      },
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Official Moderate Poverty Rate- Rural",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      },
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Poverty Headcount ($4 a day)-Rural",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      },
+      {
+        "dataset1": "Poverty Headcount ($1.90 a day)",
+        "dataset2": "Vulnerable ($4-10 a day) Headcount-Rural",
+        "type": "same_domain",
+        "score": 0.8,
+        "confidence": 1.0
+      }
+    ],
+    "relationship_network_stats": {
+      "avg_relationships_per_dataset": 34.6993006993007,
+      "most_connected_datasets": [
+        {
+          "dataset": "100000:GROSS DOMESTIC PRODUCT",
+          "connection_count": 93
+        },
+        {
+          "dataset": "1000000:GROSS DOMESTIC PRODUCT",
+          "connection_count": 93
+        },
+        {
+          "dataset": "110000:INDIVIDUAL CONSUMPTION EXPENDITURE BY HOUSEHOLDS",
+          "connection_count": 93
+        },
+        {
+          "dataset": "Literacy rate, youth total (% of people ages 15-24) ",
+          "connection_count": 93
+        },
+        {
+          "dataset": "Total final energy consumption (TFEC)",
+          "connection_count": 92
+        }
+      ]
+    }
+  },
+  "ground_truth_validation": {
+    "scenario_summary": {
+      "total_scenarios": 8,
+      "generation_method_distribution": {
+        "realistic_clustering": 4,
+        "enhanced_semantic": 1,
+        "enhanced_semantic_crossdomain": 3
+      },
+      "scenario_details": {
+        "transport_system_1": {
+          "primary_query": "LTA Bus Arrival",
+          "complementary_count": 3,
+          "confidence": 0.9,
+          "generation_method": "realistic_clustering",
+          "validation_score": 1.0,
+          "source": "same_source_analysis"
+        },
+        "singapore_economic_stats_2": {
+          "primary_query": "economic growth indicators singapore official data",
+          "complementary_count": 2,
+          "confidence": 0.95,
+          "generation_method": "enhanced_semantic",
+          "validation_score": 1.0,
+          "source": "semantic_clustering"
+        },
+        "world_bank_indicators_3": {
+          "primary_query": "Population, total",
+          "complementary_count": 3,
+          "confidence": 0.85,
+          "generation_method": "realistic_clustering",
+          "validation_score": 1.0,
+          "source": "same_source_analysis"
+        },
+        "economic_development_analysis": {
+          "primary_query": "economic development poverty analysis indicators",
+          "complementary_count": 4,
+          "confidence": 0.85,
+          "generation_method": "enhanced_semantic_crossdomain",
+          "validation_score": 1.0,
+          "source": "semantic_cross_domain"
+        },
+        "financial_analysis": {
+          "primary_query": "Balance of Payments (BOP), 2017 M06",
+          "complementary_count": 2,
+          "confidence": 0.8,
+          "generation_method": "realistic_clustering",
+          "validation_score": 1.0,
+          "source": "same_category_analysis"
+        },
+        "transport_comprehensive": {
+          "primary_query": "LTA Bus Arrival",
+          "complementary_count": 3,
+          "confidence": 0.85,
+          "generation_method": "realistic_clustering",
+          "validation_score": 1.0,
+          "source": "same_category_analysis"
+        },
+        "health_demographics_analysis": {
+          "primary_query": "health outcomes demographic population statistics",
+          "complementary_count": 4,
+          "confidence": 0.8,
+          "generation_method": "enhanced_semantic_crossdomain",
+          "validation_score": 1.0,
+          "source": "semantic_cross_domain"
+        },
+        "transport_urban_planning": {
+          "primary_query": "transportation infrastructure urban planning development",
+          "complementary_count": 4,
+          "confidence": 0.75,
+          "generation_method": "enhanced_semantic_crossdomain",
+          "validation_score": 1.0,
+          "source": "semantic_cross_domain"
+        }
+      }
+    },
+    "quality_assessment": {
+      "confidence_statistics": {
+        "mean_confidence": 0.84375,
+        "median_confidence": 0.85,
+        "std_confidence": 0.05829611908180508
+      },
+      "confidence_distribution": {
+        "high_confidence": 8,
+        "adequate_confidence": 0,
+        "low_confidence": 0
+      },
+      "complementary_statistics": {
+        "mean_complementary_count": 3.125,
+        "min_complementary_count": 2,
+        "max_complementary_count": 4
+      }
+    },
+    "validation_results": {
+      "mean_validation_score": 1.0,
+      "fully_validated_scenarios": 8,
+      "partially_validated_scenarios": 0
+    },
+    "identified_issues": [],
+    "ml_readiness_assessment": {
+      "ready_for_ml_training": true,
+      "scenarios_available": 8,
+      "scenarios_required": 3,
+      "high_confidence_available": 8,
+      "high_confidence_required": 2,
+      "expected_performance": {
+        "estimated_f1_score": "0.70-0.80",
+        "confidence_level": "high"
+      }
+    }
+  },
+  "data_quality_assessment": {
+    "issues_summary": {
+      "total_issues_identified": 2,
+      "critical_issues": [
+        "Datasets with warning signals: 13 datasets flagged"
+      ],
+      "balance_issues": []
+    },
+    "detailed_issues": [
+      "Datasets with warning signals: 13 datasets flagged",
+      "Low confidence relationships: 1284 relationships with confidence <0.5"
+    ],
+    "recommendations": [
+      "Manually review flagged datasets for proper categorization and quality",
+      "Review relationship scoring algorithm and dataset categorization"
+    ],
+    "quality_metrics": {
+      "collection_quality_score": 0.7907342657342659,
+      "quality_distribution": {
+        "high_quality_percentage": 69.23076923076923,
+        "medium_quality_percentage": 18.88111888111888,
+        "low_quality_percentage": 11.888111888111888
+      },
+      "completeness_metrics": {
+        "description_completeness": 100.0,
+        "metadata_completeness": 44.75524475524475
+      }
+    },
+    "improvement_priorities": [
+      "HIGH PRIORITY: Review and reclassify flagged datasets"
+    ],
+    "flagged_datasets": [
+      {
+        "dataset_id": "d_642550222dea9b6eba88bd21bdaca1fa",
+        "title": "Newspapers-Straits Echo-1903 to 1904",
+        "warnings": [
+          "media_content_warning"
+        ]
+      },
+      {
+        "dataset_id": "d_4061fb8858d333344a1cf1feb046ec29",
+        "title": "Newspapers-Malaya Tribune-1924 to 1928",
+        "warnings": [
+          "media_content_warning"
+        ]
+      },
+      {
+        "dataset_id": "d_b1cf00e204e35e07d4ec45abb91b8077",
+        "title": "Newspapers-Sunday Standard-1950 to 1953",
+        "warnings": [
+          "media_content_warning"
+        ]
+      },
+      {
+        "dataset_id": "d_66160334994304e9a21d42ae2e32a5c7",
+        "title": "Newspapers-The Straits Echo (Mail Edition)-1927 to 1931",
+        "warnings": [
+          "media_content_warning"
+        ]
+      },
+      {
+        "dataset_id": "d_aa56cfd7dd8efa83312292fdcb2b2aec",
+        "title": "Newspapers-Malaya Tribune-1934 to 1938",
+        "warnings": [
+          "media_content_warning"
+        ]
+      },
+      {
+        "dataset_id": "d_d35d2d0a53b43d45fa58286dc0e23fd2",
+        "title": "Newspapers-Singapore Standard-1950 to 1953",
+        "warnings": [
+          "media_content_warning"
+        ]
+      },
+      {
+        "dataset_id": "d_29c621045011e19ccff74461ef4d67ac",
+        "title": "Newspapers-Pinang Gazette and Straits Chronicle-1838 to 1839",
+        "warnings": [
+          "media_content_warning"
+        ]
+      },
+      {
+        "dataset_id": "d_8ce983e6b90d94010dbcd10a24ded26e",
+        "title": "Newspapers-Pinang Gazette and Straits Chronicle-1906 to 1910",
+        "warnings": [
+          "media_content_warning"
+        ]
+      },
+      {
+        "dataset_id": "d_e91e48775b42ced4233a75af249887eb",
+        "title": "Percent Change In Consumer Price Index (CPI) Over Corresponding Period Of Previous Year, 2019 As Base Year, Half-Yearly",
+        "warnings": [
+          "media_content_warning"
+        ]
+      },
+      {
+        "dataset_id": "d_5334f6305b1bc4abb9a62083ff5357b6",
+        "title": "Newspapers-Straits Telegraph and Daily Advertiser-1899",
+        "warnings": [
+          "media_content_warning"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,504 @@
+# ML Pipeline Configuration - Production-Ready Settings
+# All ML training, evaluation, and inference settings
+
+# =============================================================================
+# MODEL CONFIGURATION
+# =============================================================================
+models:
+  # TF-IDF Content-Based Filtering
+  tfidf:
+    enabled: true
+    max_features: 5000
+    ngram_range: [1, 3]  # Unigrams, bigrams, trigrams for better context
+    min_df: 1
+    max_df: 0.8
+    stop_words: 'english'
+    lowercase: true
+    sublinear_tf: true  # Better performance for large vocabularies
+    
+  # Semantic Search with Sentence Transformers  
+  semantic:
+    enabled: true
+    model: "multi-qa-mpnet-base-dot-v1"  # Q&A-optimized model for dataset search
+    # Alternative models for experimentation:
+    alternative_models:
+      - "all-mpnet-base-v2"      # 768D, general purpose high quality
+      - "all-MiniLM-L6-v2"       # 384D, faster but lower quality
+      - "all-MiniLM-L12-v2"      # 384D, balance of speed/quality
+      - "paraphrase-mpnet-base-v2" # Optimized for paraphrase detection
+    
+    # Encoding parameters
+    batch_size: 16  # Reduced for larger model
+    normalize_embeddings: true
+    show_progress_bar: true
+    convert_to_numpy: true
+    
+    # Performance optimization
+    device: "auto"  # Auto-detect CPU/GPU/MPS
+    
+    # Advanced semantic features
+    use_pooling: "mean"  # mean, max, cls pooling strategies
+    similarity_metric: "cosine"  # cosine, euclidean, dot_product
+    
+  # Hybrid Recommendation System
+  hybrid:
+    enabled: true
+    alpha: 0.3  # Weight for TF-IDF (0.3) vs Semantic (0.7) - semantic-focused for better performance
+    # Advanced weighting strategies
+    dynamic_weighting: false  # Adjust weights based on query type
+    confidence_threshold: 0.01  # Much lower threshold for better recall
+    
+    # Ensemble configuration
+    ensemble_methods:
+      - "weighted_average"
+      - "rank_fusion" 
+      - "confidence_based"
+
+# =============================================================================
+# DATA PROCESSING CONFIGURATION  
+# =============================================================================
+data_processing:
+  # Input data paths (from data pipeline)
+  input_paths:
+    singapore_datasets: "data/processed/singapore_datasets.csv"  # Restored - LTA datasets help performance
+    global_datasets: "data/processed/global_datasets.csv"
+    ground_truth: "data/processed/intelligent_ground_truth.json"  # Legacy - not used for evaluation
+    user_behavior: "data/raw/user_behaviour.csv"  # Primary evaluation data source
+  
+  # Feature engineering
+  feature_engineering:
+    # Text preprocessing
+    combine_fields: ["title", "description", "tags", "category"]
+    field_weights:
+      title: 0.3
+      description: 0.4
+      tags: 0.2
+      category: 0.1
+    
+    # Advanced text processing
+    remove_stopwords: true
+    expand_abbreviations: true
+    handle_synonyms: false  # Advanced: Use WordNet synonyms
+    
+    # Metadata features
+    include_quality_score: true
+    include_source_credibility: true
+    include_geographic_coverage: true
+    include_temporal_coverage: true
+  
+  # Data quality filters
+  quality_filters:
+    min_quality_score: 0.3
+    require_description: true
+    require_title: true
+    max_title_length: 200
+    min_description_length: 10
+
+# =============================================================================
+# EVALUATION CONFIGURATION
+# =============================================================================
+evaluation:
+  # User Behavior-Based Evaluation (Primary Method)
+  user_behavior:
+    enabled: true
+    primary_evaluation: true
+    behavior_data_file: "data/raw/user_behaviour.csv"
+    
+    # Real user satisfaction metrics
+    metrics:
+      - "user_satisfaction_score"    # Primary metric (0-1)
+      - "engagement_rate"            # User engagement with results
+      - "conversion_rate"            # Users completing desired actions
+      - "search_efficiency"          # Fewer refinements = better results  
+      - "recommendation_accuracy"    # How well recommendations match user behavior
+      - "session_success_rate"       # Overall session success
+    
+    # Success thresholds
+    success_thresholds:
+      user_satisfaction_score: 0.70   # Target 70%+ user satisfaction
+      engagement_rate: 0.60           # Target 60%+ engagement
+      conversion_rate: 0.25           # Target 25%+ conversion
+      recommendation_accuracy: 0.50   # Target 50%+ accuracy
+    
+    # Session analysis settings
+    session_analysis:
+      min_session_duration: 0.5      # Minutes - filter out very short sessions
+      max_session_duration: 120      # Minutes - filter out outlier long sessions
+      bounce_threshold: 30            # Seconds - consider as bounce if less
+      refinement_penalty: 0.1        # Penalty for each search refinement
+    
+  # Legacy ground truth evaluation (disabled)
+  supervised:
+    enabled: false  # Replaced with user behavior evaluation
+    note: "Disabled in favor of real user behavior evaluation"
+  
+  # Unsupervised evaluation (internal metrics) - Primary evaluation method
+  unsupervised:
+    enabled: true
+    primary_evaluation: true  # Use as main performance indicator
+    metrics:
+      # Dataset similarity analysis
+      - "similarity_distribution"
+      - "cluster_coherence"
+      - "silhouette_score"
+      
+      # Recommendation diversity
+      - "intra_list_diversity"
+      - "inter_list_diversity"
+      - "coverage"
+      - "novelty"
+      
+      # Quality metrics
+      - "recommendation_confidence"
+      - "stability"
+  
+  # Performance benchmarking
+  benchmarking:
+    target_f1_score: 0.90  # Ambitious 90% target
+    minimum_acceptable: 0.70
+    industry_baseline: 0.60
+    
+    # Performance by query type
+    query_types:
+      - "housing_analysis"
+      - "economic_research"
+      - "transport_planning"
+      - "health_demographics"
+      - "sustainability_research"
+
+# =============================================================================
+# TRAINING CONFIGURATION
+# =============================================================================
+training:
+  # General training settings
+  random_seed: 42
+  reproducible: true
+  
+  # Model-specific training
+  tfidf_training:
+    vocabulary_selection: "auto"
+    feature_selection: false
+    
+  semantic_training:
+    cache_embeddings: true
+    parallel_processing: true
+    
+  hybrid_training:
+    grid_search_alpha: true
+    alpha_range: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    optimization_metric: "f1@3"
+  
+  # Advanced training techniques
+  advanced:
+    hyperparameter_tuning: true
+    early_stopping: true
+    model_ensemble: false
+    
+# =============================================================================
+# INFERENCE CONFIGURATION
+# =============================================================================
+inference:
+  # Real-time query processing
+  real_time:
+    enabled: true
+    response_timeout: 2.0  # seconds
+    cache_results: true
+    cache_duration: 300    # 5 minutes
+    
+  # Query processing
+  query_processing:
+    expand_query: true
+    spell_correction: false
+    synonym_expansion: false
+    
+  # Recommendation settings
+  default_top_k: 5
+  max_top_k: 20
+  min_similarity_threshold: 0.01
+  
+  # Output formatting
+  include_explanations: true
+  include_confidence_scores: true
+  include_method_breakdown: true
+
+# =============================================================================
+# MODEL PERSISTENCE CONFIGURATION
+# =============================================================================
+persistence:
+  # Storage paths
+  models_directory: "models"
+  
+  # Model files
+  model_files:
+    tfidf_vectorizer: "tfidf_vectorizer.pkl"
+    tfidf_matrix: "tfidf_matrix.npy"
+    semantic_embeddings: "semantic_embeddings.npy"
+    hybrid_weights: "hybrid_weights.pkl"
+    metadata: "datasets_metadata.csv"
+    quality_enhanced: "datasets_with_ml_quality.csv"
+  
+  # Evaluation results
+  evaluation_files:
+    supervised_results: "evaluation_results.json"
+    unsupervised_results: "unsupervised_evaluation.json"
+    performance_summary: "performance_summary.json"
+    cross_validation: "cross_validation_results.json"
+  
+  # Serialization settings
+  compression: true
+  pickle_protocol: 4  # Python 3.4+ compatible
+  backup_models: true
+
+# =============================================================================
+# VISUALIZATION CONFIGURATION
+# =============================================================================
+visualization:
+  # Output directory
+  output_directory: "outputs/ML"
+  
+  # Chart settings
+  chart_settings:
+    style: "seaborn-v0_8"
+    figure_size: [15, 10]
+    dpi: 300
+    color_palette: "husl"
+    font_size: 12
+    
+  # Charts to generate
+  charts:
+    - "performance_comparison"
+    - "confusion_matrix"
+    - "similarity_distribution"
+    - "query_performance_breakdown"
+    - "model_confidence_analysis"
+    - "recommendation_diversity"
+    - "training_curves"
+    - "feature_importance"
+  
+  # Interactive features
+  interactive:
+    enabled: false  # Plotly/Bokeh for interactive charts
+    format: "html"
+
+# =============================================================================
+# PERFORMANCE OPTIMIZATION
+# =============================================================================
+optimization:
+  # Computational optimization
+  parallel_processing: true
+  max_workers: 4
+  chunk_size: 1000
+  
+  # Memory optimization
+  memory_efficient: true
+  batch_processing: true
+  cleanup_intermediate: true
+  
+  # Hardware utilization
+  use_gpu: false  # Set to true if CUDA available
+  use_mps: true   # Apple Silicon optimization
+  
+  # Caching strategy
+  caching:
+    enabled: true
+    cache_embeddings: true
+    cache_similarities: true
+    cache_evaluations: false  # Disable for development
+
+# =============================================================================
+# LOGGING AND MONITORING
+# =============================================================================
+logging:
+  # Log levels
+  level: "INFO"
+  console_level: "INFO"
+  file_level: "DEBUG"
+  
+  # Log files
+  log_directory: "logs"
+  log_files:
+    training: "ml_training.log"
+    evaluation: "ml_evaluation.log"
+    inference: "ml_inference.log"
+    
+  # Log formatting
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+  
+  # Rich console output
+  rich_console: true
+  progress_bars: true
+  status_updates: true
+
+# =============================================================================
+# EXPERIMENTAL FEATURES
+# =============================================================================
+experimental:
+  # Advanced ML techniques
+  enabled: false
+  
+  features:
+    # Query understanding
+    query_classification: false
+    intent_detection: false
+    
+    # Advanced embeddings
+    contextual_embeddings: false
+    domain_adaptation: false
+    
+    # Reinforcement learning
+    user_feedback_learning: false
+    
+    # Explainable AI
+    feature_attribution: false
+    recommendation_explanations: true
+
+# =============================================================================
+# ENHANCEMENTS CONFIGURATION
+# =============================================================================
+enhancements:
+  # Query Expansion System
+  query_expansion:
+    enabled: true
+    max_expansions: 5
+    expansion_sources:
+      - singapore_domain
+      - keyword_associations
+      - category_context
+      - abbreviations
+    
+    # Singapore-specific terms
+    singapore_terms_enabled: true
+    domain_vocabulary_enabled: true
+    keyword_associations_enabled: true
+    
+  # User Feedback System
+  user_feedback:
+    enabled: true
+    feedback_file: "data/feedback/user_feedback.json"
+    collect_interactions: true
+    collect_query_expansion_feedback: true
+    collect_quality_feedback: true
+    
+    # Feedback-driven improvements
+    auto_improve_enabled: true
+    improvement_frequency: "weekly"
+    
+  # Recommendation Explanations
+  explanations:
+    enabled: true
+    explanation_types:
+      - keyword_match
+      - category_match
+      - content_similarity
+      - quality_match
+      - domain_relevance
+      - user_preference
+    
+    confidence_levels: ["very_high", "high", "medium", "low", "very_low"]
+    max_explanation_length: 200
+    
+  # Progressive Search
+  progressive_search:
+    enabled: true
+    autocomplete_enabled: true
+    max_suggestions: 8
+    semantic_suggestions_enabled: true
+    query_refinement_enabled: true
+    
+    # Search enhancements
+    singapore_terms_priority: true
+    category_based_suggestions: true
+    popular_queries_tracking: true
+    
+  # Dataset Preview Cards
+  preview_cards:
+    enabled: true
+    include_metadata: true
+    include_integration_guide: true
+    include_code_snippets: true
+    include_use_cases: true
+    
+    # Visual styling
+    category_based_styling: true
+    source_based_styling: true
+    quality_based_styling: true
+    
+  # Expected Improvements from Enhancements
+  expected_improvements:
+    query_expansion_f1_boost: 0.08  # +8% F1@3
+    user_feedback_satisfaction_boost: 0.15  # +15% user satisfaction
+    explanations_trust_boost: 0.20  # +20% user trust
+    progressive_search_efficiency_boost: 0.25  # +25% search efficiency
+    preview_cards_engagement_boost: 0.18  # +18% user engagement
+
+# =============================================================================
+# INTEGRATION SETTINGS
+# =============================================================================
+integration:
+  # Data pipeline integration
+  data_pipeline:
+    auto_detect_updates: true
+    validate_input_format: true
+    
+  # API integration (future)
+  api:
+    enabled: false
+    claude_api: false
+    
+  # External tools
+  external_tools:
+    enabled: false
+    
+# =============================================================================
+# QUALITY ASSURANCE
+# =============================================================================
+quality_assurance:
+  # Model validation
+  model_validation:
+    enabled: true
+    test_queries: [
+      "singapore housing market analysis",
+      "transport traffic data singapore", 
+      "health outcomes by population groups",
+      "economic development indicators",
+      "sustainable development goals tracking"
+    ]
+    
+    expected_performance:
+      min_f1_score: 0.70
+      target_f1_score: 0.90
+      
+  # Data validation
+  data_validation:
+    validate_ground_truth: true
+    check_data_consistency: true
+    detect_data_drift: false
+    
+  # Performance monitoring
+  monitoring:
+    track_inference_time: true
+    track_memory_usage: true
+    alert_on_degradation: false
+
+# =============================================================================
+# ENVIRONMENT CONFIGURATION
+# =============================================================================
+environment:
+  # Development settings
+  development:
+    debug_mode: false
+    verbose_output: true
+    save_intermediate_results: true
+    
+  # Production settings  
+  production:
+    optimize_for_speed: true
+    minimize_memory_usage: true
+    enable_caching: true
+    
+  # Hardware detection
+  hardware:
+    auto_detect: true
+    force_cpu: false
+    prefer_gpu: false

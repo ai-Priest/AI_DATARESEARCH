@@ -1,0 +1,173 @@
+# LLM Configuration with priority order
+# Note: These are all API-based services. For local inference, see vllm_local section below
+llm_providers:
+    minimax:
+      enabled: false
+      type: "api"  # Cloud API service
+      model: "MiniMax-Text-01"
+      api_base: "https://api.minimax.chat/v1"
+      max_tokens: 2048
+      temperature: 0.7
+      priority: 1
+      timeout: 30
+      retry_attempts: 3
+      capabilities:
+        - research_methodology
+        - dataset_relationships
+        - academic_guidance
+      
+    mistral:
+      enabled: true
+      type: "api"  # Using Mistral's API service, not local
+      model: "mistral-small-latest"
+      api_base: "https://api.mistral.ai/v1"
+      max_tokens: 1024
+      temperature: 0.5
+      priority: 2  # Fallback to Mistral
+      timeout: 10  # Faster timeout for quicker fallback
+      retry_attempts: 2  # Reduced retries for speed
+      capabilities:
+        - quick_analysis
+        - technical_explanations
+        - query_understanding
+      
+    claude:
+      enabled: true
+      type: "api"  # Anthropic's API service
+      model: "claude-3-5-sonnet-20241022"
+      api_base: "https://api.anthropic.com"
+      max_tokens: 2048  # Optimized for faster response
+      temperature: 0.6  # Slightly more focused
+      priority: 1  # Make Claude primary
+      timeout: 15  # Reduced timeout for faster fallback
+      retry_attempts: 2
+      capabilities:
+        - comprehensive_analysis
+        - methodology_guidance
+        - singapore_context
+        - research_explanations
+      
+    openai:
+      enabled: false
+      type: "api"  # OpenAI's API service
+      model: "gpt-3.5-turbo"
+      api_base: "https://api.openai.com/v1"
+      max_tokens: 2048
+      temperature: 0.7
+      priority: 4
+      timeout: 30
+      retry_attempts: 2
+      capabilities:
+        - general_assistance
+        - fallback_support
+    
+    # Optional: Local model inference using vLLM (requires GPU)
+    # Uncomment and configure if you want to run models locally
+    # mistral_local:
+    #   enabled: false
+    #   type: "vllm"
+    #   model: "mistralai/Mistral-7B-Instruct-v0.2"
+    #   gpu_memory_utilization: 0.9
+    #   max_model_len: 8192
+    #   temperature: 0.7
+    #   priority: 5
+    #   capabilities:
+    #     - local_inference
+    #     - privacy_sensitive
+    #     - high_throughput
+
+# Neural Model Integration
+neural_integration:
+  model_path: "models/dl/"
+  model_type: "graded_relevance"  # Use the 75% NDCG@3 model
+  preferred_models: 
+    - "graded_relevance_best.pt"      # 75% NDCG@3 achievement
+    - "lightweight_cross_attention_best.pt"  # 68.1% fallback
+  inference_config:
+    confidence_threshold: 0.6
+    top_k_recommendations: 5
+    batch_size: 32
+    device: "mps"  # or "cuda" or "cpu"
+  performance_metrics:
+    ndcg_at_3: 0.699
+    accuracy: 0.927
+    f1_score: 0.644
+
+# API Server Configuration
+api_server:
+  host: "0.0.0.0"
+  port: 8000
+  cors_enabled: true
+  allowed_origins: ["*"]
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+  websocket:
+    enabled: true
+    ping_interval: 30
+
+# AI Pipeline Configuration  
+ai_pipeline:
+  version: "1.0"
+  
+  # Response Configuration
+  response_settings:
+    max_response_time: 3.0  # seconds total
+    neural_inference_timeout: 0.5  # seconds for neural model
+    llm_enhancement_timeout: 2.5  # seconds for LLM
+    include_explanations: true
+    include_methodology: true
+    include_singapore_context: true
+    include_confidence_scores: true
+    
+  # Session Management
+  session_config:
+    session_timeout: 3600  # 1 hour
+    max_history_length: 20
+    storage_backend: "memory"  # "memory" or "redis" for production
+    enable_conversation_memory: true
+    
+  # Research Enhancement Settings
+  research_settings:
+    singapore_specific:
+      enabled: true
+      government_data_sources:
+        - data.gov.sg
+        - singstat.gov.sg
+        - lta.gov.sg
+        - ura.gov.sg
+      local_context_keywords:
+        - HDB
+        - CPF
+        - COE
+        - MRT
+        - hawker
+    methodology_guidance:
+      include_data_integration_steps: true
+      include_analysis_approaches: true
+      include_validation_methods: true
+      include_citation_formats: true
+    
+  # Evaluation and Monitoring
+  evaluation:
+    collect_feedback: true
+    satisfaction_threshold: 0.85
+    metrics:
+      - response_time
+      - explanation_quality
+      - recommendation_accuracy
+      - user_engagement
+      - methodology_usefulness
+    logging:
+      enabled: true
+      log_level: "INFO"
+      log_file: "logs/ai_pipeline.log"
+    
+      
+  # Cache Configuration
+  cache:
+    enabled: true
+    ttl: 3600  # 1 hour
+    max_size: 1000  # entries
+    cache_neural_results: true
+    cache_llm_responses: false  # fresh responses for each query

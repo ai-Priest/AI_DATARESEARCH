@@ -1,0 +1,281 @@
+[
+  {
+    "id": 1,
+    "query": "What are the trends in HDB resale prices across different districts in Singapore over the past 5 years, and how do they correlate with proximity to MRT stations?",
+    "expected_categories": [
+      "housing",
+      "transportation",
+      "geospatial",
+      "economic_indicators"
+    ],
+    "research_context": "policy_research",
+    "complexity": "complex",
+    "singapore_focus": true,
+    "expected_methodology": "Time series analysis, geospatial correlation analysis, regression modeling to identify price drivers"
+  },
+  {
+    "id": 2,
+    "query": "How has COVID-19 impacted healthcare utilization patterns in Singapore compared to other developed countries?",
+    "expected_categories": [
+      "healthcare",
+      "public_health",
+      "demographics",
+      "comparative_international"
+    ],
+    "research_context": "academic",
+    "complexity": "moderate",
+    "singapore_focus": true,
+    "expected_methodology": "Comparative analysis, trend analysis, statistical testing for significant changes"
+  },
+  {
+    "id": 3,
+    "query": "What is the relationship between educational attainment and income inequality in ASEAN countries?",
+    "expected_categories": [
+      "education",
+      "economic_indicators",
+      "demographics",
+      "social_trends"
+    ],
+    "research_context": "academic",
+    "complexity": "complex",
+    "singapore_focus": false,
+    "expected_methodology": "Cross-country regression analysis, Gini coefficient calculations, educational mobility analysis"
+  },
+  {
+    "id": 4,
+    "query": "Which bus routes in Singapore have the highest passenger satisfaction scores and what factors contribute to this?",
+    "expected_categories": [
+      "transportation",
+      "public_services",
+      "customer_satisfaction"
+    ],
+    "research_context": "business",
+    "complexity": "simple",
+    "singapore_focus": true,
+    "expected_methodology": "Descriptive statistics, correlation analysis, factor analysis for satisfaction drivers"
+  },
+  {
+    "id": 5,
+    "query": "How do carbon emissions from different industries in Singapore compare to global benchmarks, and what are the reduction opportunities?",
+    "expected_categories": [
+      "environmental",
+      "industrial",
+      "sustainability",
+      "comparative_international"
+    ],
+    "research_context": "policy_research",
+    "complexity": "moderate",
+    "singapore_focus": true,
+    "expected_methodology": "Benchmarking analysis, emissions intensity calculations, gap analysis for reduction potential"
+  },
+  {
+    "id": 6,
+    "query": "What are the demographic characteristics of startup founders in Southeast Asia's tech ecosystem?",
+    "expected_categories": [
+      "technology",
+      "entrepreneurship",
+      "demographics",
+      "business"
+    ],
+    "research_context": "business",
+    "complexity": "simple",
+    "singapore_focus": false,
+    "expected_methodology": "Descriptive statistics, demographic profiling, cross-tabulation analysis"
+  },
+  {
+    "id": 7,
+    "query": "How effective are Singapore's active mobility infrastructure investments in reducing traffic congestion and promoting sustainable transport?",
+    "expected_categories": [
+      "transportation",
+      "urban_planning",
+      "sustainability",
+      "infrastructure"
+    ],
+    "research_context": "policy_research",
+    "complexity": "complex",
+    "singapore_focus": true,
+    "expected_methodology": "Before-after analysis, traffic flow modeling, cost-benefit analysis, modal shift analysis"
+  },
+  {
+    "id": 8,
+    "query": "What are the key predictors of student performance in STEM subjects across different countries?",
+    "expected_categories": [
+      "education",
+      "academic_performance",
+      "comparative_international",
+      "demographics"
+    ],
+    "research_context": "academic",
+    "complexity": "moderate",
+    "singapore_focus": false,
+    "expected_methodology": "Multilevel modeling, predictive analytics, cross-country comparative analysis"
+  },
+  {
+    "id": 9,
+    "query": "How has the gig economy grown in Singapore and what are its implications for traditional employment patterns?",
+    "expected_categories": [
+      "labor_market",
+      "economic_indicators",
+      "social_trends",
+      "technology"
+    ],
+    "research_context": "policy_research",
+    "complexity": "moderate",
+    "singapore_focus": true,
+    "expected_methodology": "Trend analysis, employment classification analysis, economic impact assessment"
+  },
+  {
+    "id": 10,
+    "query": "Which neighborhoods in Singapore have the highest air quality and how does this correlate with health outcomes?",
+    "expected_categories": [
+      "environmental",
+      "public_health",
+      "geospatial",
+      "demographics"
+    ],
+    "research_context": "academic",
+    "complexity": "complex",
+    "singapore_focus": true,
+    "expected_methodology": "Spatial analysis, health outcome correlation, air quality indexing, epidemiological analysis"
+  },
+  {
+    "id": 11,
+    "query": "What are the most common cybersecurity threats faced by SMEs globally and how can they be mitigated?",
+    "expected_categories": [
+      "technology",
+      "cybersecurity",
+      "business",
+      "risk_management"
+    ],
+    "research_context": "business",
+    "complexity": "simple",
+    "singapore_focus": false,
+    "expected_methodology": "Threat categorization, frequency analysis, risk assessment, mitigation strategy evaluation"
+  },
+  {
+    "id": 12,
+    "query": "How do food security indicators in Singapore compare with other island nations, and what are the supply chain vulnerabilities?",
+    "expected_categories": [
+      "food_security",
+      "supply_chain",
+      "comparative_international",
+      "risk_management"
+    ],
+    "research_context": "policy_research",
+    "complexity": "complex",
+    "singapore_focus": true,
+    "expected_methodology": "Comparative benchmarking, supply chain mapping, vulnerability assessment, scenario analysis"
+  },
+  {
+    "id": 13,
+    "query": "What is the adoption rate of digital payment methods among different age groups in Southeast Asia?",
+    "expected_categories": [
+      "fintech",
+      "demographics",
+      "technology_adoption",
+      "consumer_behavior"
+    ],
+    "research_context": "business",
+    "complexity": "simple",
+    "singapore_focus": false,
+    "expected_methodology": "Adoption rate calculations, demographic segmentation, trend analysis, cross-country comparison"
+  },
+  {
+    "id": 14,
+    "query": "How do mental health support services utilization patterns vary across different districts in Singapore?",
+    "expected_categories": [
+      "healthcare",
+      "mental_health",
+      "geospatial",
+      "public_services"
+    ],
+    "research_context": "policy_research",
+    "complexity": "moderate",
+    "singapore_focus": true,
+    "expected_methodology": "Geospatial analysis, utilization rate calculations, accessibility analysis, demographic correlation"
+  },
+  {
+    "id": 15,
+    "query": "What are the energy consumption patterns of commercial buildings in tropical climates and how can they be optimized?",
+    "expected_categories": [
+      "energy",
+      "sustainability",
+      "building_management",
+      "climate"
+    ],
+    "research_context": "business",
+    "complexity": "moderate",
+    "singapore_focus": false,
+    "expected_methodology": "Energy audit analysis, consumption pattern modeling, efficiency benchmarking, optimization algorithms"
+  },
+  {
+    "id": 16,
+    "query": "How has remote work adoption affected commercial real estate demand in Singapore's CBD?",
+    "expected_categories": [
+      "real_estate",
+      "labor_market",
+      "urban_planning",
+      "economic_indicators"
+    ],
+    "research_context": "business",
+    "complexity": "moderate",
+    "singapore_focus": true,
+    "expected_methodology": "Demand analysis, occupancy rate tracking, correlation with remote work trends, market impact assessment"
+  },
+  {
+    "id": 17,
+    "query": "What are the most effective interventions for reducing childhood obesity rates based on global health data?",
+    "expected_categories": [
+      "public_health",
+      "pediatric_health",
+      "intervention_studies",
+      "comparative_international"
+    ],
+    "research_context": "academic",
+    "complexity": "complex",
+    "singapore_focus": false,
+    "expected_methodology": "Meta-analysis, intervention effectiveness comparison, outcome measurement, evidence synthesis"
+  },
+  {
+    "id": 18,
+    "query": "Which skills are most in-demand in Singapore's job market and how do they align with university curriculum?",
+    "expected_categories": [
+      "labor_market",
+      "education",
+      "skills_analysis",
+      "workforce_development"
+    ],
+    "research_context": "policy_research",
+    "complexity": "moderate",
+    "singapore_focus": true,
+    "expected_methodology": "Job posting analysis, skills gap analysis, curriculum mapping, demand-supply matching"
+  },
+  {
+    "id": 19,
+    "query": "How do tourism spending patterns vary by visitor origin country in Southeast Asian destinations?",
+    "expected_categories": [
+      "tourism",
+      "economic_indicators",
+      "consumer_behavior",
+      "comparative_regional"
+    ],
+    "research_context": "business",
+    "complexity": "simple",
+    "singapore_focus": false,
+    "expected_methodology": "Spending pattern analysis, visitor segmentation, economic impact calculation, comparative analysis"
+  },
+  {
+    "id": 20,
+    "query": "What are the water consumption trends in Singapore's industrial sector and how do they relate to economic output?",
+    "expected_categories": [
+      "water_resources",
+      "industrial",
+      "sustainability",
+      "economic_indicators"
+    ],
+    "research_context": "policy_research",
+    "complexity": "moderate",
+    "singapore_focus": true,
+    "expected_methodology": "Water intensity analysis, economic correlation modeling, efficiency benchmarking, trend forecasting"
+  }
+]

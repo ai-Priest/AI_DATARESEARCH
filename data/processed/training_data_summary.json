@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "created_from": "data/processed/intelligent_ground_truth.json",
+  "total_original_scenarios": 64,
+  "enhancement_methods": [
+    "query_variations",
+    "negative_sampling",
+    "cross_category_sampling",
+    "hard_negative_generation"
+  ],
+  "summary": {
+    "total_samples": 1914,
+    "train_samples": 1339,
+    "val_samples": 287,
+    "test_samples": 288,
+    "positive_samples": 216,
+    "negative_samples": 1698,
+    "sample_types": {
+      "positive": 216,
+      "negative": 1080,
+      "cross_category_negative": 550,
+      "hard_negative": 68
+    },
+    "categories_covered": 20
+  }
+}

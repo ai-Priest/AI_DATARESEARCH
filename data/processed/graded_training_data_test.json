@@ -1,0 +1,716 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "created_date": "2025-06-22T22:40:54.000154",
+    "total_samples": 100,
+    "graded_levels": [
+      0.0,
+      0.3,
+      0.7,
+      1.0
+    ],
+    "scoring_method": "multi_signal_graded"
+  },
+  "training_samples": [
+    {
+      "query": "traffic congestion singapore",
+      "dataset_id": "d_eb1c7c0c9ee013f9be42cc8abf523326",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "bus routes and schedules",
+      "dataset_id": "d_bdd2c54fa27bdce7643ed905b9e173ab",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "public transport usage",
+      "dataset_id": "d_a166bc31ce8cb823b22467fb0798dff7",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "public transport usage",
+      "dataset_id": "singstat_trade",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "health outcomes data",
+      "dataset_id": "wb_1.2.HCount.2.5usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "traffic congestion woodlands",
+      "dataset_id": "wb_1.3_ACCESS.ELECTRICITY.URBAN",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "medical services woodlands",
+      "dataset_id": "wb_1.0.PSev.2.5usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "traffic congestion jurong",
+      "dataset_id": "singstat_population",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "housing prices in west",
+      "dataset_id": "onemap_search",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "housing affordability statistics",
+      "dataset_id": "wb_1.2.HCount.Mid10to50",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "healthcare utilization data",
+      "dataset_id": "lta_carpark_availability",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "public transport usage",
+      "dataset_id": "wb_1.1.HCount.Ofcl",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "healthcare utilization data",
+      "dataset_id": "wb_1.0.PGap.Poor4uds",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "economic indicators",
+      "dataset_id": "d_ae458e073934907b5613b227e6cf5b37",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "GDP growth 2021",
+      "dataset_id": "lta_bus_services",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "bus routes and schedules",
+      "dataset_id": "d_2c0cee49fae1ff6e3e8b30594ba52f0f",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "housing prices in west",
+      "dataset_id": "d_ae458e073934907b5613b227e6cf5b37",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "HDB resale data 2022",
+      "dataset_id": "wb_NY.GDP.MKTP.CD",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "disease prevalence singapore",
+      "dataset_id": "d_40bde6cd8cf3ec96bd18c10739b269a2",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "bus routes and schedules",
+      "dataset_id": "lta_erp_rates",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "disease prevalence singapore",
+      "dataset_id": "wb_1.1.PSev.1.90usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "trade data singapore",
+      "dataset_id": "onemap_reverse_geocode_auth",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "disease prevalence singapore",
+      "dataset_id": "d_de9a32cc338823ee9d58c3b7576fa267",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "medical services tampines",
+      "dataset_id": "d_b08cff1811e8716643614c772f48ba7f",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "healthcare utilization data",
+      "dataset_id": "d_a166bc31ce8cb823b22467fb0798dff7",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "healthcare utilization data",
+      "dataset_id": "d_66160334994304e9a21d42ae2e32a5c7",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "rental prices woodlands",
+      "dataset_id": "wb_EN.ATM.CO2E.PC",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "housing affordability statistics",
+      "dataset_id": "d_642550222dea9b6eba88bd21bdaca1fa",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "MRT ridership data",
+      "dataset_id": "wb_1000000",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "disease prevalence singapore",
+      "dataset_id": "wb_1.2.PSev.1.90usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "property market trends",
+      "dataset_id": "wb_1.2_ACCESS.ELECTRICITY.RURAL",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "medical services tampines",
+      "dataset_id": "d_b672ba5cd181fd699e5463e03ca5f3d3",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "employment statistics singapore",
+      "dataset_id": "singstat_inflation",
+      "relevance_score": 0.3,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "HDB resale data 2021",
+      "dataset_id": "wb_SH.DYN.MORT",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "property market trends",
+      "dataset_id": "d_ae458e073934907b5613b227e6cf5b37",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "rental prices singapore",
+      "dataset_id": "singstat_gdp",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "rental prices jurong",
+      "dataset_id": "wb_1.0.PSev.2.5usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "transport statistics 2022",
+      "dataset_id": "d_f71b449b4b43a69b5ecfe411b440d249",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "HDB resale data 2024",
+      "dataset_id": "wb_1.0.PGap.1.90usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "rental prices jurong",
+      "dataset_id": "wb_1.2.PGap.1.90usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "MRT ridership data",
+      "dataset_id": "singstat_inflation",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "healthcare utilization data",
+      "dataset_id": "lta_carpark_availability",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "housing prices in singapore",
+      "dataset_id": "d_8bdb83a1e333289738604756b1a291f9",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "hospital statistics 2023",
+      "dataset_id": "d_a968dbcd96c27c6cd3b9a10e440bfe42",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "bus routes and schedules",
+      "dataset_id": "wb_1.1_YOUTH.LITERACY.RATE",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "employment statistics singapore",
+      "dataset_id": "d_642550222dea9b6eba88bd21bdaca1fa",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "HDB resale data 2023",
+      "dataset_id": "onemap_routing_auth",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "bus routes and schedules",
+      "dataset_id": "d_5334f6305b1bc4abb9a62083ff5357b6",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "MRT ridership data",
+      "dataset_id": "d_b08cff1811e8716643614c772f48ba7f",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "public transport usage",
+      "dataset_id": "d_56afee769145854de7f7dce2351f08cb",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "housing affordability statistics",
+      "dataset_id": "lta_bus_routes",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "inflation rates 2024",
+      "dataset_id": "lta_carpark_availability",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "disease prevalence singapore",
+      "dataset_id": "wb_1.1.PGap.1.90usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "HDB resale data 2024",
+      "dataset_id": "d_bdd2c54fa27bdce7643ed905b9e173ab",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "MRT ridership data",
+      "dataset_id": "wb_1.2.HCount.Poor4uds",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "traffic congestion cbd",
+      "dataset_id": "imf_DS-GFSIBS2016",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "inflation rates 2022",
+      "dataset_id": "d_100696c30736d0db2992a2fdeaea6a10",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "GDP growth 2021",
+      "dataset_id": "imf_DS-GFSE2016",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "bus routes and schedules",
+      "dataset_id": "d_a968dbcd96c27c6cd3b9a10e440bfe42",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "housing prices in singapore",
+      "dataset_id": "d_66160334994304e9a21d42ae2e32a5c7",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "HDB resale data 2023",
+      "dataset_id": "wb_NY.GDP.MKTP.CD",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "medical services cbd",
+      "dataset_id": "d_b7df50048b00ad506005bb99de023728",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "property market trends",
+      "dataset_id": "imf_DS-BOP_2017M11",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "health outcomes data",
+      "dataset_id": "imf_DS-FM201510",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "rental prices singapore",
+      "dataset_id": "singstat_population",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "traffic congestion woodlands",
+      "dataset_id": "d_e34261c5ccace716132b55a5b02ebb1f",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "inflation rates 2021",
+      "dataset_id": "wb_1.1.PGap.1.90usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "housing prices in singapore",
+      "dataset_id": "d_9fb538a0a39b080c2b3c985ab60e875d",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "bus routes and schedules",
+      "dataset_id": "d_72f8e05d45477a7af0c089ad970519da",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "GDP growth 2024",
+      "dataset_id": "wb_1.2.PGap.1.90usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "hospital statistics 2024",
+      "dataset_id": "wb_1.1.HCount.Mid10to50",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "employment statistics singapore",
+      "dataset_id": "d_0fb1c8d8f8e4f7733e0486837e54a0c7",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "MRT ridership data",
+      "dataset_id": "d_e34261c5ccace716132b55a5b02ebb1f",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "GDP growth 2023",
+      "dataset_id": "wb_1.1.PGap.Poor4uds",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "rental prices cbd",
+      "dataset_id": "wb_1.1.PSev.Poor4uds",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "transport statistics 2021",
+      "dataset_id": "wb_100000",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "healthcare utilization data",
+      "dataset_id": "wb_SH.DYN.MORT",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "health outcomes data",
+      "dataset_id": "wb_1.1.HCount.Ofcl",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "rental prices jurong",
+      "dataset_id": "sdg_7_1_1",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "bus routes and schedules",
+      "dataset_id": "wb_1.1_YOUTH.LITERACY.RATE",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "trade data singapore",
+      "dataset_id": "d_80ece7b4cf25e843592ef0431f96f6e2",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "property market trends",
+      "dataset_id": "oecd_SNA_TABLE1",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "rental prices tampines",
+      "dataset_id": "imf_DS-DOT_2020Q1",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "housing affordability statistics",
+      "dataset_id": "d_c7652191d32fef35e63680c278fe2972",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "MRT ridership data",
+      "dataset_id": "wb_1.2.HCount.1.90usd",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "employment statistics singapore",
+      "dataset_id": "oecd_QNA",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "medical services cbd",
+      "dataset_id": "d_b08cff1811e8716643614c772f48ba7f",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "economic indicators",
+      "dataset_id": "d_8ce983e6b90d94010dbcd10a24ded26e",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "healthcare utilization data",
+      "dataset_id": "wb_SE.ADT.LITR.ZS",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "hospital statistics 2023",
+      "dataset_id": "oecd_ELS",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "employment statistics singapore",
+      "dataset_id": "onemap_coordinate_converter_auth",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "HDB resale data 2021",
+      "dataset_id": "wb_1.0.HCount.Vul4to10",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "economic indicators",
+      "dataset_id": "d_b2778a9e4532d57cb9201c68cb5f2238",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "economics"
+    },
+    {
+      "query": "property market trends",
+      "dataset_id": "d_de9a32cc338823ee9d58c3b7576fa267",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "transport statistics 2022",
+      "dataset_id": "wb_1.1.HCount.Ofcl",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "transport statistics 2021",
+      "dataset_id": "wb_1.1_TOTAL.FINAL.ENERGY.CONSUM",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    },
+    {
+      "query": "HDB resale data 2021",
+      "dataset_id": "d_b1662d28c2340182b526c480a9e5b33e",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "housing"
+    },
+    {
+      "query": "hospital statistics 2022",
+      "dataset_id": "wb_SI.POV.DDAY",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "health outcomes data",
+      "dataset_id": "d_100696c30736d0db2992a2fdeaea6a10",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "healthcare"
+    },
+    {
+      "query": "transport statistics 2023",
+      "dataset_id": "wb_1.2.PGap.Poor4uds",
+      "relevance_score": 0.0,
+      "query_type": "generated",
+      "domain": "transportation"
+    }
+  ]
+}
