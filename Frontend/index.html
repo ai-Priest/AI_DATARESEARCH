@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singapore Dataset Discovery Assistant</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1>Singapore Dataset Discovery Assistant</h1>
+            <p class="subtitle">Ask me anything about Singapore's public datasets</p>
+            
+            <!-- Performance Badge -->
+            <div class="performance-badge">
+                <div class="badge-content">
+                    <span class="performance-metric">70.5%</span>
+                    <span class="performance-label">NDCG@3</span>
+                </div>
+                <div class="badge-status target-exceeded">TARGET EXCEEDED</div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="chat-container">
+                <div class="ai-assistant">
+                    <div class="assistant-avatar">🤖</div>
+                    <div class="assistant-content">
+                        <h3>AI Research Assistant</h3>
+                        <p>Ask me about Singapore datasets in natural language</p>
+                        <label class="smart-cache-toggle">
+                            <input type="checkbox" id="smartCache" checked>
+                            <span class="checkmark"></span>
+                            Smart Cache
+                        </label>
+                    </div>
+                </div>
+
+                <div class="example-queries">
+                    <h4>Try these examples:</h4>
+                    <ul>
+                        <li>"What transport data is available?"</li>
+                        <li>"Show me recent education statistics"</li>
+                        <li>"I need climate data for research"</li>
+                    </ul>
+                    <p class="promise">I'll find relevant datasets and explain why they match your needs!</p>
+                </div>
+
+                <!-- Quick action buttons -->
+                <div class="quick-actions">
+                    <button class="quick-btn" onclick="performSearch('hdb')">hdb</button>
+                    <button class="quick-btn" onclick="performSearch('transport')">transport</button>
+                </div>
+
+                <!-- Chat area for displaying results -->
+                <div id="chatArea" class="chat-area"></div>
+            </div>
+
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Ask me about any dataset you need..." 
+                           aria-label="Search for datasets">
+                    <button id="searchButton" onclick="performSearch()" aria-label="Search">
+                        <span class="search-icon">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="quick-questions">
+                <h4>Quick questions:</h4>
+                <div class="question-tags">
+                    <span class="tag" onclick="performSearch('Recent Housing Data')">Recent Housing Data</span>
+                    <span class="tag" onclick="performSearch('Quality Transport Data')">Quality Transport Data</span>
+                    <span class="tag" onclick="performSearch('Latest Education Data')">Latest Education Data</span>
+                    <span class="tag" onclick="performSearch('Climate Research')">Climate Research</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

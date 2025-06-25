@@ -3,15 +3,16 @@ AI-Powered Research Assistant
 Orchestrates neural recommendations with intelligent explanation and methodology guidance
 """
 import asyncio
-import time
 import json
-from typing import Dict, List, Optional, Any, Tuple
 import logging
+import time
 from datetime import datetime
+from typing import Any, Dict, List, Optional, Tuple
 
+from .conversation_manager import ConversationManager
 from .llm_clients import LLMManager
 from .neural_ai_bridge import NeuralAIBridge
-from .conversation_manager import ConversationManager
+from .web_search_engine import WebSearchEngine
 
 logger = logging.getLogger(__name__)
 
@@ -27,6 +28,7 @@ class ResearchAssistant:
         self.llm_manager = LLMManager(config)
         self.neural_bridge = NeuralAIBridge(config)
         self.conversation_manager = ConversationManager(config)
+        self.web_search_engine = WebSearchEngine(config)
         self.response_config = config.get('response_settings', {})
         self.research_config = config.get('research_settings', {})
         
@@ -57,11 +59,14 @@ class ResearchAssistant:
             session_id = session['session_id']
         
         try:
-            # Stage 1: Get high-performance neural recommendations
-            neural_results = await self._get_neural_recommendations(query, context)
+            # Stage 1: Parallel processing - Neural recommendations + Web search
+            neural_task = self._get_neural_recommendations(query, context)
+            web_search_task = self._get_web_search_results(query, context)
+            
+            neural_results, web_results = await asyncio.gather(neural_task, web_search_task)
             
             # Stage 2: Enhance with AI intelligence
-            ai_enhancement = await self._enhance_with_ai(query, neural_results, context)
+            ai_enhancement = await self._enhance_with_ai(query, neural_results, web_results, context)
             
             # Stage 3: Add research methodology
             methodology = await self._generate_methodology(query, neural_results, ai_enhancement, context)
@@ -73,6 +78,7 @@ class ResearchAssistant:
             response = self._build_response(
                 query=query,
                 neural_results=neural_results,
+                web_results=web_results,
                 ai_enhancement=ai_enhancement,
                 methodology=methodology,
                 singapore_context=singapore_context,
@@ -90,7 +96,7 @@ class ResearchAssistant:
             
         except Exception as e:
             logger.error(f"Error processing query: {str(e)}")
-            return self._build_error_response(query, str(e), session_id)
+            return self._build_error_response(query, str(e), session_id, time.time() - start_time)
     
     async def _get_neural_recommendations(
         self,
@@ -114,16 +120,32 @@ class ResearchAssistant:
             logger.error(f"Neural recommendation error: {str(e)}")
             raise
     
+    async def _get_web_search_results(
+        self,
+        query: str,
+        context: Optional[Dict[str, Any]] = None
+    ) -> List[Dict[str, Any]]:
+        """Get web search results for additional data sources"""
+        try:
+            web_results = await self.web_search_engine.search_web(query, context)
+            logger.info(f"🌐 Found {len(web_results)} web search results")
+            return web_results
+            
+        except Exception as e:
+            logger.error(f"Web search error: {str(e)}")
+            return []
+    
     async def _enhance_with_ai(
         self,
         query: str,
         neural_results: Dict[str, Any],
+        web_results: List[Dict[str, Any]],
         context: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """Enhance neural recommendations with AI intelligence"""
         
-        # Build enhancement prompt
-        prompt = self._build_enhancement_prompt(query, neural_results, context)
+        # Build enhancement prompt including web results
+        prompt = self._build_enhancement_prompt(query, neural_results, web_results, context)
         
         # Use MiniMax for research enhancement (primary)
         try:
@@ -154,6 +176,7 @@ class ResearchAssistant:
         self,
         query: str,
         neural_results: Dict[str, Any],
+        web_results: List[Dict[str, Any]],
         context: Optional[Dict[str, Any]] = None
     ) -> str:
         """Build prompt for AI enhancement"""
@@ -183,9 +206,24 @@ Top Datasets:
    - Neural Similarity: {ranking.get('neural_similarity', 0)*100:.0f}%
 """
         
+        # Add web search results
+        if web_results:
+            prompt += f"""
+
+ADDITIONAL WEB SEARCH RESULTS ({len(web_results)} found):
+"""
+            for i, result in enumerate(web_results[:5], 1):
+                prompt += f"""
+{i}. {result.get('title', 'Unknown')}
+   - URL: {result.get('url', 'N/A')}
+   - Source: {result.get('source', 'web')}
+   - Type: {result.get('type', 'general')}
+   - Description: {result.get('description', 'No description')[:100]}...
+"""
+        
         prompt += """
 
-TASK: Enhance these high-quality neural recommendations with research intelligence.
+TASK: Enhance these high-quality neural recommendations with research intelligence and web search insights.
 
 1. DATASET RELATIONSHIPS & SYNERGIES:
    - Explain how these datasets complement each other
@@ -418,6 +456,7 @@ Be concise and practical.
         self,
         query: str,
         neural_results: Dict[str, Any],
+        web_results: List[Dict[str, Any]],
         ai_enhancement: Dict[str, Any],
         methodology: Dict[str, Any],
         singapore_context: Dict[str, Any],
@@ -445,6 +484,19 @@ Be concise and practical.
                     )
                 }
                 for rec in neural_results.get('top_recommendations', [])
+            ],
+            
+            # Web search results for additional sources
+            "web_sources": [
+                {
+                    "title": result.get('title', ''),
+                    "url": result.get('url', ''),
+                    "description": result.get('description', ''),
+                    "source": result.get('source', ''),
+                    "type": result.get('type', ''),
+                    "relevance_score": result.get('relevance_score', 0)
+                }
+                for result in web_results
             ],
             
             # AI enhancements
@@ -487,8 +539,10 @@ Be concise and practical.
         dataset_title = recommendation.get('dataset', {}).get('title', '')
         
         for explanation in ai_explanations:
-            if dataset_title.lower() in explanation.lower():
-                return explanation
+            # Handle case where explanation might not be a string
+            explanation_text = str(explanation) if explanation is not None else ''
+            if dataset_title.lower() in explanation_text.lower():
+                return explanation_text
         
         # Fallback to neural reasoning
         return recommendation.get('why_recommended', 'Highly ranked by neural model')
@@ -527,13 +581,15 @@ Be concise and practical.
         self,
         query: str,
         error: str,
-        session_id: str
+        session_id: str,
+        processing_time: float = 0.0
     ) -> Dict[str, Any]:
         """Build error response"""
         return {
             "query": query,
             "session_id": session_id,
             "timestamp": datetime.now().isoformat(),
+            "processing_time": round(processing_time, 3),
             "error": error,
             "recommendations": [],
             "suggestion": "Please try rephrasing your query or contact support if the issue persists."

@@ -4,18 +4,20 @@ Implements response time optimization and parallel LLM calls for sub-10s perform
 """
 
 import asyncio
-import time
-import logging
-from typing import Dict, List, Optional, Any
-from concurrent.futures import as_completed
 import json
+import logging
+import time
+from concurrent.futures import as_completed
 from datetime import datetime
+from typing import Any, Dict, List, Optional
 
 from .ai_config_manager import AIConfigManager
-from .llm_clients import LLMManager
-from .neural_ai_bridge import NeuralAIBridge
 from .conversation_manager import ConversationManager
 from .evaluation_metrics import EvaluationMetrics
+from .llm_clients import LLMManager
+from .neural_ai_bridge import NeuralAIBridge
+from .web_search_engine import WebSearchEngine
+from .url_validator import url_validator
 
 logger = logging.getLogger(__name__)
 
@@ -32,14 +34,15 @@ class OptimizedResearchAssistant:
         # Initialize components
         self.llm_manager = LLMManager(config)
         self.neural_bridge = NeuralAIBridge(config)
+        self.web_search_engine = WebSearchEngine(config)
         self.conversation_manager = ConversationManager(config)
         self.evaluation_metrics = EvaluationMetrics(config)
         
         # Performance configuration
         self.response_config = self.ai_pipeline_config.get('response_settings', {})
-        self.max_response_time = self.response_config.get('max_response_time', 8.0)  # Reduced target
-        self.neural_timeout = self.response_config.get('neural_inference_timeout', 0.5)
-        self.llm_timeout = self.response_config.get('llm_enhancement_timeout', 7.0)
+        self.max_response_time = self.response_config.get('max_response_time', 5.0)  # Further reduced
+        self.neural_timeout = self.response_config.get('neural_inference_timeout', 0.3)
+        self.llm_timeout = self.response_config.get('llm_enhancement_timeout', 4.0)  # Much shorter
         
         # Parallel processing settings
         self.enable_parallel_processing = True
@@ -71,20 +74,22 @@ class OptimizedResearchAssistant:
                 session = self.conversation_manager.create_session()
                 session_id = session['session_id']
             
-            # Phase 1: Neural inference (fast, parallel with LLM prep)
+            # Phase 1: Neural inference + Web search (parallel execution)
             neural_task = asyncio.create_task(self._get_neural_recommendations(query))
+            web_search_task = asyncio.create_task(self._get_web_search_results(query))
             
             # Phase 2: Prepare LLM tasks (parallel execution)
             llm_tasks = self._prepare_llm_tasks(query)
             
-            # Phase 3: Execute neural + LLM in parallel
-            results = await self._execute_parallel_processing(neural_task, llm_tasks, start_time)
+            # Phase 3: Execute neural + web search + LLM in parallel
+            results = await self._execute_parallel_processing(neural_task, web_search_task, llm_tasks, start_time)
             
             # Phase 4: Combine and finalize response
             response = await self._finalize_response(
                 query=query,
                 session_id=session_id,
                 neural_results=results['neural'],
+                web_search_results=results['web_search'],
                 llm_results=results['llm'],
                 start_time=start_time,
                 **kwargs
@@ -117,31 +122,47 @@ class OptimizedResearchAssistant:
             logger.warning(f"Neural inference error: {e}")
             return self._create_fallback_neural_response(query)
     
+    async def _get_web_search_results(self, query: str) -> List[Dict[str, Any]]:
+        """Get web search results with timeout."""
+        try:
+            web_timeout = self.config.get('web_search', {}).get('timeout', 10)
+            web_results = await asyncio.wait_for(
+                self.web_search_engine.search_web(query),
+                timeout=web_timeout
+            )
+            return web_results
+        except asyncio.TimeoutError:
+            logger.warning(f"Web search timeout ({web_timeout}s)")
+            return []
+        except Exception as e:
+            logger.warning(f"Web search error: {e}")
+            return []
+    
     def _prepare_llm_tasks(self, query: str) -> List[asyncio.Task]:
         """Prepare LLM tasks for parallel execution."""
         tasks = []
         
-        # Task 1: Generate explanations (high priority)
+        # Task 1: Generate explanations (high priority) - much shorter timeout
         if self.response_config.get('include_explanations', True):
             explanation_prompt = self._create_explanation_prompt(query)
             task = asyncio.create_task(
-                self._llm_call_with_timeout('explanation', explanation_prompt, timeout=3.0)
+                self._llm_call_with_timeout('explanation', explanation_prompt, timeout=1.5)
             )
             tasks.append(task)
         
-        # Task 2: Generate methodology (medium priority)
+        # Task 2: Generate methodology (medium priority) - shorter timeout
         if self.response_config.get('include_methodology', True):
             methodology_prompt = self._create_methodology_prompt(query)
             task = asyncio.create_task(
-                self._llm_call_with_timeout('methodology', methodology_prompt, timeout=4.0)
+                self._llm_call_with_timeout('methodology', methodology_prompt, timeout=2.0)
             )
             tasks.append(task)
         
-        # Task 3: Singapore context (low priority)
+        # Task 3: Singapore context (low priority) - shorter timeout
         if self.response_config.get('include_singapore_context', True):
             context_prompt = self._create_context_prompt(query)
             task = asyncio.create_task(
-                self._llm_call_with_timeout('context', context_prompt, timeout=5.0)
+                self._llm_call_with_timeout('context', context_prompt, timeout=2.5)
             )
             tasks.append(task)
         
@@ -149,13 +170,14 @@ class OptimizedResearchAssistant:
     
     async def _execute_parallel_processing(self, 
                                          neural_task: asyncio.Task,
+                                         web_search_task: asyncio.Task,
                                          llm_tasks: List[asyncio.Task],
                                          start_time: float) -> Dict[str, Any]:
-        """Execute neural and LLM tasks in parallel with time management."""
-        results = {'neural': None, 'llm': {}}
+        """Execute neural, web search, and LLM tasks in parallel with time management."""
+        results = {'neural': None, 'web_search': [], 'llm': {}}
         
         # Execute all tasks concurrently
-        all_tasks = [neural_task] + llm_tasks
+        all_tasks = [neural_task, web_search_task] + llm_tasks
         
         try:
             # Wait for tasks with overall timeout
@@ -167,8 +189,9 @@ class OptimizedResearchAssistant:
             
             # Process results
             results['neural'] = completed_tasks[0] if not isinstance(completed_tasks[0], Exception) else None
+            results['web_search'] = completed_tasks[1] if not isinstance(completed_tasks[1], Exception) else []
             
-            for i, task_result in enumerate(completed_tasks[1:]):
+            for i, task_result in enumerate(completed_tasks[2:]):
                 if not isinstance(task_result, Exception) and task_result:
                     task_type = ['explanation', 'methodology', 'context'][i]
                     results['llm'][task_type] = task_result
@@ -176,20 +199,40 @@ class OptimizedResearchAssistant:
         except asyncio.TimeoutError:
             logger.warning("Parallel processing timeout - using partial results")
             
-            # Get any completed results
-            if neural_task.done() and not neural_task.exception():
-                try:
+            # Cancel any remaining tasks to prevent CancelledError
+            for task in all_tasks:
+                if not task.done():
+                    task.cancel()
+            
+            # Wait a bit for cancellations to complete
+            try:
+                await asyncio.wait_for(asyncio.gather(*all_tasks, return_exceptions=True), timeout=0.1)
+            except:
+                pass  # Ignore cancellation errors
+            
+            # Get any completed results safely
+            try:
+                if neural_task.done() and not neural_task.cancelled() and not neural_task.exception():
                     results['neural'] = neural_task.result()
-                except Exception as e:
-                    logger.warning(f"Neural task error: {e}")
+            except Exception as e:
+                logger.warning(f"Neural task error: {e}")
                 
             for i, task in enumerate(llm_tasks):
-                if task.done() and not task.exception():
-                    try:
+                try:
+                    if task.done() and not task.cancelled() and not task.exception():
                         task_type = ['explanation', 'methodology', 'context'][i]
                         results['llm'][task_type] = task.result()
-                    except Exception as e:
-                        logger.warning(f"LLM task {i} error: {e}")
+                except Exception as e:
+                    logger.warning(f"LLM task {i} error: {e}")
+        
+        except Exception as e:
+            logger.error(f"Parallel processing critical error: {e}")
+            # Ensure we have at least neural results
+            try:
+                if not results.get('neural') and neural_task.done() and not neural_task.cancelled():
+                    results['neural'] = neural_task.result()
+            except Exception:
+                pass
         
         return results
     
@@ -221,6 +264,7 @@ class OptimizedResearchAssistant:
                                query: str,
                                session_id: str,
                                neural_results: Optional[Dict],
+                               web_search_results: List[Dict[str, Any]],
                                llm_results: Dict[str, Any],
                                start_time: float,
                                **kwargs) -> Dict[str, Any]:
@@ -235,12 +279,15 @@ class OptimizedResearchAssistant:
                     rec, llm_results.get('explanation')
                 )
                 
+                # Validate and correct dataset URL
+                validated_dataset = await url_validator.validate_and_correct_dataset(rec)
+                
                 recommendations.append({
-                    'dataset': rec,
+                    'dataset': validated_dataset,
                     'confidence': rec.get('confidence', 0.5),
                     'explanation': explanation,
                     'source': 'neural_optimized',
-                    'methodology': llm_results.get('methodology', {}).get('content', 'Neural ranking analysis')
+                    'methodology': llm_results.get('methodology', {}).get('content', 'Neural ranking analysis') if llm_results.get('methodology') else 'Neural ranking analysis'
                 })
         
         # Create performance metrics
@@ -260,7 +307,7 @@ class OptimizedResearchAssistant:
             'session_id': session_id,
             'can_refine': True,
             'suggested_refinements': self._generate_quick_refinements(query),
-            'singapore_context': llm_results.get('context', {}).get('content', 'Singapore government data prioritized')
+            'singapore_context': llm_results.get('context', {}).get('content', 'Singapore government data prioritized') if llm_results.get('context') else 'Singapore government data prioritized'
         }
         
         # Add to conversation history
@@ -277,6 +324,17 @@ class OptimizedResearchAssistant:
             'session_id': session_id,
             'query': query,
             'recommendations': recommendations,
+            'web_sources': [
+                {
+                    'title': result.get('title', ''),
+                    'url': result.get('url', ''),
+                    'description': result.get('description', ''),
+                    'source': result.get('source', ''),
+                    'type': result.get('type', ''),
+                    'relevance_score': result.get('relevance_score', 0)
+                }
+                for result in web_search_results
+            ],
             'conversation': conversation,
             'performance': performance,
             'processing_time': processing_time,
@@ -351,20 +409,53 @@ class OptimizedResearchAssistant:
                                       error: str, 
                                       processing_time: float) -> Dict[str, Any]:
         """Create fallback response when main processing fails."""
-        return {
-            'session_id': session_id,
-            'query': query,
-            'recommendations': [],
-            'error': 'Processing timeout or error',
-            'fallback': True,
-            'processing_time': processing_time,
-            'performance': {
+        try:
+            # Try to get neural recommendations as fallback
+            neural_results = await self.neural_bridge.get_neural_recommendations(query, top_k=5)
+            datasets = neural_results.get('recommendations', [])
+            
+            return {
+                'session_id': session_id,
+                'query': query,
+                'response': f"Found {len(datasets)} datasets for '{query}'. AI enhancement unavailable due to timeout, showing neural search results.",
+                'recommendations': datasets,  # Changed from 'datasets' to 'recommendations'
+                'web_sources': [],  # Empty web sources since fallback
+                'fallback': True,
                 'processing_time': processing_time,
-                'target_time': self.max_response_time,
-                'achieved_target': False,
-                'error': error
+                'metadata': {
+                    'from_cache': False,
+                    'fallback_mode': True,
+                    'ai_enhancement': 'unavailable'
+                },
+                'performance': {
+                    'processing_time': processing_time,
+                    'target_time': self.max_response_time,
+                    'achieved_target': False,
+                    'error': error
+                }
             }
-        }
+        except Exception as fallback_error:
+            logger.error(f"Fallback also failed: {fallback_error}")
+            return {
+                'session_id': session_id,
+                'query': query,
+                'response': "Search temporarily unavailable. Please try the standard search mode.",
+                'recommendations': [],  # Changed from 'datasets' to 'recommendations'
+                'web_sources': [],  # Empty web sources since fallback
+                'fallback': True,
+                'processing_time': processing_time,
+                'metadata': {
+                    'from_cache': False,
+                    'fallback_mode': True,
+                    'ai_enhancement': 'unavailable'
+                },
+                'performance': {
+                    'processing_time': processing_time,
+                    'target_time': self.max_response_time,
+                    'achieved_target': False,
+                    'error': f"Both main and fallback failed: {error}, {fallback_error}"
+                }
+            }
     
     def _create_fallback_neural_response(self, query: str) -> Dict[str, Any]:
         """Create fallback neural response."""
