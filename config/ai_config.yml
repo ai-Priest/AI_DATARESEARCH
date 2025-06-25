@@ -39,7 +39,7 @@ llm_providers:
       max_tokens: 2048  # Optimized for faster response
       temperature: 0.6  # Slightly more focused
       priority: 1  # Make Claude primary
-      timeout: 15  # Reduced timeout for faster fallback
+      timeout: 30  # Increased timeout to prevent hanging
       retry_attempts: 2
       capabilities:
         - comprehensive_analysis
@@ -112,9 +112,9 @@ ai_pipeline:
   
   # Response Configuration
   response_settings:
-    max_response_time: 3.0  # seconds total
-    neural_inference_timeout: 0.5  # seconds for neural model
-    llm_enhancement_timeout: 2.5  # seconds for LLM
+    max_response_time: 45.0  # seconds total - increased to prevent hanging
+    neural_inference_timeout: 2.0  # seconds for neural model
+    llm_enhancement_timeout: 30.0  # seconds for LLM - increased to prevent hanging
     include_explanations: true
     include_methodology: true
     include_singapore_context: true
@@ -171,3 +171,26 @@ ai_pipeline:
     max_size: 1000  # entries
     cache_neural_results: true
     cache_llm_responses: false  # fresh responses for each query
+
+# Web Search Configuration
+web_search:
+  enabled: true
+  timeout: 10  # seconds
+  max_results: 5
+  user_agent: "AI Dataset Research Assistant/2.0"
+  singapore_focus: true  # prioritize Singapore sources
+  search_strategies:
+    - "duckduckgo"
+    - "academic_sources" 
+    - "government_portals"
+  priority_domains:
+    - "data.gov.sg"
+    - "singstat.gov.sg"
+    - "lta.gov.sg"
+    - "onemap.sg"
+    - "data.gov"
+    - "kaggle.com"
+    - "github.com"
+    - "zenodo.org"
+    - "figshare.com"
+    - "datacite.org"

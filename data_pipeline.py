@@ -1,11 +1,16 @@
 # data_pipeline.py - Configuration-Driven Data Pipeline Orchestrator
+import json
+import logging
 import sys
 import time
-import yaml
 from pathlib import Path
-import logging
-import json
 from typing import Dict, List, Tuple
+
+import yaml
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Setup logging
 logging.basicConfig(
@@ -93,9 +98,9 @@ class ConfigurableDataPipeline:
 
         try:
             # Import extraction module (handle filename with number prefix)
-            import sys
-            import os
             import importlib.util
+            import os
+            import sys
 
             # Add current directory to path
             current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -163,9 +168,9 @@ class ConfigurableDataPipeline:
 
         try:
             # Import analysis modules (handle filename with number prefix)
-            import sys
-            import os
             import importlib.util
+            import os
+            import sys
 
             # Add current directory to path
             current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -289,9 +294,9 @@ class ConfigurableDataPipeline:
 
         try:
             # Import reporting module (handle filename with number prefix)
-            import sys
-            import os
             import importlib.util
+            import os
+            import sys
 
             # Add current directory to path
             current_dir = os.path.dirname(os.path.abspath(__file__))

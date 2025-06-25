@@ -2,14 +2,15 @@
 AI Pipeline - Main entry point for AI-enhanced dataset research
 Orchestrates neural recommendations with intelligent LLM enhancement
 """
-import asyncio
 import argparse
+import asyncio
+import json
 import logging
 import sys
-from pathlib import Path
 import time
-from typing import Optional, Dict, Any
-import json
+from pathlib import Path
+from typing import Any, Dict, Optional
+
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -18,10 +19,11 @@ load_dotenv()
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from src.ai.ai_config_manager import AIConfigManager
-from src.ai.research_assistant import ResearchAssistant
-from src.ai.api_server import app
 import uvicorn
+
+from src.ai.ai_config_manager import AIConfigManager
+from src.ai.api_server import app
+from src.ai.research_assistant import ResearchAssistant
 
 # Configure logging
 logging.basicConfig(
