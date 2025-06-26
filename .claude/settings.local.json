@@ -40,7 +40,8 @@
       "Bash(gtimeout:*)",
       "Bash(git rm:*)",
       "Bash(git commit:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }

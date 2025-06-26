@@ -47,5 +47,12 @@ logs/
 CLAUDE.md
 pyproject.toml
 
+# Package manager files
+uv.lock
+.python-version
+
+# Claude Code specific files
+.claude/
+
 # Folders to exclude
 for Claude/
