@@ -1,11 +1,12 @@
+import logging
+import math
+from typing import Any, Dict, List, Optional, Tuple
+
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn import MultiheadAttention, TransformerEncoder, TransformerEncoderLayer
-import numpy as np
-from typing import Dict, List, Tuple, Optional, Any
-import logging
-import math
 
 logger = logging.getLogger(__name__)
 

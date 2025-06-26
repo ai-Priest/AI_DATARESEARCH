@@ -14,7 +14,7 @@ Usage:
     python main.py --frontend   # Start only frontend
 
 Features:
-- 70.5% NDCG@3 performance (TARGET EXCEEDED)
+- 72.2% NDCG@3 performance (TARGET EXCEEDED)
 - Real-time dataset search and recommendations
 - Singapore government data integration
 - Intelligent caching and optimization
@@ -121,7 +121,7 @@ def print_banner():
 ║                                                              ║
 ║    🇸🇬 Singapore Dataset Discovery Assistant 🇸🇬               ║
 ║                                                              ║
-║    🎯 Performance: 70.5% NDCG@3 (TARGET EXCEEDED)            ║
+║    🎯 Performance: 72.2% NDCG@3 (TARGET EXCEEDED)            ║
 ║    🚀 AI-Powered Dataset Search & Recommendations            ║
 ║    📊 Real Singapore Government Data Integration             ║
 ║                                                              ║

@@ -1,6 +1,6 @@
 {
   "analysis_metadata": {
-    "analysis_timestamp": "2025-06-21T20:26:48.007643",
+    "analysis_timestamp": "2025-06-26T05:19:23.310035",
     "total_datasets_analyzed": 143,
     "configuration_used": {
       "output_base_path": "outputs/EDA",
@@ -50,7 +50,7 @@
   "collection_overview": {
     "collection_metadata": {
       "total_datasets": 143,
-      "analysis_timestamp": "2025-06-21T20:26:45.795325",
+      "analysis_timestamp": "2025-06-26T05:19:21.042572",
       "data_sources": 8,
       "categories_covered": 8
     },
@@ -102,9 +102,9 @@
     },
     "quality_analysis": {
       "overall_statistics": {
-        "mean_quality": 0.7907342657342659,
+        "mean_quality": 0.7896853146853148,
         "median_quality": 0.825,
-        "std_quality": 0.19263915588729913
+        "std_quality": 0.19189860951064389
       },
       "quality_distribution": {
         "high_quality": 99,
@@ -123,13 +123,13 @@
         "SingStat": 0.6,
         "UN SDG": 0.5499999999999999,
         "World Bank": 0.812,
-        "data.gov.sg": 0.9740000000000001
+        "data.gov.sg": 0.971
       },
       "quality_by_category": {
         "economic_development": 0.812,
         "economic_finance": 0.6900000000000001,
         "economic_statistics": 0.6849999999999999,
-        "general": 0.9740000000000001,
+        "general": 0.971,
         "geospatial": 0.4125,
         "statistics": 0.6,
         "sustainable_development": 0.5499999999999999,
@@ -163,24 +163,24 @@
   "keyword_intelligence": {
     "keyword_extraction_summary": {
       "total_unique_keywords": 42,
-      "avg_keywords_per_dataset": 2.7202797202797204,
+      "avg_keywords_per_dataset": 2.7132867132867133,
       "most_common_keywords": {
-        "geographic:singapore": 58,
+        "geographic:singapore": 57,
         "geographic:global": 44,
-        "demographics:population": 41,
-        "data_type:statistics": 33,
+        "demographics:population": 42,
         "economics:income": 32,
+        "data_type:statistics": 32,
         "data_type:index": 28,
         "economics:economic": 20,
         "temporal:daily": 19,
         "geographic:national": 18,
-        "temporal:annual": 10,
         "transport:transport": 10,
         "health:health": 8,
-        "data_type:survey": 7,
+        "temporal:annual": 8,
         "data_type:indicator": 7,
+        "data_type:survey": 6,
+        "demographics:age": 5,
         "environment:environment": 4,
-        "demographics:age": 4,
         "temporal:monthly": 3,
         "transport:mrt": 3,
         "health:mortality": 3,
@@ -208,27 +208,11 @@
     },
     "domain_keyword_patterns": {
       "geographic": {
-        "singapore": 58,
+        "singapore": 57,
         "global": 44,
         "national": 18,
         "international": 3,
         "local": 1
-      },
-      "data_type": {
-        "statistics": 33,
-        "index": 28,
-        "survey": 7,
-        "indicator": 7,
-        "report": 1,
-        "census": 1
-      },
-      "temporal": {
-        "daily": 19,
-        "annual": 10,
-        "monthly": 3,
-        "historical": 1,
-        "weekly": 1,
-        "quarterly": 1
       },
       "housing": {
         "rental": 1,
@@ -242,6 +226,22 @@
         "gdp": 2,
         "inflation": 1
       },
+      "temporal": {
+        "daily": 19,
+        "annual": 8,
+        "monthly": 3,
+        "historical": 1,
+        "weekly": 1,
+        "quarterly": 1
+      },
+      "data_type": {
+        "statistics": 32,
+        "index": 28,
+        "indicator": 7,
+        "survey": 6,
+        "census": 2,
+        "report": 1
+      },
       "health": {
         "health": 8,
         "mortality": 3,
@@ -252,10 +252,10 @@
         "climate": 1
       },
       "demographics": {
-        "population": 41,
-        "age": 4,
-        "residents": 2,
-        "census": 1
+        "population": 42,
+        "age": 5,
+        "census": 2,
+        "residents": 2
       },
       "education": {
         "education": 2
@@ -271,7 +271,7 @@
       }
     },
     "relevance_distribution": {
-      "mean_relevance": 0.9444055944055942,
+      "mean_relevance": 0.9438461538461539,
       "median_relevance": 0.975,
       "high_relevance_count": 136,
       "medium_relevance_count": 7,
@@ -290,26 +290,26 @@
   },
   "relationship_discovery": {
     "relationship_summary": {
-      "total_relationships": 4962,
+      "total_relationships": 4961,
       "relationship_type_distribution": {
         "same_domain": 2594,
-        "unrelated": 261,
+        "unrelated": 260,
         "complementary": 2107
       },
       "high_quality_relationships": 540
     },
     "quality_metrics": {
       "score_statistics": {
-        "mean_relationship_score": 0.5175760980420896,
+        "mean_relationship_score": 0.5168833965537252,
         "median_relationship_score": 0.555,
-        "mean_confidence": 0.6882028614439436,
+        "mean_confidence": 0.6875042391257872,
         "median_confidence": 0.7075
       },
       "score_distribution": {
         "excellent_relationships": 191,
-        "good_relationships": 1586,
-        "fair_relationships": 1671,
-        "weak_relationships": 1514
+        "good_relationships": 1551,
+        "fair_relationships": 1706,
+        "weak_relationships": 1513
       }
     },
     "top_relationships": [
@@ -385,8 +385,12 @@
       }
     ],
     "relationship_network_stats": {
-      "avg_relationships_per_dataset": 34.6993006993007,
+      "avg_relationships_per_dataset": 34.69230769230769,
       "most_connected_datasets": [
+        {
+          "dataset": "Literacy rate, youth total (% of people ages 15-24) ",
+          "connection_count": 94
+        },
         {
           "dataset": "100000:GROSS DOMESTIC PRODUCT",
           "connection_count": 93
@@ -397,10 +401,6 @@
         },
         {
           "dataset": "110000:INDIVIDUAL CONSUMPTION EXPENDITURE BY HOUSEHOLDS",
-          "connection_count": 93
-        },
-        {
-          "dataset": "Literacy rate, youth total (% of people ages 15-24) ",
           "connection_count": 93
         },
         {
@@ -537,7 +537,7 @@
       "Review relationship scoring algorithm and dataset categorization"
     ],
     "quality_metrics": {
-      "collection_quality_score": 0.7907342657342659,
+      "collection_quality_score": 0.7896853146853148,
       "quality_distribution": {
         "high_quality_percentage": 69.23076923076923,
         "medium_quality_percentage": 18.88111888111888,

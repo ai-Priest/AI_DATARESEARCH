@@ -4,25 +4,27 @@ Integrates all new components: query expansion, user feedback, explanations,
 progressive search, and dataset previews into the ML pipeline.
 """
 
-import pandas as pd
-import numpy as np
 import json
 import logging
-from pathlib import Path
-from typing import Dict, List, Optional, Any
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import numpy as np
+import pandas as pd
+
+from .dataset_preview_generator import DatasetPreviewGenerator
+from .explanation_engine import RecommendationExplainer
+from .model_evaluation import create_comprehensive_evaluator
 
 # Import existing components
 from .model_training import EnhancedRecommendationEngine
-from .model_evaluation import create_comprehensive_evaluator
-from .user_behavior_evaluation import run_user_behavior_evaluation
+from .progressive_search import ProgressiveSearchEngine
 
 # Import new components
 from .query_expansion import QueryExpander, initialize_query_expander
-from .user_feedback_system import UserFeedbackCollector, FeedbackDrivenModelImprover
-from .explanation_engine import RecommendationExplainer
-from .progressive_search import ProgressiveSearchEngine
-from .dataset_preview_generator import DatasetPreviewGenerator
+from .user_behavior_evaluation import run_user_behavior_evaluation
+from .user_feedback_system import FeedbackDrivenModelImprover, UserFeedbackCollector
 
 logger = logging.getLogger(__name__)
 
@@ -167,10 +169,24 @@ class EnhancedMLPipeline:
         if not self.recommendation_engine:
             raise ValueError("Recommendation engine not initialized")
         
-        # Use enhanced query for recommendations
-        recommendations = self.recommendation_engine.recommend_datasets(
-            enhanced_query, method=method, top_k=top_k
-        )
+        # Use enhanced query for recommendations - call appropriate method based on type
+        if method == 'tfidf':
+            recommendations_list = self.recommendation_engine.recommend_datasets_tfidf(enhanced_query, top_k=top_k)
+        elif method == 'semantic':
+            recommendations_list = self.recommendation_engine.recommend_datasets_semantic(enhanced_query, top_k=top_k)
+        elif method == 'hybrid':
+            recommendations_list = self.recommendation_engine.recommend_datasets_hybrid(enhanced_query, top_k=top_k)
+        else:
+            # Default to hybrid
+            recommendations_list = self.recommendation_engine.recommend_datasets_hybrid(enhanced_query, top_k=top_k)
+        
+        # Convert list format to dict format
+        recommendations = {
+            'recommendations': recommendations_list,
+            'method': method,
+            'query': enhanced_query,
+            'total_found': len(recommendations_list)
+        }
         
         # 3. Add explanations to each recommendation
         if self.explanations_enabled and self.explanation_engine:
@@ -445,6 +461,11 @@ class EnhancedRecommendationWrapper:
             'processing_time_ms': enhanced_result['metadata']['processing_time_ms'],
             'enhancements_applied': enhanced_result['enhancements_applied']
         }
+    
+    def get_recommendations(self, query: str, method: str = 'hybrid', top_k: int = 10) -> List[Dict]:
+        """Compatibility method for behavioral evaluation - returns list of recommendations."""
+        result = self.recommend_datasets(query, method, top_k)
+        return result.get('recommendations', [])
 
 
 def create_enhanced_ml_pipeline(config: Dict) -> EnhancedMLPipeline:

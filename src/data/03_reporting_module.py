@@ -1,15 +1,17 @@
 # 03_reporting_module.py - EDA & Validation Reporting
-import pandas as pd
-import numpy as np
 import json
-import yaml
-import matplotlib.pyplot as plt
-import seaborn as sns
-from pathlib import Path
-from collections import Counter, defaultdict
-from typing import Dict, List, Tuple
 import logging
 import warnings
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Dict, List, Tuple
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import yaml
+
 warnings.filterwarnings('ignore')
 
 logging.basicConfig(level=logging.INFO)

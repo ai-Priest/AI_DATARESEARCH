@@ -37,18 +37,36 @@ class WebSearchEngine:
         self.max_results = self.search_config.get('max_results', 5)
         self.user_agent = "AI Dataset Research Assistant/2.0"
         
-        # Prioritized data source domains
+        # Prioritized data source domains - Global sources first, then regional
         self.priority_domains = [
-            'data.gov.sg',
-            'singstat.gov.sg', 
-            'lta.gov.sg',
-            'onemap.sg',
-            'data.gov',
+            # International Organizations
+            'data.worldbank.org',
+            'data.un.org', 
+            'unstats.un.org',
+            'who.int',
+            'imf.org',
+            'oecd.org',
+            'unesco.org',
+            'unicef.org',
+            'fao.org',
+            'wto.org',
+            
+            # Global Data Platforms
             'kaggle.com',
+            'data.gov',
+            'eurostat.ec.europa.eu',
             'github.com',
             'zenodo.org',
             'figshare.com',
-            'datacite.org'
+            'datacite.org',
+            'ourworldindata.org',
+            'gapminder.org',
+            
+            # Regional/National (including Singapore)
+            'data.gov.sg',
+            'singstat.gov.sg', 
+            'lta.gov.sg',
+            'onemap.sg'
         ]
         
     async def search_web(
@@ -76,6 +94,7 @@ class WebSearchEngine:
             search_tasks = [
                 self._search_duckduckgo(enhanced_query),
                 self._search_academic_sources(query),
+                self._search_international_organizations(query, context),
                 self._search_government_portals(query, context)
             ]
             
@@ -109,12 +128,23 @@ class WebSearchEngine:
         # Add data-focused terms
         data_terms = ["dataset", "data", "statistics", "research data", "open data"]
         
-        # Add Singapore context if relevant
-        if context and context.get('singapore_focus', True):
+        # Add global organization terms for better discovery
+        global_terms = ["World Bank", "UN", "WHO", "OECD", "IMF", "UNESCO"]
+        
+        # Check if query already mentions global organizations
+        query_lower = query.lower()
+        has_global_org = any(org.lower() in query_lower for org in global_terms)
+        
+        if has_global_org:
+            # Already global-focused, just add data terms
+            enhanced_query = f"{query} ({' OR '.join(data_terms)})"
+        elif context and context.get('singapore_focus', False):
+            # Explicitly Singapore-focused
             singapore_terms = ["Singapore", "SG", "data.gov.sg"]
             enhanced_query = f"{query} ({' OR '.join(singapore_terms)}) ({' OR '.join(data_terms)})"
         else:
-            enhanced_query = f"{query} ({' OR '.join(data_terms)})"
+            # Default to global search with international organizations
+            enhanced_query = f"{query} ({' OR '.join(global_terms[:3])}) ({' OR '.join(data_terms)})"
             
         return enhanced_query
     
@@ -215,6 +245,205 @@ class WebSearchEngine:
                 
         return results
     
+    async def _search_international_organizations(
+        self, 
+        query: str, 
+        context: Optional[Dict[str, Any]] = None
+    ) -> List[Dict[str, Any]]:
+        """Search international organizations and global data sources"""
+        results = []
+        
+        # Get direct links to international organization datasets
+        intl_links = self._get_international_dataset_links(query)
+        results.extend(intl_links)
+        
+        # International data portals
+        intl_portals = [
+            {
+                'name': 'World Bank Open Data',
+                'search_url': f"https://data.worldbank.org/search?q={quote_plus(query)}",
+                'domain': 'data.worldbank.org',
+                'priority': 95
+            },
+            {
+                'name': 'UN Data Portal',
+                'search_url': f"https://data.un.org/Search.aspx?q={quote_plus(query)}",
+                'domain': 'data.un.org',
+                'priority': 95
+            },
+            {
+                'name': 'UN Statistics',
+                'search_url': f"https://unstats.un.org/UNSDWebsite/",
+                'domain': 'unstats.un.org',
+                'priority': 90
+            },
+            {
+                'name': 'WHO Global Health Observatory',
+                'search_url': f"https://www.who.int/data/gho",
+                'domain': 'who.int',
+                'priority': 90
+            },
+            {
+                'name': 'OECD Data',
+                'search_url': f"https://data.oecd.org/searchresults/?q={quote_plus(query)}",
+                'domain': 'oecd.org',
+                'priority': 85
+            },
+            {
+                'name': 'IMF Data',
+                'search_url': f"https://data.imf.org/",
+                'domain': 'imf.org',
+                'priority': 85
+            },
+            {
+                'name': 'Eurostat',
+                'search_url': f"https://ec.europa.eu/eurostat/web/main/search/-/search/estatsearch?text={quote_plus(query)}",
+                'domain': 'eurostat.ec.europa.eu',
+                'priority': 80
+            },
+            {
+                'name': 'Our World in Data',
+                'search_url': f"https://ourworldindata.org/search?q={quote_plus(query)}",
+                'domain': 'ourworldindata.org',
+                'priority': 75
+            }
+        ]
+        
+        for portal in intl_portals:
+            results.append({
+                'title': f"Search {portal['name']} for {query} data",
+                'url': portal['search_url'],
+                'description': f"Global datasets and indicators from {portal['name']}",
+                'source': 'international_organization',
+                'type': 'global_data',
+                'domain': portal['domain'],
+                'relevance_score': portal['priority']
+            })
+            
+        return results
+    
+    def _get_international_dataset_links(self, query: str) -> List[Dict[str, Any]]:
+        """Get direct links to specific international datasets based on query"""
+        results = []
+        query_lower = query.lower()
+        
+        # Economic / GDP data
+        if any(word in query_lower for word in ['gdp', 'economic', 'economy', 'growth', 'trade']):
+            results.extend([
+                {
+                    'title': 'World Bank - GDP and Economic Indicators',
+                    'url': 'https://data.worldbank.org/topic/economy-and-growth',
+                    'description': 'Global GDP, economic growth, and development indicators from World Bank',
+                    'source': 'world_bank',
+                    'type': 'economic_data',
+                    'domain': 'data.worldbank.org',
+                    'relevance_score': 95
+                },
+                {
+                    'title': 'IMF World Economic Outlook Database',
+                    'url': 'https://www.imf.org/en/Publications/WEO/weo-database',
+                    'description': 'International Monetary Fund economic data and forecasts',
+                    'source': 'imf',
+                    'type': 'economic_data',
+                    'domain': 'imf.org',
+                    'relevance_score': 90
+                }
+            ])
+        
+        # Health data
+        if any(word in query_lower for word in ['health', 'disease', 'mortality', 'life expectancy', 'covid']):
+            results.extend([
+                {
+                    'title': 'WHO Global Health Observatory',
+                    'url': 'https://www.who.int/data/gho',
+                    'description': 'Global health statistics and indicators from World Health Organization',
+                    'source': 'who',
+                    'type': 'health_data',
+                    'domain': 'who.int',
+                    'relevance_score': 95
+                },
+                {
+                    'title': 'Our World in Data - Health',
+                    'url': 'https://ourworldindata.org/health-meta',
+                    'description': 'Research and data on global health trends and outcomes',
+                    'source': 'ourworldindata',
+                    'type': 'health_data',
+                    'domain': 'ourworldindata.org',
+                    'relevance_score': 85
+                }
+            ])
+        
+        # Population / Demographics
+        if any(word in query_lower for word in ['population', 'demographic', 'census', 'migration', 'urbanization']):
+            results.extend([
+                {
+                    'title': 'UN Population Division Data',
+                    'url': 'https://population.un.org/wpp/',
+                    'description': 'World population prospects and demographic data from United Nations',
+                    'source': 'un_population',
+                    'type': 'demographic_data',
+                    'domain': 'population.un.org',
+                    'relevance_score': 95
+                },
+                {
+                    'title': 'World Bank - Population Data',
+                    'url': 'https://data.worldbank.org/topic/health',
+                    'description': 'Global population and demographic indicators',
+                    'source': 'world_bank',
+                    'type': 'demographic_data', 
+                    'domain': 'data.worldbank.org',
+                    'relevance_score': 90
+                }
+            ])
+        
+        # Education data
+        if any(word in query_lower for word in ['education', 'literacy', 'school', 'university', 'learning']):
+            results.extend([
+                {
+                    'title': 'UNESCO Institute for Statistics',
+                    'url': 'http://uis.unesco.org/en/home',
+                    'description': 'Global education statistics and indicators from UNESCO',
+                    'source': 'unesco',
+                    'type': 'education_data',
+                    'domain': 'unesco.org',
+                    'relevance_score': 95
+                },
+                {
+                    'title': 'World Bank - Education Data',
+                    'url': 'https://data.worldbank.org/topic/education',
+                    'description': 'Global education indicators and development data',
+                    'source': 'world_bank',
+                    'type': 'education_data',
+                    'domain': 'data.worldbank.org',
+                    'relevance_score': 90
+                }
+            ])
+        
+        # Environment / Climate data
+        if any(word in query_lower for word in ['climate', 'environment', 'temperature', 'emissions', 'carbon']):
+            results.extend([
+                {
+                    'title': 'World Bank - Climate Data',
+                    'url': 'https://climatedata.worldbank.org/',
+                    'description': 'Global climate and environmental data from World Bank',
+                    'source': 'world_bank',
+                    'type': 'climate_data',
+                    'domain': 'climatedata.worldbank.org',
+                    'relevance_score': 95
+                },
+                {
+                    'title': 'Our World in Data - Environment',
+                    'url': 'https://ourworldindata.org/environmental-change',
+                    'description': 'Environmental change and climate data visualizations',
+                    'source': 'ourworldindata',
+                    'type': 'climate_data',
+                    'domain': 'ourworldindata.org',
+                    'relevance_score': 90
+                }
+            ])
+        
+        return results
+
     async def _search_government_portals(
         self, 
         query: str, 
@@ -402,11 +631,17 @@ class WebSearchEngine:
             if domain in self.priority_domains:
                 score += 50 * (len(self.priority_domains) - self.priority_domains.index(domain))
             
-            # Type-based scoring
+            # Type-based scoring - prioritize global sources
             type_scores = {
-                'government_data': 100,
-                'academic_search': 80,
-                'web_search': 60
+                'global_data': 110,           # New: International organizations
+                'economic_data': 105,         # World Bank, IMF economic data
+                'health_data': 105,           # WHO, health organizations
+                'demographic_data': 105,      # UN Population, census data
+                'education_data': 105,        # UNESCO, education statistics
+                'climate_data': 105,          # Climate and environmental data
+                'government_data': 100,       # National government data
+                'academic_search': 80,        # Academic repositories
+                'web_search': 60              # General web search
             }
             score += type_scores.get(result.get('type', 'web_search'), 60)
             
@@ -421,8 +656,12 @@ class WebSearchEngine:
             desc_matches = sum(1 for word in query_words if word in description)
             score += desc_matches * 10
             
-            # Data-related keywords bonus
-            data_keywords = ['dataset', 'data', 'statistics', 'research', 'open data']
+            # Data-related keywords bonus - enhanced for global sources
+            data_keywords = [
+                'dataset', 'data', 'statistics', 'research', 'open data',
+                'indicators', 'world bank', 'united nations', 'who', 'unesco',
+                'oecd', 'imf', 'global', 'international'
+            ]
             for keyword in data_keywords:
                 if keyword in title or keyword in description:
                     score += 15

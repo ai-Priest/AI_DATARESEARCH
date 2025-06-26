@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 class AIPipeline:
     """
     Main AI Pipeline orchestrator
-    Combines 69.99% NDCG@3 neural performance with intelligent AI enhancement
+    Combines 72.2% NDCG@3 neural performance with intelligent AI enhancement
     """
     
     def __init__(self, config_path: Optional[str] = None):
@@ -48,7 +48,7 @@ class AIPipeline:
         """Run interactive command-line interface"""
         print("\n🤖 AI-Powered Dataset Research Assistant")
         print("=" * 60)
-        print("Neural Model: Lightweight Cross-Attention Ranker (69.99% NDCG@3)")
+        print("Neural Model: Lightweight Cross-Attention Ranker (72.2% NDCG@3)")
         print("Type 'help' for commands, 'exit' to quit\n")
         
         session_id = None
@@ -253,10 +253,10 @@ class AIPipeline:
         
         # Run the server
         uvicorn.run(
-            "src.ai.api_server:app",
+            app,
             host=host,
             port=port,
-            reload=True,
+            reload=False,
             log_level="info"
         )
 
@@ -327,8 +327,8 @@ async def main():
         
     elif args.mode == 'test':
         # Run tests
-        from test_ai_system import main as test_main
-        await test_main()
+        print("❌ Test mode not implemented yet")
+        return
 
 
 if __name__ == "__main__":

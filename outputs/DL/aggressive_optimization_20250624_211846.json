@@ -1,0 +1,23 @@
+{
+  "optimization_type": "aggressive",
+  "target_ndcg": 0.7,
+  "techniques_applied": [
+    "dual_sentence_transformers",
+    "domain_keyword_matching",
+    "hard_negative_sampling",
+    "cross_domain_features",
+    "optimized_loss_weighting"
+  ],
+  "enhancement_stats": {
+    "semantic_boosted": 751,
+    "domain_matched": 366,
+    "cross_domain_features": 436,
+    "scientific_enhanced": 107
+  },
+  "final_performance": {
+    "ndcg_achieved": 0.65,
+    "target_achieved": false,
+    "pipeline_output": "\ud83c\udfaf AI Data Research Assistant - Deep Learning Pipeline\n============================================================\n",
+    "optimization_type": "aggressive"
+  }
+}

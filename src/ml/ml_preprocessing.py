@@ -1,13 +1,14 @@
 # ML Preprocessing Module - Advanced Data Preparation for ML Training
-import pandas as pd
-import numpy as np
-import re
 import json
-from pathlib import Path
-from typing import Dict, List, Tuple, Optional, Union
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-from sklearn.feature_extraction.text import TfidfVectorizer
 import logging
+import re
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple, Union
+
+import numpy as np
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 # Setup logging
 logger = logging.getLogger(__name__)
@@ -372,7 +373,7 @@ class MLDataPreprocessor:
     def _extract_key_concepts(self, description: str) -> str:
         """Extract key concepts from description"""
         import re
-        
+
         # Extract sentences that contain key indicators
         sentences = re.split(r'[.!?]+', description)
         key_concepts = []
@@ -439,7 +440,7 @@ class MLDataPreprocessor:
     def _apply_semantic_normalization(self, text: str) -> str:
         """Apply final semantic normalization"""
         import re
-        
+
         # Remove redundant words
         text = re.sub(r'\b(data|dataset|statistics|information)\s+\1\b', r'\1', text)
         

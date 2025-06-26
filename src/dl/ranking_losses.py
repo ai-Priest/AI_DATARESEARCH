@@ -3,12 +3,13 @@ Ranking Loss Functions for NDCG Optimization
 Implements ranking-specific losses that directly optimize for ranking metrics
 """
 
+import logging
+from typing import Optional, Tuple
+
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import numpy as np
-from typing import Tuple, Optional
-import logging
 
 logger = logging.getLogger(__name__)
 

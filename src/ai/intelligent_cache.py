@@ -3,19 +3,20 @@ Intelligent Caching Layer
 Phase 2.3: Advanced caching system with Redis-style storage, query similarity, and smart invalidation
 """
 
-import json
-import time
 import hashlib
+import json
 import logging
-from typing import Dict, List, Optional, Any, Union, Tuple
-from datetime import datetime, timedelta
-from pathlib import Path
 import pickle
 import sqlite3
+import time
+from datetime import datetime, timedelta
+from pathlib import Path
 from threading import RLock
+from typing import Any, Dict, List, Optional, Tuple, Union
+
 import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 
 logger = logging.getLogger(__name__)
 

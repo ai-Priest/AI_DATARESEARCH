@@ -3,30 +3,32 @@ Deep Evaluation Module - Advanced Metrics and Analysis for Neural Networks
 Implements comprehensive evaluation metrics, ablation studies, and performance analysis.
 """
 
-import torch
-import torch.nn as nn
-import numpy as np
-import pandas as pd
-from typing import Dict, List, Tuple, Optional, Any, Callable
+import json
 import logging
 from pathlib import Path
-import json
+from typing import Any, Callable, Dict, List, Optional, Tuple
+
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 import seaborn as sns
-from sklearn.metrics import ndcg_score, average_precision_score, roc_auc_score
+import torch
+import torch.nn as nn
 from sklearn.cluster import KMeans
+from sklearn.metrics import average_precision_score, ndcg_score, roc_auc_score
 from sklearn.metrics.pairwise import cosine_similarity
+
 try:
-    import plotly.graph_objects as go
     import plotly.express as px
+    import plotly.graph_objects as go
     from plotly.subplots import make_subplots
     PLOTLY_AVAILABLE = True
 except ImportError:
     PLOTLY_AVAILABLE = False
     go = px = make_subplots = None
-from datetime import datetime
 import time
 from collections import defaultdict
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 

@@ -4,15 +4,16 @@ Advanced Ensemble Methods for Neural Networks
 Implements sophisticated ensemble techniques to achieve 70%+ NDCG@3 performance
 """
 
+import logging
+import re
+from collections import defaultdict, deque
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 import torch
-from typing import Dict, List, Tuple, Optional, Any
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import cross_val_score
-import logging
-from collections import defaultdict, deque
-import re
 
 logger = logging.getLogger(__name__)
 

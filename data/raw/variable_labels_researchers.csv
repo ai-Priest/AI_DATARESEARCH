@@ -1,0 +1,166 @@
+﻿VARIABLE_NAME;VARIABLE_LABEL
+responseid;Response ID
+need_open;Q2: Open description of needed data
+need_obs;Q3: Need observational or empirical data
+need_exp;Q3: Need experimental data
+need_sim;Q3: Need simulation data
+need_deriv;Q3: Need derived or compiled data
+need_oth;Q3: Need other data
+need_othresp;Q3: Open response for need other data
+use_nwstdy;Q4: Use data as the basis for a new study
+use_calb;Q4: Use data to calibrate instruments or models
+use_bmk;Q4: Use data for benchmarking
+use_vrf;Q4: Use data to verify own data
+use_inpt;Q4: Use data as model, algorithm or system inputs
+use_idea;Q4: Use data to generate new ideas
+use_tch;Q4: Use data for teaching/training
+use_nwprj;Q4: Use data to prepare for new project or proposal
+use_nwmth;Q4: Use data to experiment with new methods and techniques
+use_tnd;Q4: Use data to identify trends, make predictions
+use_cmp;Q4: Use data to compare multiple datasets
+use_smvs;Q4: Use data to create summaries, visualizations, analysis tools
+use_intg;Q4: Use data to integrate with other data
+use_oth;Q4: Use data for other uses
+use_oth_rsp;Q4: Open response for other uses
+need_othdisc;Q5: Ever used data outside of discipline
+find_othdisc;Q5a: Open response for how find data outside of discipline
+find_whoself;Q6: Who finds data: myself
+find_whograd;Q6: Who finds data: graduate student
+find_whosuppt;Q6: Who finds data: research support
+find_whonetwk;Q6: Who finds data: personal network
+find_whooth;Q6: Who finds data: other
+find_whoothresp;Q6: Who finds data: open response for other
+source_multrepos;Q7: Source to find data: multidisciplinary data repository
+source_discrepos;Q7: Source to find data: discipline-specific data repository
+source_gov;Q7: Source to find data: governmental agencies and websites
+source_netwk;Q7: Source to find data: personal networks
+source_lit;Q7: Source to find data: academic literature
+source_coderep;Q7: Source to find data: code repository
+source_srcheng;Q7: Source to find data: general search engines e.g. Google
+source_profassc;Q7: Source to find data: professional associations
+source_datsrcheng;Q7: Source to find data: data specific search engines
+source_commrc;Q7: Source to find data: commercial sources
+source_suppt;Q7: Source to find data: consultation with research support
+source_open;Q7: Source to find data: open response for other sources
+strategy_goal;Q7a: Strategy for using literature: with goal of finding data
+strategy_serend;Q7a: Strategy for using literature: serendipitously while reading or literature searching
+strategy_cit;Q7a: Strategy for using literature: by following citations in the literature
+strategy_extrct;Q7a: Strategy for using literature: extract data from tables or graphs
+strategy_oth;Q7a: Strategy for using literature: other
+strategy_othresp;Q7a: Strategy for using literature: open response for other
+succs_srcheng;Q7b: Success using general search engine e.g. Google
+find_actonln;Q8: Frequency finding data by actively searching online
+find_serendsrch;Q8: Frequency finding data serendipitously when searching for something else
+find_serendpas;Q8: Frequency finding data serendipitously when NOT searching
+find_share;Q8: Frequency finding data while sharing or managing own data
+find_netwk;Q9: Find data via conversations with personal networks
+find_creatr;Q9: Find data via contacting data creator
+find_collab;Q9: Find data via developing collaborations  
+find_conf;Q9: Find data via attending conferences
+find_list;Q9: Find data via disciplinary mailing lists or forums
+accss_netwk;Q9: Access data via conversations with personal networks
+accss_creatr;Q9: Access data via contacting data creator
+accss_collab;Q9: Access data via developing collaborations  
+accss_conf;Q9: Access data via attending conferences
+accss_list;Q9: Access data via disciplinary mailing lists or forums
+eval_netwk;Q9: Make sense of data via conversations with personal networks
+eval_creatr;Q9: Make sense of data via contacting data creator
+eval_collab;Q9: Make sense of data via developing collaborations  
+eval_conf;Q9: Make sense of data via attending conferences
+eval_list;Q9: Make sense of data via disciplinary mailing lists or forums
+find_litdat;Q10: Find data differently than find academic literature
+find_litdatopen;Q10a: Open response: how is finding data different than finding literature
+find_ease;Q11: Ease of finding data
+find_chalaccs;Q11a: Challenging to find data because data are not accessible
+find_chalskill;Q11a: Challenging to find data because don't know how
+find_chaldistrb;Q11a: Challenging to find data because data are distributed in different places
+find_chaldigtl;Q11a: Challenging to find data because data are not digital
+find_chaltools;Q11a: Challenging to find data because data search tools are inadequate
+find_chalnetwk;Q11a: Challenging to find data because data not have needed personal network
+find_chaloth;Q11a: Challenging to find data: other
+find_chalothresp;Q11a: Challenging to find data: open response to other
+eval_infmeth;Q12: Importance of information to evaluate data: collection conditions and methodology
+eval_infprov;Q12: Importance of information to evaluate data: processing and handling
+eval_infrepcreatr;Q12: Importance of information to evaluate data: reputation data creator
+eval_infrelcreatr;Q12: Importance of information to evaluate data: personally knowing data creator
+eval_infrepsource;Q12: Importance of information to evaluate data: reputation data source
+eval_infmeta;Q12: Importance of information to evaluate data: detailed metadata and documentation
+eval_infsize;Q12: Importance of information to evaluate data: size
+eval_inffrmt;Q12: Importance of information to evaluate data: format
+eval_inflic;Q12: Importance of information to evaluate data: licensing conditions
+eval_infcovg;Q12: Importance of information to evaluate data: correct coverage
+eval_infpurps;Q12: Importance of information to evaluate data: original purpose
+eval_infaccs;Q12: Importance of information to evaluate data: ease of access
+eval_inftopic;Q12: Importance of information to evaluate data: topic relevance
+eval_infopen;Q12_open: Importance of information to evaluate data: Open response for other 
+eval_stratart;Q13: Importance of strategies for evaluation and sensemaking: consult associated articles
+eval_stratdoc;Q13: Importance of strategies for evaluation and sensemaking: consult data documentation
+eval_stratcreatr;Q13: Importance of strategies for evaluation and sensemaking: consult data creator
+eval_stratnetwk;Q13: Importance of strategies for evaluation and sensemaking: consult personal networks
+eval_strateda;Q13: Importance of strategies for evaluation and sensemaking: exploratory data analysis
+eval_stratopen;Q13_open: Importance of strategies for evaluation and sensemaking: open response for other
+eval_trstuse;Q14: Importance in establishing trust: prior usage
+eval_trstsource;Q14: Importance in establishing trust: reputation data source
+eval_trstrepcreatr;Q14: Importance in establishing trust: reputation data creator
+eval_trstmeth;Q14: Importance in establishing trust: transparency in methods
+eval_trsterr;Q14: Importance in establishing trust: lack of errors
+eval_trstaccs;Q14: Importance in establishing trust: ease of access
+eval_trstrelcrtr;Q14: Importance in establishing trust: personal relationship with data creator
+eval_trstopen;Q14_open: Importance in establishing trust: open response for other
+eval_qualerr;Q15: Importance in establishing quality: lack of errors
+eval_qualeda;Q15: Importance in establishing quality: ease of downloading and exploring
+eval_qualsize;Q15: Importance in establishing quality: data size
+eval_qualcomplt;Q15: Importance in establishing quality: data completeness
+eval_qualsource;Q15: Importance in establishing quality: reputation data source
+eval_qualresltn;Q15: Importance in establishing quality: resolution or clarity
+eval_qualrepcreatr;Q15: Importance in establishing quality: reputation data creator
+eval_qualprep;Q15: Importance in establishing quality: work done to prepare data
+eval_qualcnsistnt;Q15: Importance in establishing quality: consistency of formatting
+eval_qualopen;Q15_open: Importance in establishing quality: open response for other
+disc_agricul;D1: Discipline of specialization: agriculture
+disc_artshuman;D1: Discipline of specialization: arts and humanities
+disc_astronom;D1: Discipline of specialization: astronomy
+disc_biochem;D1: Discipline of specialization: biochemistry, genetics and molecular biology
+disc_biological;D1: Discipline of specialization: biological sciences
+disc_busin;D1: Discipline of specialization: business, management and accounting 
+disc_chemeng;D1: Discipline of specialization: chemical engineering 
+disc_chem;D1: Discipline of specialization: chemistry
+disc_compsci;D1: Discipline of specialization: computer sciences or IT
+disc_decisionsci;D1: Discipline of specialization: decision sciences
+disc_dentist;D1: Discipline of specialization: dentistry
+disc_earthplanet;D1: Discipline of specialization: earth and planetary sciences
+disc_econ;D1: Discipline of specialization: economics, econometrics and finance 
+disc_energy;D1: Discipline of specialization: energy
+disc_engtech;D1: Discipline of specialization: engineering and technology
+disc_environ;D1: Discipline of specialization: environmental sciences
+disc_healthprof;D1: Discipline of specialization: health professions
+disc_immun;D1: Discipline of specialization: immunology and microbiology 
+disc_matlsci;D1: Discipline of specialization: materials science
+disc_math;D1: Discipline of specialization: mathematics
+disc_med;D1: Discipline of specialization: medicine
+disc_multi;D1: Discipline of specialization: multidisciplinary
+disc_neuro;D1: Discipline of specialization: neuroscience
+disc_nurs;D1: Discipline of specialization: nursing
+disc_pharma;D1: Discipline of specialization: pharmacology, toxicology and pharmaceutics 
+disc_physics;D1: Discipline of specialization: physics
+disc_psych;D1: Discipline of specialization: psychology
+disc_socsci;D1: Discipline of specialization: social science
+disc_vet;D1: Discipline of specialization: veterinary
+disc_infosci;D1: Discipline of specialization: information science
+disc_other;D1: Discipline of specialization: other
+disc_othresp;D1: Discipline of specialization: response for other
+dem_role;Q1: Role
+dem_role_oth;Q1_other: Open response for other role
+dem_exprnce;D2: Years of professional experience
+dem_country;D3: Country of employment 
+dem_org;D4: Type of organization where employed
+dem_orgoth;D4_other: Open response for other type of organization
+dem_sharself;D5: Personal feelings about data sharing
+dem_shargrp;D5: Perception of work group's feelings about data sharing
+dem_shardisc;D5: Perception of  disciplinary community's feelings about data sharing
+dem_sharorg;D5: Perception of organization's feelings about data sharing
+dem_reuseself;D6: Personal feelings about data reuse
+dem_reusegrp;D6: Perception of work group's feelings about data reuse
+dem_reusedisc;D6: Perception of disciplinary community's feelings about data reuse
+dem_reuseorg;D6: Perception of organization's feelings about data reuse
+dem_shared;D7: Have you shared your data

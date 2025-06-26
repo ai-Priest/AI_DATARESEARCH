@@ -4,7 +4,8 @@ Use this ONLY if you want to run models locally on your GPU
 Not needed for API-based services (MiniMax, Mistral API, Claude, OpenAI)
 """
 import logging
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 from .llm_clients import BaseLLMClient
 
 logger = logging.getLogger(__name__)

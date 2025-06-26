@@ -1,17 +1,17 @@
 # 02_analysis_module.py - Intelligent Analysis with User Behavior Integration
-import pandas as pd
-import numpy as np
 import json
-import yaml
-from pathlib import Path
-from collections import Counter, defaultdict
-from typing import Dict, List, Tuple, Optional
-from collections import defaultdict, Counter
-from datetime import datetime
 import logging
+import re
+from collections import Counter, defaultdict
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import numpy as np
+import pandas as pd
+import yaml
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-import re
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -1016,7 +1016,7 @@ class IntelligentGroundTruthGenerator:
     def _generate_semantic_query(self, dataset_title: str) -> str:
         """Generate semantic query from dataset title for better ML training"""
         import re
-        
+
         # Extract key semantic concepts from title
         title_lower = dataset_title.lower()
         

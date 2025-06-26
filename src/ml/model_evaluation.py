@@ -1,24 +1,29 @@
 # Model Evaluation Module - Comprehensive Supervised & Unsupervised Evaluation
-import pandas as pd
-import numpy as np
 import json
-from typing import Dict, List, Tuple, Optional
-from sklearn.metrics import (
-    precision_score, recall_score, f1_score, 
-    silhouette_score, calinski_harabasz_score,
-    accuracy_score, classification_report
-)
-from sklearn.model_selection import cross_val_score, StratifiedKFold
-from sklearn.cluster import KMeans
-from sklearn.metrics.pairwise import cosine_similarity
-from scipy import stats
-import matplotlib.pyplot as plt
-import seaborn as sns
-from pathlib import Path
 import logging
-from difflib import SequenceMatcher
 import re
+from difflib import SequenceMatcher
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from scipy import stats
 from sentence_transformers import SentenceTransformer
+from sklearn.cluster import KMeans
+from sklearn.metrics import (
+    accuracy_score,
+    calinski_harabasz_score,
+    classification_report,
+    f1_score,
+    precision_score,
+    recall_score,
+    silhouette_score,
+)
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.model_selection import StratifiedKFold, cross_val_score
 
 # Setup logging
 logger = logging.getLogger(__name__)

@@ -3,13 +3,14 @@ Progressive Search System
 Provides intelligent search suggestions and real-time query assistance.
 """
 
-import pandas as pd
-import numpy as np
-from typing import List, Dict, Tuple, Optional
-import re
-from collections import defaultdict, Counter
-from difflib import SequenceMatcher
 import logging
+import re
+from collections import Counter, defaultdict
+from difflib import SequenceMatcher
+from typing import Dict, List, Optional, Tuple
+
+import numpy as np
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 

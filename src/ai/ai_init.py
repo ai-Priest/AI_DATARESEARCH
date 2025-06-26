@@ -3,12 +3,12 @@ AI-Powered Dataset Research Assistant
 High-performance neural recommendations with intelligent enhancement
 """
 
-from .research_assistant import ResearchAssistant
-from .llm_clients import LLMManager
-from .neural_ai_bridge import NeuralAIBridge
+from .ai_config_manager import AIConfigManager
 from .conversation_manager import ConversationManager
 from .evaluation_metrics import EvaluationMetrics
-from .ai_config_manager import AIConfigManager
+from .llm_clients import LLMManager
+from .neural_ai_bridge import NeuralAIBridge
+from .research_assistant import ResearchAssistant
 
 __version__ = "1.0.0"
 __all__ = [

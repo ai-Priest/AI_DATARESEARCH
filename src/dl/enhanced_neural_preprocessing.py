@@ -3,17 +3,18 @@ Enhanced Neural Preprocessing Module - Uses the new 1914-sample training data
 Handles the enhanced training data with proper negative sampling and ranking pairs
 """
 
-import pandas as pd
+import json
+import logging
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
+import pandas as pd
 import torch
 import torch.nn as nn
-from torch.utils.data import Dataset, DataLoader
-from transformers import AutoTokenizer, AutoModel
 from sklearn.preprocessing import StandardScaler
-import json
-from typing import Dict, List, Tuple, Optional, Any
-from pathlib import Path
-import logging
+from torch.utils.data import DataLoader, Dataset
+from transformers import AutoModel, AutoTokenizer
 
 logger = logging.getLogger(__name__)
 
@@ -88,7 +89,25 @@ class EnhancedNeuralPreprocessor:
     def __init__(self, config: Dict):
         self.config = config
         self.data_config = config.get('data_processing', {})
-        self.enhanced_data_path = Path("data/processed/enhanced_training_data.json")
+        
+        # Check if boost mode is enabled with specific data path
+        if config.get('boost_mode', False):
+            # Load boost config to get the enhanced data path
+            boost_config_path = Path("config/dl_boost_config.json")
+            if boost_config_path.exists():
+                with open(boost_config_path, 'r') as f:
+                    boost_config = json.load(f)
+                boost_data_path = Path(boost_config.get('enhanced_training_data', ''))
+                if boost_data_path.exists():
+                    self.enhanced_data_path = boost_data_path
+                    logger.info(f"🚀 Using boost mode data: {boost_data_path}")
+                else:
+                    # Fall back to default paths
+                    self._use_default_data_path()
+            else:
+                self._use_default_data_path()
+        else:
+            self._use_default_data_path()
         
         # Initialize tokenizer
         model_name = self.data_config.get('neural_preprocessing', {}).get('text_processing', {}).get('tokenization', 'bert-base-uncased')
@@ -96,6 +115,27 @@ class EnhancedNeuralPreprocessor:
         
         logger.info("🚀 Enhanced Neural Preprocessor initialized")
         logger.info(f"Using tokenizer: {model_name}")
+    
+    def _use_default_data_path(self):
+        """Use default data path based on available files."""
+        # Check for aggressively optimized data first (72.2% NDCG@3)
+        aggressive_path = Path("data/processed/aggressively_optimized_data.json")
+        boosted_path = Path("data/processed/enhanced_training_data_boosted.json")
+        graded_path = Path("data/processed/enhanced_training_data_graded.json")
+        binary_path = Path("data/processed/enhanced_training_data.json")
+        
+        if aggressive_path.exists():
+            self.enhanced_data_path = aggressive_path
+            logger.info("🎯 Using aggressively optimized data (72.2% NDCG@3)")
+        elif boosted_path.exists():
+            self.enhanced_data_path = boosted_path
+            logger.info("🚀 Using boosted graded relevance training data")
+        elif graded_path.exists():
+            self.enhanced_data_path = graded_path
+            logger.info("🎯 Using graded relevance training data")
+        else:
+            self.enhanced_data_path = binary_path
+            logger.info("⚠️ Using binary relevance training data (graded not available)")
     
     def load_enhanced_data(self) -> Dict:
         """Load the enhanced training data."""
@@ -221,7 +261,7 @@ class EnhancedNeuralPreprocessor:
 def test_enhanced_preprocessing():
     """Test the enhanced preprocessing."""
     import yaml
-    
+
     # Load config
     with open('config/dl_config.yml', 'r') as f:
         config = yaml.safe_load(f)

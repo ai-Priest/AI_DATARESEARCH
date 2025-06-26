@@ -221,11 +221,10 @@ environment:
   # Required environment variables for API keys
   required_env_vars:
     - "LTA_API_KEY"
-    - "ONEMAP_API_KEY" 
-    - "URA_API_KEY"
     
   # Optional environment variables
   optional_env_vars:
+    - "ONEMAP_API_KEY"  # Uses login credentials in .env file
     - "CLAUDE_API_KEY"  # For future AI integration
     
   # Security settings

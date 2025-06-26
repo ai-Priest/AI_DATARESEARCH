@@ -566,7 +566,7 @@ class ConfigurableDataPipeline:
             logger.info(
                 f"   📈 Expected performance: {ml_assessment.get('expected_performance', {}).get('f1_score', 'N/A')}"
             )
-            logger.info(f"   ⏱️ Estimated timeline: 1-2 weeks to ML results")
+            logger.info(f"   ⏱️ Proceed to run ML Pipeline")
         else:
             logger.info(f"   🔄 IMPROVEMENT NEEDED:")
             logger.info(f"   📋 Review: outputs/EDA/reports/executive_summary.md")

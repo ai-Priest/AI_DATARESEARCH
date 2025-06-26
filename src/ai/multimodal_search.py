@@ -3,18 +3,19 @@ Multi-Modal Search Engine
 Phase 2.2: Advanced search capabilities combining text, metadata, relationships, and temporal patterns
 """
 
+import json
+import logging
+import re
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Union
+
+import networkx as nx
 import numpy as np
 import pandas as pd
-from typing import Dict, List, Tuple, Optional, Any, Union
-import logging
-from pathlib import Path
-import json
-from datetime import datetime, timedelta
-import re
+from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
-import networkx as nx
 
 logger = logging.getLogger(__name__)
 
@@ -39,14 +40,14 @@ class MultiModalSearchEngine:
         self.relationship_graph = None
         self.temporal_index = {}
         
-        # Search weights
+        # Search weights - prioritize relevance over quality
         self.weights = self.search_config.get('weights', {
-            'semantic_similarity': 0.35,
-            'keyword_match': 0.25,
+            'semantic_similarity': 0.50,  # Increased for better relevance
+            'keyword_match': 0.30,        # Increased for exact matches
             'metadata_relevance': 0.15,
-            'relationship_score': 0.15,
-            'temporal_relevance': 0.05,
-            'quality_boost': 0.05
+            'relationship_score': 0.05,   # Reduced
+            'temporal_relevance': 0.00,   # Disabled for now
+            'quality_boost': 0.00         # Disabled to prevent irrelevant high-quality results
         })
         
         # Load datasets and initialize indices
@@ -133,13 +134,13 @@ class MultiModalSearchEngine:
                 text = f"{row.get('title', '')} {row.get('description', '')} {row.get('tags', '')}"
                 corpus.append(text.lower())
             
-            # Initialize TF-IDF vectorizer
+            # Initialize TF-IDF vectorizer - more permissive for better keyword matching
             self.tfidf_vectorizer = TfidfVectorizer(
                 max_features=5000,
                 stop_words='english',
-                ngram_range=(1, 2),
-                min_df=2,
-                max_df=0.8
+                ngram_range=(1, 3),  # Include 3-grams for better phrase matching
+                min_df=1,            # More permissive - allow terms that appear once
+                max_df=0.9           # Less restrictive on common terms
             )
             
             self.tfidf_matrix = self.tfidf_vectorizer.fit_transform(corpus)
@@ -249,7 +250,29 @@ class MultiModalSearchEngine:
         Returns:
             List of ranked search results with multi-modal scores
         """
-        logger.info(f"🔍 Multi-modal search: '{query[:50]}...' (mode: {search_mode})")
+        # Expand Singapore-specific abbreviations and terms
+        singapore_expansions = {
+            'hdb': 'hdb housing development board flat public housing',
+            'coe': 'coe certificate of entitlement vehicle car',
+            'cpf': 'cpf central provident fund retirement savings',
+            'mrt': 'mrt mass rapid transit train subway transport',
+            'lta': 'lta land transport authority traffic',
+            'ura': 'ura urban redevelopment authority planning',
+            'bto': 'bto build to order hdb flat',
+            'sbf': 'sbf sale of balance flats hdb',
+            'resale': 'resale hdb flat property housing'
+        }
+        
+        # Enhance query with expansions
+        query_lower = query.lower()
+        enhanced_query = query
+        for abbr, expansion in singapore_expansions.items():
+            if abbr in query_lower:
+                enhanced_query = f"{query} {expansion}"
+                logger.info(f"🔍 Query enhanced: '{query}' → '{enhanced_query}'")
+                break
+        
+        logger.info(f"🔍 Multi-modal search: '{enhanced_query[:50]}...' (mode: {search_mode})")
         
         try:
             # Apply filters first
@@ -258,8 +281,8 @@ class MultiModalSearchEngine:
             if filtered_datasets.empty:
                 return []
             
-            # Calculate different similarity scores
-            scores = self._calculate_multimodal_scores(query, filtered_datasets, search_mode)
+            # Calculate different similarity scores using enhanced query
+            scores = self._calculate_multimodal_scores(enhanced_query, filtered_datasets, search_mode)
             
             # Combine scores and rank
             final_scores = self._combine_scores(scores)
@@ -276,7 +299,7 @@ class MultiModalSearchEngine:
                     final_scores[idx], 
                     scores, 
                     idx,
-                    query
+                    query  # Keep original query for display
                 )
                 results.append(result)
             
@@ -525,9 +548,20 @@ class MultiModalSearchEngine:
         score_length = len(next(iter(scores.values())))
         combined_scores = np.zeros(score_length)
         
+        # Map score keys to weight keys
+        score_to_weight_mapping = {
+            'semantic': 'semantic_similarity',
+            'keyword': 'keyword_match',
+            'metadata': 'metadata_relevance',
+            'relationship': 'relationship_score',
+            'temporal': 'temporal_relevance',
+            'quality': 'quality_boost'
+        }
+        
         total_weight = 0.0
         for score_type, score_array in scores.items():
-            weight = self.weights.get(score_type, 0.0)
+            weight_key = score_to_weight_mapping.get(score_type, score_type)
+            weight = self.weights.get(weight_key, 0.0)
             if weight > 0 and len(score_array) == score_length:
                 combined_scores += weight * score_array
                 total_weight += weight
@@ -546,19 +580,33 @@ class MultiModalSearchEngine:
                             query: str) -> Dict[str, Any]:
         """Format a single search result with detailed scoring information."""
         
-        # Extract individual scores
+        # Extract individual scores and handle NaN values
         score_breakdown = {}
         for score_type, score_array in individual_scores.items():
             if index < len(score_array):
-                score_breakdown[score_type] = float(score_array[index])
+                score_val = score_array[index]
+                # Handle NaN values
+                if np.isnan(score_val) or np.isinf(score_val):
+                    score_breakdown[score_type] = 0.0
+                else:
+                    score_breakdown[score_type] = float(score_val)
+        
+        # Handle NaN values in final score
+        if np.isnan(final_score) or np.isinf(final_score):
+            final_score = 0.0
+        
+        # Handle NaN values in quality score
+        quality_score = dataset_row.get('quality_score', 0.0)
+        if pd.isna(quality_score) or np.isnan(quality_score) or np.isinf(quality_score):
+            quality_score = 0.0
         
         return {
-            'dataset_id': dataset_row['dataset_id'],
-            'title': dataset_row.get('title', ''),
-            'description': dataset_row.get('description', ''),
+            'dataset_id': dataset_row.get('dataset_id', ''),
+            'title': dataset_row.get('title', 'Untitled Dataset'),
+            'description': dataset_row.get('description', 'No description available'),
             'source': dataset_row.get('source', ''),
             'category': dataset_row.get('category', ''),
-            'quality_score': float(dataset_row.get('quality_score', 0.0)),
+            'quality_score': float(quality_score),
             'last_updated': dataset_row.get('last_updated', ''),
             'format': dataset_row.get('format', ''),
             'url': dataset_row.get('url', ''),
@@ -647,12 +695,12 @@ def create_multimodal_search_config() -> Dict[str, Any]:
         'multimodal_search': {
             'semantic_model': 'all-MiniLM-L6-v2',
             'weights': {
-                'semantic_similarity': 0.35,
-                'keyword_match': 0.25,
+                'semantic_similarity': 0.50,  # Increased for better relevance
+                'keyword_match': 0.30,        # Increased for exact matches
                 'metadata_relevance': 0.15,
-                'relationship_score': 0.15,
-                'temporal_relevance': 0.05,
-                'quality_boost': 0.05
+                'relationship_score': 0.05,   # Reduced
+                'temporal_relevance': 0.00,   # Disabled for now
+                'quality_boost': 0.00         # Disabled to prevent irrelevant high-quality results
             },
             'max_results': 50,
             'min_score_threshold': 0.1

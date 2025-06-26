@@ -2,21 +2,29 @@
 LLM Client implementations for MiniMax, Mistral, Claude, and OpenAI
 Handles API interactions with fallback logic and error handling
 """
-import os
 import asyncio
 import json
-import time
-from typing import Dict, List, Optional, Any, Union
-from abc import ABC, abstractmethod
 import logging
-from tenacity import retry, stop_after_attempt, wait_exponential
+import os
+import time
+from abc import ABC, abstractmethod
+from typing import Any, Dict, List, Optional, Union
+
+import aiohttp  # Still needed for MiniMax as they don't have official Python SDK
 
 # Import official SDKs
 import anthropic
 import openai
-from mistralai import Mistral, SystemMessage, UserMessage, AssistantMessage
-from mistralai import ToolMessage, ChatCompletionRequest, ChatCompletionResponse
-import aiohttp  # Still needed for MiniMax as they don't have official Python SDK
+from mistralai import (
+    AssistantMessage,
+    ChatCompletionRequest,
+    ChatCompletionResponse,
+    Mistral,
+    SystemMessage,
+    ToolMessage,
+    UserMessage,
+)
+from tenacity import retry, stop_after_attempt, wait_exponential
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -392,3 +400,77 @@ class LLMManager:
         
         # Fallback to general providers if all capable ones fail
         return await self.complete_with_fallback(prompt, **kwargs)
+    
+    async def generate_conversational_response(
+        self,
+        user_message: str,
+        conversation_context: List[Dict[str, str]] = None,
+        include_search: bool = False
+    ) -> str:
+        """
+        Generate a conversational response using Claude or other LLMs
+        
+        Args:
+            user_message: The user's message
+            conversation_context: Previous conversation messages
+            include_search: Whether this should include dataset search context
+            
+        Returns:
+            AI-generated conversational response
+        """
+        try:
+            # Build conversation prompt
+            prompt_parts = []
+            
+            # System prompt for dataset research assistant
+            prompt_parts.append("""You are a friendly AI research assistant specialized in helping users find and explore datasets. You're knowledgeable, conversational, and helpful.
+
+Conversation Guidelines:
+- Keep responses concise and focused (2-3 sentences max)
+- Be natural and personable but brief
+- Ask one relevant follow-up question
+- Focus on understanding user needs
+- Use a warm, professional tone
+
+When users greet you:
+- Respond warmly but briefly
+- Ask what they're working on
+- Offer to help with data research
+
+For questions:
+- Provide helpful, specific answers
+- Keep responses under 50 words when possible
+- Ask one clarifying question if needed
+
+Be conversational but concise. Think of yourself as a helpful colleague who gets straight to the point.""")
+            
+            # Add conversation context if available
+            if conversation_context:
+                prompt_parts.append("\nPrevious conversation:")
+                for msg in conversation_context[-4:]:  # Last 4 messages
+                    role = msg.get('role', 'user')
+                    content = msg.get('content', '')
+                    prompt_parts.append(f"{role.title()}: {content}")
+            
+            # Add current user message
+            prompt_parts.append(f"\nUser: {user_message}")
+            
+            # Add search context if requested
+            if include_search:
+                prompt_parts.append("\nNote: The user may be looking for specific datasets. Consider if their question would benefit from a dataset search.")
+            
+            prompt_parts.append("\nAssistant:")
+            
+            # Generate response
+            result = await self.complete_with_fallback(
+                prompt="\n".join(prompt_parts),
+                preferred_provider="claude",
+                max_tokens=500,
+                temperature=0.7
+            )
+            
+            return result.get('content', 'I apologize, but I encountered an error generating a response.')
+            
+        except Exception as e:
+            logger.error(f"Conversational response generation failed: {e}")
+            return "I apologize, but I'm having trouble responding right now. Please try asking about Singapore datasets or data research."

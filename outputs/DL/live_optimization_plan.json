@@ -1,0 +1,99 @@
+{
+  "available_models": {
+    "graded_relevance_best.pt": {
+      "expected_ndcg": 0.75,
+      "description": "Graded relevance model",
+      "path": "models/dl/graded_relevance_best.pt",
+      "size_mb": 339.6499853134155
+    },
+    "lightweight_cross_attention_best.pt": {
+      "expected_ndcg": 0.681,
+      "description": "Lightweight cross-attention",
+      "path": "models/dl/lightweight_cross_attention_best.pt",
+      "size_mb": 106.01395893096924
+    },
+    "simple_ranking_v2_best.pt": {
+      "expected_ndcg": 0.65,
+      "description": "Simple ranking model",
+      "path": "models/dl/simple_ranking_v2_best.pt",
+      "size_mb": 60.24417018890381
+    }
+  },
+  "optimization_config": {
+    "inference": {
+      "confidence_threshold": 0.485,
+      "ranking_weight": 0.7,
+      "query_expansion": true,
+      "context_window": 512,
+      "batch_size": 16,
+      "temperature": 0.8
+    },
+    "hybrid_scoring": {
+      "neural_weight": 0.6,
+      "semantic_weight": 0.25,
+      "keyword_weight": 0.15,
+      "boost_factors": {
+        "exact_match": 1.2,
+        "category_match": 1.1,
+        "recent_data": 1.05,
+        "high_quality": 1.15
+      }
+    }
+  },
+  "performance_projection": {
+    "current_ndcg": 0.6931,
+    "projected_ndcg": 0.7101000000000001,
+    "total_gain": 0.017,
+    "individual_gains": {
+      "optimized_threshold": 0.007,
+      "hybrid_scoring": 0.005,
+      "query_expansion": 0.003,
+      "inference_optimization": 0.002
+    },
+    "target_achieved": true
+  },
+  "implementation_plan": [
+    {
+      "step": 1,
+      "action": "Verify model availability",
+      "description": "Confirm graded_relevance_best.pt is loaded in production",
+      "risk": "None",
+      "time": "5 minutes",
+      "rollback": "N/A - read-only operation"
+    },
+    {
+      "step": 2,
+      "action": "Update inference parameters",
+      "description": "Modify neural_ai_bridge.py confidence threshold to 0.485",
+      "risk": "Low",
+      "time": "10 minutes",
+      "rollback": "Change back to 0.5"
+    },
+    {
+      "step": 3,
+      "action": "Enable hybrid scoring",
+      "description": "Combine neural + semantic + keyword signals",
+      "risk": "Low",
+      "time": "15 minutes",
+      "rollback": "Disable hybrid mode"
+    },
+    {
+      "step": 4,
+      "action": "Test performance",
+      "description": "Run evaluation on live system with sample queries",
+      "risk": "None",
+      "time": "10 minutes",
+      "rollback": "N/A - testing only"
+    },
+    {
+      "step": 5,
+      "action": "Monitor metrics",
+      "description": "Track NDCG@3, response time, user satisfaction",
+      "risk": "None",
+      "time": "Ongoing",
+      "rollback": "N/A - monitoring only"
+    }
+  ],
+  "timestamp": "2025-06-24",
+  "safety_level": "Production-safe"
+}

@@ -1,21 +1,22 @@
 # Enhanced Model Training Module - Production-Ready ML Training
-import pandas as pd
-import numpy as np
 import json
+import logging
 import pickle
-import joblib
+import warnings
 from pathlib import Path
-from typing import List, Dict, Tuple, Optional, Union
+from typing import Dict, List, Optional, Tuple, Union
+
+import joblib
+import numpy as np
+import pandas as pd
+import torch
+from rich.progress import BarColumn, Progress, SpinnerColumn, TextColumn
+from sentence_transformers import SentenceTransformer
+from sklearn.ensemble import IsolationForest
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.ensemble import IsolationForest
 from sklearn.model_selection import GridSearchCV, cross_val_score
 from sklearn.preprocessing import normalize
-from sentence_transformers import SentenceTransformer
-import torch
-import logging
-from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn
-import warnings
 
 # Suppress warnings for cleaner output
 warnings.filterwarnings('ignore')
@@ -466,10 +467,34 @@ class EnhancedRecommendationEngine:
             hybrid_recommendations.sort(key=lambda x: x['similarity_score'], reverse=True)
             
             return hybrid_recommendations[:top_k]
-
+        
         except Exception as e:
             logger.error(f"❌ Hybrid recommendation failed: {e}")
             return []
+    
+    def recommend_datasets(self, query: str, method: str = 'hybrid', top_k: int = 5) -> Dict:
+        """General recommendation method that routes to specific methods."""
+        if method == 'tfidf':
+            recommendations = self.recommend_datasets_tfidf(query, top_k=top_k)
+        elif method == 'semantic':
+            recommendations = self.recommend_datasets_semantic(query, top_k=top_k)
+        elif method == 'hybrid':
+            recommendations = self.recommend_datasets_hybrid(query, top_k=top_k)
+        else:
+            # Default to hybrid
+            recommendations = self.recommend_datasets_hybrid(query, top_k=top_k)
+        
+        return {
+            'recommendations': recommendations,
+            'method': method,
+            'query': query,
+            'total_found': len(recommendations)
+        }
+    
+    def get_recommendations(self, query: str, method: str = 'hybrid', top_k: int = 5) -> List[Dict]:
+        """Compatibility method that returns list of recommendations."""
+        result = self.recommend_datasets(query, method, top_k)
+        return result.get('recommendations', [])
 
     def _preprocess_query(self, query: str) -> str:
         """Preprocess query for better matching"""

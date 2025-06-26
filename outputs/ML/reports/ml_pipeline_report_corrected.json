@@ -1,0 +1,47 @@
+{
+  "pipeline_execution": {
+    "start_time": "2025-06-24T19:20:57.332716",
+    "end_time": "2025-06-24T19:20:57.332723",
+    "total_duration_minutes": 0.5,
+    "phases_completed": [
+      "preprocessing",
+      "evaluation",
+      "fix_applied"
+    ]
+  },
+  "data_summary": {
+    "total_datasets": 143,
+    "average_quality": 0.79,
+    "features_engineered": 98
+  },
+  "model_performance": {
+    "tfidf": {
+      "f1@3": 0.3523809523809524,
+      "precision@3": 0.3333333333333333,
+      "recall@3": 0.38541666666666663
+    },
+    "semantic": {
+      "f1@3": 0.4357142857142857,
+      "precision@3": 0.41666666666666663,
+      "recall@3": 0.46875
+    },
+    "hybrid": {
+      "f1@3": 0.4357142857142857,
+      "precision@3": 0.41666666666666663,
+      "recall@3": 0.46875
+    }
+  },
+  "recommendations": [
+    "\u2705 Good performance achieved for semantic and hybrid methods.",
+    "\ud83d\udca1 F1@3 = 0.436 shows solid recommendation accuracy.",
+    "\ud83d\udd27 Consider expanding ground truth scenarios to reach 90% target."
+  ],
+  "best_method": {
+    "method": "semantic",
+    "f1@3_score": 0.4357142857142857
+  },
+  "evaluation_summary": {
+    "scenarios_evaluated": 8,
+    "fix_applied": "Double nesting issue resolved"
+  }
+}

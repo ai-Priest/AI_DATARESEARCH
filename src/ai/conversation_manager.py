@@ -2,12 +2,12 @@
 Conversation Manager for session handling and history tracking
 Enables multi-turn conversations and context preservation
 """
-import uuid
-import time
-from typing import Dict, List, Optional, Any
-from datetime import datetime, timedelta
 import json
 import logging
+import time
+import uuid
+from datetime import datetime, timedelta
+from typing import Any, Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -83,6 +83,37 @@ class ConversationManager:
         """Check if session has expired"""
         last_active = session.get('last_active', 0)
         return (time.time() - last_active) > self.session_timeout
+    
+    def add_message(
+        self,
+        session_id: str,
+        role: str,
+        content: str
+    ) -> bool:
+        """Add a message to session history for conversation tracking"""
+        session = self.get_session(session_id)
+        if not session:
+            return False
+        
+        # Add message to conversation history
+        if 'conversation_history' not in session:
+            session['conversation_history'] = []
+        
+        message = {
+            "role": role,
+            "content": content,
+            "timestamp": time.time()
+        }
+        
+        session['conversation_history'].append(message)
+        
+        # Keep only recent messages (last 20)
+        if len(session['conversation_history']) > 20:
+            session['conversation_history'] = session['conversation_history'][-20:]
+        
+        session['last_active'] = time.time()
+        logger.info(f"Added {role} message to session {session_id}")
+        return True
     
     def add_to_history(
         self,

@@ -14,24 +14,6 @@
     "relevance_score": 1.0,
     "text_content": "mp14 sdcp pw plan - park connector line (shp) dataset containing information on sdcp, plan, park. provided by urban redevelopment authority. covering singapore. urban redevelopment authority general"
   },
-  "d_8f57a4970add2fb35bc9f1319411906e": {
-    "title": "IO Multipliers (Supply, Use and Input-Output Tables 2021)",
-    "category": "general",
-    "source": "data.gov.sg",
-    "keywords": {
-      "geographic:singapore": 1.6,
-      "data_type:statistics": 1.0,
-      "temporal:annual": 0.6,
-      "data_type:survey": 0.5
-    },
-    "domain_signals": [
-      "high_quality_data",
-      "actively_maintained",
-      "government_source"
-    ],
-    "relevance_score": 1.0,
-    "text_content": "io multipliers (supply, use and input-output tables 2021) source: singapore department of statistics\r\n\r\ndata last updated: 27/03/2024\r\n\r\nupdate frequency: annual\r\n\r\nsurvey period: supply, use and inpu"
-  },
   "d_642550222dea9b6eba88bd21bdaca1fa": {
     "title": "Newspapers-Straits Echo-1903 to 1904",
     "category": "general",
@@ -422,6 +404,27 @@
     "relevance_score": 1.0,
     "text_content": "newspapers-pinang gazette and straits chronicle-1838 to 1839 this dataset is a list of digitised out-of-copyright newspaper articles from the national library, singapore. \n\nthese materials present a v"
   },
+  "d_139eba997a127a7eb7c6ad37cbfe6254": {
+    "title": "Resident Working Persons Aged 15 Years and Over by Age Group, Highest Qualification Attained and Sex (Census of Population 2000)",
+    "category": "general",
+    "source": "data.gov.sg",
+    "keywords": {
+      "demographics:age": 2.0,
+      "demographics:census": 2.0,
+      "demographics:population": 2.0,
+      "data_type:census": 1.0,
+      "geographic:singapore": 1.6,
+      "data_type:statistics": 1.0,
+      "data_type:survey": 0.5
+    },
+    "domain_signals": [
+      "high_quality_data",
+      "actively_maintained",
+      "government_source"
+    ],
+    "relevance_score": 1.0,
+    "text_content": "resident working persons aged 15 years and over by age group, highest qualification attained and sex (census of population 2000) source: singapore department of statistics\r\n\r\ndata last updated: 31/03/"
+  },
   "d_15fedf3e20474f69373e526fdf623b6f": {
     "title": "Amendment to MP2014 Rail Line",
     "category": "general",
@@ -788,6 +791,19 @@
     "relevance_score": 1.0,
     "text_content": "domestic exports of machinery and equipment by market, monthly source: enterprise singapore\r\n\r\ndata last updated: 16/05/2025\r\n\r\nupdate frequency: monthly\r\n\r\nfootnotes: data prior to 1999 are based on "
   },
+  "d_07c63be0f37e6e59c07a4ddc2fd87fcb": {
+    "title": "CEA Salesperson Information",
+    "category": "general",
+    "source": "data.gov.sg",
+    "keywords": {},
+    "domain_signals": [
+      "high_quality_data",
+      "actively_maintained",
+      "government_source"
+    ],
+    "relevance_score": 0.92,
+    "text_content": "cea salesperson information contains data of valid real estate salespersons (from january 2011 to present) council for estate agencies general"
+  },
   "d_9fb538a0a39b080c2b3c985ab60e875d": {
     "title": "Master Plan 2019 SDCP Car Lite Precinct Name layer (KML)",
     "category": "general",
@@ -839,24 +855,6 @@
     ],
     "relevance_score": 1.0,
     "text_content": "waste disposed of and recycled, annual source: ministry of sustainability and the environment, national environment agency\r\n\r\ndata last updated: 26/06/2024\r\n\r\nupdate frequency: annual\r\n\r\nfootnotes: ye"
-  },
-  "d_c7652191d32fef35e63680c278fe2972": {
-    "title": "Import Use Table At Basic Prices (Supply, Use and Input-Output Tables 2021)",
-    "category": "general",
-    "source": "data.gov.sg",
-    "keywords": {
-      "geographic:singapore": 1.6,
-      "data_type:statistics": 1.0,
-      "temporal:annual": 0.6,
-      "data_type:survey": 0.5
-    },
-    "domain_signals": [
-      "high_quality_data",
-      "actively_maintained",
-      "government_source"
-    ],
-    "relevance_score": 1.0,
-    "text_content": "import use table at basic prices (supply, use and input-output tables 2021) source: singapore department of statistics\r\n\r\ndata last updated: 27/03/2024\r\n\r\nupdate frequency: annual\r\n\r\nsurvey period: su"
   },
   "lta_bus_arrival": {
     "title": "LTA Bus Arrival",

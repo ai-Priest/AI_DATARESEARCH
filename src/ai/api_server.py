@@ -2,20 +2,21 @@
 API Server for AI-Powered Dataset Research Assistant
 Provides REST API and WebSocket endpoints for real-time interaction
 """
+import asyncio
+import json
+import logging
+import time
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+import yaml
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
-from typing import Optional, Dict, Any, List
-import asyncio
-import logging
-import time
-import json
-import yaml
-from pathlib import Path
 
-from .research_assistant import ResearchAssistant
 from .evaluation_metrics import EvaluationMetrics
+from .research_assistant import ResearchAssistant
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -406,7 +407,7 @@ async def websocket_endpoint(websocket: WebSocket):
 # Development server runner
 if __name__ == "__main__":
     import uvicorn
-    
+
     # Get server config
     server_config = config.get('api_server', {})
     

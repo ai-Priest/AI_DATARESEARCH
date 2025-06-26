@@ -1,0 +1,153 @@
+{
+  "model_architecture": "Lightweight Cross-Attention Ranker",
+  "training_results": {
+    "best_loss": 0.1891798141101996,
+    "training_history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.322412823282537,
+        "val_loss": 0.24532990819878048,
+        "val_accuracy": 0.9337979094076655,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.26356832097683636,
+        "val_loss": 0.21245196958382925,
+        "val_accuracy": 0.9337979094076655,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.24418381335479872,
+        "val_loss": 0.19531667563650343,
+        "val_accuracy": 0.9337979094076655,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.20458010876817362,
+        "val_loss": 0.20673040797313055,
+        "val_accuracy": 0.9372822299651568,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.20003947092308885,
+        "val_loss": 0.20195236884885365,
+        "val_accuracy": 0.9442508710801394,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.16804415963235356,
+        "val_loss": 0.1891798141101996,
+        "val_accuracy": 0.9477351916376306,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.14629163247134006,
+        "val_loss": 0.22609171519676843,
+        "val_accuracy": 0.9477351916376306,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.1258885787711257,
+        "val_loss": 0.20154688424534267,
+        "val_accuracy": 0.9198606271777003,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.11358325943971674,
+        "val_loss": 0.23138116714027193,
+        "val_accuracy": 0.8850174216027874,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.10707424793924604,
+        "val_loss": 0.2059558683799373,
+        "val_accuracy": 0.9407665505226481,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.08196353202774412,
+        "val_loss": 0.2461099781923824,
+        "val_accuracy": 0.926829268292683,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.07915291695722512,
+        "val_loss": 0.24732138216495514,
+        "val_accuracy": 0.9233449477351916,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.07578176288821158,
+        "val_loss": 0.23742790354622734,
+        "val_accuracy": 0.9198606271777003,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.06829818852600597,
+        "val_loss": 0.26912884414196014,
+        "val_accuracy": 0.9372822299651568,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.06290722214838579,
+        "val_loss": 0.27347150693337124,
+        "val_accuracy": 0.9198606271777003,
+        "learning_rate": 6.25e-05
+      },
+      {
+        "epoch": 16,
+        "train_loss": 0.056796870327421596,
+        "val_loss": 0.2865391903453403,
+        "val_accuracy": 0.926829268292683,
+        "learning_rate": 6.25e-05
+      }
+    ],
+    "final_accuracy": 0.926829268292683
+  },
+  "evaluation_results": {
+    "accuracy": 0.9513888888888888,
+    "precision": 0.6,
+    "recall": 0.6666666666666666,
+    "f1_score": 0.631578947368421,
+    "ndcg_at_3": 0.6010473340236345,
+    "num_queries_evaluated": 40,
+    "total_test_samples": 288,
+    "positive_samples": 18,
+    "negative_samples": 270
+  },
+  "data_summary": {
+    "total_samples": 1914,
+    "train_samples": 1339,
+    "val_samples": 287,
+    "test_samples": 288,
+    "positive_samples": 216,
+    "negative_samples": 1698,
+    "sample_types": {
+      "positive": 216,
+      "negative": 1080,
+      "cross_category_negative": 550,
+      "hard_negative": 68
+    },
+    "categories_covered": 20
+  },
+  "training_config": {
+    "epochs": 15,
+    "learning_rate": 2e-05,
+    "batch_size": 32,
+    "device": "mps"
+  }
+}

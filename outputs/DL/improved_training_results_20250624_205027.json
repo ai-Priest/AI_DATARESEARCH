@@ -1,0 +1,146 @@
+{
+  "model_architecture": "Lightweight Cross-Attention Ranker",
+  "training_results": {
+    "best_loss": 0.18517401897244984,
+    "training_history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.3532781276319708,
+        "val_loss": 0.22054456008805168,
+        "val_accuracy": 0.9337979094076655,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.2754532249555701,
+        "val_loss": 0.20962253709634146,
+        "val_accuracy": 0.9337979094076655,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.2570109214811098,
+        "val_loss": 0.19674883286158243,
+        "val_accuracy": 0.9337979094076655,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.21246194866086757,
+        "val_loss": 0.18700569619735083,
+        "val_accuracy": 0.9477351916376306,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.1917681907791467,
+        "val_loss": 0.18517401897244984,
+        "val_accuracy": 0.9442508710801394,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.16806545285951524,
+        "val_loss": 0.20983455826838812,
+        "val_accuracy": 0.9477351916376306,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.15485860500484705,
+        "val_loss": 0.22834423101610607,
+        "val_accuracy": 0.9407665505226481,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.1477583713297333,
+        "val_loss": 0.20754467944304147,
+        "val_accuracy": 0.9442508710801394,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.10850804622861601,
+        "val_loss": 0.22346161471472847,
+        "val_accuracy": 0.9128919860627178,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.0998456021327348,
+        "val_loss": 0.23731749918725756,
+        "val_accuracy": 0.9163763066202091,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.0941765323015196,
+        "val_loss": 0.25864821838008034,
+        "val_accuracy": 0.8954703832752613,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.08121257160036337,
+        "val_loss": 0.26327666143576306,
+        "val_accuracy": 0.9059233449477352,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.08102323939757687,
+        "val_loss": 0.286539522310098,
+        "val_accuracy": 0.9128919860627178,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.07429547335154243,
+        "val_loss": 0.302423604660564,
+        "val_accuracy": 0.9024390243902439,
+        "learning_rate": 6.25e-05
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.06435063128758754,
+        "val_loss": 0.3158310800790787,
+        "val_accuracy": 0.9128919860627178,
+        "learning_rate": 6.25e-05
+      }
+    ],
+    "final_accuracy": 0.9128919860627178
+  },
+  "evaluation_results": {
+    "accuracy": 0.9513888888888888,
+    "precision": 0.5909090909090909,
+    "recall": 0.7222222222222222,
+    "f1_score": 0.65,
+    "ndcg_at_3": 0.6021715310389111,
+    "num_queries_evaluated": 40,
+    "total_test_samples": 288,
+    "positive_samples": 18,
+    "negative_samples": 270
+  },
+  "data_summary": {
+    "total_samples": 1914,
+    "train_samples": 1339,
+    "val_samples": 287,
+    "test_samples": 288,
+    "positive_samples": 216,
+    "negative_samples": 1698,
+    "sample_types": {
+      "positive": 216,
+      "negative": 1080,
+      "cross_category_negative": 550,
+      "hard_negative": 68
+    },
+    "categories_covered": 20
+  },
+  "training_config": {
+    "epochs": 15,
+    "learning_rate": 2e-05,
+    "batch_size": 32,
+    "device": "mps"
+  }
+}

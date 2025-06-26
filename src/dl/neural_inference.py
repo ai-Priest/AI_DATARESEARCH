@@ -3,30 +3,31 @@ Neural Inference Module - Production-Ready Neural Network Inference
 Handles model loading, optimization, and real-time inference for dataset recommendations.
 """
 
-import torch
-import torch.nn as nn
-import numpy as np
-import pandas as pd
-from typing import Dict, List, Tuple, Optional, Any, Union
-import logging
-from pathlib import Path
+import asyncio
+import hashlib
 import json
+import logging
 import pickle
 import time
-from datetime import datetime, timedelta
-from collections import defaultdict, OrderedDict
-import asyncio
+from collections import OrderedDict, defaultdict
 from concurrent.futures import ThreadPoolExecutor
-import hashlib
 from dataclasses import dataclass
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple, Union
+
+import numpy as np
+import pandas as pd
+import torch
+import torch.nn as nn
 
 # FIX: Add safe globals for numpy arrays to support checkpoint loading
 torch.serialization.add_safe_globals([np.ndarray, np.dtype, np.core.multiarray._reconstruct])
 
-from .neural_preprocessing import NeuralDataPreprocessor
-from .model_architecture import create_neural_models
-from .deep_evaluation import DeepEvaluator
 from .advanced_ensemble import AdvancedEnsemble
+from .deep_evaluation import DeepEvaluator
+from .model_architecture import create_neural_models
+from .neural_preprocessing import NeuralDataPreprocessor
 
 logger = logging.getLogger(__name__)
 
@@ -703,7 +704,7 @@ class NeuralInferenceEngine:
         try:
             # Cosine similarity
             from sklearn.metrics.pairwise import cosine_similarity
-            
+
             # Ensure 2D arrays
             if query_embedding.ndim == 1:
                 query_embedding = query_embedding.reshape(1, -1)

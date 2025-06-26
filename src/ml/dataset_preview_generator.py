@@ -3,14 +3,15 @@ Dataset Preview Card Generator
 Creates rich preview cards with metadata, statistics, and integration guidance.
 """
 
-import pandas as pd
-import numpy as np
-from typing import Dict, List, Optional, Any
-import re
 import json
-from datetime import datetime
-from collections import Counter
 import logging
+import re
+from collections import Counter
+from datetime import datetime
+from typing import Any, Dict, List, Optional
+
+import numpy as np
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 

@@ -1,17 +1,18 @@
 # 01_extraction_module.py - Real API Data Extraction
+import json
+import logging
+import os
+import re
+import time
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+from urllib.parse import urljoin
+
 import pandas as pd
 import requests
 import yaml
-import re
-import time
-import os
-import json
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
-import logging
-from urllib.parse import urljoin
 from dotenv import load_dotenv
-from datetime import datetime
 
 load_dotenv()
 

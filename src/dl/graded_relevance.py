@@ -3,16 +3,17 @@ Graded Relevance Scoring System
 Implements 4-level relevance scoring: 0.0 (irrelevant), 0.3 (somewhat relevant), 0.7 (relevant), 1.0 (highly relevant)
 """
 
-import pandas as pd
-import numpy as np
 import json
-import re
-from typing import Dict, List, Tuple, Optional
-from pathlib import Path
 import logging
+import re
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import networkx as nx
+import numpy as np
+import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-import networkx as nx
 
 logger = logging.getLogger(__name__)
 

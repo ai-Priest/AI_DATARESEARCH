@@ -3,9 +3,10 @@ Production Deployment Configuration
 Centralized configuration management for production deployment
 """
 import os
-from typing import Dict, Any, Optional
-from pathlib import Path
 from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Any, Dict, Optional
+
 import yaml
 from dotenv import load_dotenv
 
@@ -211,7 +212,7 @@ class DeploymentConfig:
         """Get configuration for FastAPI application."""
         return {
             "title": "AI-Powered Dataset Research Assistant",
-            "description": "Production API with 84% response time improvement and 68.1% NDCG@3 performance",
+            "description": "Production API with 84% response time improvement and 75% NDCG@3 performance",
             "version": "2.0.0",
             "docs_url": "/docs" if not self.security.enable_api_key_auth else None,
             "redoc_url": "/redoc" if not self.security.enable_api_key_auth else None,

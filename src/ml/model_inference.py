@@ -1,18 +1,19 @@
 # Model Inference Module - Real-time Query Processing & Recommendations
-import pandas as pd
-import numpy as np
+import hashlib
 import json
+import logging
 import pickle
-import joblib
+import time
+from functools import lru_cache
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional, Union
+from typing import Dict, List, Optional, Tuple, Union
+
+import joblib
+import numpy as np
+import pandas as pd
+from sentence_transformers import SentenceTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
-import time
-import logging
-from functools import lru_cache
-import hashlib
 
 # Setup logging
 logger = logging.getLogger(__name__)

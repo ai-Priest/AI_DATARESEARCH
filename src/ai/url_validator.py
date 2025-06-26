@@ -144,6 +144,7 @@ class URLValidator:
         }
         
         # For transport data, use data.gov.sg search instead of API endpoints
+        title_lower = title.lower() if title else ''
         if any(word in title_lower for word in ['bus', 'traffic', 'transport', 'lta', 'taxi']):
             if 'arrival' in title_lower or 'bus' in title_lower:
                 return "https://data.gov.sg/search?query=bus"

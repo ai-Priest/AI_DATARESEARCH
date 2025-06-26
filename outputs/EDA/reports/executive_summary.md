@@ -1,7 +1,7 @@
 # Dataset Research Assistant - Executive Summary
 
 ## 📊 Analysis Overview
-- **Analysis Date**: 2025-06-21
+- **Analysis Date**: 2025-06-26
 - **Total Datasets Analyzed**: 143
 - **Data Sources**: 8 different sources
 - **Categories Covered**: 8 domains
@@ -19,7 +19,7 @@
 - **Average Relevance Score**: 0.94/1.0
 
 ### Relationship Discovery
-- **Total Relationships**: 4962 discovered
+- **Total Relationships**: 4961 discovered
 - **High-Quality Relationships**: 540 pairs
 - **Average Confidence**: 0.69/1.0
 

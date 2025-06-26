@@ -127,10 +127,11 @@ evaluation:
       bounce_threshold: 30            # Seconds - consider as bounce if less
       refinement_penalty: 0.1        # Penalty for each search refinement
     
-  # Legacy ground truth evaluation (disabled)
+  # Ground truth evaluation (disabled - using real user behavior only)
   supervised:
-    enabled: false  # Replaced with user behavior evaluation
-    note: "Disabled in favor of real user behavior evaluation"
+    enabled: false  # Disabled - using real user behavior evaluation instead of mock data
+    k_values: [1, 3, 5, 10]
+    note: "Disabled - real user behavior evaluation is more accurate than artificial scenarios"
   
   # Unsupervised evaluation (internal metrics) - Primary evaluation method
   unsupervised:

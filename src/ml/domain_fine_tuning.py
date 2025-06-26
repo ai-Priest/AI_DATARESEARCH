@@ -3,16 +3,17 @@ Domain-Specific Fine-tuning for Singapore Government Dataset Search
 Enhances semantic models with domain knowledge for better recommendations.
 """
 
-import pandas as pd
-import numpy as np
-from sentence_transformers import SentenceTransformer, InputExample, losses
-from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from torch.utils.data import DataLoader
-from typing import List, Tuple, Dict
 import json
 import logging
-from sklearn.metrics.pairwise import cosine_similarity
+from typing import Dict, List, Tuple
+
+import numpy as np
+import pandas as pd
 import torch
+from sentence_transformers import InputExample, SentenceTransformer, losses
+from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
+from sklearn.metrics.pairwise import cosine_similarity
+from torch.utils.data import DataLoader
 
 logger = logging.getLogger(__name__)
 

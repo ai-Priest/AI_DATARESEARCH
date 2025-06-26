@@ -3,13 +3,14 @@ Improved Model Architecture for Ranking
 BERT-based cross-attention models optimized for ranking performance
 """
 
+import logging
+from typing import Dict, List, Optional, Tuple
+
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from transformers import AutoModel, AutoTokenizer
-import numpy as np
-from typing import Dict, List, Optional, Tuple
-import logging
 
 logger = logging.getLogger(__name__)
 

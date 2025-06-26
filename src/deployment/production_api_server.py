@@ -129,6 +129,13 @@ class SearchRequest(BaseModel):
     use_ai_enhanced_search: Optional[bool] = Field(True, description="Whether to use AI/LLM enhanced search")
 
 
+class ConversationRequest(BaseModel):
+    message: str = Field(..., description="User message", min_length=1, max_length=1000)
+    session_id: Optional[str] = Field(None, description="Conversation session ID")
+    context: Optional[List[Dict[str, str]]] = Field(None, description="Conversation context")
+    include_search: Optional[bool] = Field(False, description="Whether to include dataset search")
+
+
 class SearchResponse(BaseModel):
     query: str
     results: List[Dict[str, Any]]
@@ -243,8 +250,14 @@ async def root():
         "performance": "84% response time improvement achieved",
         "neural_performance": "75% NDCG@3 (target achieved!)",
         "docs": "/docs",
-        "health": "/api/health"
+        "health": "/api/health",
+        "conversation": "/api/conversation"
     }
+
+@app.get("/api/test-conversation")
+async def test_conversation():
+    """Test endpoint to verify conversation endpoint is working."""
+    return {"status": "conversation_endpoint_available", "message": "POST to /api/conversation to chat"}
 
 
 @app.get("/api/health", response_model=HealthResponse)
@@ -408,7 +421,9 @@ async def ai_enhanced_search(request: SearchRequest):
                 logger.info(f"🤖 Using AI-enhanced research assistant for: {request.query}")
                 
                 # Apply timeout based on AI config
-                ai_timeout = ai_config.get('ai_pipeline', {}).get('response_settings', {}).get('max_response_time', 15.0)
+                ai_timeout = 15.0  # Default timeout
+                if config_manager and hasattr(config_manager, 'config'):
+                    ai_timeout = config_manager.config.get('ai_pipeline', {}).get('response_settings', {}).get('max_response_time', 15.0)
                 
                 ai_response = await asyncio.wait_for(
                     research_assistant.process_query_optimized(
@@ -533,6 +548,154 @@ async def submit_feedback(request: FeedbackRequest, background_tasks: Background
     except Exception as e:
         logger.error(f"Feedback error: {e}")
         raise HTTPException(status_code=500, detail=f"Feedback submission failed: {str(e)}")
+
+
+@app.post("/api/conversation")
+async def conversation_chat(request: ConversationRequest):
+    """
+    Conversational AI endpoint using Claude for natural language interactions.
+    Supports both general conversation and dataset-related queries.
+    """
+    start_time = time.time()
+    
+    try:
+        # Simple conversation responses if research assistant not available
+        if not research_assistant:
+            logger.warning("Research assistant not available, using simple responses")
+            
+            # Generate simple session ID
+            session_id = request.session_id or f"simple-{int(time.time())}"
+            
+            # Enhanced conversational responses
+            message_lower = request.message.lower()
+            if any(word in message_lower for word in ['hello', 'hi', 'hey']):
+                response = "Hi there! 👋 I'm your AI dataset research assistant, and I'm excited to help you discover amazing data resources. What kind of research project are you working on?"
+            elif any(word in message_lower for word in ['how are you', 'how do you do']):
+                response = "Hi there! I'm doing great, thanks for asking! As an AI research assistant focused on data search, I'm always excited to help users explore our rich data resources. Are you working on any specific research projects? I'd be happy to point you towards relevant datasets or share insights about particular areas. Is there a particular topic of data that interests you? I'd love to help you navigate through the available resources!"
+            elif 'laptop prices' in message_lower:
+                response = "Interesting question about laptop prices! 💻 While I specialize in Singapore government datasets, I don't think we have direct laptop pricing data from government sources. However, I could help you find economic indicators, consumer price indices, or import/export data that might give you insights into electronics markets in Singapore. Would any of that be helpful for your research?"
+            elif 'money please' in message_lower or 'give me money' in message_lower:
+                response = "😄 Haha! I'm a data research assistant, not a bank! I can't give you money, but I can help you find valuable datasets that might be worth their weight in gold for your research projects. Maybe economic indicators, financial market data, or salary datasets? What kind of valuable data are you looking for?"
+            elif message_lower.endswith('?'):
+                response = f"That's a great question! I'd love to help you with '{request.message}' 🤔 Could you tell me a bit more about what you're trying to accomplish? Are you working on research, analysis, or just curious to learn? Understanding your goals will help me suggest the best Singapore datasets for you!"
+            elif any(word in message_lower for word in ['what', 'how', 'help']):
+                response = "I'm here to help you discover Singapore's amazing government datasets! 🇸🇬 I have access to data from data.gov.sg, SingStat, LTA DataMall, and many other agencies. Whether you're interested in housing, transport, education, healthcare, or economic data - I can guide you to exactly what you need. What area interests you most?"
+            elif any(word in message_lower for word in ['data', 'dataset']):
+                response = "You've come to the right place for Singapore government data! 📊 We have incredible open data resources covering everything from housing prices and transport patterns to education statistics and healthcare indicators. What specific type of research are you doing? I'd love to point you toward the most relevant datasets!"
+            else:
+                response = "I'm excited to help you explore Singapore's government datasets! 🚀 Whether you're a researcher, student, analyst, or just curious about data, I can guide you to exactly what you need. What would you like to discover today?"
+            
+            return {
+                "session_id": session_id,
+                "response": response,
+                "search_results": [],
+                "conversation_context": [],
+                "performance": {
+                    "response_time_seconds": time.time() - start_time,
+                    "ai_provider": "simple"
+                },
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        # Full research assistant functionality
+        try:
+            # Get or create conversation session
+            if request.session_id:
+                session = research_assistant.conversation_manager.get_session(request.session_id)
+            else:
+                session = research_assistant.conversation_manager.create_session()
+            
+            # Add user message to session history
+            research_assistant.conversation_manager.add_message(
+                session['session_id'], 
+                'user', 
+                request.message
+            )
+            
+            # Prepare conversation context
+            conversation_history = session.get('conversation_history', [])
+            context_messages = conversation_history[-6:]  # Last 6 messages for context
+            
+            # Generate AI response using LLM
+            ai_response = await research_assistant.llm_manager.generate_conversational_response(
+                user_message=request.message,
+                conversation_context=context_messages,
+                include_search=request.include_search
+            )
+            
+            # Add AI response to session history
+            research_assistant.conversation_manager.add_message(
+                session['session_id'],
+                'assistant',
+                ai_response
+            )
+            
+            # If search was requested, also perform dataset search
+            search_results = []
+            if request.include_search:
+                try:
+                    search_response = await research_assistant.process_query_optimized(
+                        request.message,
+                        timeout=5.0
+                    )
+                    search_results = search_response.get('recommendations', [])[:3]  # Top 3 results
+                except Exception as search_error:
+                    logger.warning(f"Search failed during conversation: {search_error}")
+            
+            response_time = time.time() - start_time
+            
+            return {
+                "session_id": session['session_id'],
+                "response": ai_response,
+                "search_results": search_results,
+                "conversation_context": context_messages,
+                "performance": {
+                    "response_time_seconds": response_time,
+                    "ai_provider": "claude"
+                },
+                "timestamp": datetime.now().isoformat()
+            }
+            
+        except Exception as research_error:
+            logger.error(f"Research assistant error: {research_error}")
+            # Use simple rule-based responses as fallback
+            session_id = request.session_id or f"simple-{int(time.time())}"
+            message_lower = request.message.lower()
+            
+            if any(word in message_lower for word in ['hello', 'hi', 'hey']):
+                response = "Hi there! 👋 I'm your AI dataset research assistant, and I'm excited to help you discover amazing data resources. What kind of research project are you working on?"
+            elif any(word in message_lower for word in ['how are you', 'how do you do']):
+                response = "Hi there! I'm doing great, thanks for asking! As an AI research assistant focused on data search, I'm always excited to help users explore our rich data resources. Are you working on any specific research projects? I'd be happy to point you towards relevant datasets or share insights about particular areas. Is there a particular topic of data that interests you? I'd love to help you navigate through the available resources!"
+            elif 'laptop prices' in message_lower:
+                response = "Interesting question about laptop prices! 💻 I could help you find economic indicators, consumer price indices, or import/export data that might give you insights into electronics markets. Would any of that be helpful for your research?"
+            elif 'money please' in message_lower or 'give me money' in message_lower:
+                response = "😄 Haha! I'm a data research assistant, not a bank! I can't give you money, but I can help you find valuable datasets that might be worth their weight in gold for your research projects. Maybe economic indicators, financial market data, or salary datasets? What kind of valuable data are you looking for?"
+            elif message_lower.endswith('?'):
+                response = f"That's a great question! Could you tell me a bit more about what you're trying to accomplish? Are you working on research, analysis, or just curious to learn? Understanding your goals will help me suggest the best datasets for you!"
+            elif any(word in message_lower for word in ['what', 'how', 'help']):
+                response = "I'm here to help you discover amazing datasets! I have access to government data, statistical databases, and many other sources. Whether you're interested in demographics, economics, science, or other topics - I can guide you to what you need. What area interests you most?"
+            elif any(word in message_lower for word in ['data', 'dataset']):
+                response = "You've come to the right place for data discovery! 📊 We have incredible open data resources covering everything from demographics and economics to science and social indicators. What specific type of research are you doing? I'd love to point you toward the most relevant datasets!"
+            elif any(word in message_lower for word in ['thank', 'thanks']):
+                response = "You're so welcome! 😊 I really enjoy helping with data research. Feel free to ask me about any datasets anytime - whether it's demographics, economics, science, or anything else. I'm here whenever you need help finding the perfect data for your projects!"
+            else:
+                response = "I'm excited to help you explore available datasets! 🚀 Whether you're a researcher, student, analyst, or just curious about data, I can guide you to exactly what you need. What would you like to discover today?"
+            
+            return {
+                "session_id": session_id,
+                "response": response,
+                "search_results": [],
+                "conversation_context": [],
+                "performance": {
+                    "response_time_seconds": time.time() - start_time,
+                    "ai_provider": "simple_fallback"
+                },
+                "timestamp": datetime.now().isoformat()
+            }
+        
+    except Exception as e:
+        logger.error(f"Conversation endpoint error: {e}")
+        raise HTTPException(status_code=500, detail=f"Conversation failed: {str(e)}")
 
 
 @app.get("/api/metrics")

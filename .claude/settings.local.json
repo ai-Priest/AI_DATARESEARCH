@@ -23,7 +23,24 @@
       "Bash(curl:*)",
       "Bash(pkill:*)",
       "Bash(rm:*)",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(./start_background.sh:*)",
+      "Bash(./stop_server.sh)",
+      "Bash(kill:*)",
+      "Bash(awk:*)",
+      "Bash(export TF_ENABLE_ONEDNN_OPTS=0)",
+      "Bash(TRANSFORMERS_SKIP_TF_CHECK=1 python ml_pipeline.py --validate-only)",
+      "Bash(export TF_USE_LEGACY_KERAS=1)",
+      "Bash(black:*)",
+      "Bash(isort:*)",
+      "Bash(ruff check:*)",
+      "Bash(mypy:*)",
+      "Bash(pytest:*)",
+      "Bash(open http://localhost:3002)",
+      "Bash(gtimeout:*)",
+      "Bash(git rm:*)",
+      "Bash(git commit:*)",
+      "Bash(cat:*)"
     ],
     "deny": []
   }

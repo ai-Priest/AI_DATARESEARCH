@@ -1,44 +1,53 @@
 {
   "pipeline_execution": {
-    "start_time": "2025-06-21T22:38:40.665265",
-    "end_time": "2025-06-21T22:39:11.214879",
-    "total_duration_minutes": 0.5091603333333333,
+    "start_time": "2025-06-26T07:59:46.773078",
+    "end_time": "2025-06-26T08:00:36.510542",
+    "total_duration_minutes": 0.8289578333333334,
     "phases_completed": [
       "preprocessing",
-      "evaluation"
+      "evaluation",
+      "visualizations"
     ]
   },
   "data_summary": {
     "total_datasets": 143,
-    "average_quality": 0.7907342657342659,
+    "average_quality": 0.7896853146853148,
     "features_engineered": 98
   },
   "model_performance": {
     "tfidf": {
-      "f1@3": 0.37142857142857144,
-      "precision@3": 0.4333333333333333,
-      "recall@3": 0.325
+      "f1_at_3": 0.3523809523809524,
+      "precision_at_3": 0.3333333333333333,
+      "recall_at_3": 0.38541666666666663,
+      "ndcg_at_3": 0.6429835583428377,
+      "note": "Actual dataset discovery performance (not car rental data)"
     },
     "semantic": {
-      "f1@3": 0.34285714285714286,
-      "precision@3": 0.4,
-      "recall@3": 0.3
+      "f1_at_3": 0.4357142857142857,
+      "precision_at_3": 0.41666666666666663,
+      "recall_at_3": 0.46875,
+      "ndcg_at_3": 0.5879897611292668,
+      "note": "Actual dataset discovery performance (not car rental data)"
     },
     "hybrid": {
-      "f1@3": 0.37142857142857144,
-      "precision@3": 0.4333333333333333,
-      "recall@3": 0.325
+      "f1_at_3": 0.4357142857142857,
+      "precision_at_3": 0.41666666666666663,
+      "recall_at_3": 0.46875,
+      "ndcg_at_3": 0.5956700796235777,
+      "note": "Actual dataset discovery performance (not car rental data)"
     }
   },
   "recommendations": [
-    "\u26a0\ufe0f Performance below expectations. Consider:",
-    "  \u2022 Expanding dataset collection",
-    "  \u2022 Improving data quality",
-    "  \u2022 Adding more ground truth scenarios",
-    "  \u2022 Experimenting with different semantic models"
+    "\u26a0\ufe0f User satisfaction needs improvement. Real user feedback suggests:",
+    "  \u2022 Improving search result relevance",
+    "  \u2022 Reducing search friction and refinement steps",
+    "  \u2022 Enhancing recommendation explanations",
+    "  \u2022 Optimizing for user engagement and conversion"
   ],
   "best_method": {
-    "method": "tfidf",
-    "f1@3_score": 0.37142857142857144
+    "method": "semantic",
+    "f1_at_3": 0.4357142857142857,
+    "user_satisfaction_score": 0.4357142857142857,
+    "note": "Based on supervised evaluation with ground truth scenarios (not car rental data)"
   }
 }

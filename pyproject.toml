@@ -71,6 +71,7 @@ dependencies = [
     "anthropic>=0.54.0",
     "openai>=1.90.0",
     "mistralai>=1.8.2",
+    "keras>=3.10.0",
 ]
 
 [project.optional-dependencies]

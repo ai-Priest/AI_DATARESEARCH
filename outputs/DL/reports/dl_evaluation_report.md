@@ -1,39 +1,39 @@
 # Deep Learning Pipeline - Comprehensive Evaluation Report
 
-Generated: 2025-06-23 07:31:51
+Generated: 2025-06-26 06:01:36
 
 ## 🎯 Executive Summary
 
 ### Breakthrough Achievement
-- **NDCG@3 Performance**: 69.0% (Target: 70%)
-- **Accuracy**: 94.1%
-- **F1 Score**: 0.702
+- **NDCG@3 Performance**: 81.2% (Target: 70%)
+- **Accuracy**: 93.8%
+- **F1 Score**: 0.609
 - **Model Architecture**: Lightweight Cross-Attention Ranker
-- **Training Epochs**: 14
-- **Final Validation Loss**: 0.2578
+- **Training Epochs**: 19
+- **Final Validation Loss**: 0.2457
 
 ### Key Findings
 1. **Near-Target Performance**: Achieved 97% of the 70% NDCG@3 target
 2. **Efficient Architecture**: Single lightweight model outperformed 5-model ensemble
-3. **Training Efficiency**: Converged in 14 epochs with early stopping
+3. **Training Efficiency**: Converged in 19 epochs with early stopping
 4. **Production Ready**: Real-time inference capability with MPS optimization
 
 ## 📊 Performance Metrics
 
 ### Ranking Metrics
-- **NDCG@3**: 0.6900
+- **NDCG@3**: 0.8123
 - **Queries Evaluated**: 40
 
 ### Classification Metrics
-- **Accuracy**: 0.9410
-- **Precision**: 0.6667
-- **Recall**: 0.7407
-- **F1 Score**: 0.7018
+- **Accuracy**: 0.9377
+- **Precision**: 0.6087
+- **Recall**: 0.6087
+- **F1 Score**: 0.6087
 
 ### Data Summary
-- **Total Test Samples**: 288
-- **Positive Samples**: 27
-- **Negative Samples**: 261
+- **Total Test Samples**: 289
+- **Positive Samples**: 23
+- **Negative Samples**: 266
 - **Training Samples**: 1339
 
 ## 📈 Visualizations
@@ -86,10 +86,10 @@ Generated: 2025-06-23 07:31:51
 - **Device**: mps
 
 ### Training Details
-- **Epochs Trained**: 14
+- **Epochs Trained**: 19
 - **Early Stopping Patience**: 7
-- **Best Validation Loss**: 0.2578
-- **Final Learning Rate**: 0.00025
+- **Best Validation Loss**: 0.2457
+- **Final Learning Rate**: 3.125e-05
 
 ## 💡 Insights and Recommendations
 

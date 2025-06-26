@@ -1,0 +1,138 @@
+{
+  "@type": "Dataset",
+  "identifier": "10.1038/s41597-020-0569-5",
+  "title": "Metadata record for: A dataset describing data discovery and reuse practices in research",
+  "relatedPublications": [
+    {
+      "doi": "https://doi.org/10.1162/99608f92.e38165eb ",
+      "@type": "ScholarlyArticle"
+    }
+  ],
+  "repositories": [
+    {
+      "name": "Data Archiving and Networked Services (DANS)",
+      "value": "https://doi.org/10.17026/dans-xsw-kkeq",
+      "@type": "DataCatalog"
+    }
+  ],
+  "assays": [
+    {
+      "measurementType": {
+        "annotationValue": "data discovery behaviours",
+        "@type": "PropertyValue"
+      },
+      "technologyType": {
+        "annotationValue": "Survey",
+        "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17176",
+        "termSource": "NCIT",
+        "@type": "PropertyValue"
+      },
+      "@type": "variableMeasured"
+    },
+    {
+      "measurementType": {
+        "annotationValue": "data discovery behaviours",
+        "@type": "PropertyValue"
+      },
+      "technologyType": {
+        "annotationValue": "Self-Report",
+        "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C74528",
+        "termSource": "NCIT",
+        "@type": "PropertyValue"
+      },
+      "@type": "variableMeasured"
+    },
+    {
+      "measurementType": {
+        "annotationValue": "data reuse behaviours",
+        "@type": "PropertyValue"
+      },
+      "technologyType": {
+        "annotationValue": "Survey",
+        "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17176",
+        "termSource": "NCIT",
+        "@type": "PropertyValue"
+      },
+      "@type": "variableMeasured"
+    },
+    {
+      "measurementType": {
+        "annotationValue": "data reuse behaviours",
+        "@type": "PropertyValue"
+      },
+      "technologyType": {
+        "annotationValue": "Self-Report",
+        "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C74528",
+        "termSource": "NCIT",
+        "@type": "PropertyValue"
+      },
+      "@type": "variableMeasured"
+    },
+    {
+      "measurementType": {
+        "annotationValue": "data management",
+        "termAccession": "http://purl.obolibrary.org/obo/ERO_0001218",
+        "termSource": "ERO",
+        "@type": "PropertyValue"
+      },
+      "technologyType": {
+        "annotationValue": "Survey",
+        "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C17176",
+        "termSource": "NCIT",
+        "@type": "PropertyValue"
+      },
+      "@type": "variableMeasured"
+    },
+    {
+      "measurementType": {
+        "annotationValue": "data management",
+        "termAccession": "http://purl.obolibrary.org/obo/ERO_0001218",
+        "termSource": "ERO",
+        "@type": "PropertyValue"
+      },
+      "technologyType": {
+        "annotationValue": "Self-Report",
+        "termAccession": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C74528",
+        "termSource": "NCIT",
+        "@type": "PropertyValue"
+      },
+      "@type": "variableMeasured"
+    }
+  ],
+  "factors": [],
+  "studyCharacteristics": {
+    "organism": [],
+    "environmentType": [],
+    "geographicalLocation": [],
+    "@type": "variableMeasured"
+  },
+  "ontologySourceReferences": {
+    "NCIT": {
+      "name": "NCIT",
+      "description": "National Cancer Institute Thesaurus",
+      "file": "http://data.bioontology.org/ontologies/NCIT",
+      "version": "20.01d",
+      "@type": "DefinedTermSet"
+    },
+    "ERO": {
+      "name": "ERO",
+      "description": "Eagle-I Research Resource Ontology",
+      "file": "http://data.bioontology.org/ontologies/ERO",
+      "version": "2013-08-02",
+      "@type": "DefinedTermSet"
+    },
+    "@type": "CategoryCodeSet"
+  },
+  "comments": [
+    {
+      "name": "Created With Configuration",
+      "value": "1.0",
+      "@type": "SoftwareApplication"
+    },
+    {
+      "name": "Data Descriptor License",
+      "value": "CC-BY-4.0",
+      "@type": "CreativeWork"
+    }
+  ]
+}

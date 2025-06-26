@@ -3,77 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Singapore Dataset Discovery Assistant</title>
+    <title>DATA RESEARCH AI_ASSISTANT</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <header class="hero">
-            <h1>Singapore Dataset Discovery Assistant</h1>
-            <p class="subtitle">Ask me anything about Singapore's public datasets</p>
+            <h1>📊 DATA RESEARCH AI-ASSISTANT 🤖</h1>
+            <p class="subtitle">
+                An intelligent AI assistant for<br>
+                discovering and exploring datasets you need
+            </p>
             
-            <!-- Performance Badge -->
-            <div class="performance-badge">
-                <div class="badge-content">
-                    <span class="performance-metric">70.5%</span>
-                    <span class="performance-label">NDCG@3</span>
-                </div>
-                <div class="badge-status target-exceeded">TARGET EXCEEDED</div>
+            <!-- AI Status Badge -->
+            <div class="ai-status-badge">
+                <div class="status-indicator online"></div>
+                <span class="status-text">AI Assistant Online</span>
             </div>
         </header>
 
         <main class="main-content">
-            <div class="chat-container">
-                <div class="ai-assistant">
-                    <div class="assistant-avatar">🤖</div>
-                    <div class="assistant-content">
-                        <h3>AI Research Assistant</h3>
-                        <p>Ask me about Singapore datasets in natural language</p>
-                        <label class="smart-cache-toggle">
-                            <input type="checkbox" id="smartCache" checked>
-                            <span class="checkmark"></span>
-                            Smart Cache
-                        </label>
+            <!-- Top-Center Chat Interface -->
+            <div class="chat-interface-container">
+                <!-- Chat Messages Area -->
+                <div id="chatArea" class="chat-messages">
+                    <!-- Messages will be populated by JavaScript -->
+                </div>
+                
+                <!-- Large Search Input (Always visible at top center) -->
+                <div class="search-input-container">
+                    <div class="search-input-wrapper">
+                        <input type="text" id="searchInput" 
+                               placeholder="Ask me about any datasets you need and I'll help you find them..." 
+                               aria-label="Chat with AI assistant">
+                        <button id="searchButton" onclick="performSearch()" aria-label="Send message">
+                            <span class="search-icon">🔍</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Quick suggestion chips (no emojis) -->
+                    <div class="suggestion-chips">
+                        <span class="chip" onclick="performSearch('housing data Singapore')">Housing Data</span>
+                        <span class="chip" onclick="performSearch('transport datasets')">Transport</span>
+                        <span class="chip" onclick="performSearch('education statistics')">Education</span>
+                        <span class="chip" onclick="performSearch('healthcare data')">Healthcare</span>
+                        <span class="chip" onclick="performSearch('economic indicators')">Economy</span>
                     </div>
                 </div>
-
-                <div class="example-queries">
-                    <h4>Try these examples:</h4>
-                    <ul>
-                        <li>"What transport data is available?"</li>
-                        <li>"Show me recent education statistics"</li>
-                        <li>"I need climate data for research"</li>
-                    </ul>
-                    <p class="promise">I'll find relevant datasets and explain why they match your needs!</p>
-                </div>
-
-                <!-- Quick action buttons -->
-                <div class="quick-actions">
-                    <button class="quick-btn" onclick="performSearch('hdb')">hdb</button>
-                    <button class="quick-btn" onclick="performSearch('transport')">transport</button>
-                </div>
-
-                <!-- Chat area for displaying results -->
-                <div id="chatArea" class="chat-area"></div>
             </div>
-
-            <div class="search-container">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Ask me about any dataset you need..." 
-                           aria-label="Search for datasets">
-                    <button id="searchButton" onclick="performSearch()" aria-label="Search">
-                        <span class="search-icon">→</span>
-                    </button>
+            
+            <!-- Right Panel: Results (Hidden initially, slides in when search performed) -->
+            <div id="resultsPanel" class="results-panel" style="display: none;">
+                <div class="results-header">
+                    <h3>📊 Dataset Results</h3>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="results-count" id="resultsCount">Ready to search</div>
+                        <button onclick="closeResultsPanel()" class="close-panel-btn" title="Close results panel">✕</button>
+                    </div>
                 </div>
-            </div>
-
-            <div class="quick-questions">
-                <h4>Quick questions:</h4>
-                <div class="question-tags">
-                    <span class="tag" onclick="performSearch('Recent Housing Data')">Recent Housing Data</span>
-                    <span class="tag" onclick="performSearch('Quality Transport Data')">Quality Transport Data</span>
-                    <span class="tag" onclick="performSearch('Latest Education Data')">Latest Education Data</span>
-                    <span class="tag" onclick="performSearch('Climate Research')">Climate Research</span>
+                <div id="resultsArea" class="results-content">
+                    <!-- Results will appear here -->
                 </div>
             </div>
         </main>

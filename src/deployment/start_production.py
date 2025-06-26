@@ -5,15 +5,16 @@ Handles environment setup, health checks, and graceful startup
 """
 
 import asyncio
-import sys
-import os
-import time
-import logging
-import subprocess
-from pathlib import Path
-from dotenv import load_dotenv
-import signal
 import atexit
+import logging
+import os
+import signal
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
@@ -321,7 +322,7 @@ class ProductionManager:
         logger.info(f"📚 API Documentation: http://{host}:{port}/docs")
         logger.info(f"🔍 Health Check: http://{host}:{port}/api/health")
         logger.info(f"⚡ Performance: 84% response time improvement")
-        logger.info(f"🧠 Neural Performance: 68.1% NDCG@3")
+        logger.info(f"🧠 Neural Performance: 75% NDCG@3")
         logger.info("=" * 70)
 
         # Step 6: Monitor server
