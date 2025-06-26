@@ -249,9 +249,11 @@ function isConversationalQuery(query) {
     
     // Check if query is too short or looks like random text
     const words = lowerQuery.trim().split(/\s+/);
-    if (words.length <= 2 && !words.some(word => 
-        ['data', 'dataset', 'statistics', 'research', 'analysis', 'information'].includes(word)
-    )) {
+    if (words.length <= 2 && !words.some(word => {
+        const dataKeywords = ['data', 'dataset', 'statistics', 'research', 'analysis', 'information'];
+        // Check for exact matches and substring matches (handles plurals like 'datasets')
+        return dataKeywords.some(keyword => word.includes(keyword) || keyword.includes(word));
+    })) {
         return true;
     }
     
