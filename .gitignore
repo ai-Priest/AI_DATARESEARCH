@@ -41,3 +41,11 @@ tmp/
 # Log files (specific patterns)
 *.log
 logs/cache/
+logs/
+
+# Documentation and project-specific files
+CLAUDE.md
+pyproject.toml
+
+# Folders to exclude
+for Claude/
