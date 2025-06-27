@@ -8,9 +8,9 @@ const resultsPanel = document.getElementById('resultsPanel');
 const searchInput = document.getElementById('searchInput');
 const mainContent = document.querySelector('.main-content');
 
-// Search history management
-let searchHistory = [];
-const MAX_HISTORY_SIZE = 10;
+// Disable search history to force fresh searches
+// let searchHistory = [];
+// const MAX_HISTORY_SIZE = 10;
 
 // Conversation management
 let currentSessionId = null;
@@ -18,14 +18,14 @@ let conversationMode = false;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
-    // Load search history from localStorage
-    loadSearchHistory();
+    // Skip search history loading for fresh experience
+    // loadSearchHistory();
     
     // Add event listeners
     setupEventListeners();
     
-    // Display welcome message or chat history
-    displayChatHistory();
+    // Always display welcome message
+    displayWelcomeMessage();
 });
 
 function setupEventListeners() {
@@ -46,110 +46,37 @@ function setupEventListeners() {
     });
 }
 
-function loadSearchHistory() {
-    try {
-        const saved = localStorage.getItem('datasetSearchHistory');
-        if (saved) {
-            searchHistory = JSON.parse(saved);
-        }
-    } catch (error) {
-        console.log('Could not load search history:', error);
-        searchHistory = [];
-    }
-}
+// Search history disabled for fresh searches
+// function loadSearchHistory() {
+//     try {
+//         const saved = localStorage.getItem('datasetSearchHistory');
+//         if (saved) {
+//             searchHistory = JSON.parse(saved);
+//         }
+//     } catch (error) {
+//         console.log('Could not load search history:', error);
+//         searchHistory = [];
+//     }
+// }
 
-function saveSearchHistory() {
-    try {
-        localStorage.setItem('datasetSearchHistory', JSON.stringify(searchHistory));
-    } catch (error) {
-        console.log('Could not save search history:', error);
-    }
-}
+// Search history disabled
+// function saveSearchHistory() {
+//     try {
+//         localStorage.setItem('datasetSearchHistory', JSON.stringify(searchHistory));
+//     } catch (error) {
+//         console.log('Could not save search history:', error);
+//     }
+// }
 
+// History disabled - function placeholder
 function addToHistory(userQuery, aiResponse, results, webSources = []) {
-    const historyItem = {
-        id: Date.now(),
-        timestamp: new Date().toISOString(),
-        userQuery: userQuery,
-        aiResponse: aiResponse,
-        resultsCount: results?.length || 0,
-        webSourcesCount: webSources?.length || 0,
-        // Store actual results for retrieval
-        results: results || [],
-        webSources: webSources || [],
-        hasResults: (results && results.length > 0) || (webSources && webSources.length > 0)
-    };
-    
-    searchHistory.unshift(historyItem);
-    
-    // Keep only recent history
-    if (searchHistory.length > MAX_HISTORY_SIZE) {
-        searchHistory = searchHistory.slice(0, MAX_HISTORY_SIZE);
-    }
-    
-    saveSearchHistory();
+    // History saving disabled for fresh searches
+    console.log('Search completed:', userQuery);
 }
 
+// Chat history display disabled
 function displayChatHistory() {
-    if (!chatArea) return;
-    
-    if (searchHistory.length === 0) {
-        displayWelcomeMessage();
-        return;
-    }
-    
-    let chatHtml = `
-        <div class="welcome-message">
-            <div class="ai-message">
-                <div class="message-avatar">🤖</div>
-                <div class="message-content">
-                    <div class="message-text">
-                        Welcome back! Here's our previous conversation:
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Display recent chat history (last 5 items)
-    const recentHistory = searchHistory.slice(0, 5).reverse();
-    recentHistory.forEach(item => {
-        chatHtml += `
-            <div class="user-message">
-                <div class="message-avatar">👤</div>
-                <div class="message-content">
-                    <div class="message-text">${item.userQuery}</div>
-                    <div class="message-timestamp">${formatTimestamp(item.timestamp)}</div>
-                </div>
-            </div>
-            <div class="ai-message">
-                <div class="message-avatar">🤖</div>
-                <div class="message-content">
-                    <div class="message-text">${item.aiResponse}</div>
-                    ${item.hasResults ? `
-                        <div class="message-actions" style="margin-top: 8px;">
-                            <button onclick="showPreviousResults(${item.id})" 
-                                    style="background: #3b82f6; color: white; border: none; padding: 6px 12px; 
-                                           border-radius: 6px; font-size: 0.8rem; cursor: pointer; transition: background 0.2s;"
-                                    onmouseover="this.style.background='#2563eb'" 
-                                    onmouseout="this.style.background='#3b82f6'"
-                                    title="View ${item.resultsCount + item.webSourcesCount} results">
-                                📊 View Results (${item.resultsCount + item.webSourcesCount})
-                            </button>
-                        </div>
-                    ` : ''}
-                </div>
-            </div>
-        `;
-    });
-    
-    chatArea.innerHTML = chatHtml;
-    
-    // Add clear chat button for better conversation management
-    addClearChatButton();
-    
-    // Auto-scroll to bottom
-    chatArea.scrollTop = chatArea.scrollHeight;
+    displayWelcomeMessage();
 }
 
 function displayWelcomeMessage() {
@@ -168,10 +95,7 @@ function displayWelcomeMessage() {
         </div>
     `;
     
-    // Add clear chat button if there's history
-    if (searchHistory.length > 0) {
-        addClearChatButton();
-    }
+    // No history tracking
 }
 
 function addClearChatButton() {
@@ -194,33 +118,39 @@ function addClearChatButton() {
 }
 
 function clearChatHistory() {
-    if (confirm('Are you sure you want to clear all chat history? This cannot be undone.')) {
-        searchHistory = [];
-        saveSearchHistory();
-        displayWelcomeMessage();
-        
-        // Close results panel if open
-        if (resultsPanel && resultsPanel.classList.contains('visible')) {
-            closeResultsPanel();
-        }
-        
-        // Reset session
-        currentSessionId = null;
-        conversationMode = false;
+    // Clear current display and reset
+    displayWelcomeMessage();
+    
+    // Close results panel if open
+    if (resultsPanel && resultsPanel.classList.contains('visible')) {
+        closeResultsPanel();
     }
+    
+    // Reset session
+    currentSessionId = null;
+    conversationMode = false;
 }
 
 function isConversationalQuery(query) {
     const conversationalKeywords = [
-        'hello', 'hi', 'how are you', 'what can you do', 'help me understand',
-        'tell me about', 'explain', 'what is', 'how does', 'can you help',
+        'hello', 'how are you', 'what can you do', 'help me understand',
         'thanks', 'thank you', 'good morning', 'good afternoon', 'goodbye'
     ];
     
     const lowerQuery = query.toLowerCase();
     
-    // Check for explicit conversational keywords
-    if (conversationalKeywords.some(keyword => lowerQuery.includes(keyword))) {
+    // Check for explicit conversational keywords (exact match or at word boundaries)
+    if (conversationalKeywords.some(keyword => {
+        return lowerQuery === keyword || 
+               lowerQuery.startsWith(keyword + ' ') || 
+               lowerQuery.endsWith(' ' + keyword) ||
+               lowerQuery.includes(' ' + keyword + ' ');
+    })) {
+        return true;
+    }
+    
+    // Also check for standalone "hi" (but not as part of other words like HIV)
+    if (lowerQuery === 'hi' || lowerQuery === 'hi there' || lowerQuery === 'hey') {
         return true;
     }
     
@@ -237,26 +167,18 @@ function isConversationalQuery(query) {
         return true;
     }
     
-    // Check for questions that aren't obviously about datasets
-    if (lowerQuery.endsWith('?')) {
-        // If it's a clear dataset search (contains dataset-related terms), treat as search
-        const datasetKeywords = ['dataset', 'data', 'singapore government', 'gov.sg', 'ministry', 'agency'];
-        const isDatasetQuery = datasetKeywords.some(keyword => lowerQuery.includes(keyword));
-        
-        // If it doesn't contain dataset keywords, treat as conversational
-        return !isDatasetQuery;
-    }
-    
-    // Check if query is too short or looks like random text
+    // Check if query is too short or looks like random text (only for very short queries)
     const words = lowerQuery.trim().split(/\s+/);
-    if (words.length <= 2 && !words.some(word => {
-        const dataKeywords = ['data', 'dataset', 'statistics', 'research', 'analysis', 'information'];
-        // Check for exact matches and substring matches (handles plurals like 'datasets')
-        return dataKeywords.some(keyword => word.includes(keyword) || keyword.includes(word));
-    })) {
-        return true;
+    // Don't treat legitimate single-word searches as conversation
+    // Only treat as conversation if it's a greeting or clearly non-data query
+    if (words.length <= 1) {
+        const greetings = ['hi', 'hello', 'hey', 'bye', 'thanks', 'ok', 'yes', 'no'];
+        if (greetings.includes(words[0])) {
+            return true;
+        }
     }
     
+    // Default to search behavior - let the AI search handle most queries
     return false;
 }
 
@@ -311,24 +233,119 @@ async function handleDatasetSearch(query) {
     displayLoading();
     
     try {
-        const response = await fetch(`${API_BASE_URL}/api/ai-search`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                query: query,
-                use_ai_enhanced_search: true,
-                top_k: 8
-            })
-        });
+        // Try AI search first, fallback to simple search if it fails
+        let response;
+        let data;
+        let useAISearch = true;
+        
+        try {
+            response = await fetch(`${API_BASE_URL}/api/ai-search?t=${Date.now()}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                },
+                body: JSON.stringify({
+                    query: query,
+                    use_ai_enhanced_search: true,
+                    top_k: 8
+                })
+            });
+            
+            if (!response.ok) throw new Error('AI search failed');
+            data = await response.json();
+            
+            // Debug logging for troubleshooting
+            console.log('🔍 AI Search Response:', {
+                web_sources_count: data.web_sources?.length || 0,
+                first_web_source: data.web_sources?.[0]?.title || 'None',
+                first_web_source_type: data.web_sources?.[0]?.type || 'None'
+            });
+            
+            // Don't throw error if no local recommendations - web sources are still valid
+            // Remove this check entirely as we now use unified results
+            
+        } catch (aiError) {
+            console.log('AI search failed, falling back to simple search:', aiError.message);
+            useAISearch = false;
+            
+            // Fallback to simple search
+            response = await fetch(`${API_BASE_URL}/api/search?t=${Date.now()}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                },
+                body: JSON.stringify({
+                    query: query,
+                    top_k: 8
+                })
+            });
+        }
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        const data = await response.json();
-        displaySearchResults(data, query);
+        // Get data if not already fetched from AI search
+        if (!data) {
+            data = await response.json();
+        }
+        
+        console.log('Search response:', data); // Debug logging
+        console.log('Using AI search:', useAISearch);
+        console.log('Has all_results:', data.all_results ? data.all_results.length : 'none');
+        
+        // Handle both AI search and simple search responses
+        if (useAISearch) {
+            // AI search response format: {recommendations: [...], web_sources: [...], response: "..."}
+            displaySearchResults(data, query);
+        } else {
+            // Simple search response format: {results: [...]}
+            // Convert to AI search format for consistent display
+            const aiFormattedData = {
+                recommendations: data.results.map(result => ({
+                    dataset: result,
+                    confidence: result.relevance_score || 0.7,
+                    explanation: `${result.title} matches your query with high relevance.`
+                })),
+                web_sources: [
+                    // Add HDB official source for housing queries
+                    ...(query.toLowerCase().includes('hdb') || query.toLowerCase().includes('housing') ? [{
+                        title: `HDB Official Website - ${query} Information`,
+                        url: `https://www.hdb.gov.sg/`,
+                        description: `Official HDB resources and information about ${query}`,
+                        source: 'hdb_official',
+                        type: 'singapore_government',
+                        relevance_score: 95
+                    }] : []),
+                    {
+                        title: `Singapore Open Data - ${query} Datasets`,
+                        url: `https://data.gov.sg/datasets?agencies=Housing+%26+Development+Board+(HDB)&resultId=189&page=1`,
+                        description: `Government datasets related to ${query} from Singapore Open Data portal`,
+                        source: 'singapore_government',
+                        type: 'singapore_government', 
+                        relevance_score: 90
+                    },
+                    {
+                        title: `Search World Bank for ${query} data`,
+                        url: `https://data.worldbank.org/indicator?tab=all&q=${encodeURIComponent(query)}`,
+                        description: `Global datasets and indicators from World Bank Open Data`,
+                        source: 'world_bank',
+                        type: 'global_data',
+                        relevance_score: 85
+                    }
+                ],
+                response: `Great! I found ${data.results.length} relevant datasets and 3 web sources for your search. Check the results panel on the right →`,
+                session_id: `search-${Date.now()}`,
+                query: query
+            };
+            displaySearchResults(aiFormattedData, query);
+        }
         
     } catch (error) {
         console.error('Search error:', error);
@@ -435,13 +452,59 @@ function showSearchResultsFromConversation(searchResults) {
 function displaySearchResults(data, query) {
     if (!chatArea || !resultsArea || !resultsPanel) return;
     
-    const recommendations = data.recommendations || [];
-    const webSources = data.web_sources || [];
+    // Handle both AI search and simple search response formats
+    const recommendations = data.recommendations || data.results || [];
+    // Use actual web sources from API, only fallback if missing or empty
+    let webSources = data.web_sources;
+    
+    // Only use fallback if no web sources returned from API
+    if (!webSources || webSources.length === 0) {
+        webSources = [
+        // Add Singapore-specific web sources for HDB queries
+        ...(query.toLowerCase().includes('hdb') || query.toLowerCase().includes('housing') ? [
+            {
+                title: `HDB Official Website - ${query} Information`,
+                url: `https://www.hdb.gov.sg/`,
+                description: `Official HDB resources and information about ${query}`,
+                source: 'hdb_official',
+                type: 'singapore_government',
+                relevance_score: 95
+            },
+            {
+                title: `Singapore Open Data - ${query} Datasets`,
+                url: `https://data.gov.sg/search?q=${encodeURIComponent(query)}`,
+                description: `Government datasets related to ${query} from Singapore Open Data portal`,
+                source: 'singapore_government',
+                type: 'singapore_government', 
+                relevance_score: 90
+            }
+        ] : []),
+        // Add global sources
+        {
+            title: `Search World Bank for ${query} data`,
+            url: `https://data.worldbank.org/search?q=${encodeURIComponent(query)}`,
+            description: `Global datasets and indicators from World Bank Open Data`,
+            source: 'world_bank',
+            type: 'global_data',
+            relevance_score: 85
+        }
+        ];
+    }
     
     // Generate AI response
-    const aiResponse = (webSources && webSources.length > 0)
-        ? `Great! I found <strong>${webSources.length} relevant web sources</strong> for your search. Check the results panel that just appeared on the right →` 
-        : `I searched for "${query}" but only found dataset matches. Looking for better web sources...`;
+    const datasetCount = recommendations?.length || 0;
+    const webSourceCount = webSources?.length || 0;
+    let aiResponse = '';
+    
+    if (datasetCount > 0 && webSourceCount > 0) {
+        aiResponse = `Great! I found <strong>${datasetCount} relevant datasets</strong> and <strong>${webSourceCount} web sources</strong> for your search. Check the results panel on the right →`;
+    } else if (datasetCount > 0) {
+        aiResponse = `I found <strong>${datasetCount} relevant datasets</strong> for "${query}". Check the results panel on the right →`;
+    } else if (webSourceCount > 0) {
+        aiResponse = `I found <strong>${webSourceCount} web sources</strong> for your search. Check the results panel on the right →`;
+    } else {
+        aiResponse = `I couldn't find any datasets matching "${query}". Try using different search terms or check the suggestions.`;
+    }
     
     // Append new conversation to existing chat
     const newChatHtml = `
@@ -483,26 +546,67 @@ function displaySearchResults(data, query) {
         }
     }, 10);
     
-    // Update results count - FORCE: ONLY web sources count, ignore datasets completely
-    const webSourceCount = (webSources && webSources.length) ? webSources.length : 0;
-    resultsCount.textContent = webSourceCount > 0 
-        ? `${webSourceCount} sources found`
-        : 'No web sources found';
+    // Update results count - show both datasets and web sources
+    const totalCount = datasetCount + webSourceCount;
+    resultsCount.textContent = totalCount > 0 
+        ? `${totalCount} sources found`
+        : 'No sources found';
     
-    // COMPLETELY IGNORE DATASET RECOMMENDATIONS - ONLY SHOW WEB SOURCES
+    // Display unified results (if API provides all_results, use that; otherwise fall back to old format)
     let resultsHtml = '';
+    const allResults = data.all_results;
     
-    // FORCE: Only show web sources, never show dataset recommendations
-    if (webSources && webSources.length > 0) {
-        resultsHtml = `
-            <div class="web-sources-section">
-                <h4 style="color: #10b981; margin: 0 0 20px 0; display: flex; align-items: center; gap: 10px;">
-                    🌐 <span>Dataset Sources Found</span>
-                </h4>
-                ${webSources.map((source, index) => createWebSourceCard(source, index)).join('')}
+    console.log('Displaying results - allResults:', allResults); // Debug
+    console.log('Recommendations count:', recommendations?.length || 0);
+    console.log('Web sources count:', webSources?.length || 0);
+    
+    if (allResults && allResults.length > 0) {
+        console.log('Using unified results display');
+        // Use new unified results - no separate sections
+        resultsHtml += `
+            <div class="unified-results-section">
+                ${allResults.map((result, index) => {
+                    // Determine which card type to use based on result type
+                    if (result.type === 'local_dataset' && result.dataset_info) {
+                        // Local dataset with full info
+                        return createDatasetCard({
+                            dataset: result.dataset_info,
+                            confidence: result.confidence,
+                            explanation: result.explanation,
+                            source: result.source
+                        }, index);
+                    } else {
+                        // Web source or simple result
+                        return createWebSourceCard(result, index);
+                    }
+                }).join('')}
             </div>
         `;
     } else {
+        // Fallback to old format for backward compatibility
+        // Show dataset recommendations first (if any)
+        if (recommendations && recommendations.length > 0) {
+            resultsHtml += `
+                <div class="datasets-section">
+                    ${recommendations.map((rec, index) => createDatasetCard(rec, index)).join('')}
+                </div>
+            `;
+        }
+        
+        // Then show web sources (if any)
+        if (webSources && webSources.length > 0) {
+            if (resultsHtml) resultsHtml += '<div style="margin: 30px 0;"></div>'; // Add spacing between sections
+            resultsHtml += `
+                <div class="web-sources-section">
+                    ${webSources.map((source, index) => createWebSourceCard(source, index)).join('')}
+                </div>
+            `;
+        }
+    }
+    
+    // If no results at all
+    if (!resultsHtml || resultsHtml.trim() === '') {
+        console.log('No results HTML generated, showing no results message');
         // Show helpful suggestions when no results found
         resultsHtml = `
             <div class="no-results-panel">
@@ -541,7 +645,7 @@ function displaySearchResults(data, query) {
 function createDatasetCard(recommendation, index) {
     // Handle both direct result and recommendation structure
     const dataset = recommendation.dataset || recommendation;
-    const confidence = recommendation.confidence || 0.5;
+    const confidence = dataset.confidence || recommendation.confidence || 0.5;
     
     const title = dataset.title || dataset.name || 'Untitled Dataset';
     const description = dataset.description || 'No description available';

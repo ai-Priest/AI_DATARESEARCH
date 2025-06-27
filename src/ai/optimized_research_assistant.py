@@ -146,7 +146,7 @@ class OptimizedResearchAssistant:
         if self.response_config.get('include_explanations', True):
             explanation_prompt = self._create_explanation_prompt(query)
             task = asyncio.create_task(
-                self._llm_call_with_timeout('explanation', explanation_prompt, timeout=1.5)
+                self._llm_call_with_timeout('explanation', explanation_prompt, timeout=8.0)
             )
             tasks.append(task)
         
@@ -154,7 +154,7 @@ class OptimizedResearchAssistant:
         if self.response_config.get('include_methodology', True):
             methodology_prompt = self._create_methodology_prompt(query)
             task = asyncio.create_task(
-                self._llm_call_with_timeout('methodology', methodology_prompt, timeout=2.0)
+                self._llm_call_with_timeout('methodology', methodology_prompt, timeout=10.0)
             )
             tasks.append(task)
         
@@ -162,7 +162,7 @@ class OptimizedResearchAssistant:
         if self.response_config.get('include_singapore_context', True):
             context_prompt = self._create_context_prompt(query)
             task = asyncio.create_task(
-                self._llm_call_with_timeout('context', context_prompt, timeout=2.5)
+                self._llm_call_with_timeout('context', context_prompt, timeout=12.0)
             )
             tasks.append(task)
         
@@ -319,12 +319,47 @@ class OptimizedResearchAssistant:
         
         self.conversation_manager.add_to_history(session_id, query, response_summary)
         
-        # Final response
+        # Merge all results into a unified list
+        all_results = []
+        
+        # Add local recommendations with normalized structure
+        for rec in recommendations:
+            dataset = rec.get('dataset', {})
+            all_results.append({
+                'title': dataset.get('title', ''),
+                'url': dataset.get('url', ''),
+                'description': dataset.get('description', ''),
+                'source': dataset.get('source', 'local'),
+                'type': 'local_dataset',
+                'relevance_score': dataset.get('relevance_score', 0) * 1000,  # Boost local scores
+                'confidence': rec.get('confidence', 0.5),
+                'explanation': rec.get('explanation', ''),
+                'dataset_info': dataset  # Keep full dataset info
+            })
+        
+        # Add web sources with existing structure
+        for result in web_search_results:
+            all_results.append({
+                'title': result.get('title', ''),
+                'url': result.get('url', ''),
+                'description': result.get('description', ''),
+                'source': result.get('source', ''),
+                'type': result.get('type', 'web_source'),
+                'relevance_score': result.get('relevance_score', 0),
+                'confidence': 0.7,  # Default confidence for web sources
+                'explanation': '',
+                'dataset_info': result
+            })
+        
+        # Sort all results by relevance score (highest first)
+        all_results.sort(key=lambda x: x.get('relevance_score', 0), reverse=True)
+        
+        # Final response with unified results
         return {
             'session_id': session_id,
             'query': query,
-            'recommendations': recommendations,
-            'web_sources': [
+            'recommendations': recommendations,  # Keep for backward compatibility
+            'web_sources': [  # Keep for backward compatibility
                 {
                     'title': result.get('title', ''),
                     'url': result.get('url', ''),
@@ -335,6 +370,7 @@ class OptimizedResearchAssistant:
                 }
                 for result in web_search_results
             ],
+            'all_results': all_results[:20],  # New unified list (limit to top 20)
             'conversation': conversation,
             'performance': performance,
             'processing_time': processing_time,

@@ -112,7 +112,7 @@ ai_pipeline:
   
   # Response Configuration
   response_settings:
-    max_response_time: 45.0  # seconds total - increased to prevent hanging
+    max_response_time: 60.0  # seconds total - extended to prevent timeout fallback
     neural_inference_timeout: 2.0  # seconds for neural model
     llm_enhancement_timeout: 30.0  # seconds for LLM - increased to prevent hanging
     include_explanations: true

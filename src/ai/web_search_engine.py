@@ -51,16 +51,25 @@ class WebSearchEngine:
             'fao.org',
             'wto.org',
             
-            # Global Data Platforms
+            # Global Data Platforms & Repositories
             'kaggle.com',
-            'data.gov',
-            'eurostat.ec.europa.eu',
+            'huggingface.co/datasets',
+            'registry.opendata.aws',
             'github.com',
             'zenodo.org',
             'figshare.com',
             'datacite.org',
+            'dryad.org',
+            'mendeley.com/datasets',
+            'osf.io',
+            'dataverse.harvard.edu',
+            'data.gov',
+            'eurostat.ec.europa.eu',
             'ourworldindata.org',
             'gapminder.org',
+            'google.com/publicdata',
+            'opendatasoft.com',
+            'socrata.com',
             
             # Regional/National (including Singapore)
             'data.gov.sg',
@@ -93,6 +102,8 @@ class WebSearchEngine:
             # Perform parallel searches across multiple strategies
             search_tasks = [
                 self._search_duckduckgo(enhanced_query),
+                self._search_kaggle_datasets(query),
+                self._search_public_data_platforms(query),
                 self._search_academic_sources(query),
                 self._search_international_organizations(query, context),
                 self._search_government_portals(query, context)
@@ -205,6 +216,122 @@ class WebSearchEngine:
             
         return results
     
+    async def _search_kaggle_datasets(self, query: str) -> List[Dict[str, Any]]:
+        """Search Kaggle datasets specifically"""
+        results = []
+        
+        try:
+            # Direct Kaggle dataset search  
+            kaggle_search_url = f"https://www.kaggle.com/datasets?search={quote_plus(query)}"
+            
+            results.append({
+                'title': f'Kaggle Datasets: {query}',
+                'url': kaggle_search_url,
+                'description': f'Machine learning datasets and data science competitions related to {query}',
+                'source': 'kaggle',
+                'type': 'ml_dataset_platform',
+                'domain': 'kaggle.com',
+                'relevance_score': 1000  # High priority for accessible datasets
+            })
+            
+            # Add specific popular Kaggle datasets if query matches
+            query_lower = query.lower()
+            if any(word in query_lower for word in ['housing', 'real estate', 'property']):
+                results.append({
+                    'title': 'House Prices Dataset (Kaggle)',
+                    'url': 'https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques',
+                    'description': 'Advanced regression techniques for house price prediction - popular ML competition dataset',
+                    'source': 'kaggle',
+                    'type': 'ml_dataset_platform',
+                    'domain': 'kaggle.com',
+                    'relevance_score': 95
+                })
+            
+            if any(word in query_lower for word in ['titanic', 'survival', 'passenger']):
+                results.append({
+                    'title': 'Titanic Dataset (Kaggle)',
+                    'url': 'https://www.kaggle.com/competitions/titanic',
+                    'description': 'Machine learning from disaster - predict survival on the Titanic',
+                    'source': 'kaggle',
+                    'type': 'ml_dataset_platform',
+                    'domain': 'kaggle.com',
+                    'relevance_score': 95
+                })
+                
+        except Exception as e:
+            logger.warning(f"Kaggle search failed: {str(e)}")
+            
+        return results
+    
+    async def _search_public_data_platforms(self, query: str) -> List[Dict[str, Any]]:
+        """Search public data platforms and repositories"""
+        results = []
+        
+        # Major public data platforms
+        platforms = [
+            {
+                'name': 'Hugging Face Datasets',
+                'search_url': f'https://huggingface.co/datasets?search={quote_plus(query)}',
+                'description': f'Machine learning datasets and NLP corpora for {query}',
+                'domain': 'huggingface.co',
+                'type': 'ml_dataset_platform',
+                'relevance_score': 88
+            },
+            {
+                'name': 'AWS Open Data',
+                'search_url': f'https://registry.opendata.aws/',
+                'description': f'AWS public datasets and cloud-hosted data for {query}',
+                'domain': 'registry.opendata.aws',
+                'type': 'cloud_data_platform',
+                'relevance_score': 85
+            },
+            {
+                'name': 'Google Dataset Search',
+                'search_url': f'https://datasetsearch.research.google.com/search?q={quote_plus(query)}',
+                'description': f'Google\'s dataset search engine results for {query}',
+                'domain': 'datasetsearch.research.google.com',
+                'type': 'dataset_search_engine',
+                'relevance_score': 92
+            },
+            {
+                'name': 'Harvard Dataverse',
+                'search_url': f'https://dataverse.harvard.edu/dataverse/harvard?q={quote_plus(query)}',
+                'description': f'Research data repository from Harvard University for {query}',
+                'domain': 'dataverse.harvard.edu',
+                'type': 'academic_repository',
+                'relevance_score': 85
+            },
+            {
+                'name': 'Mendeley Data',
+                'search_url': f'https://data.mendeley.com/research-data/?search={quote_plus(query)}',
+                'description': f'Research datasets and scientific data for {query}',
+                'domain': 'data.mendeley.com',
+                'type': 'academic_repository',
+                'relevance_score': 82
+            },
+            {
+                'name': 'OpenDataSoft',
+                'search_url': f'https://public.opendatasoft.com/explore/?q={quote_plus(query)}',
+                'description': f'Public datasets and open data portal for {query}',
+                'domain': 'public.opendatasoft.com',
+                'type': 'open_data_platform',
+                'relevance_score': 80
+            }
+        ]
+        
+        for platform in platforms:
+            results.append({
+                'title': f"{platform['name']}: {query}",
+                'url': platform['search_url'],
+                'description': platform['description'],
+                'source': platform['name'].lower().replace(' ', '_'),
+                'type': platform['type'],
+                'domain': platform['domain'],
+                'relevance_score': platform['relevance_score']
+            })
+            
+        return results
+    
     async def _search_academic_sources(self, query: str) -> List[Dict[str, Any]]:
         """Search academic and research data sources"""
         results = []
@@ -220,6 +347,16 @@ class WebSearchEngine:
                 'name': 'Figshare', 
                 'search_url': f"https://figshare.com/search?q={quote_plus(query)}",
                 'domain': 'figshare.com'
+            },
+            {
+                'name': 'Dryad Digital Repository',
+                'search_url': f"https://datadryad.org/search?q={quote_plus(query)}",
+                'domain': 'datadryad.org'
+            },
+            {
+                'name': 'Open Science Framework',
+                'search_url': f"https://osf.io/search/?q={quote_plus(query)}",
+                'domain': 'osf.io'
             }
         ]
         
@@ -257,57 +394,142 @@ class WebSearchEngine:
         intl_links = self._get_international_dataset_links(query)
         results.extend(intl_links)
         
-        # International data portals
-        intl_portals = [
-            {
-                'name': 'World Bank Open Data',
-                'search_url': f"https://data.worldbank.org/search?q={quote_plus(query)}",
-                'domain': 'data.worldbank.org',
-                'priority': 95
-            },
-            {
-                'name': 'UN Data Portal',
-                'search_url': f"https://data.un.org/Search.aspx?q={quote_plus(query)}",
-                'domain': 'data.un.org',
-                'priority': 95
-            },
-            {
-                'name': 'UN Statistics',
-                'search_url': f"https://unstats.un.org/UNSDWebsite/",
-                'domain': 'unstats.un.org',
-                'priority': 90
-            },
-            {
-                'name': 'WHO Global Health Observatory',
-                'search_url': f"https://www.who.int/data/gho",
-                'domain': 'who.int',
-                'priority': 90
-            },
-            {
-                'name': 'OECD Data',
-                'search_url': f"https://data.oecd.org/searchresults/?q={quote_plus(query)}",
-                'domain': 'oecd.org',
-                'priority': 85
-            },
-            {
-                'name': 'IMF Data',
-                'search_url': f"https://data.imf.org/",
-                'domain': 'imf.org',
-                'priority': 85
-            },
-            {
-                'name': 'Eurostat',
-                'search_url': f"https://ec.europa.eu/eurostat/web/main/search/-/search/estatsearch?text={quote_plus(query)}",
-                'domain': 'eurostat.ec.europa.eu',
-                'priority': 80
-            },
-            {
-                'name': 'Our World in Data',
-                'search_url': f"https://ourworldindata.org/search?q={quote_plus(query)}",
-                'domain': 'ourworldindata.org',
-                'priority': 75
-            }
-        ]
+        # International data portals with smart topic routing
+        query_lower = query.lower()
+        
+        # Smart URL routing based on query topic - prioritizing Singapore then accessible platforms
+        if any(term in query_lower for term in ['cancer', 'mortality', 'death', 'disease', 'health']):
+            # Check if Singapore context first
+            if any(sg_term in query_lower for sg_term in ['singapore', 'sg']):
+                intl_portals = [
+                    {
+                        'name': 'Singapore Health Data Portal',
+                        'search_url': f"https://data.gov.sg/search?query=health",
+                        'domain': 'data.gov.sg',
+                        'priority': 1500  # Highest for Singapore health
+                    },
+                    {
+                        'name': 'Our World in Data - Cancer',
+                        'search_url': f"https://ourworldindata.org/cancer",
+                        'domain': 'ourworldindata.org',
+                        'priority': 900
+                    },
+                    {
+                        'name': 'WHO Global Health Observatory - Cancer Data',
+                        'search_url': "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/estimated-number-of-deaths-from-cancer",
+                        'domain': 'who.int',
+                        'priority': 800
+                    }
+                ]
+            else:
+                intl_portals = [
+                    {
+                        'name': 'Our World in Data - Cancer',
+                        'search_url': f"https://ourworldindata.org/cancer",
+                        'domain': 'ourworldindata.org',
+                        'priority': 500  # Lower than Kaggle for global queries
+                    },
+                    {
+                        'name': 'WHO Global Health Observatory - Cancer Data',
+                        'search_url': "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/estimated-number-of-deaths-from-cancer",
+                        'domain': 'who.int',
+                        'priority': 400
+                    },
+                    {
+                        'name': 'Global Burden of Disease Study',
+                        'search_url': "http://ghdx.healthdata.org/gbd-results-tool",
+                        'domain': 'healthdata.org',
+                        'priority': 300
+                    },
+                    {
+                        'name': 'UN Data Portal',
+                        'search_url': f"https://data.un.org/Search.aspx?q={quote_plus(query)}",
+                        'domain': 'data.un.org',
+                        'priority': 200
+                    }
+                ]
+        else:
+            # Smart routing for non-health queries based on topic relevance
+            tech_terms = ['cryptocurrency', 'crypto', 'bitcoin', 'blockchain', 'technology', 'laptop', 'computer', 'software', 'ai', 'machine learning']
+            finance_terms = ['price', 'prices', 'stock', 'market', 'trading', 'investment', 'finance', 'economy']
+            education_terms = ['education', 'school', 'university', 'learning', 'student', 'academic']
+            
+            if any(term in query_lower for term in tech_terms):
+                # Technology/Crypto queries - prioritize accessible data platforms
+                intl_portals = [
+                    {
+                        'name': 'OECD Data',
+                        'search_url': f"https://data.oecd.org/searchresults/?q={quote_plus(query)}",
+                        'domain': 'oecd.org',
+                        'priority': 300  # Lower priority for tech queries
+                    }
+                ]
+            elif any(term in query_lower for term in education_terms):
+                # Education queries - prioritize education-focused sources
+                intl_portals = [
+                    {
+                        'name': 'World Bank Open Data - Education',
+                        'search_url': "https://data.worldbank.org/topic/education",
+                        'domain': 'data.worldbank.org',
+                        'priority': 600
+                    },
+                    {
+                        'name': 'UNESCO Institute for Statistics',
+                        'search_url': f"http://data.uis.unesco.org/",
+                        'domain': 'unesco.org',
+                        'priority': 650
+                    },
+                    {
+                        'name': 'UN Data Portal',
+                        'search_url': f"https://data.un.org/Search.aspx?q={quote_plus(query)}",
+                        'domain': 'data.un.org',
+                        'priority': 500
+                    }
+                ]
+            elif any(term in query_lower for term in finance_terms):
+                # Economic/Finance queries - prioritize financial institutions
+                intl_portals = [
+                    {
+                        'name': 'World Bank Open Data',
+                        'search_url': "https://data.worldbank.org/indicator",
+                        'domain': 'data.worldbank.org',
+                        'priority': 600
+                    },
+                    {
+                        'name': 'IMF Data',
+                        'search_url': f"https://data.imf.org/",
+                        'domain': 'imf.org',
+                        'priority': 650
+                    },
+                    {
+                        'name': 'OECD Data',
+                        'search_url': f"https://data.oecd.org/searchresults/?q={quote_plus(query)}",
+                        'domain': 'oecd.org',
+                        'priority': 550
+                    }
+                ]
+            else:
+                # General queries - balanced approach
+                intl_portals = [
+                    {
+                        'name': 'World Bank Open Data',
+                        'search_url': "https://data.worldbank.org/indicator",
+                        'domain': 'data.worldbank.org',
+                        'priority': 600
+                    },
+                    {
+                        'name': 'UN Data Portal',
+                        'search_url': f"https://data.un.org/Search.aspx?q={quote_plus(query)}",
+                        'domain': 'data.un.org',
+                        'priority': 550
+                    },
+                    {
+                        'name': 'OECD Data',
+                        'search_url': f"https://data.oecd.org/searchresults/?q={quote_plus(query)}",
+                        'domain': 'oecd.org',
+                        'priority': 500
+                    }
+                ]
         
         for portal in intl_portals:
             results.append({
@@ -350,12 +572,32 @@ class WebSearchEngine:
                 }
             ])
         
-        # Health data
+        # Health data - more specific URLs based on topic
         if any(word in query_lower for word in ['health', 'disease', 'mortality', 'life expectancy', 'covid']):
+            # Determine specific WHO URL based on keywords
+            who_url = 'https://www.who.int/data/gho'
+            who_title = 'WHO Global Health Observatory'
+            
+            if any(word in query_lower for word in ['air pollution', 'pollution', 'air quality']):
+                who_url = 'https://www.who.int/data/gho/data/themes/air-pollution'
+                who_title = 'WHO Air Pollution Data'
+            elif any(word in query_lower for word in ['covid', 'coronavirus', 'pandemic']):
+                who_url = 'https://covid19.who.int/data'
+                who_title = 'WHO COVID-19 Dashboard'
+            elif any(word in query_lower for word in ['mortality', 'death', 'deaths']):
+                who_url = 'https://www.who.int/data/gho/data/themes/mortality-and-global-health-estimates'
+                who_title = 'WHO Mortality and Health Estimates'
+            elif any(word in query_lower for word in ['mental health', 'depression', 'suicide']):
+                who_url = 'https://www.who.int/data/gho/data/themes/mental-disorders'
+                who_title = 'WHO Mental Health Data'
+            elif any(word in query_lower for word in ['nutrition', 'malnutrition', 'obesity']):
+                who_url = 'https://www.who.int/data/gho/data/themes/topics/topic-details/GHO/malnutrition'
+                who_title = 'WHO Nutrition Data'
+                
             results.extend([
                 {
-                    'title': 'WHO Global Health Observatory',
-                    'url': 'https://www.who.int/data/gho',
+                    'title': who_title,
+                    'url': who_url,
                     'description': 'Global health statistics and indicators from World Health Organization',
                     'source': 'who',
                     'type': 'health_data',
@@ -623,26 +865,73 @@ class WebSearchEngine:
     ) -> List[Dict[str, Any]]:
         """Rank search results by relevance and data source quality"""
         
+        # Check if query has Singapore context - enhanced detection
+        query_lower = query.lower()
+        singapore_keywords = [
+            'singapore', 'sg', 'hdb', 'mrt', 'coe', 'cpf', 'lta', 'singstat',
+            'data.gov.sg', 'resale flat', 'bto', 'public housing', 'hawker',
+            'void deck', 'wet market', 'ccb', 'east coast', 'orchard road'
+        ]
+        
+        # Enhanced context: only if explicit Singapore terms mentioned
+        has_singapore_context = (
+            any(keyword in query_lower for keyword in singapore_keywords) or
+            ('housing singapore' in query_lower or 'hdb' in query_lower or 'singapore property' in query_lower)
+        )
+        
         def calculate_score(result: Dict[str, Any]) -> float:
             score = 0.0
             
-            # Domain priority scoring
+            # Domain priority scoring - reorder for Singapore context
             domain = self._extract_domain(result.get('url', ''))
-            if domain in self.priority_domains:
-                score += 50 * (len(self.priority_domains) - self.priority_domains.index(domain))
+            if has_singapore_context:
+                # Singapore government domains get highest priority
+                singapore_domains = ['data.gov.sg', 'singstat.gov.sg', 'lta.gov.sg', 'onemap.sg']
+                if domain in singapore_domains:
+                    score += 50 * (100 + singapore_domains.index(domain))  # High priority for Singapore
+                elif domain in self.priority_domains:
+                    # Global domains get lower priority when Singapore context
+                    priority_index = self.priority_domains.index(domain)
+                    score += 20 * (len(self.priority_domains) - priority_index)
+            else:
+                # Default global priority
+                if domain in self.priority_domains:
+                    score += 50 * (len(self.priority_domains) - self.priority_domains.index(domain))
             
-            # Type-based scoring - prioritize global sources
-            type_scores = {
-                'global_data': 110,           # New: International organizations
-                'economic_data': 105,         # World Bank, IMF economic data
-                'health_data': 105,           # WHO, health organizations
-                'demographic_data': 105,      # UN Population, census data
-                'education_data': 105,        # UNESCO, education statistics
-                'climate_data': 105,          # Climate and environmental data
-                'government_data': 100,       # National government data
-                'academic_search': 80,        # Academic repositories
-                'web_search': 60              # General web search
-            }
+            # Type-based scoring - prioritize Singapore sources when Singapore context detected
+            if has_singapore_context:
+                type_scores = {
+                    'government_data': 120,       # Singapore government data (highest for local context)
+                    'ml_dataset_platform': 115,  # Kaggle, Hugging Face (2nd highest - accessible datasets)
+                    'academic_search': 110,      # Zenodo, Figshare (accessible research)
+                    'global_data': 100,          # International organizations 
+                    'dataset_search_engine': 95, # Google Dataset Search
+                    'economic_data': 90,         # World Bank, IMF economic data
+                    'health_data': 90,           # WHO, health organizations
+                    'demographic_data': 90,      # UN Population, census data
+                    'education_data': 90,        # UNESCO, education statistics
+                    'climate_data': 90,          # Climate and environmental data
+                    'cloud_data_platform': 85,  # AWS Open Data
+                    'academic_repository': 80,   # Harvard Dataverse, Mendeley
+                    'open_data_platform': 75,   # OpenDataSoft
+                    'web_search': 60             # General web search
+                }
+            else:
+                type_scores = {
+                    'ml_dataset_platform': 120,  # Kaggle, Hugging Face (HIGHEST priority - most accessible)
+                    'academic_search': 115,      # Zenodo, Figshare (accessible research data)
+                    'global_data': 105,          # International organizations 
+                    'economic_data': 100,        # World Bank, IMF economic data
+                    'health_data': 100,          # WHO, health organizations
+                    'demographic_data': 100,     # UN Population, census data
+                    'education_data': 100,       # UNESCO, education statistics
+                    'climate_data': 100,         # Climate and environmental data
+                    'dataset_search_engine': 92, # Google Dataset Search
+                    'cloud_data_platform': 88,   # AWS Open Data
+                    'academic_repository': 85,    # Harvard Dataverse, Mendeley
+                    'open_data_platform': 78,    # OpenDataSoft
+                    'web_search': 60              # General web search
+                }
             score += type_scores.get(result.get('type', 'web_search'), 60)
             
             # Title relevance
@@ -656,12 +945,19 @@ class WebSearchEngine:
             desc_matches = sum(1 for word in query_words if word in description)
             score += desc_matches * 10
             
-            # Data-related keywords bonus - enhanced for global sources
-            data_keywords = [
-                'dataset', 'data', 'statistics', 'research', 'open data',
-                'indicators', 'world bank', 'united nations', 'who', 'unesco',
-                'oecd', 'imf', 'global', 'international'
-            ]
+            # Data-related keywords bonus - context-aware
+            if has_singapore_context:
+                data_keywords = [
+                    'dataset', 'data', 'statistics', 'research', 'open data',
+                    'singapore', 'data.gov.sg', 'singstat', 'lta', 'hdb', 'government'
+                ]
+            else:
+                data_keywords = [
+                    'dataset', 'data', 'statistics', 'research', 'open data',
+                    'indicators', 'world bank', 'united nations', 'who', 'unesco',
+                    'oecd', 'imf', 'global', 'international', 'kaggle', 'machine learning',
+                    'repository', 'public dataset', 'csv', 'json', 'api'
+                ]
             for keyword in data_keywords:
                 if keyword in title or keyword in description:
                     score += 15
