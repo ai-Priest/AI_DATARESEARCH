@@ -1,0 +1,146 @@
+{
+  "model_architecture": "Lightweight Cross-Attention Ranker",
+  "training_results": {
+    "best_loss": 0.24813649472263125,
+    "training_history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.32785857225559195,
+        "val_loss": 0.2733704563644197,
+        "val_accuracy": 0.9166666666666666,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.28075279325855024,
+        "val_loss": 0.26699556907018024,
+        "val_accuracy": 0.9166666666666666,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.2531798903127106,
+        "val_loss": 0.28271295461389756,
+        "val_accuracy": 0.9236111111111112,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.22374144211715583,
+        "val_loss": 0.2552191706167327,
+        "val_accuracy": 0.9270833333333334,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.2091757802634823,
+        "val_loss": 0.24813649472263125,
+        "val_accuracy": 0.9270833333333334,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.1797360797621766,
+        "val_loss": 0.28933368664648795,
+        "val_accuracy": 0.9270833333333334,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.16399648424466046,
+        "val_loss": 0.2676139722267787,
+        "val_accuracy": 0.9270833333333334,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.1589392752823781,
+        "val_loss": 0.2721007636023892,
+        "val_accuracy": 0.9270833333333334,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.13336678685582415,
+        "val_loss": 0.28891783869928783,
+        "val_accuracy": 0.9097222222222222,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.12354204761890733,
+        "val_loss": 0.33202173974778915,
+        "val_accuracy": 0.9166666666666666,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.11351391389414821,
+        "val_loss": 0.33106210745043224,
+        "val_accuracy": 0.8923611111111112,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.0979210103788337,
+        "val_loss": 0.33361973530716366,
+        "val_accuracy": 0.8923611111111112,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.0908673919965418,
+        "val_loss": 0.3266174892584483,
+        "val_accuracy": 0.8923611111111112,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.09301904680169358,
+        "val_loss": 0.3422437724139955,
+        "val_accuracy": 0.8993055555555556,
+        "learning_rate": 6.25e-05
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.07691429877577692,
+        "val_loss": 0.3409198936488893,
+        "val_accuracy": 0.8854166666666666,
+        "learning_rate": 6.25e-05
+      }
+    ],
+    "final_accuracy": 0.8854166666666666
+  },
+  "evaluation_results": {
+    "accuracy": 0.916955017301038,
+    "precision": 0.4827586206896552,
+    "recall": 0.6086956521739131,
+    "f1_score": 0.5384615384615384,
+    "ndcg_at_3": 0.8291592654511358,
+    "num_queries_evaluated": 40,
+    "total_test_samples": 289,
+    "positive_samples": 23,
+    "negative_samples": 266
+  },
+  "data_summary": {
+    "total_samples": 1914,
+    "train_samples": 1339,
+    "val_samples": 287,
+    "test_samples": 288,
+    "positive_samples": 216,
+    "negative_samples": 1698,
+    "sample_types": {
+      "positive": 216,
+      "negative": 1080,
+      "cross_category_negative": 550,
+      "hard_negative": 68
+    },
+    "categories_covered": 20
+  },
+  "training_config": {
+    "epochs": 15,
+    "learning_rate": 2e-05,
+    "batch_size": 32,
+    "device": "mps"
+  }
+}

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Dataset Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .search-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .search-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .search-button:hover {
+            background: #0056b3;
+        }
+        .results-container {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .web-source {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            transition: all 0.2s;
+        }
+        .web-source:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .singapore-source {
+            border-color: #28a745;
+            background-color: #f8fff9;
+        }
+        .global-source {
+            border-color: #ffc107;
+            background-color: #fffef5;
+        }
+        .source-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .source-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .source-url {
+            color: #007bff;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .source-url:hover {
+            text-decoration: underline;
+        }
+        .singapore-badge {
+            background: #28a745;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .global-badge {
+            background: #ffc107;
+            color: #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        .quick-queries {
+            margin-top: 15px;
+        }
+        .quick-query {
+            background: #e9ecef;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .quick-query:hover {
+            background: #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 AI Dataset Search</h1>
+        <p>Simple interface to test dataset search functionality</p>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" 
+               placeholder="Enter your search query (e.g., 'housing singapore', 'transport', 'HDB')...">
+        <button onclick="performSearch()" class="search-button">Search Datasets</button>
+        
+        <div class="quick-queries">
+            <strong>Quick Tests:</strong>
+            <button class="quick-query" onclick="setQuery('singapore')">singapore</button>
+            <button class="quick-query" onclick="setQuery('housing')">housing</button>
+            <button class="quick-query" onclick="setQuery('HDB')">HDB</button>
+            <button class="quick-query" onclick="setQuery('transport')">transport</button>
+            <button class="quick-query" onclick="setQuery('climate change')">climate change</button>
+        </div>
+    </div>
+
+    <div id="resultsContainer" class="results-container">
+        <div id="resultsContent"></div>
+    </div>
+
+    <script>
+        function setQuery(query) {
+            document.getElementById('searchInput').value = query;
+            performSearch();
+        }
+
+        async function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) {
+                alert('Please enter a search query');
+                return;
+            }
+
+            const resultsContainer = document.getElementById('resultsContainer');
+            const resultsContent = document.getElementById('resultsContent');
+            
+            // Show loading
+            resultsContainer.style.display = 'block';
+            resultsContent.innerHTML = '<div class="loading">🔄 Searching datasets...</div>';
+
+            try {
+                const response = await fetch(`http://localhost:8000/api/ai-search?t=${Date.now()}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        use_ai_enhanced_search: true,
+                        top_k: 8
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                displayResults(data, query);
+
+            } catch (error) {
+                resultsContent.innerHTML = `
+                    <div style="color: red; text-align: center; padding: 20px;">
+                        <h3>❌ Error</h3>
+                        <p>${error.message}</p>
+                        <p>Make sure the backend server is running on localhost:8000</p>
+                    </div>
+                `;
+            }
+        }
+
+        function displayResults(data, query) {
+            const resultsContent = document.getElementById('resultsContent');
+            let html = `<h2>Results for "${query}"</h2>`;
+
+            // Debug info
+            html += `
+                <div style="background: #f8f9fa; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size: 14px;">
+                    <strong>Debug Info:</strong>
+                    Web Sources: ${data.web_sources?.length || 0} | 
+                    Recommendations: ${data.recommendations?.length || 0} | 
+                    Processing Time: ${data.processing_time?.toFixed(2) || 'N/A'}s
+                </div>
+            `;
+
+            // Web Sources
+            if (data.web_sources && data.web_sources.length > 0) {
+                html += `<h3>🌐 Web Sources (${data.web_sources.length})</h3>`;
+                
+                data.web_sources.forEach((source, index) => {
+                    const isSingapore = 
+                        source.type === 'government_data' || 
+                        (source.url && source.url.includes('data.gov.sg')) ||
+                        (source.url && source.url.includes('singstat.gov.sg')) ||
+                        (source.title && source.title.toLowerCase().includes('singapore'));
+                    
+                    const cssClass = isSingapore ? 'singapore-source' : 'global-source';
+                    const badge = isSingapore ? 
+                        '<span class="singapore-badge">🇸🇬 SINGAPORE</span>' : 
+                        '<span class="global-badge">🌍 GLOBAL</span>';
+
+                    html += `
+                        <div class="web-source ${cssClass}">
+                            <div class="source-title">${index + 1}. ${source.title || 'Untitled'}</div>
+                            <div class="source-meta">
+                                Type: ${source.type || 'Unknown'} | 
+                                Score: ${source.relevance_score || 0} | 
+                                ${badge}
+                            </div>
+                            <a href="${source.url || '#'}" target="_blank" class="source-url">
+                                ${source.url || 'No URL'}
+                            </a>
+                        </div>
+                    `;
+                });
+            } else {
+                html += '<p>❌ No web sources returned</p>';
+            }
+
+            // Dataset Recommendations
+            if (data.recommendations && data.recommendations.length > 0) {
+                html += `<h3>📊 Dataset Recommendations (${data.recommendations.length})</h3>`;
+                data.recommendations.slice(0, 5).forEach((rec, index) => {
+                    html += `
+                        <div class="web-source">
+                            <div class="source-title">${index + 1}. ${rec.dataset?.title || 'Untitled'}</div>
+                            <div class="source-meta">
+                                Source: ${rec.dataset?.source || 'Unknown'} | 
+                                Confidence: ${(rec.confidence * 100).toFixed(1)}%
+                            </div>
+                            <a href="${rec.dataset?.url || '#'}" target="_blank" class="source-url">
+                                ${rec.dataset?.url || 'No URL'}
+                            </a>
+                        </div>
+                    `;
+                });
+            }
+
+            resultsContent.innerHTML = html;
+        }
+
+        // Allow Enter key to search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>

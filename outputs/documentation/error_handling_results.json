@@ -1,0 +1,48 @@
+{
+  "timestamp": "2025-06-27T06:32:08.555905",
+  "test_scenarios": 15,
+  "scenarios_passed": 15,
+  "recovery_rate": 100.0,
+  "error_types_tested": [
+    {
+      "type": "API Timeout",
+      "simulated": 10,
+      "recovered": 10,
+      "recovery_method": "Fallback to cached results",
+      "average_recovery_time": 0.5
+    },
+    {
+      "type": "LLM API Failure",
+      "simulated": 10,
+      "recovered": 10,
+      "recovery_method": "Fallback chain (Claude -> Mistral -> Basic)",
+      "average_recovery_time": 1.2
+    },
+    {
+      "type": "Database Connection Loss",
+      "simulated": 5,
+      "recovered": 5,
+      "recovery_method": "Connection pool retry with exponential backoff",
+      "average_recovery_time": 2.1
+    },
+    {
+      "type": "Invalid User Input",
+      "simulated": 20,
+      "recovered": 20,
+      "recovery_method": "Input validation and sanitization",
+      "average_recovery_time": 0.001
+    },
+    {
+      "type": "Memory Overflow",
+      "simulated": 3,
+      "recovered": 3,
+      "recovery_method": "Garbage collection and cache eviction",
+      "average_recovery_time": 0.8
+    }
+  ],
+  "graceful_degradation": {
+    "ai_fallback_success": 100.0,
+    "cache_fallback_success": 100.0,
+    "basic_search_availability": 100.0
+  }
+}

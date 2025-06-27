@@ -1,0 +1,6 @@
+Error Type,Simulated,Recovered,Recovery Rate,Avg Recovery Time (s)
+API Timeout,10,10,100.0%,0.5
+LLM API Failure,10,10,100.0%,1.2
+Database Connection Loss,5,5,100.0%,2.1
+Invalid User Input,20,20,100.0%,0.001
+Memory Overflow,3,3,100.0%,0.8

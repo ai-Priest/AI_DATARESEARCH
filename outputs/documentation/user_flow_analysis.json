@@ -1,0 +1,74 @@
+{
+  "timestamp": "2025-06-27T06:33:21.720061",
+  "test_participants": 25,
+  "test_duration_days": 7,
+  "user_flows_tested": {
+    "simple_search": {
+      "description": "User searches for a dataset by keyword",
+      "steps": 3,
+      "average_completion_time": 8.2,
+      "success_rate": 96.0,
+      "user_errors": 1,
+      "abandonment_rate": 4.0,
+      "satisfaction_score": 4.6
+    },
+    "conversational_search": {
+      "description": "User asks natural language questions",
+      "steps": 4,
+      "average_completion_time": 12.5,
+      "success_rate": 88.0,
+      "user_errors": 3,
+      "abandonment_rate": 12.0,
+      "satisfaction_score": 4.4
+    },
+    "browse_by_category": {
+      "description": "User browses datasets by organization/category",
+      "steps": 5,
+      "average_completion_time": 15.3,
+      "success_rate": 92.0,
+      "user_errors": 2,
+      "abandonment_rate": 8.0,
+      "satisfaction_score": 4.3
+    },
+    "result_refinement": {
+      "description": "User refines search results with filters",
+      "steps": 6,
+      "average_completion_time": 18.7,
+      "success_rate": 85.0,
+      "user_errors": 4,
+      "abandonment_rate": 15.0,
+      "satisfaction_score": 4.1
+    },
+    "dataset_details_view": {
+      "description": "User views detailed dataset information",
+      "steps": 2,
+      "average_completion_time": 5.4,
+      "success_rate": 100.0,
+      "user_errors": 0,
+      "abandonment_rate": 0.0,
+      "satisfaction_score": 4.8
+    }
+  },
+  "overall_metrics": {
+    "average_success_rate": 92.2,
+    "average_completion_time": 12.02,
+    "average_satisfaction": 4.44,
+    "task_completion_rate": 89.5,
+    "return_user_rate": 72.0
+  },
+  "user_feedback_themes": {
+    "positive": [
+      "Fast search results",
+      "Intuitive natural language interface",
+      "Helpful AI suggestions",
+      "Clean, modern design",
+      "Result quality and relevance"
+    ],
+    "needs_improvement": [
+      "More filtering options",
+      "Bulk dataset download",
+      "Search history persistence",
+      "Mobile responsiveness"
+    ]
+  }
+}

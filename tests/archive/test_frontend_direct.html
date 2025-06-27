@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct API Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { border: 1px solid #ccc; margin: 10px 0; padding: 10px; }
+        .singapore { background-color: #e8f5e8; }
+        .global { background-color: #fff8e1; }
+        button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Direct Frontend API Test</h1>
+    <div>
+        <button onclick="testQuery('singapore')">Test "singapore"</button>
+        <button onclick="testQuery('housing')">Test "housing"</button>
+        <button onclick="testQuery('HDB')">Test "HDB"</button>
+        <button onclick="testQuery('transport')">Test "transport"</button>
+    </div>
+    <div id="results"></div>
+    
+    <script>
+        async function testQuery(query) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `<p>Testing "${query}"...</p>`;
+            
+            try {
+                const timestamp = Date.now();
+                const response = await fetch(`http://localhost:8000/api/ai-search?t=${timestamp}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache',
+                        'Expires': '0'
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        use_ai_enhanced_search: true,
+                        top_k: 8
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                let html = `<h2>Results for "${query}"</h2>`;
+                
+                if (data.web_sources && data.web_sources.length > 0) {
+                    html += `<h3>Web Sources (${data.web_sources.length})</h3>`;
+                    data.web_sources.forEach((source, i) => {
+                        const isDataGovSg = source.url && source.url.includes('data.gov.sg');
+                        const isLTA = source.title && source.title.toLowerCase().includes('lta');
+                        const isSingGov = source.type === 'government_data';
+                        
+                        const cssClass = (isDataGovSg || isLTA || isSingGov) ? 'singapore' : 'global';
+                        
+                        html += `
+                            <div class="result ${cssClass}">
+                                <strong>${i + 1}. ${source.title || 'No title'}</strong><br>
+                                Type: ${source.type || 'Unknown'}<br>
+                                Score: ${source.relevance_score || 0}<br>
+                                URL: <a href="${source.url || '#'}" target="_blank">${source.url || 'No URL'}</a><br>
+                                ${cssClass === 'singapore' ? '<strong>🇸🇬 SINGAPORE SOURCE</strong>' : '🌍 Global Source'}
+                            </div>
+                        `;
+                    });
+                } else {
+                    html += '<p>No web sources returned</p>';
+                }
+                
+                if (data.recommendations && data.recommendations.length > 0) {
+                    html += `<h3>Dataset Recommendations (${data.recommendations.length})</h3>`;
+                    data.recommendations.slice(0, 3).forEach((rec, i) => {
+                        html += `
+                            <div class="result">
+                                <strong>${i + 1}. ${rec.dataset?.title || 'No title'}</strong><br>
+                                Source: ${rec.dataset?.source || 'Unknown'}<br>
+                                Confidence: ${rec.confidence || 0}
+                            </div>
+                        `;
+                    });
+                }
+                
+                resultsDiv.innerHTML = html;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

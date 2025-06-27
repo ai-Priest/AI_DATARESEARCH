@@ -791,19 +791,6 @@
     "relevance_score": 1.0,
     "text_content": "domestic exports of machinery and equipment by market, monthly source: enterprise singapore\r\n\r\ndata last updated: 16/05/2025\r\n\r\nupdate frequency: monthly\r\n\r\nfootnotes: data prior to 1999 are based on "
   },
-  "d_07c63be0f37e6e59c07a4ddc2fd87fcb": {
-    "title": "CEA Salesperson Information",
-    "category": "general",
-    "source": "data.gov.sg",
-    "keywords": {},
-    "domain_signals": [
-      "high_quality_data",
-      "actively_maintained",
-      "government_source"
-    ],
-    "relevance_score": 0.92,
-    "text_content": "cea salesperson information contains data of valid real estate salespersons (from january 2011 to present) council for estate agencies general"
-  },
   "d_9fb538a0a39b080c2b3c985ab60e875d": {
     "title": "Master Plan 2019 SDCP Car Lite Precinct Name layer (KML)",
     "category": "general",
@@ -818,22 +805,6 @@
     ],
     "relevance_score": 1.0,
     "text_content": "master plan 2019 sdcp car lite precinct name layer (kml) dataset containing information on master, plan, sdcp. provided by urban redevelopment authority. covering singapore. urban redevelopment author"
-  },
-  "d_b672ba5cd181fd699e5463e03ca5f3d3": {
-    "title": "Issuance of Title Documents for Completed Private Properties",
-    "category": "general",
-    "source": "data.gov.sg",
-    "keywords": {
-      "geographic:singapore": 0.8
-    },
-    "domain_signals": [
-      "high_quality_data",
-      "actively_maintained",
-      "government_source",
-      "access_limitation_warning"
-    ],
-    "relevance_score": 1.0,
-    "text_content": "issuance of title documents for completed private properties overview of the number of title documents issued for completed private properties in aggregate form singapore land authority general"
   },
   "d_72f8e05d45477a7af0c089ad970519da": {
     "title": "Waste Disposed Of And Recycled, Annual",
@@ -855,6 +826,39 @@
     ],
     "relevance_score": 1.0,
     "text_content": "waste disposed of and recycled, annual source: ministry of sustainability and the environment, national environment agency\r\n\r\ndata last updated: 26/06/2024\r\n\r\nupdate frequency: annual\r\n\r\nfootnotes: ye"
+  },
+  "d_125fc6c86fa9acce7a1de135770a8720": {
+    "title": "Amendment to MP2014 Rail Line",
+    "category": "general",
+    "source": "data.gov.sg",
+    "keywords": {
+      "geographic:singapore": 0.8
+    },
+    "domain_signals": [
+      "high_quality_data",
+      "actively_maintained",
+      "government_source"
+    ],
+    "relevance_score": 1.0,
+    "text_content": "amendment to mp2014 rail line dataset containing information on amendment, rail, line. provided by urban redevelopment authority. covering singapore. urban redevelopment authority general"
+  },
+  "d_259427b26f58f92762229a5da33b95f4": {
+    "title": "Newspapers-Daily Advertiser-1890 to 1894",
+    "category": "general",
+    "source": "data.gov.sg",
+    "keywords": {
+      "temporal:daily": 0.6,
+      "geographic:national": 1.6,
+      "geographic:singapore": 1.6
+    },
+    "domain_signals": [
+      "high_quality_data",
+      "actively_maintained",
+      "government_source",
+      "media_content_warning"
+    ],
+    "relevance_score": 1.0,
+    "text_content": "newspapers-daily advertiser-1890 to 1894 this dataset is a list of digitised out-of-copyright newspaper articles from the national library, singapore. \n\nthese materials present a valuable resource on "
   },
   "lta_bus_arrival": {
     "title": "LTA Bus Arrival",

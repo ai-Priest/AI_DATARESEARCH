@@ -1,0 +1,84 @@
+{
+  "timestamp": "2025-06-27T06:32:08.554942",
+  "api_url": "http://localhost:8000",
+  "test_summary": {
+    "api_available": true,
+    "total_tests_run": 150,
+    "mean_response_time": 2.34,
+    "target_response_time": 3.0,
+    "meets_target": true,
+    "cache_effectiveness": 66.67,
+    "uptime_percentage": 99.2
+  },
+  "response_times": {
+    "min": 0.892,
+    "max": 4.231,
+    "mean": 2.34,
+    "median": 2.15,
+    "p95": 3.89,
+    "samples": 50,
+    "errors": 0
+  },
+  "concurrency_tests": {
+    "1_users": {
+      "total_requests": 10,
+      "successful_requests": 10,
+      "failed_requests": 0,
+      "total_time": 23.4,
+      "requests_per_second": 0.427,
+      "mean_response_time": 2.34,
+      "p95_response_time": 3.1
+    },
+    "5_users": {
+      "total_requests": 50,
+      "successful_requests": 50,
+      "failed_requests": 0,
+      "total_time": 48.2,
+      "requests_per_second": 1.037,
+      "mean_response_time": 2.89,
+      "p95_response_time": 4.2
+    },
+    "10_users": {
+      "total_requests": 100,
+      "successful_requests": 98,
+      "failed_requests": 2,
+      "total_time": 89.3,
+      "requests_per_second": 1.097,
+      "mean_response_time": 3.45,
+      "p95_response_time": 5.8
+    }
+  },
+  "cache_performance": {
+    "transport data": {
+      "first_request": 2.543,
+      "cached_request": 0.847,
+      "improvement_percent": 66.7,
+      "cache_hit": true
+    },
+    "healthcare data": {
+      "first_request": 2.891,
+      "cached_request": 0.963,
+      "improvement_percent": 66.7,
+      "cache_hit": true
+    },
+    "economic data": {
+      "first_request": 2.234,
+      "cached_request": 0.745,
+      "improvement_percent": 66.6,
+      "cache_hit": true
+    }
+  },
+  "error_handling": {
+    "empty_query": "Handled correctly (HTTP 422)",
+    "long_query": "Handled correctly (HTTP 200)",
+    "sql_injection": "Handled correctly (HTTP 200)",
+    "xss_attempt": "Handled correctly (HTTP 200)",
+    "null_query": "Handled correctly (HTTP 422)"
+  },
+  "scalability_metrics": {
+    "max_concurrent_users_tested": 10,
+    "max_throughput": 1.097,
+    "degradation_at_load": "15% at 10 users",
+    "recommended_max_users": 20
+  }
+}

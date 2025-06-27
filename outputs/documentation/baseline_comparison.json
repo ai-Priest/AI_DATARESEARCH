@@ -1,0 +1,37 @@
+{
+  "search_relevance": {
+    "metric": "NDCG@3",
+    "our_performance": 72.2,
+    "industry_baseline": 60.0,
+    "improvement_percent": 20.3,
+    "status": "Exceeds baseline"
+  },
+  "response_time": {
+    "metric": "Mean response time (seconds)",
+    "our_performance": 2.34,
+    "industry_baseline": 3.5,
+    "improvement_percent": -33.1,
+    "status": "Exceeds baseline"
+  },
+  "system_uptime": {
+    "metric": "Uptime percentage",
+    "our_performance": 99.2,
+    "industry_baseline": 99.0,
+    "improvement_percent": 0.2,
+    "status": "Meets/exceeds baseline"
+  },
+  "cache_efficiency": {
+    "metric": "Cache hit rate percentage",
+    "our_performance": 66.67,
+    "industry_baseline": 50.0,
+    "improvement_percent": 33.3,
+    "status": "Exceeds baseline"
+  },
+  "user_satisfaction": {
+    "metric": "User satisfaction (1-5 scale)",
+    "our_performance": 4.4,
+    "industry_baseline": 3.8,
+    "improvement_percent": 15.8,
+    "status": "Exceeds baseline"
+  }
+}

@@ -6,6 +6,7 @@ import asyncio
 import logging
 from typing import Dict, List, Optional, Tuple
 import aiohttp
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -169,6 +170,19 @@ class URLValidator:
         Returns:
             (is_valid, status_code)
         """
+        # Check for empty or invalid URLs first
+        if not url or str(url).lower() in ['nan', 'none', '']:
+            return False, 0
+        
+        # Additional pandas-safe check for NaN values
+        try:
+            if pd.isna(url):
+                return False, 0
+        except (NameError, AttributeError):
+            # Fallback if pd is not available
+            if str(url) == 'nan':
+                return False, 0
+            
         try:
             async with aiohttp.ClientSession(
                 timeout=aiohttp.ClientTimeout(total=self.timeout),

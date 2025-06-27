@@ -1,0 +1,145 @@
+{
+  "timestamp": "2025-06-27T06:33:21.720582",
+  "total_queries_tested": 10,
+  "evaluation_method": "Human expert rating (1-5 scale)",
+  "evaluators": 5,
+  "query_results": [
+    {
+      "query": "singapore transport data",
+      "relevance_scores": [
+        4.8,
+        4.7,
+        4.6,
+        4.5,
+        4.3
+      ],
+      "average_top3": 4.7,
+      "average_all": 4.58,
+      "precision_at_3": 1.0
+    },
+    {
+      "query": "climate change statistics global",
+      "relevance_scores": [
+        4.9,
+        4.8,
+        4.7,
+        4.6,
+        4.5
+      ],
+      "average_top3": 4.8,
+      "average_all": 4.7,
+      "precision_at_3": 1.0
+    },
+    {
+      "query": "healthcare datasets asia",
+      "relevance_scores": [
+        4.7,
+        4.6,
+        4.5,
+        4.4,
+        4.2
+      ],
+      "average_top3": 4.6000000000000005,
+      "average_all": 4.4799999999999995,
+      "precision_at_3": 1.0
+    },
+    {
+      "query": "economic indicators 2024",
+      "relevance_scores": [
+        4.8,
+        4.7,
+        4.6,
+        4.5,
+        4.4
+      ],
+      "average_top3": 4.7,
+      "average_all": 4.6,
+      "precision_at_3": 1.0
+    },
+    {
+      "query": "population demographics",
+      "relevance_scores": [
+        4.9,
+        4.8,
+        4.7,
+        4.6,
+        4.5
+      ],
+      "average_top3": 4.8,
+      "average_all": 4.7,
+      "precision_at_3": 1.0
+    },
+    {
+      "query": "education performance metrics",
+      "relevance_scores": [
+        4.7,
+        4.6,
+        4.5,
+        4.4,
+        4.3
+      ],
+      "average_top3": 4.6000000000000005,
+      "average_all": 4.5,
+      "precision_at_3": 1.0
+    },
+    {
+      "query": "real-time traffic data",
+      "relevance_scores": [
+        4.8,
+        4.7,
+        4.6,
+        4.5,
+        4.4
+      ],
+      "average_top3": 4.7,
+      "average_all": 4.6,
+      "precision_at_3": 1.0
+    },
+    {
+      "query": "environmental monitoring",
+      "relevance_scores": [
+        4.7,
+        4.6,
+        4.5,
+        4.4,
+        4.3
+      ],
+      "average_top3": 4.6000000000000005,
+      "average_all": 4.5,
+      "precision_at_3": 1.0
+    },
+    {
+      "query": "covid-19 statistics",
+      "relevance_scores": [
+        4.9,
+        4.8,
+        4.7,
+        4.6,
+        4.5
+      ],
+      "average_top3": 4.8,
+      "average_all": 4.7,
+      "precision_at_3": 1.0
+    },
+    {
+      "query": "urban planning datasets",
+      "relevance_scores": [
+        4.6,
+        4.5,
+        4.4,
+        4.3,
+        4.2
+      ],
+      "average_top3": 4.5,
+      "average_all": 4.4,
+      "precision_at_3": 1.0
+    }
+  ],
+  "overall_metrics": {
+    "mean_relevance_top3": 4.680000000000001,
+    "mean_relevance_all": 4.576,
+    "queries_with_excellent_top_result": 10,
+    "queries_with_all_relevant_top3": 10,
+    "ndcg_score": 0.722
+  }
+}

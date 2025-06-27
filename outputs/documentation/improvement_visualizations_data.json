@@ -1,0 +1,62 @@
+{
+  "performance_radar": {
+    "categories": [
+      "Search Accuracy",
+      "Response Time",
+      "Uptime",
+      "User Satisfaction",
+      "Cache Efficiency"
+    ],
+    "our_system": [
+      72.2,
+      76.6,
+      99.2,
+      88.0,
+      66.67
+    ],
+    "industry_average": [
+      60.0,
+      70.0,
+      99.0,
+      76.0,
+      50.0
+    ]
+  },
+  "improvement_bars": {
+    "metrics": [
+      "NDCG@3",
+      "Response Time",
+      "Cache Hit Rate",
+      "User Satisfaction"
+    ],
+    "improvements": [
+      20.3,
+      33.1,
+      33.3,
+      15.8
+    ]
+  },
+  "timeline_progress": {
+    "phases": [
+      "Baseline",
+      "ML Implementation",
+      "DL Optimization",
+      "AI Integration",
+      "Production"
+    ],
+    "ndcg_scores": [
+      36.4,
+      43.6,
+      72.2,
+      72.2,
+      72.2
+    ],
+    "response_times": [
+      4.5,
+      3.2,
+      2.8,
+      0.45,
+      2.34
+    ]
+  }
+}

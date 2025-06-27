@@ -1,6 +1,6 @@
 {
   "analysis_metadata": {
-    "analysis_timestamp": "2025-06-26T05:19:23.310035",
+    "analysis_timestamp": "2025-06-27T05:43:47.317726",
     "total_datasets_analyzed": 143,
     "configuration_used": {
       "output_base_path": "outputs/EDA",
@@ -50,7 +50,7 @@
   "collection_overview": {
     "collection_metadata": {
       "total_datasets": 143,
-      "analysis_timestamp": "2025-06-26T05:19:21.042572",
+      "analysis_timestamp": "2025-06-27T05:43:42.290118",
       "data_sources": 8,
       "categories_covered": 8
     },
@@ -102,9 +102,9 @@
     },
     "quality_analysis": {
       "overall_statistics": {
-        "mean_quality": 0.7896853146853148,
+        "mean_quality": 0.791783216783217,
         "median_quality": 0.825,
-        "std_quality": 0.19189860951064389
+        "std_quality": 0.19337113625372887
       },
       "quality_distribution": {
         "high_quality": 99,
@@ -123,13 +123,13 @@
         "SingStat": 0.6,
         "UN SDG": 0.5499999999999999,
         "World Bank": 0.812,
-        "data.gov.sg": 0.971
+        "data.gov.sg": 0.977
       },
       "quality_by_category": {
         "economic_development": 0.812,
         "economic_finance": 0.6900000000000001,
         "economic_statistics": 0.6849999999999999,
-        "general": 0.971,
+        "general": 0.977,
         "geospatial": 0.4125,
         "statistics": 0.6,
         "sustainable_development": 0.5499999999999999,
@@ -152,9 +152,9 @@
     },
     "format_analysis": {
       "JSON": 73,
-      "CSV": 40,
+      "CSV": 39,
       "SDMX-JSON": 10,
-      "KML": 8,
+      "KML": 9,
       "SDMX": 5,
       "SHP": 4,
       "GEOJSON": 3
@@ -163,17 +163,17 @@
   "keyword_intelligence": {
     "keyword_extraction_summary": {
       "total_unique_keywords": 42,
-      "avg_keywords_per_dataset": 2.7132867132867133,
+      "avg_keywords_per_dataset": 2.734265734265734,
       "most_common_keywords": {
-        "geographic:singapore": 57,
+        "geographic:singapore": 58,
         "geographic:global": 44,
         "demographics:population": 42,
         "economics:income": 32,
         "data_type:statistics": 32,
         "data_type:index": 28,
         "economics:economic": 20,
-        "temporal:daily": 19,
-        "geographic:national": 18,
+        "temporal:daily": 20,
+        "geographic:national": 19,
         "transport:transport": 10,
         "health:health": 8,
         "temporal:annual": 8,
@@ -192,25 +192,25 @@
         "high_quality_data": 99,
         "actively_maintained": 143,
         "government_source": 50,
-        "media_content_warning": 11,
+        "media_content_warning": 12,
         "health_research_ready": 8,
         "transport_research_ready": 12,
         "economics_research_ready": 70,
-        "access_limitation_warning": 2,
+        "access_limitation_warning": 1,
         "international_organization": 71,
         "housing_research_ready": 1
       },
       "research_ready_datasets": 90,
       "warning_signals": {
-        "media_content_warning": 11,
-        "access_limitation_warning": 2
+        "media_content_warning": 12,
+        "access_limitation_warning": 1
       }
     },
     "domain_keyword_patterns": {
       "geographic": {
-        "singapore": 57,
+        "singapore": 58,
         "global": 44,
-        "national": 18,
+        "national": 19,
         "international": 3,
         "local": 1
       },
@@ -227,7 +227,7 @@
         "inflation": 1
       },
       "temporal": {
-        "daily": 19,
+        "daily": 20,
         "annual": 8,
         "monthly": 3,
         "historical": 1,
@@ -271,7 +271,7 @@
       }
     },
     "relevance_distribution": {
-      "mean_relevance": 0.9438461538461539,
+      "mean_relevance": 0.9444055944055942,
       "median_relevance": 0.975,
       "high_relevance_count": 136,
       "medium_relevance_count": 7,
@@ -296,19 +296,19 @@
         "unrelated": 260,
         "complementary": 2107
       },
-      "high_quality_relationships": 540
+      "high_quality_relationships": 541
     },
     "quality_metrics": {
       "score_statistics": {
-        "mean_relationship_score": 0.5168833965537252,
+        "mean_relationship_score": 0.5175705915229701,
         "median_relationship_score": 0.555,
-        "mean_confidence": 0.6875042391257872,
+        "mean_confidence": 0.6883325346795918,
         "median_confidence": 0.7075
       },
       "score_distribution": {
         "excellent_relationships": 191,
-        "good_relationships": 1551,
-        "fair_relationships": 1706,
+        "good_relationships": 1586,
+        "fair_relationships": 1671,
         "weak_relationships": 1513
       }
     },
@@ -388,6 +388,10 @@
       "avg_relationships_per_dataset": 34.69230769230769,
       "most_connected_datasets": [
         {
+          "dataset": "Amendment to MP2014 Rail Line",
+          "connection_count": 112
+        },
+        {
           "dataset": "Literacy rate, youth total (% of people ages 15-24) ",
           "connection_count": 94
         },
@@ -402,10 +406,6 @@
         {
           "dataset": "110000:INDIVIDUAL CONSUMPTION EXPENDITURE BY HOUSEHOLDS",
           "connection_count": 93
-        },
-        {
-          "dataset": "Total final energy consumption (TFEC)",
-          "connection_count": 92
         }
       ]
     }
@@ -537,7 +537,7 @@
       "Review relationship scoring algorithm and dataset categorization"
     ],
     "quality_metrics": {
-      "collection_quality_score": 0.7896853146853148,
+      "collection_quality_score": 0.791783216783217,
       "quality_distribution": {
         "high_quality_percentage": 69.23076923076923,
         "medium_quality_percentage": 18.88111888111888,

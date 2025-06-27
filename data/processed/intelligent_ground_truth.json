@@ -43,10 +43,10 @@
   "economic_development_analysis": {
     "primary": "economic development poverty analysis indicators",
     "complementary": [
-      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)",
       "Singapore Statistics - GDP",
+      "GDP (current US$)",
       "Poverty Headcount ($1.90 a day)",
-      "GDP (current US$)"
+      "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
     ],
     "explanation": "Economic development and poverty analysis",
     "confidence": 0.85,
@@ -86,9 +86,9 @@
     "primary": "health outcomes demographic population statistics",
     "complementary": [
       "Services available on the Health Appointment System",
-      "Principal Causes of Death",
-      "Listing of Registered Medical Devices - Apr 2025",
-      "Resident Working Persons Aged 15 Years and Over by Age Group, Highest Qualification Attained and Sex (Census of Population 2000)"
+      "Resident Working Persons Aged 15 Years and Over by Age Group, Highest Qualification Attained and Sex (Census of Population 2000)",
+      "OneMap Population Query (Authenticated)",
+      "Principal Causes of Death"
     ],
     "explanation": "Health outcomes by demographic analysis",
     "confidence": 0.8,
@@ -100,10 +100,10 @@
   "transport_urban_planning": {
     "primary": "transportation infrastructure urban planning development",
     "complementary": [
-      "Traffic Lights",
-      "OneMap Planning Area (Authenticated)",
       "Poverty Headcount ($1.90 a day)-Urban",
-      "LTA Bus Arrival"
+      "LTA Bus Arrival",
+      "Traffic Lights",
+      "OneMap Planning Area (Authenticated)"
     ],
     "explanation": "Transportation and urban development analysis",
     "confidence": 0.75,

@@ -1,0 +1,258 @@
+
+# 🔗 Dependency Graph Analysis
+## AI Dataset Research Assistant
+
+## CORE DEPENDENCY CATEGORIES (108 Total Packages)
+
+### 1. 🧮 SCIENTIFIC COMPUTING FOUNDATION (5 packages)
+```
+numpy (1.26.0+) ──┐
+                  ├── pandas (2.3.0+) ──┐
+scipy (1.14.0+) ──┘                    ├── scikit-learn (1.7.0+)
+                                       │
+datasets (3.6.0+) ─────────────────────┘
+joblib (1.5.1+) ───────────────────────┘
+```
+
+### 2. 🤖 DEEP LEARNING STACK (8 packages)
+```
+torch (2.7.1+) ──┐
+                 ├── transformers (4.52.4+) ──┐
+                 ├── sentence-transformers ───┤
+                 │   (4.1.0+)                  ├── AI Components
+tokenizers ──────┤                            │
+(0.20.0+)        ├── safetensors (0.4.0+) ───┘
+                 │
+accelerate ──────┘
+(1.2.0+)
+
+tensorflow (2.19.0+) ──── Alternative Framework
+tf-keras (2.19.0+) ────── High-level API
+```
+
+### 3. 🌐 WEB FRAMEWORK & API (6 packages)
+```
+fastapi (0.115.0+) ──┐
+                     ├── Production API Server
+uvicorn (0.32.0+) ───┤
+                     ├── WebSocket Support
+websockets (12.0+) ──┤
+                     └── Documentation
+httpx (0.28.0+) ──────── Async HTTP Client
+aiohttp (3.11.0+) ────── Alternative HTTP Client  
+swagger-ui (0.1.0+) ──── API Documentation
+```
+
+### 4. 🧠 LLM INTEGRATION (4 packages)
+```
+anthropic (0.19.0+) ──┐
+                      ├── Multi-Provider LLM System
+openai (1.12.0+) ─────┤
+                      ├── With Fallback Logic
+mistralai (0.1.3+) ───┤
+                      └── And Retry Mechanisms
+tenacity (8.2.0+) ─────── Retry Logic
+```
+
+### 5. 💾 DATABASE & STORAGE (7 packages)
+```
+sqlalchemy (2.0.0+) ──┐
+                      ├── Database Layer
+alembic (1.14.0+) ────┤
+                      └── Schema Management
+redis (5.2.0+) ────────── Caching System
+aioredis (2.0.0+) ────── Async Redis
+psycopg2-binary ──────── PostgreSQL Driver
+(2.9.0+)
+```
+
+### 6. 📊 VISUALIZATION & ANALYSIS (8 packages)
+```
+matplotlib (3.10.3+) ──┐
+                       ├── Visualization Stack
+seaborn (0.13.2+) ─────┤
+                       ├── For Performance
+plotly (5.24.0+) ──────┤    Analytics
+                       └── And Reporting
+bokeh (3.8.0+) ─────────── Interactive Plots
+
+tqdm (4.67.1+) ─────────── Progress Indicators
+rich (14.0.0+) ─────────── Rich Terminal Output
+textual (3.5.0+) ───────── Terminal UI
+```
+
+### 7. ⚙️ CONFIGURATION & I/O (10 packages)
+```
+python-dotenv (1.0.0+) ──┐
+                         ├── Environment Management
+python-decouple (3.8+) ──┤
+                         └── Configuration Loading
+pydantic (2.10.0+) ───────── Data Validation
+pydantic-settings ───────── Settings Management
+(2.7.0+)
+
+jsonlines (4.0.0+) ───┐
+                      ├── Data Format Support
+openpyxl (3.1.0+) ────┤
+                      ├── Excel/CSV Processing
+xlsxwriter (3.2.0+) ──┤
+                      └── Binary Formats
+h5py (3.12.0+) ────────── HDF5 Support
+
+beautifulsoup4 (4.12.0+) ── Web Scraping
+lxml (5.0.0+) ─────────────── XML Processing
+requests (2.32.4+) ─────────── HTTP Requests
+```
+
+### 8. 🚀 PRODUCTION INFRASTRUCTURE (12 packages)
+```
+gunicorn (23.0.0+) ──┐
+                     ├── Production Server
+celery (5.4.0+) ─────┤
+                     ├── Background Tasks
+flower (2.0.0+) ─────┤
+                     └── Task Monitoring
+python-daemon ────────── Background Processes
+(3.0.0+)
+
+sentry-sdk (2.21.0+) ──┐
+                       ├── Monitoring & Observability
+structlog (24.5.0+) ───┤
+                       ├── Error Tracking
+prometheus-client ─────┤
+(0.21.0+)              └── Metrics Collection
+healthcheck (1.3.0+) ──── Health Endpoints
+
+cryptography (44.0.0+) ──┐
+                         ├── Security Layer
+passlib (1.7.0+) ────────┤
+                         └── Authentication
+python-jose (3.3.0+) ────── JWT Tokens
+```
+
+### 9. 🧪 DEVELOPMENT & TESTING (21 packages)
+```
+pytest (8.0.0+) ──┐
+                  ├── Testing Framework
+pytest-cov ──────┤
+(6.0.0+)          ├── With Coverage
+                  ├── Mocking Support
+pytest-mock ─────┤
+(3.14.0+)         └── Async Testing
+pytest-asyncio ────── 
+(0.24.0+)
+
+black (24.0.0+) ──┐
+                  ├── Code Quality Tools
+isort (5.13.0+) ──┤
+                  ├── Formatting & Linting
+flake8 (7.0.0+) ──┤
+                  ├── Fast Analysis
+ruff (0.8.0+) ────┤
+                  └── Type Checking
+mypy (1.13.0+) ────── 
+
+sphinx (8.1.0+) ──┐
+                  ├── Documentation
+sphinx-rtd-theme ─┤
+(3.0.0+)          └── ReadTheDocs Theme
+myst-parser ────────── Markdown Support
+(4.0.0+)
+
+ipython (8.31.0+) ──┐
+                    ├── Development Environment
+jupyter (1.1.0+) ───┤
+                    ├── Interactive Computing
+notebook (7.3.0+) ──┤
+                    └── Lab Interface
+jupyterlab (4.3.0+) ──
+
+build (1.2.0+) ──┐
+                 ├── Build Tools
+twine (6.0.0+) ──┤
+                 └── Package Distribution
+hatchling ─────────── Modern Build Backend
+(1.28.0+)
+
+debugpy (1.8.0+) ──┐
+                   ├── Debugging & Profiling
+memory-profiler ───┤
+(0.61.0+)          └── Performance Analysis
+line-profiler ────────
+(4.1.0+)
+
+pre-commit (4.0.0+) ──── Git Hooks
+```
+
+## 🔄 DEPENDENCY RESOLUTION FLOW
+
+```
+1. Environment Setup
+   ├── python-dotenv loads .env variables
+   ├── pydantic validates configuration  
+   └── python-decouple manages settings
+
+2. Core Computing Stack
+   ├── numpy provides numerical foundation
+   ├── pandas builds on numpy for data manipulation
+   ├── scipy adds scientific computing algorithms
+   └── scikit-learn leverages all for ML
+
+3. Deep Learning Pipeline  
+   ├── torch provides neural network foundation
+   ├── transformers builds on torch for NLP
+   ├── sentence-transformers specializes for embeddings
+   └── safetensors handles secure model serialization
+
+4. Web Framework Layer
+   ├── fastapi creates REST API endpoints
+   ├── uvicorn serves the application
+   ├── websockets enable real-time features
+   └── httpx/aiohttp handle external API calls
+
+5. AI Integration Layer
+   ├── anthropic, openai, mistralai provide LLM access
+   ├── tenacity adds retry logic for resilience
+   └── Custom AI orchestration ties everything together
+
+6. Data Persistence Layer
+   ├── sqlalchemy provides ORM functionality
+   ├── redis enables caching and sessions
+   ├── alembic handles database migrations
+   └── psycopg2 connects to PostgreSQL
+
+7. Production Infrastructure
+   ├── gunicorn serves in production mode
+   ├── celery handles background tasks
+   ├── sentry-sdk monitors errors
+   ├── prometheus-client exports metrics
+   └── cryptography secures communications
+```
+
+## 🎯 CRITICAL PATH DEPENDENCIES
+
+**For Neural Model Training:**
+torch → transformers → sentence-transformers → Custom Neural Architecture
+
+**For API Server:**
+fastapi → uvicorn → sqlalchemy → redis → Production Server
+
+**For AI Integration:**
+anthropic/openai/mistralai → tenacity → Custom LLM Manager
+
+**For Data Processing:**
+pandas → scikit-learn → Custom ML Pipeline
+
+**For Production Monitoring:**
+sentry-sdk → structlog → prometheus-client → Health Monitor
+
+## 🔒 SECURITY CONSIDERATIONS
+
+- All LLM API keys managed through environment variables
+- cryptography library provides industry-standard encryption
+- Input validation through pydantic models
+- SQL injection prevention via SQLAlchemy ORM
+- CORS protection in FastAPI configuration
+- Rate limiting and authentication middleware
+
+This dependency architecture supports the documented 72.2% NDCG@3 performance achievement while maintaining production-grade reliability and security standards.

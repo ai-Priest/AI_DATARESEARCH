@@ -1,0 +1,146 @@
+{
+  "model_architecture": "Lightweight Cross-Attention Ranker",
+  "training_results": {
+    "best_loss": 0.2503226122094525,
+    "training_history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.36708154384883085,
+        "val_loss": 0.2783977422449324,
+        "val_accuracy": 0.9166666666666666,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.31774582538981827,
+        "val_loss": 0.2768054058154424,
+        "val_accuracy": 0.9166666666666666,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.255177003350489,
+        "val_loss": 0.27624810569816166,
+        "val_accuracy": 0.9166666666666666,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.23450060751365157,
+        "val_loss": 0.2641410653789838,
+        "val_accuracy": 0.9236111111111112,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.23731190072638647,
+        "val_loss": 0.2503226122094525,
+        "val_accuracy": 0.9305555555555556,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.19844791658070624,
+        "val_loss": 0.27981556372510064,
+        "val_accuracy": 0.9305555555555556,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.18643109072760053,
+        "val_loss": 0.2832893650564883,
+        "val_accuracy": 0.9270833333333334,
+        "learning_rate": 0.0005
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.17686055729887923,
+        "val_loss": 0.3015885063343578,
+        "val_accuracy": 0.9270833333333334,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.15780539027586274,
+        "val_loss": 0.27061666051546734,
+        "val_accuracy": 0.9236111111111112,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.12696328584332855,
+        "val_loss": 0.29182154519690406,
+        "val_accuracy": 0.9027777777777778,
+        "learning_rate": 0.00025
+      },
+      {
+        "epoch": 11,
+        "train_loss": 0.12108149109598325,
+        "val_loss": 0.3123285224040349,
+        "val_accuracy": 0.9340277777777778,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 12,
+        "train_loss": 0.1072566447475431,
+        "val_loss": 0.3028940475649304,
+        "val_accuracy": 0.9131944444444444,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 13,
+        "train_loss": 0.0915149639987824,
+        "val_loss": 0.32600544061925674,
+        "val_accuracy": 0.90625,
+        "learning_rate": 0.000125
+      },
+      {
+        "epoch": 14,
+        "train_loss": 0.0868460057417349,
+        "val_loss": 0.32848960078424877,
+        "val_accuracy": 0.9131944444444444,
+        "learning_rate": 6.25e-05
+      },
+      {
+        "epoch": 15,
+        "train_loss": 0.08060358597763947,
+        "val_loss": 0.3340202396114667,
+        "val_accuracy": 0.8993055555555556,
+        "learning_rate": 6.25e-05
+      }
+    ],
+    "final_accuracy": 0.8993055555555556
+  },
+  "evaluation_results": {
+    "accuracy": 0.9307958477508651,
+    "precision": 0.5555555555555556,
+    "recall": 0.6521739130434783,
+    "f1_score": 0.6,
+    "ndcg_at_3": 0.8048904464191594,
+    "num_queries_evaluated": 40,
+    "total_test_samples": 289,
+    "positive_samples": 23,
+    "negative_samples": 266
+  },
+  "data_summary": {
+    "total_samples": 1914,
+    "train_samples": 1339,
+    "val_samples": 287,
+    "test_samples": 288,
+    "positive_samples": 216,
+    "negative_samples": 1698,
+    "sample_types": {
+      "positive": 216,
+      "negative": 1080,
+      "cross_category_negative": 550,
+      "hard_negative": 68
+    },
+    "categories_covered": 20
+  },
+  "training_config": {
+    "epochs": 15,
+    "learning_rate": 2e-05,
+    "batch_size": 32,
+    "device": "mps"
+  }
+}

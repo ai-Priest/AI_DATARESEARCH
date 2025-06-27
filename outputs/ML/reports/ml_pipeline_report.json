@@ -1,8 +1,8 @@
 {
   "pipeline_execution": {
-    "start_time": "2025-06-26T07:59:46.773078",
-    "end_time": "2025-06-26T08:00:36.510542",
-    "total_duration_minutes": 0.8289578333333334,
+    "start_time": "2025-06-27T06:05:12.520480",
+    "end_time": "2025-06-27T06:06:30.410467",
+    "total_duration_minutes": 1.2981665333333334,
     "phases_completed": [
       "preprocessing",
       "evaluation",
@@ -11,7 +11,7 @@
   },
   "data_summary": {
     "total_datasets": 143,
-    "average_quality": 0.7896853146853148,
+    "average_quality": 0.791783216783217,
     "features_engineered": 98
   },
   "model_performance": {

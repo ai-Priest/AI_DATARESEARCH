@@ -20,6 +20,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
+# Load environment variables first
+from dotenv import load_dotenv
+load_dotenv()
+
 # Add project root to path for imports
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
@@ -69,8 +73,12 @@ except ImportError as e:
     print(f"WARNING: AI config manager not available: {e}")
     CONFIG_AVAILABLE = False
     AIConfigManager = None
-from .deployment_config import DeploymentConfig
-from .health_monitor import HealthMonitor
+try:
+    from deployment_config import DeploymentConfig
+    from health_monitor import HealthMonitor
+except ImportError:
+    from src.deployment.deployment_config import DeploymentConfig
+    from src.deployment.health_monitor import HealthMonitor
 
 # Configure logging
 logging.basicConfig(
@@ -439,6 +447,10 @@ async def ai_enhanced_search(request: SearchRequest):
                 performance_stats["total_response_time"] += response_time
                 performance_stats["avg_response_time"] = performance_stats["total_response_time"] / performance_stats["total_requests"]
                 
+                # Debug logging for troubleshooting
+                if ai_response.get('web_sources'):
+                    logger.info(f"🌐 Returning {len(ai_response['web_sources'])} web sources. First: {ai_response['web_sources'][0].get('title', 'N/A')}")
+                
                 return ai_response
                 
             except asyncio.TimeoutError:
@@ -732,6 +744,30 @@ async def get_performance_metrics():
     except Exception as e:
         logger.error(f"Metrics error: {e}")
         raise HTTPException(status_code=500, detail=f"Metrics retrieval failed: {str(e)}")
+
+
+@app.post("/api/debug-search")
+async def debug_search(request: SearchRequest):
+    """Debug version of AI search with detailed logging"""
+    logger.info(f"🐛 DEBUG SEARCH: {request.query}")
+    
+    # Call the normal AI search
+    response = await ai_enhanced_search(request)
+    
+    # Add debug information
+    debug_info = {
+        "debug_timestamp": time.time(),
+        "query_received": request.query,
+        "web_sources_count": len(response.get('web_sources', [])),
+        "recommendations_count": len(response.get('recommendations', [])),
+        "singapore_context_detected": any(kw in request.query.lower() for kw in ['singapore', 'sg', 'hdb', 'housing']),
+        "first_web_source": response.get('web_sources', [{}])[0].get('title', 'None') if response.get('web_sources') else 'None'
+    }
+    
+    response['debug'] = debug_info
+    logger.info(f"🐛 DEBUG RESPONSE: {debug_info}")
+    
+    return response
 
 
 def start_production_server(host: str = "0.0.0.0", port: int = 8000, workers: int = 1):

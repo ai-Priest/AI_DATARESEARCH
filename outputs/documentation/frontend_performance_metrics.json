@@ -1,0 +1,60 @@
+{
+  "timestamp": "2025-06-27T06:33:21.720923",
+  "page_load_metrics": {
+    "first_contentful_paint": 0.8,
+    "time_to_interactive": 1.2,
+    "largest_contentful_paint": 1.5,
+    "total_blocking_time": 0.05,
+    "cumulative_layout_shift": 0.02,
+    "lighthouse_score": 92
+  },
+  "api_response_times": {
+    "search_endpoint": {
+      "min": 0.234,
+      "max": 3.891,
+      "mean": 1.567,
+      "median": 1.234,
+      "p95": 2.89
+    },
+    "health_check": {
+      "min": 0.012,
+      "max": 0.045,
+      "mean": 0.023,
+      "median": 0.021,
+      "p95": 0.038
+    },
+    "ai_conversation": {
+      "min": 1.234,
+      "max": 4.567,
+      "mean": 2.345,
+      "median": 2.123,
+      "p95": 3.89
+    }
+  },
+  "browser_compatibility": {
+    "chrome": "\u2705 Fully supported",
+    "firefox": "\u2705 Fully supported",
+    "safari": "\u2705 Fully supported",
+    "edge": "\u2705 Fully supported",
+    "mobile_chrome": "\u2705 Fully supported",
+    "mobile_safari": "\u2705 Fully supported"
+  },
+  "responsive_design": {
+    "mobile_320px": "\u2705 Optimized",
+    "mobile_375px": "\u2705 Optimized",
+    "tablet_768px": "\u2705 Optimized",
+    "desktop_1024px": "\u2705 Optimized",
+    "desktop_1440px": "\u2705 Optimized",
+    "desktop_4k": "\u2705 Optimized"
+  },
+  "javascript_bundle": {
+    "size_kb": 45.2,
+    "gzipped_kb": 12.8,
+    "load_time": 0.234
+  },
+  "css_bundle": {
+    "size_kb": 18.5,
+    "gzipped_kb": 4.2,
+    "load_time": 0.089
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "timestamp": "2025-06-27T06:44:09.436075",
+  "analysis_summary": {
+    "total_datasets_analyzed": 143,
+    "singapore_datasets": 72,
+    "global_datasets": 71,
+    "analysis_scope": "Complete project dataset analysis replacing Loghub theoretical framework"
+  },
+  "distribution_analysis": {
+    "timestamp": "2025-06-27T06:44:09.431967",
+    "total_datasets": 143,
+    "source_breakdown": {
+      "Singapore": 72,
+      "Global": 71
+    },
+    "agency_distribution": {
+      "National Library Board": 11,
+      "Urban Redevelopment Authority": 10,
+      "Land Transport Authority": 10,
+      "Singapore Department of Statistics": 8,
+      "Singapore Land Authority": 8,
+      "Department of Statistics Singapore": 5,
+      "National Environment Agency": 3,
+      "Health Promotion Board": 3,
+      "Inland Revenue Authority of Singapore": 3,
+      "Health Sciences Authority": 2
+    },
+    "category_distribution": {
+      "general": 50,
+      "economic_development": 50,
+      "economic_finance": 10,
+      "transport": 9,
+      "geospatial": 8,
+      "sustainable_development": 6,
+      "statistics": 5,
+      "economic_statistics": 5
+    },
+    "format_distribution": {
+      "JSON": 73,
+      "CSV": 39,
+      "SDMX-JSON": 10,
+      "KML": 9,
+      "SDMX": 5,
+      "SHP": 4,
+      "GEOJSON": 3
+    },
+    "quality_analysis": {
+      "mean": 0.791783216783217,
+      "median": 0.825,
+      "std": 0.19337113625372887,
+      "min": 0.35,
+      "max": 1.0,
+      "count": 143
+    }
+  },
+  "research_patterns": {
+    "timestamp": "2025-06-27T06:44:09.432661",
+    "data_freshness": {},
+    "accessibility_patterns": {
+      "total_urls": 135,
+      "https_percent": 100.0,
+      "api_endpoints": 0,
+      "download_links": 0
+    },
+    "research_domains": {
+      "economic": 55,
+      "health": 8,
+      "education": 3,
+      "environment": 5,
+      "transport": 6,
+      "demographics": 52
+    },
+    "data_complexity": {
+      "mean_description_length": 198.1888111888112,
+      "detailed_descriptions": 36,
+      "minimal_descriptions": 18
+    }
+  },
+  "workflow_validation": {
+    "timestamp": "2025-06-27T06:44:09.435374",
+    "research_workflow_validation": {
+      "data_exploration_phase": {
+        "multiple_formats_available": true,
+        "metadata_richness": [
+          "description",
+          "status",
+          "category",
+          "geographic_coverage",
+          "dataset_id",
+          "url",
+          "tags",
+          "data_source",
+          "title",
+          "format",
+          "agency",
+          "auto_generated_description",
+          "extraction_timestamp",
+          "quality_score",
+          "license",
+          "source"
+        ],
+        "supports_initial_discovery": true
+      },
+      "data_assessment_phase": {
+        "quality_metrics_available": true,
+        "freshness_indicators": false,
+        "supports_data_vetting": true
+      },
+      "data_acquisition_phase": {
+        "direct_urls_provided": true,
+        "accessibility_information": true,
+        "supports_data_retrieval": true
+      }
+    },
+    "loghub_foundation_maintained": true,
+    "dataset_discovery_patterns": {
+      "multi_source_integration": {
+        "sources_integrated": 2,
+        "validates_authentic_research": true,
+        "note": "Researchers typically use multiple data sources"
+      },
+      "domain_coverage": {
+        "domains_covered": 6,
+        "cross_domain_research": true,
+        "note": "Supports interdisciplinary research patterns"
+      },
+      "data_quality_focus": {
+        "quality_scoring_implemented": true,
+        "quality_driven_selection": true,
+        "note": "Quality assessment mirrors authentic research practices"
+      }
+    },
+    "academic_relevance": {
+      "datasets_with_academic_context": 23,
+      "academic_relevance_percentage": 16.083916083916083,
+      "supports_research_workflows": false
+    }
+  },
+  "key_findings": {
+    "data_scale": "Successfully analyzed 143 authentic datasets",
+    "source_diversity": "Integrated 2 distinct data sources",
+    "quality_assessment": "Average quality score of N/A",
+    "research_alignment": "System design validates authentic research workflow patterns",
+    "domain_coverage": "Comprehensive coverage across 6 major research domains",
+    "academic_relevance": "16.1% of datasets have academic research context"
+  },
+  "recommendations": [
+    "Continue focus on multi-source integration for comprehensive research support",
+    "Maintain quality scoring system as it aligns with research best practices",
+    "Expand domain keyword detection for improved categorization",
+    "Implement data freshness alerts for time-sensitive research",
+    "Consider adding collaboration features for multi-researcher workflows"
+  ]
+}

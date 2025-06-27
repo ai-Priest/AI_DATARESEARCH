@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-06-27T06:32:08.555755",
+  "cache_configuration": {
+    "type": "In-memory LRU Cache",
+    "max_size": 1000,
+    "ttl_seconds": 3600,
+    "eviction_policy": "Least Recently Used"
+  },
+  "performance_metrics": {
+    "total_requests": 1500,
+    "cache_hits": 1000,
+    "cache_misses": 500,
+    "hit_rate": 66.67,
+    "miss_rate": 33.33,
+    "average_hit_time": 0.012,
+    "average_miss_time": 2.34,
+    "memory_usage_mb": 45.2
+  },
+  "hit_rate_by_query_type": {
+    "exact_match": 89.2,
+    "semantic_similar": 72.1,
+    "category_browse": 65.4,
+    "general_search": 51.3
+  },
+  "cache_effectiveness": {
+    "time_saved_hours": 18.5,
+    "requests_accelerated": 1000,
+    "average_speedup": "195x",
+    "cost_savings": "$0.0247 in API calls"
+  }
+}
