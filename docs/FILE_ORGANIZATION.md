@@ -6,16 +6,18 @@ This document outlines the organized file structure for the AI Data Research pro
 Essential files that remain in the project root:
 
 ```
-├── data_pipeline.py          # Main data extraction/analysis pipeline
-├── ml_pipeline.py            # Machine learning training pipeline  
-├── dl_pipeline.py            # Deep learning neural network pipeline
-├── main.py                   # Project entry point
-├── CLAUDE.md                 # Claude Code guidance and findings
-├── Readme.md                 # Main project documentation
-├── pyproject.toml           # Python project configuration
-├── uv.lock                  # Dependency lock file
-├── env_example.sh           # Environment setup example
-└── .env                     # Environment variables (private)
+├── main.py                   # 🚀 Unified application launcher
+├── data_pipeline.py          # 📊 Data extraction/analysis pipeline
+├── ml_pipeline.py            # 🤖 Machine learning training pipeline  
+├── dl_pipeline.py            # 🧠 Deep learning neural network pipeline
+├── ai_pipeline.py            # 🤖 AI integration testing pipeline
+├── start_server.py           # 🌐 Server startup script
+├── Readme.md                 # 📖 Main project documentation
+├── MVP_DEMO_GUIDE.md         # 🎯 Demo instructions
+├── FUNCTIONAL_BASELINE.md    # 📋 Functional requirements
+├── training_mappings.md      # 🎓 Training data mappings
+├── requirements.txt          # 📦 Python dependencies
+└── .gitignore               # 🚫 Git ignore rules
 ```
 
 ## 📂 Organized Directory Structure
@@ -67,14 +69,29 @@ scripts/
 ### `/tests/` - Testing Framework
 ```
 tests/
-├── test_api_config.py      # API configuration tests
-├── test_api_debug.py       # API debugging tests
-└── test_scripts/          # Additional test scripts
-    ├── test_advanced_ensemble.py
-    ├── test_dl_demo.py
-    ├── test_enhanced_pipeline.py
-    ├── test_ensemble.py
-    └── test_improvements.py
+├── test_*.py              # All test files consolidated here
+├── archive/               # Archived test files
+└── __pycache__/          # Python cache files
+```
+
+### `/Kiro/` - AI-Generated Files and Reports
+```
+Kiro/
+├── TASK_*.md             # Task completion summaries
+├── *_SUMMARY.md          # Various AI-generated summaries
+├── API_DOCUMENTATION.md  # Technical documentation
+├── ENHANCED_NEURAL_ARCHITECTURE.md
+├── QUALITY_*.md          # Quality guides and runbooks
+└── [other AI-generated files]
+```
+
+### `/Quality_Check/` - Quality Validation and Reports
+```
+Quality_Check/
+├── final_quality_validation.py      # Main validation system
+├── test_final_validation.py         # Validation tests
+├── FINAL_QUALITY_VALIDATION_REPORT.md
+└── [other quality-related files]
 ```
 
 ### `/docs/` - Documentation and Reports

@@ -1,0 +1,4905 @@
+{
+  "metadata": {
+    "created_at": "2025-07-17T05:32:53.947953",
+    "total_examples": 155,
+    "source": "enhanced_training_integrator",
+    "quality_first": true,
+    "splits": {
+      "train": 108,
+      "validation": 23,
+      "test": 24
+    }
+  },
+  "examples": [
+    {
+      "query": "psychology",
+      "positive_source": "kaggle",
+      "relevance_score": 0.95,
+      "domain": "psychology",
+      "explanation": "Best platform for psychology datasets and research competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9,
+      "domain": "psychology",
+      "explanation": "Academic repository with psychology research data",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research",
+      "positive_source": "kaggle",
+      "relevance_score": 0.98,
+      "domain": "psychology",
+      "explanation": "Research-focused psychology datasets available",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research",
+      "positive_source": "zenodo",
+      "relevance_score": 0.95,
+      "domain": "psychology",
+      "explanation": "Academic psychology research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.92,
+      "domain": "psychology",
+      "explanation": "Mental health datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.88,
+      "domain": "psychology",
+      "explanation": "Academic mental health research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "behavioral psychology",
+      "positive_source": "kaggle",
+      "relevance_score": 0.94,
+      "domain": "psychology",
+      "explanation": "Behavioral datasets for research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "cognitive psychology",
+      "positive_source": "zenodo",
+      "relevance_score": 0.91,
+      "domain": "psychology",
+      "explanation": "Cognitive research repository",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology",
+      "positive_source": "world_bank",
+      "relevance_score": 0.25,
+      "domain": "psychology",
+      "explanation": "Limited psychology-specific data available",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology",
+      "positive_source": "data_un",
+      "relevance_score": 0.2,
+      "domain": "psychology",
+      "explanation": "No relevant psychology datasets found",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology",
+      "positive_source": "aws_opendata",
+      "relevance_score": 0.15,
+      "domain": "psychology",
+      "explanation": "Registry outdated, no psychology focus",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning",
+      "positive_source": "kaggle",
+      "relevance_score": 0.98,
+      "domain": "machine_learning",
+      "explanation": "ML competitions and comprehensive datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning",
+      "positive_source": "zenodo",
+      "relevance_score": 0.85,
+      "domain": "machine_learning",
+      "explanation": "Academic ML research datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "ml datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.97,
+      "domain": "machine_learning",
+      "explanation": "Primary source for ML datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "artificial intelligence",
+      "positive_source": "kaggle",
+      "relevance_score": 0.95,
+      "domain": "machine_learning",
+      "explanation": "AI datasets and competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "deep learning",
+      "positive_source": "kaggle",
+      "relevance_score": 0.96,
+      "domain": "machine_learning",
+      "explanation": "Deep learning datasets available",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "neural networks",
+      "positive_source": "zenodo",
+      "relevance_score": 0.87,
+      "domain": "machine_learning",
+      "explanation": "Academic neural network research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning",
+      "positive_source": "world_bank",
+      "relevance_score": 0.4,
+      "domain": "machine_learning",
+      "explanation": "Limited ML-specific datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.95,
+      "domain": "climate",
+      "explanation": "Excellent global climate indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate change",
+      "positive_source": "world_bank",
+      "relevance_score": 0.93,
+      "domain": "climate",
+      "explanation": "Comprehensive climate statistics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "environmental data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9,
+      "domain": "climate",
+      "explanation": "Global environmental indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "weather data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.88,
+      "domain": "climate",
+      "explanation": "Weather datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.85,
+      "domain": "climate",
+      "explanation": "Academic climate research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "temperature data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.92,
+      "domain": "climate",
+      "explanation": "Global temperature records",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.82,
+      "domain": "climate",
+      "explanation": "Climate datasets for modeling",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.98,
+      "domain": "economics",
+      "explanation": "Primary source for economic indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "gdp data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.97,
+      "domain": "economics",
+      "explanation": "Comprehensive GDP statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9,
+      "domain": "economics",
+      "explanation": "Global financial indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "trade data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.95,
+      "domain": "economics",
+      "explanation": "International trade statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic indicators",
+      "positive_source": "world_bank",
+      "relevance_score": 0.96,
+      "domain": "economics",
+      "explanation": "Complete economic metrics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "poverty data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.94,
+      "domain": "economics",
+      "explanation": "Global poverty statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.75,
+      "domain": "economics",
+      "explanation": "Some economic datasets available",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "medium",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8,
+      "domain": "economics",
+      "explanation": "Financial datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.98,
+      "domain": "singapore",
+      "explanation": "Official Singapore government data",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.97,
+      "domain": "singapore",
+      "explanation": "Singapore Department of Statistics",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore housing",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.95,
+      "domain": "singapore",
+      "explanation": "HDB and housing data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore transport",
+      "positive_source": "lta_datamall",
+      "relevance_score": 0.96,
+      "domain": "singapore",
+      "explanation": "Land Transport Authority data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore demographics",
+      "positive_source": "singstat",
+      "relevance_score": 0.94,
+      "domain": "singapore",
+      "explanation": "Population and demographic data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore economy",
+      "positive_source": "singstat",
+      "relevance_score": 0.92,
+      "domain": "singapore",
+      "explanation": "Economic statistics Singapore",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.6,
+      "domain": "singapore",
+      "explanation": "Some Singapore indicators available",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "medium",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.45,
+      "domain": "singapore",
+      "explanation": "Limited Singapore-specific datasets",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.88,
+      "domain": "health",
+      "explanation": "Global health indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9,
+      "domain": "health",
+      "explanation": "Academic medical research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "healthcare statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.85,
+      "domain": "health",
+      "explanation": "Healthcare indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "disease data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.87,
+      "domain": "health",
+      "explanation": "Global disease statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.82,
+      "domain": "health",
+      "explanation": "Health datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical research",
+      "positive_source": "zenodo",
+      "relevance_score": 0.93,
+      "domain": "health",
+      "explanation": "Academic medical research repository",
+      "geographic_scope": "global",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "public health",
+      "positive_source": "world_bank",
+      "relevance_score": 0.89,
+      "domain": "health",
+      "explanation": "Public health indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.92,
+      "domain": "education",
+      "explanation": "Global education indicators",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9,
+      "domain": "education",
+      "explanation": "Educational metrics",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "student data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.85,
+      "domain": "education",
+      "explanation": "Educational datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "university data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.83,
+      "domain": "education",
+      "explanation": "Academic educational research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education research",
+      "positive_source": "zenodo",
+      "relevance_score": 0.88,
+      "domain": "education",
+      "explanation": "Educational research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "school data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8,
+      "domain": "education",
+      "explanation": "School-related datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9025,
+      "domain": "psychology",
+      "explanation": "Variation of: Best platform for psychology datasets and research competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9025,
+      "domain": "psychology",
+      "explanation": "Variation of: Best platform for psychology datasets and research competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.855,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic repository with psychology research data",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.855,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic repository with psychology research data",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9309999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Research-focused psychology datasets available",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research research data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9309999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Research-focused psychology datasets available",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9025,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic psychology research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research research data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9025,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic psychology research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.874,
+      "domain": "psychology",
+      "explanation": "Variation of: Mental health datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data research data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.874,
+      "domain": "psychology",
+      "explanation": "Variation of: Mental health datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.836,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic mental health research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data research data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.836,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic mental health research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "behavioral psychology datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8929999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Behavioral datasets for research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "behavioral psychology research data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8929999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Behavioral datasets for research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "cognitive psychology datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8644999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Cognitive research repository",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "cognitive psychology research data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8644999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Cognitive research repository",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9309999999999999,
+      "domain": "machine_learning",
+      "explanation": "Variation of: ML competitions and comprehensive datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9309999999999999,
+      "domain": "machine_learning",
+      "explanation": "Variation of: ML competitions and comprehensive datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8075,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Academic ML research datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8075,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Academic ML research datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "ml datasets datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9215,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Primary source for ML datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "ml datasets statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9215,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Primary source for ML datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "artificial intelligence datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9025,
+      "domain": "machine_learning",
+      "explanation": "Variation of: AI datasets and competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "artificial intelligence statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9025,
+      "domain": "machine_learning",
+      "explanation": "Variation of: AI datasets and competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "deep learning datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9119999999999999,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Deep learning datasets available",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "deep learning statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9119999999999999,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Deep learning datasets available",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "neural networks datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8265,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Academic neural network research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "neural networks statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8265,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Academic neural network research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9025,
+      "domain": "climate",
+      "explanation": "Variation of: Excellent global climate indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9025,
+      "domain": "climate",
+      "explanation": "Variation of: Excellent global climate indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate change datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8835,
+      "domain": "climate",
+      "explanation": "Variation of: Comprehensive climate statistics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate change statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8835,
+      "domain": "climate",
+      "explanation": "Variation of: Comprehensive climate statistics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "environmental data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "climate",
+      "explanation": "Variation of: Global environmental indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "environmental data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "climate",
+      "explanation": "Variation of: Global environmental indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "weather data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.836,
+      "domain": "climate",
+      "explanation": "Variation of: Weather datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "weather data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.836,
+      "domain": "climate",
+      "explanation": "Variation of: Weather datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8075,
+      "domain": "climate",
+      "explanation": "Variation of: Academic climate research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8075,
+      "domain": "climate",
+      "explanation": "Variation of: Academic climate research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "temperature data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.874,
+      "domain": "climate",
+      "explanation": "Variation of: Global temperature records",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "temperature data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.874,
+      "domain": "climate",
+      "explanation": "Variation of: Global temperature records",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.7789999999999999,
+      "domain": "climate",
+      "explanation": "Variation of: Climate datasets for modeling",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.7789999999999999,
+      "domain": "climate",
+      "explanation": "Variation of: Climate datasets for modeling",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9309999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Primary source for economic indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9309999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Primary source for economic indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "gdp data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9215,
+      "domain": "economics",
+      "explanation": "Variation of: Comprehensive GDP statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "gdp data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9215,
+      "domain": "economics",
+      "explanation": "Variation of: Comprehensive GDP statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "economics",
+      "explanation": "Variation of: Global financial indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "economics",
+      "explanation": "Variation of: Global financial indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "trade data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9025,
+      "domain": "economics",
+      "explanation": "Variation of: International trade statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "trade data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9025,
+      "domain": "economics",
+      "explanation": "Variation of: International trade statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic indicators datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9119999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Complete economic metrics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic indicators statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9119999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Complete economic metrics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "poverty data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8929999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Global poverty statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "poverty data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8929999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Global poverty statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.76,
+      "domain": "economics",
+      "explanation": "Variation of: Financial datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.76,
+      "domain": "economics",
+      "explanation": "Variation of: Financial datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data statistics",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.9309999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Official Singapore government data",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data information",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.9309999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Official Singapore government data",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore statistics statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.9215,
+      "domain": "singapore",
+      "explanation": "Variation of: Singapore Department of Statistics",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore statistics information",
+      "positive_source": "singstat",
+      "relevance_score": 0.9215,
+      "domain": "singapore",
+      "explanation": "Variation of: Singapore Department of Statistics",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore housing statistics",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.9025,
+      "domain": "singapore",
+      "explanation": "Variation of: HDB and housing data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore housing information",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.9025,
+      "domain": "singapore",
+      "explanation": "Variation of: HDB and housing data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore transport statistics",
+      "positive_source": "lta_datamall",
+      "relevance_score": 0.9119999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Land Transport Authority data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore transport information",
+      "positive_source": "lta_datamall",
+      "relevance_score": 0.9119999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Land Transport Authority data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore demographics statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.8929999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Population and demographic data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore demographics information",
+      "positive_source": "singstat",
+      "relevance_score": 0.8929999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Population and demographic data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore economy statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.874,
+      "domain": "singapore",
+      "explanation": "Variation of: Economic statistics Singapore",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore economy information",
+      "positive_source": "singstat",
+      "relevance_score": 0.874,
+      "domain": "singapore",
+      "explanation": "Variation of: Economic statistics Singapore",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.836,
+      "domain": "health",
+      "explanation": "Variation of: Global health indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.836,
+      "domain": "health",
+      "explanation": "Variation of: Global health indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical data datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.855,
+      "domain": "health",
+      "explanation": "Variation of: Academic medical research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical data statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.855,
+      "domain": "health",
+      "explanation": "Variation of: Academic medical research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "healthcare statistics datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8075,
+      "domain": "health",
+      "explanation": "Variation of: Healthcare indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "healthcare statistics statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8075,
+      "domain": "health",
+      "explanation": "Variation of: Healthcare indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "disease data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8265,
+      "domain": "health",
+      "explanation": "Variation of: Global disease statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "disease data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8265,
+      "domain": "health",
+      "explanation": "Variation of: Global disease statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.7789999999999999,
+      "domain": "health",
+      "explanation": "Variation of: Health datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.7789999999999999,
+      "domain": "health",
+      "explanation": "Variation of: Health datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical research datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8835,
+      "domain": "health",
+      "explanation": "Variation of: Academic medical research repository",
+      "geographic_scope": "global",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical research statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8835,
+      "domain": "health",
+      "explanation": "Variation of: Academic medical research repository",
+      "geographic_scope": "global",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "public health datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8454999999999999,
+      "domain": "health",
+      "explanation": "Variation of: Public health indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "public health statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8454999999999999,
+      "domain": "health",
+      "explanation": "Variation of: Public health indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.874,
+      "domain": "education",
+      "explanation": "Variation of: Global education indicators",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.874,
+      "domain": "education",
+      "explanation": "Variation of: Global education indicators",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education statistics datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "education",
+      "explanation": "Variation of: Educational metrics",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education statistics statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "education",
+      "explanation": "Variation of: Educational metrics",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "student data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8075,
+      "domain": "education",
+      "explanation": "Variation of: Educational datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "student data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8075,
+      "domain": "education",
+      "explanation": "Variation of: Educational datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "university data datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.7885,
+      "domain": "education",
+      "explanation": "Variation of: Academic educational research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "university data statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.7885,
+      "domain": "education",
+      "explanation": "Variation of: Academic educational research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education research datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.836,
+      "domain": "education",
+      "explanation": "Variation of: Educational research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education research statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.836,
+      "domain": "education",
+      "explanation": "Variation of: Educational research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "school data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.76,
+      "domain": "education",
+      "explanation": "Variation of: School-related datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "school data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.76,
+      "domain": "education",
+      "explanation": "Variation of: School-related datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore government data",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.95,
+      "domain": "singapore",
+      "explanation": "Synthetic example for singapore domain",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.94,
+      "domain": "singapore",
+      "explanation": "Synthetic example for singapore domain",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore transport",
+      "positive_source": "lta_datamall",
+      "relevance_score": 0.93,
+      "domain": "singapore",
+      "explanation": "Synthetic example for singapore domain",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.92,
+      "domain": "psychology",
+      "explanation": "Synthetic example for psychology domain",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health research",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9,
+      "domain": "psychology",
+      "explanation": "Synthetic example for psychology domain",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate indicators",
+      "positive_source": "world_bank",
+      "relevance_score": 0.91,
+      "domain": "climate",
+      "explanation": "Synthetic example for climate domain",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "environmental statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.89,
+      "domain": "climate",
+      "explanation": "Synthetic example for climate domain",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    }
+  ],
+  "train": [
+    {
+      "query": "neural networks statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8265,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Academic neural network research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "university data datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.7885,
+      "domain": "education",
+      "explanation": "Variation of: Academic educational research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.75,
+      "domain": "economics",
+      "explanation": "Some economic datasets available",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "medium",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic indicators",
+      "positive_source": "world_bank",
+      "relevance_score": 0.96,
+      "domain": "economics",
+      "explanation": "Complete economic metrics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore demographics statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.8929999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Population and demographic data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9025,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic psychology research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "temperature data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.874,
+      "domain": "climate",
+      "explanation": "Variation of: Global temperature records",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "school data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.76,
+      "domain": "education",
+      "explanation": "Variation of: School-related datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate indicators",
+      "positive_source": "world_bank",
+      "relevance_score": 0.91,
+      "domain": "climate",
+      "explanation": "Synthetic example for climate domain",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "cognitive psychology datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8644999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Cognitive research repository",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9,
+      "domain": "health",
+      "explanation": "Academic medical research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education statistics datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "education",
+      "explanation": "Variation of: Educational metrics",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "deep learning datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9119999999999999,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Deep learning datasets available",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "ml datasets statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9215,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Primary source for ML datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "deep learning",
+      "positive_source": "kaggle",
+      "relevance_score": 0.96,
+      "domain": "machine_learning",
+      "explanation": "Deep learning datasets available",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate change",
+      "positive_source": "world_bank",
+      "relevance_score": 0.93,
+      "domain": "climate",
+      "explanation": "Comprehensive climate statistics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "poverty data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.94,
+      "domain": "economics",
+      "explanation": "Global poverty statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8075,
+      "domain": "climate",
+      "explanation": "Variation of: Academic climate research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore transport information",
+      "positive_source": "lta_datamall",
+      "relevance_score": 0.9119999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Land Transport Authority data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.874,
+      "domain": "education",
+      "explanation": "Variation of: Global education indicators",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.95,
+      "domain": "climate",
+      "explanation": "Excellent global climate indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning",
+      "positive_source": "zenodo",
+      "relevance_score": 0.85,
+      "domain": "machine_learning",
+      "explanation": "Academic ML research datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology",
+      "positive_source": "data_un",
+      "relevance_score": 0.2,
+      "domain": "psychology",
+      "explanation": "No relevant psychology datasets found",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.82,
+      "domain": "climate",
+      "explanation": "Climate datasets for modeling",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "cognitive psychology research data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8644999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Cognitive research repository",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.7789999999999999,
+      "domain": "health",
+      "explanation": "Variation of: Health datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.7789999999999999,
+      "domain": "climate",
+      "explanation": "Variation of: Climate datasets for modeling",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.82,
+      "domain": "health",
+      "explanation": "Health datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "environmental data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "climate",
+      "explanation": "Variation of: Global environmental indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate change datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8835,
+      "domain": "climate",
+      "explanation": "Variation of: Comprehensive climate statistics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "healthcare statistics datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8075,
+      "domain": "health",
+      "explanation": "Variation of: Healthcare indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9309999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Primary source for economic indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.836,
+      "domain": "health",
+      "explanation": "Variation of: Global health indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9025,
+      "domain": "climate",
+      "explanation": "Variation of: Excellent global climate indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.76,
+      "domain": "economics",
+      "explanation": "Variation of: Financial datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data research data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.836,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic mental health research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "university data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.83,
+      "domain": "education",
+      "explanation": "Academic educational research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "gdp data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.97,
+      "domain": "economics",
+      "explanation": "Comprehensive GDP statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical research statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8835,
+      "domain": "health",
+      "explanation": "Variation of: Academic medical research repository",
+      "geographic_scope": "global",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "artificial intelligence datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9025,
+      "domain": "machine_learning",
+      "explanation": "Variation of: AI datasets and competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.855,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic repository with psychology research data",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore transport",
+      "positive_source": "lta_datamall",
+      "relevance_score": 0.96,
+      "domain": "singapore",
+      "explanation": "Land Transport Authority data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical data datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.855,
+      "domain": "health",
+      "explanation": "Variation of: Academic medical research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.85,
+      "domain": "climate",
+      "explanation": "Academic climate research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9025,
+      "domain": "psychology",
+      "explanation": "Variation of: Best platform for psychology datasets and research competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate change statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8835,
+      "domain": "climate",
+      "explanation": "Variation of: Comprehensive climate statistics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning",
+      "positive_source": "kaggle",
+      "relevance_score": 0.98,
+      "domain": "machine_learning",
+      "explanation": "ML competitions and comprehensive datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "student data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8075,
+      "domain": "education",
+      "explanation": "Variation of: Educational datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "behavioral psychology datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8929999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Behavioral datasets for research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore demographics information",
+      "positive_source": "singstat",
+      "relevance_score": 0.8929999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Population and demographic data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9,
+      "domain": "economics",
+      "explanation": "Global financial indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "deep learning statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9119999999999999,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Deep learning datasets available",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education research datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.836,
+      "domain": "education",
+      "explanation": "Variation of: Educational research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.88,
+      "domain": "health",
+      "explanation": "Global health indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.92,
+      "domain": "psychology",
+      "explanation": "Mental health datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8,
+      "domain": "economics",
+      "explanation": "Financial datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "public health datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8454999999999999,
+      "domain": "health",
+      "explanation": "Variation of: Public health indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "university data statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.7885,
+      "domain": "education",
+      "explanation": "Variation of: Academic educational research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "behavioral psychology research data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8929999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Behavioral datasets for research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "neural networks",
+      "positive_source": "zenodo",
+      "relevance_score": 0.87,
+      "domain": "machine_learning",
+      "explanation": "Academic neural network research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.836,
+      "domain": "health",
+      "explanation": "Variation of: Global health indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology",
+      "positive_source": "aws_opendata",
+      "relevance_score": 0.15,
+      "domain": "psychology",
+      "explanation": "Registry outdated, no psychology focus",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore statistics information",
+      "positive_source": "singstat",
+      "relevance_score": 0.9215,
+      "domain": "singapore",
+      "explanation": "Variation of: Singapore Department of Statistics",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "school data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.76,
+      "domain": "education",
+      "explanation": "Variation of: School-related datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "economics",
+      "explanation": "Variation of: Global financial indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology",
+      "positive_source": "kaggle",
+      "relevance_score": 0.95,
+      "domain": "psychology",
+      "explanation": "Best platform for psychology datasets and research competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data statistics",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.9309999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Official Singapore government data",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.836,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic mental health research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "disease data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.87,
+      "domain": "health",
+      "explanation": "Global disease statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9309999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Primary source for economic indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "trade data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.95,
+      "domain": "economics",
+      "explanation": "International trade statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.45,
+      "domain": "singapore",
+      "explanation": "Limited Singapore-specific datasets",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic indicators datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9119999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Complete economic metrics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.98,
+      "domain": "economics",
+      "explanation": "Primary source for economic indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "temperature data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.92,
+      "domain": "climate",
+      "explanation": "Global temperature records",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.76,
+      "domain": "economics",
+      "explanation": "Variation of: Financial datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.6,
+      "domain": "singapore",
+      "explanation": "Some Singapore indicators available",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "medium",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.92,
+      "domain": "psychology",
+      "explanation": "Synthetic example for psychology domain",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "gdp data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9215,
+      "domain": "economics",
+      "explanation": "Variation of: Comprehensive GDP statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore transport",
+      "positive_source": "lta_datamall",
+      "relevance_score": 0.93,
+      "domain": "singapore",
+      "explanation": "Synthetic example for singapore domain",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.874,
+      "domain": "education",
+      "explanation": "Variation of: Global education indicators",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "public health",
+      "positive_source": "world_bank",
+      "relevance_score": 0.89,
+      "domain": "health",
+      "explanation": "Public health indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data information",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.9309999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Official Singapore government data",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research research data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9025,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic psychology research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8075,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Academic ML research datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore data",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.98,
+      "domain": "singapore",
+      "explanation": "Official Singapore government data",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore government data",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.95,
+      "domain": "singapore",
+      "explanation": "Synthetic example for singapore domain",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical data statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.855,
+      "domain": "health",
+      "explanation": "Variation of: Academic medical research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.874,
+      "domain": "psychology",
+      "explanation": "Variation of: Mental health datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "economic indicators statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9119999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Complete economic metrics",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.7789999999999999,
+      "domain": "climate",
+      "explanation": "Variation of: Climate datasets for modeling",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "school data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8,
+      "domain": "education",
+      "explanation": "School-related datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.88,
+      "domain": "psychology",
+      "explanation": "Academic mental health research",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "healthcare statistics statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8075,
+      "domain": "health",
+      "explanation": "Variation of: Healthcare indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore housing statistics",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.9025,
+      "domain": "singapore",
+      "explanation": "Variation of: HDB and housing data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9,
+      "domain": "education",
+      "explanation": "Educational metrics",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore housing",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.95,
+      "domain": "singapore",
+      "explanation": "HDB and housing data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "neural networks datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8265,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Academic neural network research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "artificial intelligence statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9025,
+      "domain": "machine_learning",
+      "explanation": "Variation of: AI datasets and competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.97,
+      "domain": "singapore",
+      "explanation": "Singapore Department of Statistics",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical research",
+      "positive_source": "zenodo",
+      "relevance_score": 0.93,
+      "domain": "health",
+      "explanation": "Academic medical research repository",
+      "geographic_scope": "global",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "cognitive psychology",
+      "positive_source": "zenodo",
+      "relevance_score": 0.91,
+      "domain": "psychology",
+      "explanation": "Cognitive research repository",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "healthcare statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.85,
+      "domain": "health",
+      "explanation": "Healthcare indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9309999999999999,
+      "domain": "machine_learning",
+      "explanation": "Variation of: ML competitions and comprehensive datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore statistics statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.9215,
+      "domain": "singapore",
+      "explanation": "Variation of: Singapore Department of Statistics",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8075,
+      "domain": "climate",
+      "explanation": "Variation of: Academic climate research",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "climate data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9025,
+      "domain": "climate",
+      "explanation": "Variation of: Excellent global climate indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education statistics statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "education",
+      "explanation": "Variation of: Educational metrics",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    }
+  ],
+  "validation": [
+    {
+      "query": "student data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.8075,
+      "domain": "education",
+      "explanation": "Variation of: Educational datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "weather data statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.836,
+      "domain": "climate",
+      "explanation": "Variation of: Weather datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology",
+      "positive_source": "world_bank",
+      "relevance_score": 0.25,
+      "domain": "psychology",
+      "explanation": "Limited psychology-specific data available",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "ml datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.97,
+      "domain": "machine_learning",
+      "explanation": "Primary source for ML datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research research data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9309999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Research-focused psychology datasets available",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "medical research datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8835,
+      "domain": "health",
+      "explanation": "Variation of: Academic medical research repository",
+      "geographic_scope": "global",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research",
+      "positive_source": "zenodo",
+      "relevance_score": 0.95,
+      "domain": "psychology",
+      "explanation": "Academic psychology research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning",
+      "positive_source": "world_bank",
+      "relevance_score": 0.4,
+      "domain": "machine_learning",
+      "explanation": "Limited ML-specific datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "low",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore economy",
+      "positive_source": "singstat",
+      "relevance_score": 0.92,
+      "domain": "singapore",
+      "explanation": "Economic statistics Singapore",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning datasets",
+      "positive_source": "zenodo",
+      "relevance_score": 0.8075,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Academic ML research datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "public health statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8454999999999999,
+      "domain": "health",
+      "explanation": "Variation of: Public health indicators",
+      "geographic_scope": "global",
+      "query_intent": "exploration",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "behavioral psychology",
+      "positive_source": "kaggle",
+      "relevance_score": 0.94,
+      "domain": "psychology",
+      "explanation": "Behavioral datasets for research",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "disease data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8265,
+      "domain": "health",
+      "explanation": "Variation of: Global disease statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "financial data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "economics",
+      "explanation": "Variation of: Global financial indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research",
+      "positive_source": "kaggle",
+      "relevance_score": 0.98,
+      "domain": "psychology",
+      "explanation": "Research-focused psychology datasets available",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore economy statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.874,
+      "domain": "singapore",
+      "explanation": "Variation of: Economic statistics Singapore",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health data research data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.874,
+      "domain": "psychology",
+      "explanation": "Variation of: Mental health datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore housing information",
+      "positive_source": "data_gov_sg",
+      "relevance_score": 0.9025,
+      "domain": "singapore",
+      "explanation": "Variation of: HDB and housing data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9025,
+      "domain": "psychology",
+      "explanation": "Variation of: Best platform for psychology datasets and research competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "poverty data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8929999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Global poverty statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "student data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.85,
+      "domain": "education",
+      "explanation": "Educational datasets for analysis",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "mental health research",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9,
+      "domain": "psychology",
+      "explanation": "Synthetic example for psychology domain",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9309999999999999,
+      "domain": "psychology",
+      "explanation": "Variation of: Research-focused psychology datasets available",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    }
+  ],
+  "test": [
+    {
+      "query": "education data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.92,
+      "domain": "education",
+      "explanation": "Global education indicators",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "weather data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.836,
+      "domain": "climate",
+      "explanation": "Variation of: Weather datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "weather data",
+      "positive_source": "kaggle",
+      "relevance_score": 0.88,
+      "domain": "climate",
+      "explanation": "Weather datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology research data",
+      "positive_source": "zenodo",
+      "relevance_score": 0.855,
+      "domain": "psychology",
+      "explanation": "Variation of: Academic repository with psychology research data",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore statistics",
+      "positive_source": "singstat",
+      "relevance_score": 0.94,
+      "domain": "singapore",
+      "explanation": "Synthetic example for singapore domain",
+      "geographic_scope": "singapore",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "disease data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8265,
+      "domain": "health",
+      "explanation": "Variation of: Global disease statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore demographics",
+      "positive_source": "singstat",
+      "relevance_score": 0.94,
+      "domain": "singapore",
+      "explanation": "Population and demographic data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education research statistics",
+      "positive_source": "zenodo",
+      "relevance_score": 0.836,
+      "domain": "education",
+      "explanation": "Variation of: Educational research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "psychology",
+      "positive_source": "zenodo",
+      "relevance_score": 0.9,
+      "domain": "psychology",
+      "explanation": "Academic repository with psychology research data",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "education research",
+      "positive_source": "zenodo",
+      "relevance_score": 0.88,
+      "domain": "education",
+      "explanation": "Educational research repository",
+      "geographic_scope": "general",
+      "query_intent": "research",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "health data datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.7789999999999999,
+      "domain": "health",
+      "explanation": "Variation of: Health datasets for analysis",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "trade data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9025,
+      "domain": "economics",
+      "explanation": "Variation of: International trade statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "gdp data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9215,
+      "domain": "economics",
+      "explanation": "Variation of: Comprehensive GDP statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore transport statistics",
+      "positive_source": "lta_datamall",
+      "relevance_score": 0.9119999999999999,
+      "domain": "singapore",
+      "explanation": "Variation of: Land Transport Authority data",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "environmental data statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.855,
+      "domain": "climate",
+      "explanation": "Variation of: Global environmental indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "ml datasets datasets",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9215,
+      "domain": "machine_learning",
+      "explanation": "Variation of: Primary source for ML datasets",
+      "geographic_scope": "general",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "singapore economy information",
+      "positive_source": "singstat",
+      "relevance_score": 0.874,
+      "domain": "singapore",
+      "explanation": "Variation of: Economic statistics Singapore",
+      "geographic_scope": "singapore",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "zenodo",
+        "kaggle"
+      ],
+      "singapore_first": true,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "environmental statistics",
+      "positive_source": "world_bank",
+      "relevance_score": 0.89,
+      "domain": "climate",
+      "explanation": "Synthetic example for climate domain",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "environmental data",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9,
+      "domain": "climate",
+      "explanation": "Global environmental indicators",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "machine learning statistics",
+      "positive_source": "kaggle",
+      "relevance_score": 0.9309999999999999,
+      "domain": "machine_learning",
+      "explanation": "Variation of: ML competitions and comprehensive datasets",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "poverty data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.8929999999999999,
+      "domain": "economics",
+      "explanation": "Variation of: Global poverty statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "artificial intelligence",
+      "positive_source": "kaggle",
+      "relevance_score": 0.95,
+      "domain": "machine_learning",
+      "explanation": "AI datasets and competitions",
+      "geographic_scope": "general",
+      "query_intent": "exploration",
+      "negative_sources": [
+        "world_bank",
+        "data_gov_sg",
+        "singstat"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "temperature data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.874,
+      "domain": "climate",
+      "explanation": "Variation of: Global temperature records",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    },
+    {
+      "query": "trade data datasets",
+      "positive_source": "world_bank",
+      "relevance_score": 0.9025,
+      "domain": "economics",
+      "explanation": "Variation of: International trade statistics",
+      "geographic_scope": "global",
+      "query_intent": "data_access",
+      "negative_sources": [
+        "kaggle",
+        "data_gov_sg",
+        "lta_datamall"
+      ],
+      "singapore_first": false,
+      "quality_tier": "high",
+      "training_type": "manual_mapping"
+    }
+  ]
+}

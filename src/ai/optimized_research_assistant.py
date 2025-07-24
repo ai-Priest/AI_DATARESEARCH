@@ -13,6 +13,7 @@ from typing import Any, Dict, List, Optional
 
 from .ai_config_manager import AIConfigManager
 from .conversation_manager import ConversationManager
+from .conversational_query_processor import ConversationalQueryProcessor
 from .evaluation_metrics import EvaluationMetrics
 from .llm_clients import LLMManager
 from .neural_ai_bridge import NeuralAIBridge
@@ -37,6 +38,7 @@ class OptimizedResearchAssistant:
         self.web_search_engine = WebSearchEngine(config)
         self.conversation_manager = ConversationManager(config)
         self.evaluation_metrics = EvaluationMetrics(config)
+        self.query_processor = ConversationalQueryProcessor(self.llm_manager, config)
         
         # Performance configuration
         self.response_config = self.ai_pipeline_config.get('response_settings', {})
@@ -74,12 +76,27 @@ class OptimizedResearchAssistant:
                 session = self.conversation_manager.create_session()
                 session_id = session['session_id']
             
-            # Phase 1: Neural inference + Web search (parallel execution)
-            neural_task = asyncio.create_task(self._get_neural_recommendations(query))
-            web_search_task = asyncio.create_task(self._get_web_search_results(query))
+            # Phase 0: Conversational query processing and intent validation
+            query_result = await self.query_processor.process_input(query)
             
-            # Phase 2: Prepare LLM tasks (parallel execution)
-            llm_tasks = self._prepare_llm_tasks(query)
+            # Check if this is a legitimate dataset request
+            if not query_result.is_dataset_request:
+                return await self._handle_non_dataset_query(query, session_id, query_result, start_time)
+            
+            # Check for inappropriate queries
+            if self.query_processor.is_inappropriate_query(query):
+                return await self._handle_inappropriate_query(query, session_id, start_time)
+            
+            # Use extracted search terms for better results
+            search_query = ' '.join(query_result.extracted_terms) if query_result.extracted_terms else query
+            logger.info(f"🎯 Extracted search terms: {query_result.extracted_terms}")
+            
+            # Phase 1: Neural inference + Web search (parallel execution)
+            neural_task = asyncio.create_task(self._get_neural_recommendations(search_query))
+            web_search_task = asyncio.create_task(self._get_web_search_results(search_query))
+            
+            # Phase 2: Prepare LLM tasks (parallel execution) - use original query for context
+            llm_tasks = self._prepare_llm_tasks(query, query_result)
             
             # Phase 3: Execute neural + web search + LLM in parallel
             results = await self._execute_parallel_processing(neural_task, web_search_task, llm_tasks, start_time)
@@ -92,6 +109,7 @@ class OptimizedResearchAssistant:
                 web_search_results=results['web_search'],
                 llm_results=results['llm'],
                 start_time=start_time,
+                query_result=query_result,
                 **kwargs
             )
             
@@ -138,13 +156,13 @@ class OptimizedResearchAssistant:
             logger.warning(f"Web search error: {e}")
             return []
     
-    def _prepare_llm_tasks(self, query: str) -> List[asyncio.Task]:
+    def _prepare_llm_tasks(self, query: str, query_result=None) -> List[asyncio.Task]:
         """Prepare LLM tasks for parallel execution."""
         tasks = []
         
         # Task 1: Generate explanations (high priority) - much shorter timeout
         if self.response_config.get('include_explanations', True):
-            explanation_prompt = self._create_explanation_prompt(query)
+            explanation_prompt = self._create_explanation_prompt(query, query_result)
             task = asyncio.create_task(
                 self._llm_call_with_timeout('explanation', explanation_prompt, timeout=8.0)
             )
@@ -152,7 +170,7 @@ class OptimizedResearchAssistant:
         
         # Task 2: Generate methodology (medium priority) - shorter timeout
         if self.response_config.get('include_methodology', True):
-            methodology_prompt = self._create_methodology_prompt(query)
+            methodology_prompt = self._create_methodology_prompt(query, query_result)
             task = asyncio.create_task(
                 self._llm_call_with_timeout('methodology', methodology_prompt, timeout=10.0)
             )
@@ -160,7 +178,7 @@ class OptimizedResearchAssistant:
         
         # Task 3: Singapore context (low priority) - shorter timeout
         if self.response_config.get('include_singapore_context', True):
-            context_prompt = self._create_context_prompt(query)
+            context_prompt = self._create_context_prompt(query, query_result)
             task = asyncio.create_task(
                 self._llm_call_with_timeout('context', context_prompt, timeout=12.0)
             )
@@ -267,6 +285,7 @@ class OptimizedResearchAssistant:
                                web_search_results: List[Dict[str, Any]],
                                llm_results: Dict[str, Any],
                                start_time: float,
+                               query_result=None,
                                **kwargs) -> Dict[str, Any]:
         """Finalize and structure the response."""
         
@@ -306,8 +325,11 @@ class OptimizedResearchAssistant:
         conversation = {
             'session_id': session_id,
             'can_refine': True,
-            'suggested_refinements': self._generate_quick_refinements(query),
-            'singapore_context': llm_results.get('context', {}).get('content', 'Singapore government data prioritized') if llm_results.get('context') else 'Singapore government data prioritized'
+            'suggested_refinements': self._generate_quick_refinements(query, query_result),
+            'singapore_context': llm_results.get('context', {}).get('content', 'Singapore government data prioritized') if llm_results.get('context') else 'Singapore government data prioritized',
+            'detected_domain': query_result.detected_domain if query_result else None,
+            'extracted_terms': query_result.extracted_terms if query_result else [],
+            'query_confidence': query_result.confidence if query_result else 1.0
         }
         
         # Add to conversation history
@@ -383,23 +405,35 @@ class OptimizedResearchAssistant:
             }
         }
     
-    def _create_explanation_prompt(self, query: str) -> str:
+    def _create_explanation_prompt(self, query: str, query_result=None) -> str:
         """Create focused prompt for dataset explanations."""
-        return f"""Given the query '{query}', provide a brief explanation (max 100 words) of why recommended datasets are relevant. Focus on:
+        domain_context = ""
+        if query_result and query_result.detected_domain:
+            domain_context = f" (focusing on {query_result.detected_domain} domain)"
+        
+        return f"""Given the query '{query}'{domain_context}, provide a brief explanation (max 100 words) of why recommended datasets are relevant. Focus on:
 1. Direct relevance to query
 2. Data quality and reliability
 3. Practical research value"""
     
-    def _create_methodology_prompt(self, query: str) -> str:
+    def _create_methodology_prompt(self, query: str, query_result=None) -> str:
         """Create focused prompt for research methodology."""
-        return f"""For research query '{query}', suggest a concise methodology (max 80 words):
+        domain_context = ""
+        if query_result and query_result.detected_domain:
+            domain_context = f" in the {query_result.detected_domain} domain"
+        
+        return f"""For research query '{query}'{domain_context}, suggest a concise methodology (max 80 words):
 1. Data integration approach
 2. Analysis methods
 3. Validation steps"""
     
-    def _create_context_prompt(self, query: str) -> str:
+    def _create_context_prompt(self, query: str, query_result=None) -> str:
         """Create focused prompt for Singapore context."""
-        return f"""For '{query}' in Singapore context, provide brief insights (max 60 words):
+        singapore_focus = ""
+        if query_result and query_result.requires_singapore_context:
+            singapore_focus = " (Singapore-specific data requested)"
+        
+        return f"""For '{query}' in Singapore context{singapore_focus}, provide brief insights (max 60 words):
 1. Local relevance
 2. Government data sources
 3. Regional considerations"""
@@ -429,15 +463,33 @@ class OptimizedResearchAssistant:
             return max(set(providers), key=providers.count)
         return 'neural_only'
     
-    def _generate_quick_refinements(self, query: str) -> List[str]:
+    def _generate_quick_refinements(self, query: str, query_result=None) -> List[str]:
         """Generate quick refinement suggestions."""
-        refinements = [
+        refinements = []
+        
+        # Domain-specific refinements
+        if query_result and query_result.detected_domain:
+            domain = query_result.detected_domain
+            if domain == 'housing':
+                refinements.extend(["include HDB resale prices", "add rental market data"])
+            elif domain == 'transport':
+                refinements.extend(["include MRT ridership data", "add traffic flow statistics"])
+            elif domain == 'demographics':
+                refinements.extend(["include age distribution", "add citizenship breakdown"])
+            elif domain == 'economy':
+                refinements.extend(["include GDP components", "add employment statistics"])
+        
+        # General refinements
+        base_refinements = [
             "focus on recent data from 2024",
             "include government sources only",
             "add geographic breakdown",
             "include historical trends"
         ]
-        return refinements[:2]  # Return top 2 for speed
+        
+        # Combine and limit
+        all_refinements = refinements + base_refinements
+        return all_refinements[:2]  # Return top 2 for speed
     
     async def _create_fallback_response(self, 
                                       query: str, 
@@ -503,6 +555,93 @@ class OptimizedResearchAssistant:
                 'ndcg_at_3': 0.0
             },
             'fallback': True
+        }
+    
+    async def _handle_non_dataset_query(self, 
+                                      query: str, 
+                                      session_id: str, 
+                                      query_result, 
+                                      start_time: float) -> Dict[str, Any]:
+        """Handle queries that are not dataset requests."""
+        processing_time = time.time() - start_time
+        
+        # Generate appropriate conversational response
+        if query_result.suggested_clarification:
+            response_text = query_result.suggested_clarification
+        else:
+            response_text = self.query_processor.generate_clarification_prompt(query)
+        
+        logger.info(f"Non-dataset query handled: '{query}' -> conversational response")
+        
+        return {
+            'session_id': session_id,
+            'query': query,
+            'response': response_text,
+            'conversation_type': 'clarification',
+            'is_dataset_request': False,
+            'confidence': query_result.confidence,
+            'recommendations': [],
+            'web_sources': [],
+            'all_results': [],
+            'conversation': {
+                'session_id': session_id,
+                'can_refine': True,
+                'suggested_refinements': [
+                    "specify what type of data you need",
+                    "mention a specific topic or domain",
+                    "ask for Singapore government data"
+                ]
+            },
+            'performance': {
+                'processing_time': processing_time,
+                'target_time': self.max_response_time,
+                'achieved_target': True,
+                'query_processing_time': processing_time
+            },
+            'processing_time': processing_time,
+            'timestamp': datetime.now().isoformat()
+        }
+    
+    async def _handle_inappropriate_query(self, 
+                                        query: str, 
+                                        session_id: str, 
+                                        start_time: float) -> Dict[str, Any]:
+        """Handle inappropriate or irrelevant queries."""
+        processing_time = time.time() - start_time
+        
+        response_text = ("I'm designed to help you find datasets and research data. "
+                        "Please ask me about topics like housing data, transport statistics, "
+                        "population demographics, economic indicators, or other research-related information.")
+        
+        logger.warning(f"Inappropriate query declined: '{query}'")
+        
+        return {
+            'session_id': session_id,
+            'query': query,
+            'response': response_text,
+            'conversation_type': 'inappropriate_declined',
+            'is_dataset_request': False,
+            'confidence': 0.0,
+            'recommendations': [],
+            'web_sources': [],
+            'all_results': [],
+            'conversation': {
+                'session_id': session_id,
+                'can_refine': True,
+                'suggested_refinements': [
+                    "ask about Singapore government data",
+                    "search for economic statistics",
+                    "look for demographic information"
+                ]
+            },
+            'performance': {
+                'processing_time': processing_time,
+                'target_time': self.max_response_time,
+                'achieved_target': True,
+                'query_processing_time': processing_time
+            },
+            'processing_time': processing_time,
+            'timestamp': datetime.now().isoformat()
         }
     
     async def refine_query_optimized(self, 

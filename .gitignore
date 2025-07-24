@@ -56,3 +56,6 @@ uv.lock
 
 # Folders to exclude
 for Claude/
+
+# Kiro specs folder (contains project specifications)
+.kiro/specs/

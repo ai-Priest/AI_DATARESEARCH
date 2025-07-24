@@ -1,0 +1,13 @@
+{
+  "best_ndcg_3": 0.8595960882944047,
+  "total_epochs": 1,
+  "target_achieved": true,
+  "final_epoch_metrics": {
+    "epoch": 1,
+    "train_loss": 0.9165700078010559,
+    "val_ndcg_3": 0.8595960882944047,
+    "val_accuracy": 1.0,
+    "learning_rate": 0.001,
+    "curriculum_stage": 1
+  }
+}

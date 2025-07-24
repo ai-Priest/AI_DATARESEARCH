@@ -1,0 +1,152 @@
+{
+  "validation_timestamp": "2025-07-21T08:22:58.735306",
+  "overall_summary": {
+    "passed": false,
+    "score": 1.3040320010451574,
+    "total_issues": 0,
+    "total_recommendations": 0
+  },
+  "category_results": {
+    "coverage": {
+      "passed": true,
+      "score": 0.957355279060873,
+      "issues": [],
+      "recommendations": [],
+      "details": {
+        "domain_coverage": {
+          "total_domains": 7,
+          "covered_domains": 7,
+          "missing_domains": [],
+          "insufficient_domains": [],
+          "coverage_ratio": 1.0,
+          "domain_counts": {
+            "psychology": 29,
+            "machine_learning": 7,
+            "climate": 11,
+            "economics": 14,
+            "singapore": 45,
+            "health": 7,
+            "education": 6
+          }
+        },
+        "source_diversity": {
+          "total_sources": 6,
+          "covered_sources": 6,
+          "missing_sources": [],
+          "diversity_score": 0.8933881976521826,
+          "source_counts": {
+            "kaggle": 29,
+            "zenodo": 23,
+            "world_bank": 44,
+            "data_un": 1,
+            "aws_opendata": 1,
+            "data_gov_sg": 8,
+            "singstat": 9,
+            "lta_datamall": 4
+          }
+        },
+        "singapore_first": {
+          "singapore_examples": 45,
+          "singapore_source_examples": 21,
+          "singapore_source_ratio": 0.4666666666666667,
+          "total_examples": 119,
+          "singapore_representation": 0.37815126050420167
+        }
+      }
+    },
+    "relevance": {
+      "passed": true,
+      "score": 0.6507087230294417,
+      "issues": [],
+      "recommendations": [],
+      "details": {
+        "score_distribution": {
+          "high_quality_ratio": 0.6218487394957983,
+          "medium_quality_ratio": 0.2605042016806723,
+          "low_quality_ratio": 0.11764705882352941,
+          "average_score": 0.7706722689075629,
+          "median_score": 0.88,
+          "std_score": 0.21300858503406242
+        },
+        "domain_relevance": {
+          "psychology": {
+            "avg_relevance": 0.7113793103448277,
+            "min_relevance": 0.15,
+            "max_relevance": 0.98,
+            "example_count": 29
+          },
+          "machine_learning": {
+            "avg_relevance": 0.8542857142857143,
+            "min_relevance": 0.4,
+            "max_relevance": 0.98,
+            "example_count": 7
+          },
+          "climate": {
+            "avg_relevance": 0.9099999999999998,
+            "min_relevance": 0.82,
+            "max_relevance": 0.95,
+            "example_count": 11
+          },
+          "economics": {
+            "avg_relevance": 0.7749999999999998,
+            "min_relevance": 0.6,
+            "max_relevance": 0.98,
+            "example_count": 14
+          },
+          "singapore": {
+            "avg_relevance": 0.7315555555555554,
+            "min_relevance": 0.3,
+            "max_relevance": 0.98,
+            "example_count": 45
+          },
+          "health": {
+            "avg_relevance": 0.8771428571428571,
+            "min_relevance": 0.82,
+            "max_relevance": 0.93,
+            "example_count": 7
+          },
+          "education": {
+            "avg_relevance": 0.8633333333333333,
+            "min_relevance": 0.8,
+            "max_relevance": 0.92,
+            "example_count": 6
+          }
+        }
+      }
+    },
+    "singapore_first": {
+      "passed": true,
+      "score": 1.0,
+      "issues": [],
+      "recommendations": [],
+      "details": {
+        "singapore_examples_count": 45,
+        "total_examples": 119,
+        "singapore_ratio": 0.37815126050420167,
+        "singapore_source_validation": {
+          "correct_prioritization": 45,
+          "total_singapore_examples": 45,
+          "correct_prioritization_ratio": 1.0
+        },
+        "singapore_query_diversity": {
+          "unique_query_types": 5,
+          "query_types": [
+            "economy",
+            "housing",
+            "transport",
+            "demographics",
+            "general"
+          ],
+          "total_singapore_examples": 45
+        },
+        "geographic_consistency": {
+          "consistent_examples": 119,
+          "total_examples": 119,
+          "consistency_score": 1.0
+        }
+      }
+    }
+  },
+  "detailed_issues": [],
+  "recommendations": []
+}

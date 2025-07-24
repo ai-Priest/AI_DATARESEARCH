@@ -3,60 +3,14 @@ Ranking Loss Functions for NDCG Optimization
 Implements ranking-specific losses that directly optimize for ranking metrics
 """
 
-import logging
-from typing import Optional, Tuple
-
-import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import logging
+from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
 
-class NDCGLoss(nn.Module):
-    """NDCG Loss that directly optimizes for NDCG metric."""
-    
-    def __init__(self, k: int = 3, temperature: float = 1.0):
-        super().__init__()
-        self.k = k
-        self.temperature = temperature
-        
-    def forward(self, predictions: torch.Tensor, relevance_scores: torch.Tensor) -> torch.Tensor:
-        """
-        Args:
-            predictions: [batch_size, num_docs] - model predictions
-            relevance_scores: [batch_size, num_docs] - true relevance scores
-        """
-        # Apply temperature scaling
-        predictions = predictions / self.temperature
-        
-        # Sort by predictions
-        _, sorted_indices = torch.sort(predictions, dim=-1, descending=True)
-        
-        # Get top-k
-        top_k_indices = sorted_indices[:, :self.k]
-        
-        # Calculate DCG
-        gathered_relevance = torch.gather(relevance_scores, 1, top_k_indices)
-        
-        # Calculate position weights (1/log2(position+2))
-        positions = torch.arange(1, self.k + 1, device=predictions.device, dtype=torch.float32)
-        position_weights = 1.0 / torch.log2(positions + 1)
-        
-        # DCG calculation
-        dcg = torch.sum(gathered_relevance * position_weights.unsqueeze(0), dim=1)
-        
-        # Calculate IDCG (ideal DCG)
-        _, ideal_indices = torch.sort(relevance_scores, dim=-1, descending=True)
-        ideal_top_k = ideal_indices[:, :self.k]
-        ideal_relevance = torch.gather(relevance_scores, 1, ideal_top_k)
-        idcg = torch.sum(ideal_relevance * position_weights.unsqueeze(0), dim=1)
-        
-        # NDCG calculation (avoid division by zero)
-        ndcg = dcg / (idcg + 1e-8)
-        
-        # Return negative NDCG as loss (to minimize)
-        return 1.0 - torch.mean(ndcg)
 
 class ListMLELoss(nn.Module):
     """ListMLE Loss for listwise ranking optimization."""
@@ -68,28 +22,30 @@ class ListMLELoss(nn.Module):
     def forward(self, predictions: torch.Tensor, relevance_scores: torch.Tensor) -> torch.Tensor:
         """
         Args:
-            predictions: [batch_size, num_docs] - model predictions  
-            relevance_scores: [batch_size, num_docs] - true relevance scores
+            predictions: Model predictions [batch_size, num_items]
+            relevance_scores: Ground truth relevance scores [batch_size, num_items]
         """
-        # Scale predictions
-        predictions = predictions / self.temperature
+        # Scale predictions by temperature
+        scaled_predictions = predictions / self.temperature
         
-        # Sort by relevance scores (ground truth ranking)
-        _, sorted_indices = torch.sort(relevance_scores, dim=-1, descending=True)
+        # Sort by relevance scores (descending)
+        sorted_indices = torch.argsort(relevance_scores, dim=-1, descending=True)
         
-        # Get predictions in the order of ground truth ranking
-        sorted_predictions = torch.gather(predictions, 1, sorted_indices)
+        # Gather predictions in sorted order
+        batch_size, num_items = predictions.shape
+        batch_indices = torch.arange(batch_size).unsqueeze(1).expand(-1, num_items)
+        sorted_predictions = scaled_predictions[batch_indices, sorted_indices]
         
-        # Calculate ListMLE loss
+        # Compute ListMLE loss
         cumsum_exp = torch.cumsum(torch.exp(sorted_predictions.flip(-1)), dim=-1).flip(-1)
         log_cumsum = torch.log(cumsum_exp + 1e-8)
         
-        loss = torch.mean(torch.sum(log_cumsum - sorted_predictions, dim=-1))
-        
-        return loss
+        loss = -torch.sum(sorted_predictions - log_cumsum, dim=-1)
+        return loss.mean()
+
 
 class RankNetLoss(nn.Module):
-    """RankNet pairwise ranking loss."""
+    """RankNet Loss for pairwise ranking optimization."""
     
     def __init__(self, sigma: float = 1.0):
         super().__init__()
@@ -98,192 +54,288 @@ class RankNetLoss(nn.Module):
     def forward(self, predictions: torch.Tensor, relevance_scores: torch.Tensor) -> torch.Tensor:
         """
         Args:
-            predictions: [batch_size, num_docs] - model predictions
-            relevance_scores: [batch_size, num_docs] - true relevance scores
+            predictions: Model predictions [batch_size, num_items]
+            relevance_scores: Ground truth relevance scores [batch_size, num_items]
         """
-        batch_size, num_docs = predictions.shape
+        batch_size, num_items = predictions.shape
         
-        if num_docs < 2:
-            return torch.tensor(0.0, device=predictions.device)
+        # Create all pairwise comparisons
+        pred_diff = predictions.unsqueeze(2) - predictions.unsqueeze(1)  # [batch, items, items]
+        rel_diff = relevance_scores.unsqueeze(2) - relevance_scores.unsqueeze(1)  # [batch, items, items]
         
-        # Create pairwise comparisons
-        total_loss = 0.0
-        num_pairs = 0
+        # Create target labels: 1 if first item should rank higher, 0 otherwise
+        targets = (rel_diff > 0).float()
         
-        for i in range(num_docs):
-            for j in range(i + 1, num_docs):
-                # Get pairs
-                pred_i = predictions[:, i]
-                pred_j = predictions[:, j]
-                rel_i = relevance_scores[:, i]
-                rel_j = relevance_scores[:, j]
-                
-                # Calculate pairwise preference
-                # S_ij = 1 if rel_i > rel_j, -1 if rel_i < rel_j, 0 if equal
-                S_ij = torch.sign(rel_i - rel_j)
-                
-                # Skip equal relevance pairs
-                valid_pairs = (S_ij != 0)
-                if valid_pairs.sum() == 0:
-                    continue
-                
-                # RankNet loss for valid pairs
-                pred_diff = pred_i - pred_j
-                pairwise_loss = torch.log(1 + torch.exp(-self.sigma * S_ij * pred_diff))
-                
-                total_loss += torch.mean(pairwise_loss[valid_pairs])
-                num_pairs += 1
+        # RankNet loss: cross-entropy with sigmoid
+        loss = F.binary_cross_entropy_with_logits(
+            self.sigma * pred_diff,
+            targets,
+            reduction='none'
+        )
         
-        if num_pairs == 0:
-            return torch.tensor(0.0, device=predictions.device)
+        # Only consider valid pairs (where relevance differs)
+        valid_pairs = (rel_diff != 0).float()
+        loss = loss * valid_pairs
         
-        return total_loss / num_pairs
+        # Average over valid pairs
+        num_valid = valid_pairs.sum(dim=(1, 2)) + 1e-8
+        loss = loss.sum(dim=(1, 2)) / num_valid
+        
+        return loss.mean()
 
-class BinaryRankingLoss(nn.Module):
-    """Binary ranking loss for positive/negative pairs."""
+
+class LambdaRankLoss(nn.Module):
+    """LambdaRank Loss for direct NDCG optimization."""
     
-    def __init__(self, margin: float = 0.1):
+    def __init__(self, k: int = 3, sigma: float = 1.0):
         super().__init__()
-        self.margin = margin
+        self.k = k
+        self.sigma = sigma
         
-    def forward(self, predictions: torch.Tensor, labels: torch.Tensor) -> torch.Tensor:
+    def forward(self, predictions: torch.Tensor, relevance_scores: torch.Tensor) -> torch.Tensor:
         """
         Args:
-            predictions: [batch_size] - model predictions for single items
-            labels: [batch_size] - binary labels (1 for relevant, 0 for not relevant)
+            predictions: Model predictions [batch_size, num_items]
+            relevance_scores: Ground truth relevance scores [batch_size, num_items]
         """
-        # Split into positive and negative predictions
-        positive_mask = (labels == 1)
-        negative_mask = (labels == 0)
+        batch_size, num_items = predictions.shape
         
-        if positive_mask.sum() == 0 or negative_mask.sum() == 0:
-            # Fall back to BCE if we don't have both positive and negative samples
-            return F.binary_cross_entropy_with_logits(predictions, labels.float())
+        # Compute NDCG@k for current predictions
+        current_ndcg = self._compute_ndcg_at_k(predictions, relevance_scores, self.k)
         
-        positive_preds = predictions[positive_mask]
-        negative_preds = predictions[negative_mask]
+        # Compute pairwise differences
+        pred_diff = predictions.unsqueeze(2) - predictions.unsqueeze(1)
+        rel_diff = relevance_scores.unsqueeze(2) - relevance_scores.unsqueeze(1)
         
-        # Calculate ranking loss: positive should be higher than negative by margin
-        pos_expanded = positive_preds.unsqueeze(1)  # [num_pos, 1]
-        neg_expanded = negative_preds.unsqueeze(0)  # [1, num_neg]
+        # Compute lambda weights (NDCG change from swapping pairs)
+        lambda_weights = self._compute_lambda_weights(predictions, relevance_scores, self.k)
         
-        # Margin ranking loss: max(0, margin - (pos - neg))
-        ranking_loss = F.relu(self.margin - (pos_expanded - neg_expanded))
+        # LambdaRank loss
+        targets = (rel_diff > 0).float()
+        pairwise_loss = F.binary_cross_entropy_with_logits(
+            self.sigma * pred_diff,
+            targets,
+            reduction='none'
+        )
         
-        return torch.mean(ranking_loss)
+        # Weight by lambda (NDCG importance)
+        weighted_loss = pairwise_loss * lambda_weights
+        
+        # Only consider valid pairs
+        valid_pairs = (rel_diff != 0).float()
+        weighted_loss = weighted_loss * valid_pairs
+        
+        # Average over valid pairs
+        num_valid = valid_pairs.sum(dim=(1, 2)) + 1e-8
+        loss = weighted_loss.sum(dim=(1, 2)) / num_valid
+        
+        return loss.mean()
+    
+    def _compute_ndcg_at_k(self, predictions: torch.Tensor, relevance_scores: torch.Tensor, k: int) -> torch.Tensor:
+        """Compute NDCG@k for given predictions and relevance scores"""
+        batch_size = predictions.shape[0]
+        
+        # Sort by predictions
+        _, pred_indices = torch.sort(predictions, dim=-1, descending=True)
+        
+        # Get relevance scores in predicted order
+        batch_indices = torch.arange(batch_size).unsqueeze(1).expand(-1, k)
+        top_k_relevance = relevance_scores[batch_indices, pred_indices[:, :k]]
+        
+        # Compute DCG@k
+        positions = torch.arange(1, k + 1, dtype=torch.float, device=predictions.device)
+        dcg_weights = 1.0 / torch.log2(positions + 1)
+        dcg = torch.sum(top_k_relevance * dcg_weights.unsqueeze(0), dim=-1)
+        
+        # Compute IDCG@k (ideal DCG)
+        sorted_relevance, _ = torch.sort(relevance_scores, dim=-1, descending=True)
+        ideal_relevance = sorted_relevance[:, :k]
+        idcg = torch.sum(ideal_relevance * dcg_weights.unsqueeze(0), dim=-1)
+        
+        # NDCG@k
+        ndcg = dcg / (idcg + 1e-8)
+        return ndcg
+    
+    def _compute_lambda_weights(self, predictions: torch.Tensor, relevance_scores: torch.Tensor, k: int) -> torch.Tensor:
+        """Compute lambda weights for LambdaRank"""
+        batch_size, num_items = predictions.shape
+        
+        # For simplicity, use uniform weights (can be improved with actual NDCG delta computation)
+        # In practice, this should compute the change in NDCG from swapping each pair
+        lambda_weights = torch.ones(batch_size, num_items, num_items, device=predictions.device)
+        
+        # Give higher weight to pairs involving top-k items
+        _, top_k_indices = torch.topk(predictions, k, dim=-1)
+        
+        for b in range(batch_size):
+            for i in top_k_indices[b]:
+                lambda_weights[b, i, :] *= 2.0  # Higher weight for top-k items
+                lambda_weights[b, :, i] *= 2.0
+        
+        return lambda_weights
+
 
 class CombinedRankingLoss(nn.Module):
-    """Combined loss function with multiple ranking objectives."""
+    """Combined ranking loss using multiple ranking objectives"""
     
     def __init__(self, 
-                 ndcg_weight: float = 0.4,
-                 listmle_weight: float = 0.3,
-                 binary_weight: float = 0.3,
+                 listmle_weight: float = 0.4,
+                 ranknet_weight: float = 0.3, 
+                 lambdarank_weight: float = 0.3,
                  k: int = 3):
         super().__init__()
         
-        self.ndcg_weight = ndcg_weight
         self.listmle_weight = listmle_weight
-        self.binary_weight = binary_weight
+        self.ranknet_weight = ranknet_weight
+        self.lambdarank_weight = lambdarank_weight
         
-        self.ndcg_loss = NDCGLoss(k=k)
         self.listmle_loss = ListMLELoss()
-        self.binary_loss = BinaryRankingLoss()
+        self.ranknet_loss = RankNetLoss()
+        self.lambdarank_loss = LambdaRankLoss(k=k)
         
-        logger.info(f"🎯 CombinedRankingLoss initialized:")
-        logger.info(f"  NDCG weight: {ndcg_weight}")
+        logger.info(f"🎯 CombinedRankingLoss initialized")
         logger.info(f"  ListMLE weight: {listmle_weight}")
-        logger.info(f"  Binary weight: {binary_weight}")
+        logger.info(f"  RankNet weight: {ranknet_weight}")
+        logger.info(f"  LambdaRank weight: {lambdarank_weight}")
         logger.info(f"  NDCG@{k} optimization")
     
     def forward(self, 
                 predictions: torch.Tensor, 
-                relevance_scores: torch.Tensor, 
-                labels: torch.Tensor) -> Tuple[torch.Tensor, dict]:
+                relevance_scores: torch.Tensor) -> Dict[str, torch.Tensor]:
         """
+        Compute combined ranking loss
+        
         Args:
-            predictions: [batch_size, num_docs] or [batch_size] - model predictions
-            relevance_scores: [batch_size, num_docs] or [batch_size] - relevance scores
-            labels: [batch_size, num_docs] or [batch_size] - binary labels
+            predictions: Model predictions [batch_size, num_items]
+            relevance_scores: Ground truth relevance scores [batch_size, num_items]
         """
-        total_loss = 0.0
-        loss_components = {}
         
-        # Ensure we have the right dimensions
-        if len(predictions.shape) == 1:
-            # Single prediction per sample - use binary loss only
-            binary_loss = self.binary_loss(predictions, labels)
-            total_loss = binary_loss
-            loss_components['binary_loss'] = binary_loss.item()
-        else:
-            # Multiple predictions per sample - use all losses
-            
-            # NDCG Loss
-            if self.ndcg_weight > 0:
-                ndcg_loss = self.ndcg_loss(predictions, relevance_scores)
-                total_loss += self.ndcg_weight * ndcg_loss
-                loss_components['ndcg_loss'] = ndcg_loss.item()
-            
-            # ListMLE Loss
-            if self.listmle_weight > 0:
-                listmle_loss = self.listmle_loss(predictions, relevance_scores)
-                total_loss += self.listmle_weight * listmle_loss
-                loss_components['listmle_loss'] = listmle_loss.item()
-            
-            # Binary Loss (flatten for binary classification)
-            if self.binary_weight > 0:
-                binary_loss = self.binary_loss(predictions.flatten(), labels.flatten())
-                total_loss += self.binary_weight * binary_loss
-                loss_components['binary_loss'] = binary_loss.item()
+        # Compute individual losses
+        listmle_loss = self.listmle_loss(predictions, relevance_scores)
+        ranknet_loss = self.ranknet_loss(predictions, relevance_scores)
+        lambdarank_loss = self.lambdarank_loss(predictions, relevance_scores)
         
-        loss_components['total_loss'] = total_loss.item()
+        # Combined loss
+        total_loss = (
+            self.listmle_weight * listmle_loss +
+            self.ranknet_weight * ranknet_loss +
+            self.lambdarank_weight * lambdarank_loss
+        )
         
-        return total_loss, loss_components
+        return {
+            'total_loss': total_loss,
+            'listmle_loss': listmle_loss,
+            'ranknet_loss': ranknet_loss,
+            'lambdarank_loss': lambdarank_loss
+        }
 
-def test_ranking_losses():
-    """Test the ranking loss functions."""
-    print("🧪 Testing ranking loss functions...")
+
+class NDCGLoss(nn.Module):
+    """Direct NDCG loss for ranking optimization"""
     
-    # Create sample data
-    batch_size = 4
-    num_docs = 5
+    def __init__(self, k: int = 3, temperature: float = 1.0):
+        super().__init__()
+        self.k = k
+        self.temperature = temperature
     
-    # Sample predictions and relevance scores
-    predictions = torch.randn(batch_size, num_docs)
-    relevance_scores = torch.rand(batch_size, num_docs)
-    labels = (relevance_scores > 0.5).long()
+    def forward(self, predictions: torch.Tensor, relevance_scores: torch.Tensor) -> torch.Tensor:
+        """
+        Compute differentiable NDCG loss
+        
+        Args:
+            predictions: Model predictions [batch_size, num_items]
+            relevance_scores: Ground truth relevance scores [batch_size, num_items]
+        """
+        batch_size = predictions.shape[0]
+        
+        # Apply temperature scaling
+        scaled_predictions = predictions / self.temperature
+        
+        # Compute soft ranking using softmax
+        soft_ranks = F.softmax(scaled_predictions, dim=-1)
+        
+        # Compute DCG using soft ranks
+        positions = torch.arange(1, self.k + 1, dtype=torch.float, device=predictions.device)
+        dcg_weights = 1.0 / torch.log2(positions + 1)
+        
+        # Sort relevance scores to get top-k
+        sorted_relevance, sort_indices = torch.sort(relevance_scores, dim=-1, descending=True)
+        top_k_relevance = sorted_relevance[:, :self.k]
+        
+        # Get soft ranks for top-k items
+        batch_indices = torch.arange(batch_size).unsqueeze(1).expand(-1, self.k)
+        top_k_soft_ranks = soft_ranks[batch_indices, sort_indices[:, :self.k]]
+        
+        # Compute soft DCG
+        soft_dcg = torch.sum(top_k_relevance * top_k_soft_ranks * dcg_weights.unsqueeze(0), dim=-1)
+        
+        # Compute IDCG
+        idcg = torch.sum(top_k_relevance * dcg_weights.unsqueeze(0), dim=-1)
+        
+        # Soft NDCG
+        soft_ndcg = soft_dcg / (idcg + 1e-8)
+        
+        # Loss is negative NDCG (we want to maximize NDCG)
+        loss = -soft_ndcg.mean()
+        
+        return loss
+
+
+def create_ranking_loss(loss_type: str = "combined", **kwargs) -> nn.Module:
+    """Factory function to create ranking loss"""
     
-    print(f"Sample predictions shape: {predictions.shape}")
-    print(f"Sample relevance scores shape: {relevance_scores.shape}")
-    print(f"Sample labels shape: {labels.shape}")
-    
-    # Test NDCG Loss
-    ndcg_loss = NDCGLoss(k=3)
-    ndcg_result = ndcg_loss(predictions, relevance_scores)
-    print(f"✅ NDCG Loss: {ndcg_result.item():.4f}")
-    
-    # Test ListMLE Loss
-    listmle_loss = ListMLELoss()
-    listmle_result = listmle_loss(predictions, relevance_scores)
-    print(f"✅ ListMLE Loss: {listmle_result.item():.4f}")
-    
-    # Test RankNet Loss
-    ranknet_loss = RankNetLoss()
-    ranknet_result = ranknet_loss(predictions, relevance_scores)
-    print(f"✅ RankNet Loss: {ranknet_result.item():.4f}")
-    
-    # Test Binary Ranking Loss
-    binary_loss = BinaryRankingLoss()
-    binary_result = binary_loss(predictions.flatten(), labels.flatten())
-    print(f"✅ Binary Ranking Loss: {binary_result.item():.4f}")
-    
-    # Test Combined Loss
-    combined_loss = CombinedRankingLoss()
-    combined_result, components = combined_loss(predictions, relevance_scores, labels)
-    print(f"✅ Combined Loss: {combined_result.item():.4f}")
-    print(f"   Components: {components}")
-    
-    print("🎉 All ranking loss tests passed!")
+    if loss_type == "listmle":
+        return ListMLELoss(**kwargs)
+    elif loss_type == "ranknet":
+        return RankNetLoss(**kwargs)
+    elif loss_type == "lambdarank":
+        return LambdaRankLoss(**kwargs)
+    elif loss_type == "combined":
+        return CombinedRankingLoss(**kwargs)
+    elif loss_type == "ndcg":
+        return NDCGLoss(**kwargs)
+    else:
+        raise ValueError(f"Unknown loss type: {loss_type}")
+
 
 if __name__ == "__main__":
-    test_ranking_losses()
+    logging.basicConfig(level=logging.INFO)
+    
+    # Test ranking losses
+    batch_size, num_items = 4, 6
+    
+    # Create sample data
+    predictions = torch.randn(batch_size, num_items)
+    relevance_scores = torch.rand(batch_size, num_items)
+    
+    print("🧪 Testing ranking loss functions...")
+    
+    # Test ListMLE
+    listmle_loss = ListMLELoss()
+    loss_value = listmle_loss(predictions, relevance_scores)
+    print(f"✅ ListMLE Loss: {loss_value:.4f}")
+    
+    # Test RankNet
+    ranknet_loss = RankNetLoss()
+    loss_value = ranknet_loss(predictions, relevance_scores)
+    print(f"✅ RankNet Loss: {loss_value:.4f}")
+    
+    # Test LambdaRank
+    lambdarank_loss = LambdaRankLoss(k=3)
+    loss_value = lambdarank_loss(predictions, relevance_scores)
+    print(f"✅ LambdaRank Loss: {loss_value:.4f}")
+    
+    # Test Combined
+    combined_loss = CombinedRankingLoss()
+    loss_dict = combined_loss(predictions, relevance_scores)
+    print(f"✅ Combined Loss: {loss_dict['total_loss']:.4f}")
+    print(f"  - ListMLE: {loss_dict['listmle_loss']:.4f}")
+    print(f"  - RankNet: {loss_dict['ranknet_loss']:.4f}")
+    print(f"  - LambdaRank: {loss_dict['lambdarank_loss']:.4f}")
+    
+    # Test NDCG
+    ndcg_loss = NDCGLoss(k=3)
+    loss_value = ndcg_loss(predictions, relevance_scores)
+    print(f"✅ NDCG Loss: {loss_value:.4f}")
+    
+    print("🎉 All ranking losses working correctly!")

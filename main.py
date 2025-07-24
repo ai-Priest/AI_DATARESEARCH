@@ -14,15 +14,15 @@ Usage:
     python main.py --frontend   # Start only frontend
 
 Features:
-- 72.2% NDCG@3 performance (TARGET EXCEEDED)
+- Dynamic performance monitoring with real-time metrics
 - Real-time dataset search and recommendations
 - Singapore government data integration
 - Intelligent caching and optimization
 """
 
 import argparse
+import asyncio
 import os
-import signal
 import subprocess
 import sys
 import time
@@ -48,12 +48,97 @@ class Colors:
     BOLD = '\033[1m'
 
 def print_production_metrics():
-    """Display production performance metrics"""
-    print(f"{Colors.CYAN}═══════════════ PRODUCTION METRICS ═══════════════{Colors.ENDC}")
-    print(f"{Colors.GREEN}📊 Performance: 84% response time improvement (30s → 4.75s){Colors.ENDC}")
-    print(f"{Colors.GREEN}🧠 Neural Performance: 72.2% NDCG@3 (target exceeded!){Colors.ENDC}")
-    print(f"{Colors.GREEN}🔍 Multi-Modal Search: 0.24s response time{Colors.ENDC}")
-    print(f"{Colors.GREEN}🗄️ Intelligent Caching: 66.67% hit rate{Colors.ENDC}")
+    """Display production performance metrics with real data"""
+    try:
+        from src.ai.performance_metrics_collector import PerformanceMetricsCollector
+        
+        # Create metrics collector
+        collector = PerformanceMetricsCollector()
+        
+        # Get metrics (with timeout to avoid hanging)
+        try:
+            metrics = asyncio.run(asyncio.wait_for(collector.get_all_metrics(), timeout=5.0))
+        except asyncio.TimeoutError:
+            metrics = {}
+        except Exception:
+            metrics = {}
+        
+        # Format metrics for display
+        formatted = collector.format_metrics_for_display(metrics)
+        
+        # Extract detailed metrics
+        neural = metrics.get('neural_performance', {})
+        response = metrics.get('response_time', {})
+        cache = metrics.get('cache_performance', {})
+        
+        print(f"{Colors.CYAN}═══════════════ PRODUCTION METRICS ═══════════════{Colors.ENDC}")
+        
+        # Response time metrics - NO hardcoded values
+        if response and 'average_response_time' in response:
+            avg_time = response['average_response_time']
+            print(f"{Colors.GREEN}📊 Performance: {avg_time:.2f}s average response time{Colors.ENDC}")
+        elif response and 'estimated_response_time' in response:
+            est_time = response['estimated_response_time']
+            improvement = response.get('improvement_percentage', 0)
+            print(f"{Colors.GREEN}📊 Performance: {est_time:.2f}s estimated response time ({improvement:.0f}% improvement){Colors.ENDC}")
+        else:
+            print(f"{Colors.GREEN}📊 Performance: Calculating response time metrics...{Colors.ENDC}")
+        
+        # Neural performance - NO hardcoded values
+        if neural and 'ndcg_at_3' in neural and neural['ndcg_at_3'] > 0:
+            ndcg_value = neural['ndcg_at_3']
+            status = "(target exceeded!)" if ndcg_value > 70 else "(target: 70%)"
+            print(f"{Colors.GREEN}🧠 Neural Performance: {ndcg_value:.1f}% NDCG@3 {status}{Colors.ENDC}")
+            
+            # Additional neural metrics if available
+            if 'singapore_accuracy' in neural and neural['singapore_accuracy'] > 0:
+                sg_acc = neural['singapore_accuracy']
+                print(f"{Colors.GREEN}🇸🇬 Singapore Accuracy: {sg_acc:.1f}%{Colors.ENDC}")
+        else:
+            print(f"{Colors.GREEN}🧠 Neural Performance: Calculating NDCG@3 metrics...{Colors.ENDC}")
+        
+        # Multi-modal search - NO hardcoded values
+        if response and 'min_response_time' in response:
+            min_time = response['min_response_time']
+            print(f"{Colors.GREEN}🔍 Multi-Modal Search: {min_time:.2f}s response time{Colors.ENDC}")
+        else:
+            print(f"{Colors.GREEN}🔍 Multi-Modal Search: Calculating response metrics...{Colors.ENDC}")
+        
+        # Cache performance - NO hardcoded values
+        if cache and 'overall_hit_rate' in cache:
+            hit_rate = cache['overall_hit_rate']
+            print(f"{Colors.GREEN}🗄️ Intelligent Caching: {hit_rate:.1f}% hit rate{Colors.ENDC}")
+        elif cache and 'documented_hit_rate' in cache:
+            hit_rate = cache['documented_hit_rate']
+            print(f"{Colors.GREEN}🗄️ Intelligent Caching: {hit_rate:.1f}% hit rate (documented){Colors.ENDC}")
+        else:
+            print(f"{Colors.GREEN}🗄️ Intelligent Caching: Calculating hit rate metrics...{Colors.ENDC}")
+        
+        # Timestamp and confidence level
+        timestamp = formatted.get('last_updated', 'Just now')
+        
+        # Determine confidence level based on data quality
+        if neural and 'ndcg_at_3' in neural and neural['ndcg_at_3'] > 0:
+            confidence = '(High Confidence)'
+        elif (response and 'average_response_time' in response) or \
+             (cache and 'overall_hit_rate' in cache):
+            confidence = '(Live Data)'
+        elif ('estimated' in str(response)) or ('documented' in str(cache)):
+            confidence = '(Estimated)'
+        else:
+            confidence = '(Calculating...)'
+        
+        print(f"{Colors.CYAN}📅 Metrics Updated: {timestamp} {confidence}{Colors.ENDC}")
+        
+    except Exception as e:
+        # Fallback to calculating message if metrics collection fails
+        print(f"{Colors.CYAN}═══════════════ PRODUCTION METRICS ═══════════════{Colors.ENDC}")
+        print(f"{Colors.GREEN}📊 Performance: Calculating response time metrics...{Colors.ENDC}")
+        print(f"{Colors.GREEN}🧠 Neural Performance: Calculating NDCG@3 metrics...{Colors.ENDC}")
+        print(f"{Colors.GREEN}🔍 Multi-Modal Search: Calculating response metrics...{Colors.ENDC}")
+        print(f"{Colors.GREEN}🗄️ Intelligent Caching: Calculating hit rate metrics...{Colors.ENDC}")
+        print(f"{Colors.WARNING}⚠️ Metrics collection error: {str(e)[:50]}...{Colors.ENDC}")
+    
     print(f"{Colors.CYAN}═══════════════════════════════════════════════════{Colors.ENDC}")
     print()
 
@@ -115,15 +200,107 @@ def run_production_deployment():
         return 1
 
 def print_banner():
-    """Display application banner"""
+    """Display application banner with real performance metrics"""
+    # Initialize all metrics as "Calculating..." - NO hardcoded values
+    ndcg_display = 'Calculating...'
+    ndcg_status = ''
+    response_time = 'Calculating...'
+    cache_hit_rate = 'Calculating...'
+    last_updated = 'Just now'
+    confidence_level = '(Calculating...)'
+    
+    try:
+        from src.ai.performance_metrics_collector import PerformanceMetricsCollector
+        
+        # Create metrics collector
+        collector = PerformanceMetricsCollector()
+        
+        # Get metrics (with timeout to avoid hanging)
+        try:
+            metrics = asyncio.run(asyncio.wait_for(collector.get_all_metrics(), timeout=3.0))
+        except asyncio.TimeoutError:
+            # Timeout - keep "Calculating..." values
+            metrics = {}
+        except Exception:
+            # Any other error - keep "Calculating..." values
+            metrics = {}
+        
+        # Format metrics for display only if we have valid data
+        if metrics and not metrics.get('error'):
+            formatted = collector.format_metrics_for_display(metrics)
+            
+            # Extract key metrics - only update if we have real data
+            if formatted.get('ndcg_at_3') and formatted.get('ndcg_at_3') != 'Calculating...':
+                ndcg_display = formatted.get('ndcg_at_3', 'Calculating...')
+                ndcg_status = formatted.get('ndcg_status', '')
+            
+            if formatted.get('response_time') and formatted.get('response_time') != 'Calculating...':
+                response_time = formatted.get('response_time', 'Calculating...')
+            
+            if formatted.get('cache_hit_rate') and formatted.get('cache_hit_rate') != 'Calculating...':
+                cache_hit_rate = formatted.get('cache_hit_rate', 'Calculating...')
+            
+            # Update timestamp only if we have valid metrics
+            if formatted.get('last_updated') and formatted.get('last_updated') != 'Just now':
+                last_updated = formatted.get('last_updated', 'Just now')
+            
+            # Determine confidence level based on data quality
+            neural_metrics = metrics.get('neural_performance', {})
+            response_metrics = metrics.get('response_time', {})
+            cache_metrics = metrics.get('cache_performance', {})
+            
+            # High confidence: Real neural data available
+            if neural_metrics and 'ndcg_at_3' in neural_metrics and neural_metrics['ndcg_at_3'] > 0:
+                confidence_level = '(High Confidence)'
+            # Medium confidence: Some real data, some estimated
+            elif (response_metrics and 'average_response_time' in response_metrics) or \
+                 (cache_metrics and 'overall_hit_rate' in cache_metrics):
+                confidence_level = '(Live Data)'
+            # Low confidence: Mostly estimated/documented values
+            elif ('estimated' in response_time.lower() if response_time != 'Calculating...' else False) or \
+                 ('documented' in cache_hit_rate.lower() if cache_hit_rate != 'Calculating...' else False):
+                confidence_level = '(Estimated)'
+            # No confidence: Still calculating
+            else:
+                confidence_level = '(Calculating...)'
+        
+    except ImportError:
+        # Performance metrics collector not available - keep "Calculating..." values
+        pass
+    except Exception:
+        # Any other error - keep "Calculating..." values
+        pass
+    
+    # Format display strings to fit banner width
+    perf_line = f"{ndcg_display} {ndcg_status}".strip()
+    if len(perf_line) > 45:
+        perf_line = perf_line[:42] + "..."
+    
+    response_line = response_time
+    if len(response_line) > 35:
+        response_line = response_line[:32] + "..."
+    
+    cache_line = cache_hit_rate
+    if len(cache_line) > 32:
+        cache_line = cache_line[:29] + "..."
+    
+    # Include timestamp and confidence level
+    updated_line = f"{last_updated} {confidence_level}".strip()
+    if len(updated_line) > 36:
+        updated_line = updated_line[:33] + "..."
+    
     banner = f"""
 {Colors.CYAN}╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
 ║    🇸🇬 Singapore Dataset Discovery Assistant 🇸🇬               ║
 ║                                                              ║
-║    🎯 Performance: 72.2% NDCG@3 (TARGET EXCEEDED)            ║
+║    🎯 Performance: {perf_line:<45} ║
 ║    🚀 AI-Powered Dataset Search & Recommendations            ║
 ║    📊 Real Singapore Government Data Integration             ║
+║                                                              ║
+║    ⚡ Response Time: {response_line:<35}           ║
+║    🗄️ Cache Performance: {cache_line:<32}           ║
+║    📅 Last Updated: {updated_line:<36}           ║
 ║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝{Colors.ENDC}
 """
@@ -378,7 +555,37 @@ The application will be available at:
         if not args.backend:
             print(f"{Colors.CYAN}🌐 Frontend: http://localhost:3002{Colors.ENDC}")
         
-        print(f"{Colors.CYAN}📊 Performance: 72.2% NDCG@3 (TARGET EXCEEDED){Colors.ENDC}")
+        # Get current performance for status display - NO hardcoded values
+        try:
+            from src.ai.performance_metrics_collector import PerformanceMetricsCollector
+            collector = PerformanceMetricsCollector()
+            metrics = asyncio.run(asyncio.wait_for(collector.get_all_metrics(), timeout=2.0))
+            formatted = collector.format_metrics_for_display(metrics)
+            perf_display = formatted.get('ndcg_at_3', 'Calculating...')
+            perf_status = formatted.get('ndcg_status', '')
+            
+            # Add timestamp and confidence info
+            last_updated = formatted.get('last_updated', 'Just now')
+            neural_metrics = metrics.get('neural_performance', {})
+            response_metrics = metrics.get('response_time', {})
+            cache_metrics = metrics.get('cache_performance', {})
+            
+            # Determine confidence level based on data quality
+            if neural_metrics and 'ndcg_at_3' in neural_metrics and neural_metrics['ndcg_at_3'] > 0:
+                confidence = '(High Confidence)'
+            elif (response_metrics and 'average_response_time' in response_metrics) or \
+                 (cache_metrics and 'overall_hit_rate' in cache_metrics):
+                confidence = '(Live Data)'
+            elif ('estimated' in perf_display.lower() if perf_display != 'Calculating...' else False):
+                confidence = '(Estimated)'
+            else:
+                confidence = '(Calculating...)'
+            
+            print(f"{Colors.CYAN}📊 Performance: {perf_display} {perf_status} {confidence}{Colors.ENDC}")
+            print(f"{Colors.CYAN}📅 Metrics Updated: {last_updated}{Colors.ENDC}")
+        except Exception as e:
+            print(f"{Colors.CYAN}📊 Performance: Calculating metrics...{Colors.ENDC}")
+            print(f"{Colors.WARNING}⚠️ Metrics error: {str(e)[:40]}...{Colors.ENDC}")
         print(f"{Colors.CYAN}{'='*60}{Colors.ENDC}")
         print(f"{Colors.CYAN}🔧 Mode: {'Production' if args.production else 'Development'}{Colors.ENDC}")
         print(f"{Colors.WARNING}Press Ctrl+C to stop the application{Colors.ENDC}")
