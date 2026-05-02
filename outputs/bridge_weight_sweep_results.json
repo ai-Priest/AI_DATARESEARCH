@@ -1,0 +1,81 @@
+{
+  "baseline": {
+    "weights": [
+      0.6,
+      0.25,
+      0.15
+    ],
+    "ndcg_at_3": 0.8333333333333334
+  },
+  "best": {
+    "weights": [
+      0.8,
+      0.15,
+      0.05
+    ],
+    "ndcg_at_3": 0.8333333333333334
+  },
+  "improvement_pct": 0.0,
+  "top_10": [
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.8,
+      "semantic": 0.15,
+      "keyword": 0.05
+    },
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.8,
+      "semantic": 0.1,
+      "keyword": 0.1
+    },
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.8,
+      "semantic": 0.05,
+      "keyword": 0.15
+    },
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.75,
+      "semantic": 0.2,
+      "keyword": 0.05
+    },
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.75,
+      "semantic": 0.15,
+      "keyword": 0.1
+    },
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.75,
+      "semantic": 0.1,
+      "keyword": 0.15
+    },
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.75,
+      "semantic": 0.05,
+      "keyword": 0.2
+    },
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.7,
+      "semantic": 0.25,
+      "keyword": 0.05
+    },
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.7,
+      "semantic": 0.2,
+      "keyword": 0.1
+    },
+    {
+      "ndcg_at_3": 0.8333333333333334,
+      "neural": 0.7,
+      "semantic": 0.15,
+      "keyword": 0.15
+    }
+  ]
+}

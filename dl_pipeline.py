@@ -67,7 +67,7 @@ class ImprovedTrainingPipeline:
 
         # Initialize loss functions
         self.ranking_loss = CombinedRankingLoss(
-            ndcg_weight=0.4, listmle_weight=0.3, binary_weight=0.3, k=3
+            listmle_weight=0.4, ranknet_weight=0.3, lambdarank_weight=0.3, k=3
         )
 
         self.bce_loss = nn.BCEWithLogitsLoss()
@@ -158,8 +158,9 @@ class ImprovedTrainingPipeline:
             optimizer, mode="min", patience=scheduler_patience, factor=0.5, min_lr=min_lr
         )
 
-        # Training setup
-        best_loss = float("inf")
+        # Training setup — early stopping monitors NDCG@3, not BCE val_loss
+        best_ndcg = 0.0
+        best_loss = float("inf")   # kept for logging only
         patience_counter = 0
         training_history = []
 
@@ -186,13 +187,17 @@ class ImprovedTrainingPipeline:
                 predictions = model(query_ids, query_mask, dataset_ids, dataset_mask)
 
                 # Hybrid loss: BCE (pointwise stability) + ranking loss (NDCG signal)
-                # Warm-up: start BCE-heavy, shift toward ranking loss as training progresses
+                # Ranking loss is normalized to BCE scale to prevent gradient explosion
                 bce = self.bce_loss(predictions, labels.float())
                 pred_grouped = torch.sigmoid(predictions).unsqueeze(0)   # [1, batch_size]
                 rel_grouped = relevance_scores.unsqueeze(0)              # [1, batch_size]
                 ranking_result = self.ranking_loss(pred_grouped, rel_grouped)
-                rank_loss = ranking_result['combined_loss'] if isinstance(ranking_result, dict) else ranking_result
-                ranking_weight = min(0.4, epoch / max(num_epochs, 1) * 0.8)
+                rank_loss_raw = ranking_result['total_loss'] if isinstance(ranking_result, dict) else ranking_result
+                # Scale ranking loss to same magnitude as BCE before mixing
+                rank_scale = bce.detach() / (rank_loss_raw.detach().abs() + 1e-8)
+                rank_loss = rank_loss_raw * rank_scale
+                # Warm-up: ranking weight grows 0 → 0.3 over training epochs
+                ranking_weight = min(0.3, epoch / max(num_epochs, 1) * 0.6)
                 loss = (1.0 - ranking_weight) * bce + ranking_weight * rank_loss
 
                 # Backward pass
@@ -211,6 +216,8 @@ class ImprovedTrainingPipeline:
             val_batches = 0
             val_predictions = []
             val_labels = []
+            val_relevances = []
+            val_queries = []
 
             with torch.no_grad():
                 for batch in val_loader:
@@ -228,16 +235,44 @@ class ImprovedTrainingPipeline:
                     total_val_loss += loss.item()
                     val_batches += 1
 
-                    # Collect predictions
+                    # Collect predictions and relevance for NDCG@3
                     val_predictions.extend(torch.sigmoid(predictions).cpu().numpy())
                     val_labels.extend(labels.cpu().numpy())
+                    if "relevance_score" in batch:
+                        val_relevances.extend(batch["relevance_score"].cpu().numpy())
+                    else:
+                        val_relevances.extend(labels.cpu().numpy())
+                    if "original_query" in batch:
+                        val_queries.extend(batch["original_query"])
 
             avg_val_loss = total_val_loss / val_batches
 
             # Calculate validation accuracy
             val_predictions = np.array(val_predictions)
             val_labels = np.array(val_labels)
+            val_relevances = np.array(val_relevances)
             val_accuracy = np.mean((val_predictions > 0.5) == val_labels)
+
+            # Compute per-query NDCG@3 (matches evaluate_model_comprehensive metric)
+            if val_queries:
+                _query_groups: dict = {}
+                for _q, _p, _r in zip(val_queries, val_predictions, val_relevances):
+                    _query_groups.setdefault(_q, []).append((_p, _r))
+                _ndcg_scores = []
+                for _q, _items in _query_groups.items():
+                    if len(_items) < 3:
+                        continue
+                    _preds = [x[0] for x in _items]
+                    _rels = [x[1] for x in _items]
+                    _order = np.argsort(_preds)[::-1]
+                    _top_rel = np.array(_rels)[_order[:3]]
+                    _dcg = sum(r / np.log2(i + 2) for i, r in enumerate(_top_rel))
+                    _ideal = sorted(_rels, reverse=True)[:3]
+                    _idcg = sum(r / np.log2(i + 2) for i, r in enumerate(_ideal))
+                    _ndcg_scores.append(_dcg / _idcg if _idcg > 0 else 0.0)
+                val_ndcg = float(np.mean(_ndcg_scores)) if _ndcg_scores else 0.0
+            else:
+                val_ndcg = 0.0
 
             # Update scheduler
             scheduler.step(avg_val_loss)
@@ -247,6 +282,7 @@ class ImprovedTrainingPipeline:
                 f"Train Loss: {avg_train_loss:.4f}, "
                 f"Val Loss: {avg_val_loss:.4f}, "
                 f"Val Accuracy: {val_accuracy:.4f}, "
+                f"NDCG@3: {val_ndcg:.4f}, "
                 f"LR: {optimizer.param_groups[0]['lr']:.2e}"
             )
 
@@ -256,13 +292,16 @@ class ImprovedTrainingPipeline:
                     "train_loss": avg_train_loss,
                     "val_loss": avg_val_loss,
                     "val_accuracy": val_accuracy,
+                    "val_ndcg_at_3": val_ndcg,
                     "learning_rate": optimizer.param_groups[0]["lr"],
                 }
             )
 
-            # Early stopping and model saving
+            # Early stopping on NDCG@3 (maximize), not BCE val_loss
             if avg_val_loss < best_loss:
                 best_loss = avg_val_loss
+            if val_ndcg > best_ndcg:
+                best_ndcg = val_ndcg
                 patience_counter = 0
 
                 # Save best model
@@ -276,20 +315,22 @@ class ImprovedTrainingPipeline:
                         "epoch": epoch + 1,
                         "val_loss": avg_val_loss,
                         "val_accuracy": val_accuracy,
+                        "val_ndcg_at_3": val_ndcg,
                     },
                     model_path,
                 )
 
-                logger.info(f"💾 Saved best model with val_loss: {best_loss:.4f}")
+                logger.info(f"💾 Saved best model — NDCG@3: {best_ndcg:.4f}, val_loss: {avg_val_loss:.4f}")
             else:
                 patience_counter += 1
                 if patience_counter >= patience:
-                    logger.info(f"⏰ Early stopping at epoch {epoch + 1}")
+                    logger.info(f"⏰ Early stopping at epoch {epoch + 1} (best NDCG@3: {best_ndcg:.4f})")
                     break
 
         return {
             "model": model,
             "best_loss": best_loss,
+            "best_ndcg_at_3": best_ndcg,
             "training_history": training_history,
             "final_accuracy": val_accuracy,
         }
@@ -428,8 +469,9 @@ class ImprovedTrainingPipeline:
             "🎯 Starting Improved Training Pipeline with BERT Cross-Attention..."
         )
 
-        # Train lightweight model
-        training_results = self.train_bert_model(num_epochs=15)
+        # Train lightweight model — use boost config epochs if available
+        n_epochs = self.config.get('optimized_hyperparameters', {}).get('epochs', 15)
+        training_results = self.train_bert_model(num_epochs=n_epochs)
 
         # Evaluate on test set
         processed_data = self.preprocessor.preprocess_for_ranking()

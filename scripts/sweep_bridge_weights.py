@@ -38,6 +38,9 @@ def load_validation_samples(data_path: Path) -> list:
     with open(data_path) as f:
         data = json.load(f)
 
+    # Handle pre-split format {"train": [...], "validation": [...], "test": [...]}
+    if isinstance(data, dict) and "validation" in data:
+        return data["validation"]
     samples = data if isinstance(data, list) else data.get("samples", [])
     # Use last 15% as validation proxy (mirrors dl_pipeline split)
     split_idx = int(len(samples) * 0.85)
@@ -56,10 +59,11 @@ def score_semantic(sample: dict) -> float:
 
 def score_keyword(sample: dict) -> float:
     """Proxy keyword score: use keyword_score field or compute simple title match."""
-    if "keyword_score" in sample:
+    if "keyword_score" in sample and sample["keyword_score"] is not None:
         return float(sample["keyword_score"])
     query = str(sample.get("query", "")).lower()
-    title = str(sample.get("title", "")).lower()
+    # dataset_title is the field name in this project's data format
+    title = str(sample.get("dataset_title", sample.get("title", ""))).lower()
     words = query.split()
     if not words:
         return 0.0
