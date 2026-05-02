@@ -180,12 +180,20 @@ class ImprovedTrainingPipeline:
                 dataset_ids = batch["dataset_input_ids"].to(self.device)
                 dataset_mask = batch["dataset_attention_mask"].to(self.device)
                 labels = batch["label"].to(self.device)
+                relevance_scores = batch["relevance_score"].to(self.device)
 
                 # Forward pass
                 predictions = model(query_ids, query_mask, dataset_ids, dataset_mask)
 
-                # Calculate loss
-                loss = self.bce_loss(predictions, labels.float())
+                # Hybrid loss: BCE (pointwise stability) + ranking loss (NDCG signal)
+                # Warm-up: start BCE-heavy, shift toward ranking loss as training progresses
+                bce = self.bce_loss(predictions, labels.float())
+                pred_grouped = torch.sigmoid(predictions).unsqueeze(0)   # [1, batch_size]
+                rel_grouped = relevance_scores.unsqueeze(0)              # [1, batch_size]
+                ranking_result = self.ranking_loss(pred_grouped, rel_grouped)
+                rank_loss = ranking_result['combined_loss'] if isinstance(ranking_result, dict) else ranking_result
+                ranking_weight = min(0.4, epoch / max(num_epochs, 1) * 0.8)
+                loss = (1.0 - ranking_weight) * bce + ranking_weight * rank_loss
 
                 # Backward pass
                 loss.backward()

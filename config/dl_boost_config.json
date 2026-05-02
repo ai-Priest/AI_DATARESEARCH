@@ -1,10 +1,10 @@
 {
-  "enhanced_training_data": "data/processed/aggressively_optimized_data.json",
+  "enhanced_training_data": "data/processed/enhanced_training_data_boosted.json",
   "hyperparameters": {
     "learning_rate": 0.0005,
     "dropout": 0.2,
-    "attention_heads": 12,
-    "hidden_dim": 768,
+    "attention_heads": 8,
+    "hidden_dim": 512,
     "weight_decay": 0.005,
     "epochs": 20,
     "patience": 10,
@@ -13,6 +13,6 @@
     "min_lr": 1e-05
   },
   "optimization_target": "ndcg_at_3",
-  "target_performance": 0.7,
-  "expected_improvement": "2.4%+ boost to 70%+"
+  "target_performance": 0.88,
+  "expected_improvement": "12-22% boost targeting 88%+ NDCG@3"
 }
